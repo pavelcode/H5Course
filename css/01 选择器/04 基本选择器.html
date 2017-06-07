@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>CSS的基本选择器</title>
+		<!--
+        	描述：使用选择器： selector{property:value;}
+        	   标签选择器
+               id选择器
+               类选择器
+        -->
+        <style>
+        /* 所有的标签都是选择器 */
+        body{color: red;}
+        p{color: red;}
+
+         /* 无论这个标签有多深，都可以添加样式 */
+         /* 能给所有相同标签设定样式 */
+         span{
+            color:green;
+         }
+       /*  命名规则：只能是字母，数字，下划线，且必须以字母开头，不能和标签重名
+        特点：id是唯一的，所以设定独一无二的样式。 */
+        #pid{color: pink;} 
+        
+       /*  可以被多个标签调用。也可以调用多个类选择器 */
+        .pclass{color: blue;}
+        .myclass{font-size: 10px;}
+        </style>	
+</head>
+<body>
+
+		
+		
+		<p id="pid">我是河南人我很骄傲</p>
+		<p>我是河南人我很骄傲</p>
+		<p class="pclass">我是河南人我很骄傲</p>
+		<p class="pclass myclass">我是河南人我很骄傲</p>
+	
+</body>
+</html>

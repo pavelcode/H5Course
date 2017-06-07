@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>事件</title>
+		<script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+	</head>
+	<body>
+		<!--<div ng-app="" ng-init="count=0">
+			<button ng-click="count=count+1">点击</button>
+			{{count}}
+			<br />
+		</div>-->
+		
+		
+		<div ng-app="myApp" ng-controller="myCtrl">
+			<button ng-click="aaa()">显示或隐藏</button>
+			<p ng-show="myval">11111</p>
+		</div>
+		<script>
+			angular.module("myApp",[]).controller("myCtrl",function($scope){
+	  $scope.myval = true;
+	  $scope.aaa = function(){
+	  	//alert("111");
+	  	  $scope.myval = !$scope.myval;
+	  }
+});
+		</script>
+		
+		
+	</body>
+</html>

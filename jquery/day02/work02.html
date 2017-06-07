@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        ul{
+            position: relative;
+            margin: 0 auto;
+            list-style: none;
+            width: 320px;
+        }
+        li{
+            float: left;
+            width: 80px;
+            height: 26px;
+            text-align: center;
+            line-height: 26px;
+            cursor: pointer;
+        }
+        div{
+            width: 80px;
+            height: 5px;
+            background: red;
+            position: absolute;
+            top: 32px;
+        }
+    </style>
+   <script src="../../bootstrap/project/lib/jquery/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/tween.js/r14/Tween.js"></script>
+</head>
+<body>
+<ul>
+    <li>首页</li>
+    <li>男装</li>
+    <li>女装</li>
+    <li>童装</li>
+</ul>
+<div></div>
+
+<script>
+    $("div").css("left",$("ul")[0].offsetLeft +"px")
+    $("li").mouseover(function(){
+        $("div").stop();
+        var index=$(this).index();
+        $("div").animate({left:($("ul")[0].offsetLeft+index*80) +"px"})
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>伪类选择器</title>
+		<style>
+		   
+			/*有兼容问题的选择器*/
+			/*伪类选择器*/
+
+			/*通过位置找到选择器*/
+			/*first-child 匹配的是某父元素的第一个子元素，可以说是结构上的第一个子元素。*/
+			.firstandlast ul li:first-child{
+				color:red;
+			}
+			.firstandlast ul li:last-child{
+				color:blue;
+			}
+			
+			/*使用class来解决兼容性问题*/
+		    ul li.first{
+				color:orange;
+			}
+			ul li.last{
+				color:chocolate
+			}
+			
+			/*第三个子元素*/
+			/*ul li:nth-child(3){
+				color:yellow;
+			}*/
+			
+			/*奇偶选择器*/
+			/*ul li:nth-child(2n+1){
+				color:green;
+			}*/
+			
+			/*选择前三个*/
+			/*nth-child(-n+3)*/
+			
+			/*
+			 first-child和first-of-type的区别  
+			 http://www.cnblogs.com/xuan52rock/p/4416228.html
+			 first-child 匹配的是某父元素的第一个子元素，可以说是结构上的第一个子元素。
+             first-of-type 匹配的是某父元素下相同类型子元素中的第一个，比如 p:first-of-type，就是指所有类型为p的子元素中的第一个。
+             这里不再限制是第一个子元素了，只要是该类型元素的第一个就行了。*/
+            /*都能匹配到,因为p是第一个元素*/
+            .second p:first-child{
+            	   color:red;
+            }
+            .second p:first-of-type{
+            	   color:green;
+            }
+            /*匹配不到,h1不是第一个元素*/
+            .second h1:first-child{
+            	   color:red;
+            }
+            /*能够匹配到,找到h1的第一个元素*/
+            .second h1:first-of-type{
+            	   color:green;
+            }
+           /* second下的第一个div(包含多个)中的第一个span*/
+            .second div:first-of-type span:first-child{
+            	   color:yellow;
+            }
+           /*nth-of-type(n)
+             代表某个元素的第n个子元素
+            * */
+          
+           
+            /*子元素：only-child
+              子元素的父元素只有一个子元素
+             * */
+           
+           
+           /*only-of-type*/
+          
+          
+          /*nth-last-child(n) n大于等于1*/
+		
+		  /*last-of-type*/
+			
+			
+		   /*empty*/
+		  
+		    /*target*/	
+			
+			
+		</style>
+	</head>
+	<body>
+		
+		<div class="firstandlast">
+		    <!-- ul>li*5>{内容$$} -->	
+		    <ul>
+		    	<li>内容01</li>
+		    	<li>内容02</li>
+		    	<li>内容03</li>
+		    	<li>内容04</li>
+		    	<li>内容05</li>
+		    </ul>
+			
+		</div>
+		<ul>
+			<li class="first">111</li>
+			<li>111</li>
+			<li>111</li>
+			<li>111</li>
+			<li class="last">111</li>
+		</ul>
+
+        <div class="second">
+        	  <p>111</p>
+        	  <h1>222</h1>
+        	  <div>
+        	  	<span>333</span>
+        	    <span>444</span>
+        	  </div>
+        </div>
+	
+		
+	</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>事件</title>
+		<script src="../jquery-3.1.0.js"></script>
+		<script>
+			$(function(){
+				/*
+				  绑定事件
+				 */
+				//匿名函数
+//				$("button").bind("click",function(){
+//					alert("aaa");
+//				})
+				//普通函数
+//				$("button").bind("click",show);
+//				function show(){
+//					alert("bbb");
+//				}
+				//绑定多个事件  鼠标移入的时候出现弹框，回车确定。点击按钮的时候，同样出现弹框。
+//				$("button").bind("click mouseover",function(){
+//					alert("ccc");
+//				});
+				
+//				$("button").bind("mouseover mouseout",function(){
+//					$("div").html(function(index,value){
+//						return parseInt(value)+1;
+//					});
+//				});
+				//不同的事件，绑定不同的函数
+//				$("button").bind({
+//					mouseover:function(){
+//						alert("移入");
+//					},
+//					mouseout:function(){
+//						alert("移出");
+//					}
+//				});
+
+                /*
+                  解绑事件
+                 */
+//              $("button").unbind();//解绑节点所有事件
+//              $("button").unbind("click");//解绑节点的click事件
+//              $("button").unbind("click",fn);//解绑节点的click事件的fn函数
+				
+				
+				
+				
+		
+		});
+		</script>
+	</head>
+	<body>
+		
+		<button value="0">按钮</button>
+		<div>0</div>
+	</body>
+</html>

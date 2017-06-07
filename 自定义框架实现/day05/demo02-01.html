@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>内容框架</title>
+	</head>
+	<body>
+		<div id='div'>aaa</div>
+		<input type="input" id="input"/>
+		<button id="btn">button</button>
+	</body>
+</html>
+<script src="../myframe.js"></script>
+<script>
+//原始方式	
+//	var dom = $$.$id('div');
+//  var input = $$.$id('input');
+//  $$.on('btn','click',function(){
+//      //获取内容
+//      dom.innerHTML='111'
+//      //获取表单控件内容
+//      input.value='111'
+//  });
+
+//封装实现
+//  var dom = $$.$id('div');
+//  var input = $$.$id('input');
+//  $$.on('btn','click',function(){
+//      //获取内容
+//      //dom.innerHTML='111'
+//      html('#div','bbb');
+//  });
+//  console.log(html('#div'));
+
+    /*innerHTML的函数版本，利用arguments实现重载*/
+//  function html(context, value){
+//      var doms = $$.$all(context);
+//      //设置
+//      if(value){
+//          for(var i= 0,len= doms.length; i<len; i++){
+//              doms[i].innerHTML = value;
+//          }
+//      }else{
+//          return doms[0].innerHTML;
+//      }
+//  }
+    
+//框架实现    
+    var dom = $$.$id('div');
+    var input = $$.$id('input');
+    $$.on('btn','click',function(){
+        //设置内容
+        $$.html('#div','ccc');
+    });
+    console.log($$.html('#div'));
+
+</script>

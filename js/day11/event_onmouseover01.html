@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>内容提示框(鼠标定位)</title>
+		<style>
+		*{margin:0;padding:0;}
+
+         #mydiv{width:1000px;margin:0 auto;background:red}
+
+        .infodiv{height:40px;width:auto;margin:50px;}
+
+        .infoa{display:block;text-decoration:none;width: 50px;}
+
+         #show{width:200px;height:100px;background:yellow;display:none;position:absolute}
+		</style>
+		<script>
+			window.onload = function(){
+    //获得弹出框对象
+	var show = document.getElementById("show");
+	
+	//获得所有的链接对象
+	var as = document.getElementsByTagName("a");
+	
+	for(var i=0;i<as.length;i++){
+		as[i].onmouseover = function(evt){
+			var event = evt||window.event;
+			show.style.display="block"; //显示提示内容
+			show.style.left = event.clientX+"px";
+			show.style.top = event.clientY+"px";
+			
+			//阻止事件的冒泡  必须加事件阻断才能正常显示(重新测试，不需要冒泡)
+		   //evt.stopPropagation();
+		}
+		as[i].onmouseout = function(){
+			show.style.display="none";
+		}
+	}
+
+}
+		</script>
+	</head>
+	<body>
+		
+		 <div id="mydiv">
+	 
+	     <div class="infodiv">
+		 
+		    <a href="#" class="infoa">张三</a>
+		 </div>
+		 
+		 
+	     <div class="infodiv">
+		 
+		    <a href="#" class="infoa">李四</a>
+		 </div>
+		 
+		 
+	     <div class="infodiv">
+		 
+		    <a href="#" class="infoa">王五</a>
+		 </div>
+		 
+		 <div id="show"></div>
+	 
+	 </div>
+		
+	</body>
+</html>

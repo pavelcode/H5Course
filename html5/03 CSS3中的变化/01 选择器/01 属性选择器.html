@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>属性选择器</title>
+		<style>
+            /* 具有某个属性的 */
+            a[class]{
+            	color:black;
+            }
+		   /*单个属性*/
+		    a[href="a2.mp3"]{
+		    	  color:red;
+		    }
+		    /*多个属性值之一（以空格分隔）*/
+		    a[href~="a1.rmvb"]{
+		    	  color:green;
+		    }
+		    /*属性以xxx开头*/
+		    a[href^="xxx"]{
+		    	  color:orange;
+		    }
+		    /*属性以abc结束*/
+		    a[href$="abc"]{
+		    	  color:blue;
+		    }
+		     /*属性中包含字符*/
+		     a[href*="rmvb"]{
+		    	  color: yellow;
+		    }
+		      /*可以包含部分属性,以-分隔*/
+		    a[href|="a3"]{
+		    	  color: pink;
+		    }
+		</style>
+	</head>
+	<body>
+		<div>
+		    <a href="#" class="external">链接0</a>
+
+			<a href="a1.mp3 a1.rmvb">链接1</a>
+			<a href="a2.mp3">链接2</a>
+
+			<a href="xxxa5.rmvb">链接3</a>
+			<a href="a6.abc">链接4</a>
+
+            <a href="a4.rmvb">链接5</a>
+			<a href="a3-3.mp3">链接6</a>
+			
+			
+
+		</div>
+			
+		
+	
+		
+	</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>表格及时编辑</title>
+		<script>
+onload = function(){	
+	var tds = document.getElementsByTagName("td");
+    for(var i=0;i<tds.length;i++){
+		tds[i].onclick = function(){
+			//保存原来的值
+			var str = this.innerHTML;
+			//修改的td中添加一个输入框
+			var input = document.createElement("input");
+			//设置td的值为空
+			this.innerHTML="";
+			input.value= str;
+			this.appendChild(input);
+			//让input获得焦点
+			input.focus();
+			//选中input中文本
+			input.select();
+			//当再次点击，会出现<input>
+			//阻断input onclick事件
+			input.onclick = function(evt){
+				var e = evt||window.event;
+	            window.event?e.cancelBubble=true:e.stopPropagation();
+			}
+			
+			//当input失去焦点
+			input.onblur = function(){
+				//this.parentNode //object HTMLTableCellElement  这个应该是td
+				this.parentNode.innerHTML = this.value;
+			}
+		}
+	}	
+}
+		</script>
+	</head>
+	<body>
+		<table border="1">
+			<tr>
+				<td>你好</td>
+				<td>祝你幸福</td>
+				<td>再见</td>
+			</tr>			
+		</table>
+	</body>
+</html>

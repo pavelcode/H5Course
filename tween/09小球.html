@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            width:800px;
+            height: 500px;
+            border:1px solid;
+            position: relative;
+        }
+        .div{
+            width:100px;
+            height:100px;
+            background-color: red;
+            position: absolute;
+            border-radius: 50%;
+        }
+    </style>
+    <script src="tween.js"></script>
+</head>
+<body>
+<div class="box">
+    <div class="div"></div>
+</div>
+<script>
+    var div11=document.getElementsByClassName("div")[0];
+    function run(){
+        var t=0;
+        var b=0;
+        var c=700;
+        var d=50;
+       stop = setInterval(run1, 50);
+        function run1(){
+            t ++;
+            if(t>=d){
+                clearInterval(stop);
+                run2();
+            }
+            div11.style.left = Tween.Bounce.easeInOut(t, b, c, d)+"px"
+        }
+    }
+    function run2(){
+        var t=0;
+        var b=0;
+        var c=400;
+        var d=50;
+       stop1= setInterval(run22, 50)
+        function run22(){
+            t ++;
+            if(t>=d){
+                clearInterval(stop1);
+                run3();
+            }
+            div11.style.top = Tween.Bounce.easeInOut(t, b, c, d)+"px"
+        }
+
+    }
+    function run3(){
+        var t=0;
+        var b=0;
+        var c=700;
+        var d=50;
+       stop2= setInterval(run33,50);
+        function run33(){
+            t++;
+            if(t>=d){
+                clearInterval(stop2);
+             run4()
+            }
+            div11.style.left = c-Tween.Bounce.easeInOut(t, b, c, d)+"px"
+        }
+    }
+    function run4(){
+        var t=0;
+        var b=0;
+        var c=400;
+        var d=50;
+        stop4=setInterval(run44,50);
+        function run44(){
+            t++;
+            if(t>=d){
+               clearInterval(stop4)
+                run()
+            }
+            div11.style.top = c-Tween.Bounce.easeInOut(t, b, c, d)+"px"
+        }
+    }
+    run()
+</script>
+</body>
+</html>

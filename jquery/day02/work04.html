@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body{
+            margin:0;
+            padding:0;
+        }
+        #img0 img {
+            width: 100px;
+            height:50px;
+        }
+        #motai{
+            width:500px;
+            height:500px;
+            border:1px solid #000;
+            position: absolute;
+            top:100px;
+            left:300px;
+            display: none;
+            z-index: 3;
+            background:#fff;
+        }
+        table{
+            border:1px solid #000;
+            width:800px;
+            margin:0 auto;
+            margin-top:30px;
+        }
+        #mb{
+            position: absolute;
+            width: 100%;
+            height:100%;
+            background: rgba(17, 17, 17, 0.46);
+            top:0;
+            display: none;
+            z-index: 2;
+        }
+        .img1{
+            width:100px;
+            height:50px;
+        }
+    </style>
+<script src="../../bootstrap/project/lib/jquery/jquery.min.js"></script>
+</head>
+<body>
+<div id="motai">
+    <h1>添加商品</h1>
+    <hr/>
+    <h3>请选择商品</h3>
+    <div id="img0">
+        <img src="1.jpg" alt=""/>
+        <img src="2.jpg" alt=""/>
+        <img src="3.jpg" alt=""/>
+        <img src="4.jpg" alt=""/>
+    </div>
+    商品名称：<input type="text"id="mc"/>
+    <br/>
+    <br/>
+    商品价格：<input type="text"id="dj"/>
+    <br/>
+    <br/>
+    商品数量：<input type="text"id="num"/>
+    <br/>
+    <br/>
+    <input type="button"value="确定"id="tj"/>
+    <input type="button"value="关闭"id="gb"/>
+</div>
+
+<input type="button"value="点击操作"id="tanchu"/>
+<table border="1">
+    <tr>
+        <td>编号</td>
+        <td>商品名称</td>
+        <td>图片</td>
+        <td>价格</td>
+        <td>数量</td>
+        <td>日期</td>
+        <td>操作</td>
+    </tr>
+
+</table>
+<div id="mb"></div>
+</body>
+<script>
+    //点击操作
+    $("#tanchu").click(function(){
+        $("#motai").fadeIn(600);
+        $("#mb").css("display","block");
+    });
+    //点击关闭
+    $("#gb").click(function(){
+        $("#motai").fadeOut(600);
+        $("#mb").css("display","none");
+    });
+    //点击图片
+    $("#img0 img").click(function(){
+         isrc = this.src;
+        $(this).css("opacity","0.5").siblings().css("opacity","1");
+    })
+    //点击确定
+    $("#tj").click(function(){
+        var $tr = $("<tr></tr>");
+        var date = new Date().toLocaleString();
+        var td0 = $("<td class='xh'></td>");
+        var td1 = $("<td>"+$("#mc").val()+"</td>");
+        var td2 = $("<td><img class='img1'src='"+isrc+"'/></td>");
+        var td3 = $("<td>"+$("#dj").val()+"</td>");
+        var td4 = $("<td>"+$("#num").val()+"</td>");
+        var td5 = $("<td>"+date+"</td>");
+        var td6 = $("<td><button>删除</button><button class='bj'>编辑</button></td>");
+        $("tbody").append($tr);
+        $tr.append(td0,td1,td2,td3,td4,td5,td6);
+
+        //编辑
+        $(".bj").click(function(){
+            $("#motai").fadeIn(600);
+            $("#mb").css("display","block");
+            $("h1").html("编辑商品");
+            alert($(this).parent().parent().children("td").eq(1).html());
+            $("#mc").val($(this).parent().parent().children("td").eq(1).html());
+            $("#dj").val($(this).parent().parent().children("td").eq(3).html());
+            $("#num").val($(this).parent().parent().children("td").eq(4).html());
+        });
+    })
+    $(":button").click(function(){
+        $(".xh").each(function(i){
+            $(this).html(i+1);
+        })
+    });
+
+</script>
+</html>

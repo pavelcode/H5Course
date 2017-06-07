@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>商品列表</title>
+		<script type="text/javascript" src="utils.js" ></script>
+		<script>
+		onload = function(){
+			var as = document.getElementsByTagName("a");
+			var arr = [];
+			for(var i=0;i<as.length-1;i++){
+				as[i].onclick = function(){
+					
+					
+					var product ={
+						productname:this.parentNode.parentNode.children[0].innerHTML,
+						productprice:this.parentNode.parentNode.children[1].innerHTML
+					};
+					//alert(product.productname);
+					//alert(decodeURIComponent(document.cookie));//proucts=[{"productname":"商品3","productprice":"RMB45"}]
+					
+					if(document.cookie){
+					 arr = eval(decodeURIComponent(document.cookie));
+					}
+					alert(decodeURIComponent(document.cookie));
+					
+					arr.push(product);
+					//把数据转化成JSON
+					var jsonArr = JSON.stringify(arr);
+					alert(jsonArr);
+					setCookie("proucts",jsonArr,setCookieDate(7));
+					
+				}
+			}
+			
+		}
+		
+	</script>
+	</head>
+	
+	
+	<body>
+		<ul>
+			<li><span>商品1</span><span>RMB45</span><span><a href="javascript:void(0)">加入购物车</a></span></li>	
+			<li><span>商品2</span><span>RMB45</span><span><a href="javascript:void(0)">加入购物车</a></span></li>	
+			<li><span>商品3</span><span>RMB45</span><span><a href="javascript:void(0)">加入购物车</a></span></li>	
+			<li><span>商品4</span><span>RMB45</span><span><a href="javascript:void(0)">加入购物车</a></span></li>	
+			<li><span>商品5</span><span>RMB45</span><span><a href="javascript:void(0)">加入购物车</a></span></li>	
+			<li><span>商品6</span><span>RMB45</span><span><a href="javascript:void(0)">加入购物车</a></span></li>	
+		</ul>
+		<a href="demo06.html">查看购物车</a>
+	</body>
+
+</html>

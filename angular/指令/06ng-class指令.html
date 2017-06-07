@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>ng-class指令</title>
+		<style>
+			.myred{
+				background-color: red;
+			}
+			.myblue{
+				background-color: blue;
+			}
+			#box{
+				width: 200px;
+				height: 200px;
+			}
+		</style>
+	</head>
+	<body ng-app>
+		
+	 <select ng-model="style">
+	 	 <option value="red">红色</option>
+	 	 <option value="blue">蓝色</option>
+	 </select>	
+	   <!--
+      <div id="box" ng-class="style"></div>
+       -->
+       <!--
+       	使用的样式：条件成立
+       -->
+		<div id="box" ng-class="{myred:style=='red',myblue:style=='blue'}"></div>
+	    <script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+  
+	</body>
+</html>

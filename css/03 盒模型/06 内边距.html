@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+<style>
+           /*  四个方向的padding：
+            写法1 小属性  */
+			/*div{
+				width: 200px;
+				height: 200px;
+				border:1px solid red;
+				padding-left: 10px;
+				padding-top: 10px;
+				padding-right: 10px;
+				padding-bottom: 10px;
+			}*/
+			/* 写法2 综合属性，空格隔开 */
+			/*div{
+				width: 200px;
+				height: 200px;
+				border:1px solid red;*/
+				/*padding: 10px; */  /*所有内边距都是10px*/
+				/*padding:10px 20px;*/  /*上下10px,左右20px*/
+				/*padding: 10px 20px 30px; */ /*上10px 左右20px  下30px*/
+				/*padding: 10px 20px 30px 40px;*/ /*上右下左*/
+ 			/*}*/
+ 			
+ 			/*小属性层叠大属性 左边是30px，其他是20px  如果交换顺序，就都是20px*/
+ 			/*div{
+ 				width: 200px;
+ 				height: 200px;
+ 				padding: 20px;
+ 				padding-left: 30px;
+ 			}*/
+ 			
+ 			/*宽度=内容宽度+内边距+边框*/
+ 			
+ 			/*占有大小计算:大盒子宽度500px,高度300px.小盒子300px,高度150px.小盒子在大盒子内部居中*/
+ 			/*如果盒子设定了内边距和边框,宽度需要减去相应的值*/
+ 			/*.one{
+ 				width: 298px;
+ 				height: 148px;
+ 				background-color: red;
+ 				padding-left: 100px;
+ 				padding-right: 100px;
+ 				padding-top: 75px;
+ 				padding-bottom: 75px;
+ 				border: 1px solid black;
+ 			}
+ 			.two{
+ 				width:300px;
+ 				height: 150px;
+ 				background-color: blue;
+ 			}*/
+ 			
+ 			/*继承的盒子,在父盒子的宽度范围内,padding值不影响盒子大小*/
+ 			.one{
+ 				width: 200px;
+ 				height: 200px;
+ 				background-color: red;
+ 			}
+ 			.two{
+ 				height: 30px;
+ 				background-color: green;
+ 				padding-left: 10px;  /*查看浏览器,宽度自动减去了padding-left值*/
+ 			}
+		</style>
+	</head>
+	<body>
+		
+		<!--<div>
+			文字
+		</div>-->
+		
+		<div class="one">
+			<div class="two">文字</div>
+		</div>
+		
+		
+	</body>
+</html>

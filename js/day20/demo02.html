@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>透明度切换</title>
+		<style type="text/css">
+			#img1{filter:alpha(opacity:30); opacity:0.3;}
+		</style>
+		<script type="text/javascript" src="utils.js" ></script>
+		<script>
+		   //完成之后，对代码进行优化
+			onload = function(){
+			    var img = $("img1");
+			    var timer ; //间歇调用的标识
+				img.onmouseover = function(){
+//					alert(getStyle(this).opacity); //有获得小数
+//					alert(getNumFromStr(getStyle(this).filter)); //使用IE进行测试，有缓存
+                    var opacity = Number(getStyle(this).opacity); //转换成数值
+                    var that = this;
+                   timer=setInterval(function(){
+                    	opacity+=0.01;
+//                  	alert(that);
+                        that.style.opacity = opacity;
+                        //console.log(opacity);
+                        that.style.filter = "alpha(opacity:"+opacity*100+")";
+                        if(opacity>=1){
+                        	clearInterval(timer);
+                        }
+                    },20);
+				}
+				
+				img.onmouseout = function(){
+					var opacity = Number(getStyle(this).opacity); //转换成数值
+                    var that = this;
+                    timer=setInterval(function(){
+                    	opacity-=0.01;
+//                  	alert(that);
+                        that.style.opacity = opacity;
+                        //console.log(opacity);
+                        that.style.filter = "alpha(opacity:"+opacity*100+")";
+                        if(opacity<=0.3){
+                        	clearInterval(timer);
+                        }
+                    },20);
+				}
+				
+				
+				function getStyle(obj){
+					if(obj.currentStyle){
+						return obj.currentStyle;
+					}else{
+						return getComputedStyle(obj,null);
+					}
+				}
+				//获得字符串中数字
+				function getNumFromStr(str){
+					return str.replace(/[^0-9]/ig,""); 
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<img src="img/pic.jpg" id="img1" />
+	</body>
+</html>

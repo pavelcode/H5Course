@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>简单直线运动--更改元素的坐标left、top</title>
+		<script>
+		    onload = function(){
+		    var ball  = document.getElementById("ball");
+			var speed = 5; //定义直线运动的速度
+			//offsetLeft 获取的是相对于父对象的左边距
+				var id = setInterval(function(){
+					ball.style.left = ball.offsetLeft+speed+"px";
+					//offsetWidth是指对象自身的宽度
+					//当小球相对于父对象（窗口）的左边距大于等于这个父对象的宽度-球的宽度，这时候，设置球的位置父对象的宽度-球的宽度
+					if(ball.offsetLeft>=document.documentElement.offsetWidth-ball.offsetWidth){
+						ball.style.left = document.documentElement.offsetWidth-ball.offsetWidth+"px";
+						clearInterval(id);
+//						speed*=-1;
+						
+						
+					}
+//					if(ball.offsetLeft==0){
+//						speed*=-1;
+//					}
+				},20);
+			   
+			}
+			
+		</script>
+	</head>
+	<body>
+		<!--ie8不支持圆形-->
+		<div id="ball" style="width: 50px; height: 50px; position: absolute; left: 0px; top: 0px; background: #ff0000; border-radius: 50%;" ></div>
+	
+	</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	   /* 还需要自己去判断选择器的权重 */
+      /*  .nav ul li{
+       	 color:red;
+       } */
+      /*  .teshu{
+      	 color:blue;
+      } */
+      /* 这种方式可以一次比较出来 */
+      .nav ul li{
+       	 color:red;
+       }
+       .nav ul li.teshu{
+       	 color:blue;
+       }
+
+	</style>
+</head>
+<body>
+
+    <div class="nav">
+    	<ul>
+    		<li class="teshu">文字</li>
+    		<li>文字</li>
+    		<li>文字</li>
+    		<li>文字</li>
+    		<li>文字</li>
+    		<li>文字</li>
+    	</ul>
+    </div>
+	
+</body>
+</html>

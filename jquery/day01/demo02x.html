@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>jQuery的语法风格</title>
+		<script src="../jquery-3.1.0.js"></script>
+		<script>
+		jQuery(document).ready(function(){
+			//获得button对象，并添加点击事件
+			jQuery("button").click(function(){
+				//alert("aaa");
+                //1.jquery的代码都是以$或以jQuery开头的				
+//				document.write($+"<br/>");//jqury的$代码
+//				document.write(jQuery+"<br/>");
+//              document.write(($==jQuery)+"<br/>");//true
+                //2.jquery获得对象
+//				document.write($()+"<br/>");//[object Object]  jQuery对象
+//				document.write($("div")+"<br/>"); //[object Object] jQuery对象 标签选择器
+//               $('div').css('color','red');
+//				document.write($('div').css('color','red'));//[object Object] jQuery对象
+				//3 连缀效果
+//				$('div').css('color','red').css("font-size","50px");
+		     })
+		 })
+		</script>
+	</head>
+	<body>
+		<button>按钮</button>
+		<div>内容</div>
+	</body>
+</html>

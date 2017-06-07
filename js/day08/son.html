@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>子窗口</title>
+		<script>
+		//点击屏幕的任何位置，在父窗口输出文字
+		  document.onclick = function(){
+			window.opener.document.write("aaa");
+			}
+		</script>
+	</head>
+	<body>
+		子窗口
+	</body>
+</html>

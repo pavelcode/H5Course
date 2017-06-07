@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>SessionStorage</title>
+		<script>
+		    var num =0;
+			function add(){
+				
+				var txt = document.getElementById("count");
+				var btn = document.getElementById("add");
+				if(sessionStorage.num){
+					num = sessionStorage.num;
+				}
+				++num;
+				sessionStorage.num = num;
+				txt.innerHTML = num;
+				
+			}
+		</script>
+	</head>
+	<body>
+		
+		
+		<div id="count">0</div>
+		<input type="button" value="add" onclick="add()" />
+	</body>
+</html>

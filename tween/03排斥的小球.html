@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>排斥的小球</title>
+		
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+				/*开发中，将清除样式写到指定的位置，不许写在通配符中*/
+				list-style: none; 
+			}
+			div{
+				width: 400px;
+				height: 400px;
+				border: 1px solid red;
+				/*给下面的li设置有相对定位的父级*/
+				position: relative;
+				/*居中*/
+				margin: 100px auto; 	
+				/*切记超出的部分隐藏，否则动画失去意义*/
+				overflow: hidden;
+			}
+			
+			#li1{
+				width: 50px;
+				height: 50px;
+				background: red;
+				border-radius: 50%;
+				position: absolute;
+				left: 50%;
+				margin-left: -25px;
+			}
+			
+			#li2{
+				width: 50px;
+				height: 50px;
+				background: blue;
+				border-radius: 50%;
+				position: absolute;
+				left: 50%;
+				bottom: 0px;
+				margin-left: -25px;
+			}
+			
+		</style>
+	</head>
+	<body>
+		
+			<div>
+				<ul>
+					<li id="li1"></li>
+					<li id="li2"></li>
+					<li id="li3"></li>
+					<li id="li4"></li>
+				</ul>
+
+			</div>
+			
+		<input type="button" name="" id="" value="点击运动" />
+		<input type="button" name="" id="" value="原路返回" />
+	</body>
+	
+	<script src="tween.js" type="text/javascript" charset="utf-8"></script>
+	
+	<script type="text/javascript">
+		//获取按钮
+		var input = document.getElementsByTagName('input');
+		//获取小球
+		var li = document.getElementsByTagName('li');
+		//给第一个按钮添加运动的方法
+		input[0].onclick = function(){
+			runT();
+		}
+		
+		//上面的小球
+		function runT(){
+			var t = 0,b = 0, c = 240, d = 100;
+			var timer = setInterval(function(){
+				t++;
+				if(t >= d){
+					clearInterval(timer);
+				}
+			li[0].style.top = Tween.Bounce.easeOut(t,b,c,d) + 'px';
+			},20);
+		}
+		
+//		function runB(){
+//			
+//		}
+		
+		//原路返回的点击事件
+		input[1].onclick = function(){
+			bye();
+		}
+		
+		function bye(){
+			var t = 0,b=240,c=-240,d=100;
+			var timer = setInterval(function(){
+				t++;
+				if(t >= d){
+					clearInterval(timer);
+				}
+			li[0].style.top = Tween.Bounce.easeOut(t,b,c,d) + 'px';
+			},20);
+		}
+		
+	</script>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</html>

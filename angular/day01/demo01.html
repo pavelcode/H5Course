@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>angular四大特性-模块化 MVC 指令系统  双向数据绑定</title>
+	</head>
+	<body ng-app="mymodual" ng-controller="mycontrol">
+		<div>
+			<input ng-model="say.text"/>
+			{{say.text}}
+		</div>
+		
+	</body>
+</html>
+<script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+<script>
+    var mymodual = angular.module("mymodual",[]);
+    mymodual.controller("mycontrol",function($scope){
+	    	$scope.say = {
+			text:"hello world"
+		};
+    });
+</script>

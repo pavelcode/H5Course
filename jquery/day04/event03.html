@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>事件对象</title>
+		<script src="../jquery-3.1.0.js"></script>
+		<script>
+			$(function(){
+				//事件对象e
+//				$("button").bind("click",function(e){
+//					document.write(e+"<br/>");//[object Object]
+//					document.write(e.type+"<br/>");//click 获取绑定的事件类型
+//					document.write(e.target+"<br/>");//[object HTMLButtonElement]  触发事件的dom节点对象
+//		
+//					
+//				});
+				
+				/* targer与currentTarget的区别
+				 * targer是触发事件的dom节点对象，当我们点div，返回div对象。当我们点span返回span
+				 * currentTarge是获得监听的dom对面，无论点的div，还是span都返回div对象,这个等同this
+				 */
+//				$("div").bind("click",function(e){
+//					// alert(e.target); // 当我们点div，返回div对象。当我们点span返回span
+//					//alert(e.currentTarget);//无论点的div，还是span都返回div对象
+//				});
+
+
+//                $("div").bind("click",function(e){
+//                	 alert(e.currentTarget == this);
+//                });
+				
+				//relatedTarget进入目标（span）之前的对象
+//				$("span").bind("mouseover",function(e){
+//					alert(e.relatedTarget);
+//				});
+
+                   //pageX,pageY相对于页面原点的坐标,包含滚动条
+                   //screenX,screenY相对于屏幕的坐标
+                   //clientX,clientY相对于页面的可见区域的坐标
+//                 $(window).bind("click",function(e){
+                   	  //alert(e.pageX+"--"+e.pageY);
+//                 	  alert(e.screenX+"---"+e.screenY);
+//                 	  alert(e.clientX+"---"+e.clientY);
+//                 });
+
+                 //data  获得发送给事件的数据
+//                 $("button").bind("click",{name:"zhangsan"},function(e){
+//                 	alert(e.data.name);
+//                 });
+				//result 得到上次事件返回的结果
+//				   $("button").bind("click",function(e){
+//				   	 return 100;
+//				   });
+//				   
+//				   $("button").bind("click",function(e){
+//				   	  alert(e.result);
+//				   });
+                 //timeStamp事件的事件戳，当我们需要比较事件执行的先后顺序的时候，使用
+//                 $("button").bind("click",function(e){
+//                 	 alert(e.timeStamp); //返回的长度不同，有问题？？？
+//                 });
+                  //which 鼠标的左中右键(1,2,3)  键盘对应的键
+//                $("button").bind("mousedown",function(e){
+//                	alert(e.which);
+//                });
+//                $(window).bind("keyup",function(e){
+//                	alert(e.which);
+//                });
+                  //altKey,shiftKey，ctrlkey,是否同时按住功能键
+                  $("button").bind("click",function(e){
+                  	//最开始只是点击按钮，返回false，当按住alt键，点击按钮时，返回true
+                  	alert(e.altKey);
+                  })
+                 
+				
+			});
+			
+			
+			
+		</script>
+	</head>
+	<body>
+		<button>按钮</button>
+		<div style="width: 200px;height: 200px;background: red;">
+			<span style="width: 100px;height: 100px;background: green;display: block;"></span>
+		</div>
+	</body>
+</html>

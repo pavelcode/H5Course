@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>节点的内容操作</title>
+		<!--
+           text()获得或设置节点文本内容
+           hmtl()获得或设置节点的html内容
+           val()获得或设置输入框value值
+        -->
+		<script src="../jquery-3.1.0.js"></script>
+		<script>
+        $(function(){
+        	$("#demo01_btn01").click(function(){
+		    //alert($("p").text()); //获得文本内容
+		    //$("p").text("新内容") //设置文本内容
+		    //alert($("p").html());  //获得html内容
+		    // $("p").html("<strong>新内容</strong>"); //设置html内容
+		    //alert($("input").val()); //获得value值
+		    //$("input").val("bbb");   //设置value值
+		    // $("input").val(["woman"]); //设置默认值
+		   
+		   
+		     // $("div").html($("div").html()+" new content"); //在原来基础上追加内容       
+//              $("div").html(function(index,value){  //有些里面可以添加函数，remove不行
+//              	      return value + " new";
+//              });
+		   
+	      });
+        });
+
+		</script>
+	</head>
+	<body>
+		<p>需要显示的<strong>内容</strong></p>
+		<input type="text" value="aaa" />
+		<input type="radio" name="sex" value="man" /> 男
+		<input type="radio" name="sex" value="woman" /> 女
+		<button id="demo01_btn01">button</button>
+		
+	</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			/**{margin: 0;padding: 0;}*/
+			img{width: 100px;height: 100px;}
+			hr{margin: 20px;}
+			td{width: 180px;line-height: 30px;text-align: center;border-bottom: 1px solid;}
+		</style>
+	</head>
+	<body>
+		<h1>添加商品</h1>
+		<hr />
+		<div id="images">
+			<h3>请选择商品图片</h3>
+			<img src="1.jpg" />
+			<img src="2.jpg" />
+			<img src="3.jpg" />
+			<img src="4.jpg" />
+		</div>
+		<br />
+		商品名称<input type="text" /><br/>
+		商品价格<input type="text" /><br/>
+		商品数量<input type="text" /><br/><br />
+		<button id="add">添加商品</button><br /><br />
+		<table cellspacing="0">
+			<tr>
+				<td>编号</td>
+				<td>商品名称</td>
+				<td>图片</td>
+				<td>价格</td>
+				<td>数量</td>
+				<td>添加日期</td>
+				<td>操作</td>
+			</tr>
+		</table>
+		<script src="../../bootstrap/project/lib/jquery/jquery.min.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				var strSrc = "";
+				$("#images img").click(function(){
+					strSrc = this.src;
+					$(this).animate({opacity:0.4},300).siblings().animate({opacity:1},300)
+				});
+				$("#add").click(function(){
+					if(strSrc == ""){
+						alert("请选择图片");
+					}else{
+						var td1 = $("<td class='i'></td>");
+						var td2 = $("<td>"+$("input:eq(0)").val()+"</td>");
+						var td3 = $("<td><img src = "+strSrc+"></td>");
+						var td4 = $("<td>"+$("input:eq(1)").val()+"</td>");
+						var td5 = $("<td>"+$("input:eq(2)").val()+"</td>");
+						var td6 = $("<td>"+new Date().toLocaleString()+"</td>");
+						var td7 = $("<td><a href='#'>删除</a></td>");
+						var tr = $("<tr></tr>").append(td1,td2,td3,td4,td5,td6,td7)
+						$("table").append(tr);
+						td7.find("a").click(function(){
+							$(this).parent().parent().remove();
+							index();
+						});
+						$("input").val("")
+						$("#images img").css("opacity",1);
+						strSrc = "";
+					}
+					index();
+				});
+				//序号
+				index()
+				function index(){
+					$(".i").each(function(a){
+						$(this).text(a+1);
+					});
+				}
+			});
+		</script>
+	</body>
+</html>

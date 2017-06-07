@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>加载微博</title>
+	<style type="text/css">
+	body {
+		background-color: rgb(177, 208, 224);
+		font: normal 12px Trebuchet MS;
+		color: #000;
+	}
+	
+	.roundedCorners {
+		width: 220px;
+		padding: 10px;
+		background-color: #DDEEF6;
+		box-shadow: 0px 0px 10px 0px #888888;
+		border: 1px solid #DDEEF6;
+		border-radius: 6px;
+		margin: auto;
+	}
+	
+	.roundedCorners-textbox {
+		border: 1px solid #999;
+		width: 160px;
+	}
+
+	.checkbox {
+		margin-left: 30px;
+		border: 1px solid #999;
+		width: 20px;
+	}
+	
+</style>
+</head>
+<script>
+	//请求地址 http://255.255.255.255/AJAX/weibo 请求多条微博记录
+	//返回多条微博记录
+	function loadData(){
+		var request = new XMLHttpRequest();
+		var tbody = document.getElementById("datalist").children[0];
+		
+		request.open("get","WeiBoServlet?type=", true);
+		
+		request.onreadystatechange = function(){
+			if(request.readyState == 4){
+				var list = eval(request.responseText);
+				for(var i in list){
+					var tr = document.createElement("tr");
+					var _id = document.createElement("td");
+					_id.innerHTML = list[i].id;
+					var _content = document.createElement("td");
+					_content.innerHTML = list[i].content;
+					var _comtcnt = document.createElement("td");
+					_comtcnt.innerHTML = list[i].comtcnt;
+					var _likecnt = document.createElement("td");
+					_likecnt.innerHTML = list[i].likecnt;
+					var _username = document.createElement("td");
+					_username.innerHTML = list[i].name;
+					
+					tr.appendChild(_id);
+					tr.appendChild(_content);
+					tr.appendChild(_comtcnt);
+					tr.appendChild(_likecnt);
+					tr.appendChild(_username);
+					
+					tbody.appendChild(tr);
+				}
+			}
+		};
+		
+		request.send();
+	}
+	
+	
+</script>
+<body>
+	<button onclick="loadData()">加载</button>
+	<table id="datalist" border=1>
+		<tbody>
+			<tr>
+				<th>ID</th><th>内容</th><th>评论数</th><th>点赞</th><th>作者</th>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

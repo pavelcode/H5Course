@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="demo03.css" />
+		<!--
+        	描述：背景图片在内容边，还是外部边框
+        -->
+        <style>
+        	div
+		{
+		 width: 300px;
+		 height: 200px;
+		 border: 10px dotted #ff0000;
+		 background: url(../img/bg_flower.gif);
+		 background-repeat: no-repeat;	
+		 padding: 20px;
+		 
+		}
+		#demo03_div1
+		{
+		    background-origin:padding-box;
+		}
+		#demo03_div2{
+			background-origin: border-box;
+		}
+		#demo03_div3{
+			background-origin:content-box;
+		}
+        </style>
+	</head>
+	<body>
+		<div id="demo03_div1">
+		我的内容是我的内容是我的内容是我的内容是我的内容是我的内容是
+		我的内容是我的内容是我的内容是我的内容是我的内容是我的内容是
+		我的内容是我的内容是我的内容是我的内容是我的内容是我的内容是
+		我的内容是我的内容是我的内容是我的内容是我的内容是我的内容是
+		</div>
+		<div id="demo03_div2">
+		我的内容是我的内容是我的内容是我的内容是我的内容是我的内容是
+		我的内容是我的内容是我的内容是我的内容是我的内容是我的内容是
+		我的内容是我的内容是我的内容是我的内容是我的内容是我的内容是
+		我的内容是我的内容是我的内容是我的内容是我的内容是我的内容是
+		</div>
+		<div id="demo03_div3">
+		我的内容是我的内容是我的内容是我的内容是我的内容是我的内容是
+		我的内容是我的内容是我的内容是我的内容是我的内容是我的内容是
+		我的内容是我的内容是我的内容是我的内容是我的内容是我的内容是
+		我的内容是我的内容是我的内容是我的内容是我的内容是我的内容是
+		</div>
+	</body>
+</html>

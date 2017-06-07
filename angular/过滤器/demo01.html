@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>过滤器</title>
+		<script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+	</head>
+	<body>
+		
+		<!--
+        AngularJS 过滤器可用于格式化或筛选数据；
+        过滤器的分类：
+	    currency(货币) 	格式化数字为货币格式。
+        
+        lowercase 	格式化字符串为小写。
+        uppercase 	格式化字符串为大写。
+    
+        orderBy 	根据某个表达式排列数组。
+        
+        filter 	从数组项中选择一个子集。
+        
+        
+        过滤器可以通过一个管道字符（|）和一个过滤器添加到表达式中
+       -->
+       
+       <!--<div ng-app="myApp" ng-controller="myCtrl">
+       	  <input type="text" ng-model="price"/><br/>
+       	  <input type="text" ng-model="count"/><br/>
+       	  {{(price*count)|currency}}
+       </div>
+       <script>
+       	 angular.module("myApp",[]).controller("myCtrl",function($scope){
+       	 	   $scope.price = 5;
+       	 	   $scope.count = 3;
+       	 });
+       </script>-->
+       
+       <!--
+         日期格式化
+       -->
+       <!--
+        <div ng-app>
+       	<p>{{"1288323623006" | date:'yyyy-MM-dd HH:mm:ss'}}</p>
+        <p>{{"1288323623006" | date:'fullDate'}}</p>
+       </div>
+       -->
+      
+       
+       <!--<div ng-app="myApp" ng-controller="myCtrl">
+       	  <input type="text" ng-model="name"/><br/>
+       	  {{ name|uppercase }}
+       </div>
+       <script>
+       	  angular.module("myApp",[]).controller("myCtrl",function($scope){
+       	  	   $scope.name="zhangsan";
+       	  });
+       </script>-->
+       
+       
+       <!--
+       	orderBy 过滤器根据表达式排列数组
+       -->
+       <!--<div ng-app="myApp" ng-controller="myCtrl">
+       	  <ul>
+       	  	<li ng-repeat="person in persons |orderBy:'age'">{{person.name+'--'+person.age}}</li>
+       	  </ul>
+       </div>
+       <script>
+       	  angular.module("myApp",[]).controller("myCtrl",function($scope){
+       	  	   $scope.persons = [{name:"zhangsan",age:30},{name:"lisi",age:20},{name:"wangwu",age:40}];
+       	  });
+       </script>-->
+       
+       <!--
+       	 filter 过滤器从数组中选择一个子集
+       	 该过滤器后跟一个冒号和一个模型名称。
+       	 类似于搜索
+       -->
+       <!--
+       <div ng-app="myApp" ng-controller="myCtrl">
+       	  <input type="text" ng-model="test" />
+       	   <ul>
+       	  	<li ng-repeat="person in persons|filter:test |orderBy:'age'">{{person.name+'--'+person.age}}</li>
+       	  </ul>
+       </div>
+       <script>
+       	  angular.module("myApp",[]).controller("myCtrl",function($scope){
+       	  	   $scope.persons = [{name:"zhangsan",age:30},{name:"lisi",age:20},{name:"wangwu",age:40}];
+       	  });
+       </script>
+       -->
+       
+       <div ng-app="myApp">
+       	{{true|trans}}
+       	{{false|trans}}
+       </div>
+       <!--
+       	自定义过滤器
+       	把英文的true和false转化为对和错
+       -->
+       <script type="text/javascript">
+       	 angular.module("myApp",[])
+       	 .filter("trans",function(){
+       	 	return function(input){
+       	 		return input?"对":"错";
+       	 	}
+       	 });
+       </script>
+        
+		
+       
+	</body>
+</html>

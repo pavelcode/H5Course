@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    <!--
+        	作者：code01@yeah.net
+        	时间：2016-06-17
+        	描述：https://developer.mozilla.org
+        	API，可以学习js，css的知识
+        -->
+		<!--
+        	描述：canvas 画一个正方向
+        -->
+        <script>
+        	 function drawRect(){
+        	 	var mycanvas = document.getElementById("mycanvas");
+        	 	var context = mycanvas.getContext("2d");
+        	 	context.fillStyle="#00ff00";
+        	 	//旋转角度
+        	 	//context.rotate(45);
+        	 	//移动
+        	 	context.translate(50,20);
+        	 	//缩放
+        	 	context.scale(0.5,2);
+        	 	//画出正方向
+        	 	context.fillRect(0,0,80,80);
+        	 }
+        </script>
+        <canvas id="mycanvas" style="background-color: #ff0000;width: 200px; height: 80px;"></canvas>
+		<input type="button" value="画一个正方形" onclick="drawRect()" />
+		<br />
+		
+		
+		<!--
+        	作者：code01@yeah.net
+        	时间：2016-06-17
+        	描述：绘制图片
+        -->
+        <script>
+        	 function loadpic(){
+        	 	var img = new Image();
+        	 	img.src="../img/apple.jpg";
+        	 	var canvas = document.getElementById("imgcanvas");
+        	 	//alert("canvas="+canvas);
+        	 	var context = canvas.getContext("2d");
+        	 	context.drawImage(img,0,0)
+        	 	
+        	 }
+        </script>
+        <canvas id="imgcanvas" style=" background-color:#0000ff;width:300px; height: 500px;"></canvas>
+        <br />
+        <input type="button" value="画图片" onclick="loadpic()" />
+        <br />
+        
+        <!--
+        	描述：画圆
+        	      直线
+        	      贝塞尔曲线
+        -->
+        <script>
+        	  function drawarc(){
+        	      var canvas = document.getElementById("arccanvas");
+        	      var context = canvas.getContext("2d");
+        	      context.fillStyle="#eeeeef";
+        	      context.fillRect(0,0,300,300);
+        	      for(var i=1;i<=5;i++){
+        	      	context.beginPath();
+        	      	context.arc(i*25,i*25,i*10,0,Math.PI*2,true);
+        	      	context.closePath();
+        	      	context.fillStyle="red";
+        	      	context.fill();
+        	      }
+        	  }
+        </script>
+        <canvas id="arccanvas"></canvas>
+        <br />
+        <input type="button" value="画圆" onclick="drawarc()"/>
+        <br />
+        
+		
+	</body>
+</html>

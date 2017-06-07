@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css">
+          .active{
+          	background-color: #f00;
+          }
+
+        </style>
+    </head>
+    <body>
+
+       <ul class="nav">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">About</a></li>
+      </ul>
+
+      <p>我是</p>
+
+
+
+    </body>
+</html>
+
+<script>
+    // 获取界面上的每一个li元素
+    var liElements = document.querySelectorAll('.nav > li');
+    // 遍历每一个元素 分别注册点击事件
+    for (var i = 0; i < liElements.length; i++) {
+      liElements[i].addEventListener('mouseover', function(e) {
+        for (var i = 0; i < liElements.length; i++) {
+          liElements.item(i).classList.remove('active');
+        }
+        this.classList.add('active');
+        e.stopPropagation();
+        //因为链接a有一个默认行为
+        e.preventDefault();
+      });
+    }
+ 
+
+    //第二种方式
+    var link = document.querySelector('p');
+    link.addEventListener('click', function(e) {
+      // 判断当前ClassList中有没有active
+      var exist = this.classList.contains('active');
+      // toggle函数的第二个参数true为添加 false删除
+      this.classList.toggle('active', !exist);
+      e.preventDefault();
+    });
+  </script>

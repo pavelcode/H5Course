@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>angular常用函数</title>
+		<script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+		<!--
+       angular.lowercase() 	转换字符串为小写
+       angular.uppercase() 	转换字符串为大写
+       angular.isString() 	判断给定的对象是否为字符串，如果是返回 true。
+       angular.isNumber() 	判断给定的对象是否为数字，如果是返回 true。
+        -->
+	</head>
+	<body>
+		 <div ng-app="myApp" ng-controller="myCtrl">
+			<p>{{ name }}</p>
+			<p>{{ age }}</p>
+			<p>{{uppername}}</p>
+			<p>{{lowername}}</p>
+			<p>{{isString1}}</p>
+			<p>{{isString2}}</p>
+			<p>{{isNumber1}}</p>
+			<p>{{isNumber2}}</p>
+			</div>
+			
+			<script>
+			var app = angular.module('myApp', []);
+			app.controller('myCtrl', function($scope) {
+			$scope.name = "ZhangSan";
+			$scope.age = 20;
+			$scope.uppername = angular.uppercase($scope.name);
+			$scope.lowername = angular.lowercase($scope.name);
+			$scope.isString1 = angular.isString($scope.name);
+			$scope.isString2 = angular.isString($scope.age);
+			$scope.isNumber1 = angular.isNumber($scope.name);
+			$scope.isNumber2 = angular.isNumber($scope.age);
+			});
+			</script> 
+	</body>
+</html>

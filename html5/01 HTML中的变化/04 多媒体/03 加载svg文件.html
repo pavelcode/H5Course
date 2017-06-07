@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+     <!-- 推荐使用 -->
+	<!-- <iframe src="demo.svg" width="300" height="100">
+	</iframe> -->
+
+    
+	<!-- <object data="demo.svg" width="300" height="100" 
+type="image/svg+xml"
+codebase="http://www.adobe.com/svg/viewer/install/" /> -->
+
+     
+     <!-- <embed src="demo.svg" width="300" height="100" 
+type="image/svg+xml"
+pluginspage="http://www.adobe.com/svg/viewer/install/" /> -->
+
+
+     <!--  使用ajax异步加载svg -->
+  <svg data-src="demo.svg"></svg>
+  <script src="jquery.js"></script>
+  <script>
+    window.addEventListener('load', function() {
+      var svgs = document.getElementsByTagName('svg');
+      for (var i = 0; i < svgs.length; i++) {
+        //获得data-src属性值
+        var src = $(svgs[i]).data('src');
+        // 向服务器发送请求 得到svg
+        $.get(src, function(data) {
+          $(document.body).append($(data));
+        });
+      }
+    });
+  </script>
+
+    </body>
+</html>

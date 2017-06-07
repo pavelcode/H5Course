@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>JS中的window.onload和jQuery的$(document).ready()区别</title>
+		<script src="../jquery-3.1.0.js"></script>
+		<script>
+			//加载时间：onload的在网页加载完之后，执行。 ready()会在DOM结构加载完之后，图片加载完之前就执行
+			
+			//加载次数：当有多个onload的，只加载后面的，前面被覆盖。 ready()可以加载多次
+//			onload = function(){
+//				alert("1111");
+//			}
+//			onload = function(){
+//				alert("2222");
+//			}
+
+//          $(document).ready(function(){
+//          	    alert("1111");
+//          });
+//           $(document).ready(function(){
+//          	    alert("2222");
+//          });
+
+            //$(document).ready(function(){});可以简写成$(function(){});
+//          $(function(){
+//          	   alert("333");
+//          });
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>顶部自动悬浮</title>
+		<style>
+		body{height:2500px; padding:0; margin:0;}
+		#div1{height:30px; width:100%; background:#0AF;}
+		#div2{height:30px; width:100%; background:red; top:400px; position:absolute;}
+	    </style>
+	<script type="text/javascript">
+		window.onscroll = function(){
+			//计算当前页面滚动的距离
+			var _top = document.documentElement.scrollTop || document.body.scrollTop;
+			var div2 = document.getElementById("div2");
+			if(_top >= 400) {//如果滚动距离大于400
+				div2.style.position = "fixed"; //将留言信息固定fixed
+				div2.style.top = 0;
+			} else {
+				div2.style.position = "absolute"; //将留言信息恢复绝对定位absolute
+				div2.style.top = "400px";
+			}
+		}
+	</script>
+	</head>
+	<body>
+	<div id="div1">顶部信息栏</div>
+	<div id="div2">留言信息</div>
+	<ul>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+    </ul>
+	</body>
+</html>

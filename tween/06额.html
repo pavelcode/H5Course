@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #div{
+            width: 100px;
+            height: 100px;
+            background-color: #91ff27;
+            position: absolute;
+            border-radius: 50%;
+        }
+        #d{
+            width: 1000px;
+            height: 700px;
+            background-color: #5f5f5f;
+            position: relative;
+        }
+
+    </style>
+    <script src="tween.js"></script>
+</head>
+<body>
+<div id="d">
+    <div id="div"></div>
+</div>
+<script>
+    var div1=document.getElementById("div")
+    function fun() {
+        var t=0;
+        var b=0;
+        var c=900;
+        var d=200;
+        stop=setInterval(fun1,20)
+        function fun1() {
+            t++;
+            if(t == d){
+                clearInterval(stop)
+                fun2()
+            }
+            div1.style.left=Tween.Expo.easeOut(t,b,c,d)+"px"
+        }
+    }
+    fun()
+    function fun2() {
+        var t=0;
+        var b=0;
+        var c=600;
+        var d=200;
+        stop1=setInterval(fun22,20)
+        function fun22() {
+            if(t == d){
+                clearInterval(stop1)
+                fun3()
+            }
+            t++;
+            div1.style.top=Tween.Expo.easeOut(t,b,c,d)+"px"
+        }
+    }
+    function fun3() {
+        var t=0;
+        var b=0;
+        var c=900;
+        var d=200;
+        stop2=setInterval(fun33,20)
+        function fun33() {
+            if(t == d){
+                clearInterval(stop2)
+                fun4()
+            }
+            t++;
+            div1.style.left=c-Tween.Expo.easeOut(t,b,c,d)+"px"
+        }
+    }
+    function fun4() {
+        var t=0;
+        var b=0;
+        var c=600;
+        var d=200;
+        stop3=setInterval(fun44,20)
+        function fun44() {
+            if(t == d){
+                clearInterval(stop3)
+                fun()
+            }
+            t++;
+            div1.style.top=c-Tween.Expo.easeOut(t,b,c,d)+"px"
+        }
+    }
+</script>
+</body>
+</html>

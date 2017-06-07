@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding:0;
+        }
+        img{
+            width: 800px;
+            height: 400px;
+        }
+        li{
+            width: 800px;
+            height: 400px;
+            float: left;
+        }
+        ul{
+            list-style: none;
+            width: 3200px;
+            height: 400px;
+            position: absolute;
+        }
+        #box{
+            width: 800px;
+            height: 400px;
+            position: relative;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+
+<div id="box">
+    <ul id="wrap">
+        <li><img src="img/focus.jpg" alt=""></li>
+        <li><img src="img/focus1.jpg" alt=""></li>
+        <li><img src="img/focus2.jpg" alt=""></li>
+        <li><img src="img/focus.jpg" alt=""></li>
+    </ul>
+</div>
+<script src="tween.js"></script>
+<script>
+   var t=0;
+    var b=0;
+    var c=-800;
+    var d=50;
+    var ul=document.getElementById("wrap");
+     setInterval(run,3000)
+    function run(){
+       clearInterval(ul.stop)
+        ul.stop = setInterval(function()
+
+            t++;
+            if(t ==d){
+                clearInterval(ul.stop);
+                t = 0;
+                b +=c;
+                if(b == -2400){
+                    ul.style.left = "0px";
+                    b = 0
+                }
+            }
+            ul.style.left=Tween.Linear(t, b, c,d)+"px"
+        },20)
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+//  clearInterval(ul.stop)
+//        ul.stop = setInterval(function(){
+//            t++;
+//            if(t==d){
+//              clearInterval(ul.stop);
+//                t = 0;
+//                b+=c;
+//                if(b ==-2400){
+//                    ul.style.left="0px";
+//                    b = 0
+//                }
+//            }
+//            ul.style.left = Tween.Bounce.easeOut(t,b, c,d)+"px";
+//        },50)
+//
+//    }
+//    setInterval(run,3000)
+</script>
+</body>
+</html>

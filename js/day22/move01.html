@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>把运动封装成框架</title>
+		<script type="text/javascript" src="move.js" ></script>
+		<script>
+			onload = function(){
+				var ball  = document.getElementById("ball");
+				animation(ball,{left:200,top:300,opacity:1});
+			}
+		</script>
+		<style>
+		    *{padding: 0;margin: 0;}
+			div{opacity:0.3;filter:alpha(opacity=30);position: absolute;left:10px;top:20px;}
+		</style>
+	</head>
+	<body>
+		<div id="ball" style="width: 100px;height: 100px;background: red;border-radius: 50%;"></div>
+	</body>
+</html>

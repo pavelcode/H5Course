@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>表格</title>
+		<script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+	</head>
+	<body>
+		
+ <div ng-app="myApp" ng-controller="siteCtrl">
+	<table border="1">
+	  <tr ng-repeat="x in names">
+	    <td>{{ x.Name }}</td>
+	    <td>{{ x.Country }}</td>
+	  </tr>
+	</table>
+	<!--
+     使用过滤器orderBy
+    -->
+	 <table border=1>
+	  <tr ng-repeat="x in names | orderBy : 'Country'">
+	    <td>{{ x.Name }}</td>
+	    <td>{{ x.Country }}</td>
+	  </tr>
+    </table> 
+    <!--
+     使用过滤器lowercase
+    -->
+     <table border=1>
+	  <tr ng-repeat="x in names">
+	    <td>{{ x.Name }}</td>
+	    <td>{{ x.Country|lowercase}}</td>
+	  </tr>
+     </table> 
+     <!--
+     	显示序号 ($index)
+     -->
+      <table>
+		  <tr ng-repeat="x in names">
+		    <td>{{ $index + 1 }}</td>
+		    <td>{{ x.Name }}</td>
+		    <td>{{ x.Country }}</td>
+		  </tr>
+	</table> 
+	<!--
+    奇偶行
+    -->
+     <table border=1>
+		<tr ng-repeat="x in names">
+		<td ng-if="$odd" style="background-color:#f1f1f1">{{ x.Name }}</td>
+		<td ng-if="$even">{{ x.Name }}</td>
+		<td ng-if="$odd" style="background-color:#f1f1f1">{{ x.Country }}</td>
+		<td ng-if="$even">{{ x.Country }}</td>
+		</tr>
+	</table> 
+     
+     
+     
+</div>
+	<script>
+		var app = angular.module('myApp', []);
+	app.controller('siteCtrl', function($scope, $http) {
+	  $http.get("http.json").success(function (response) {
+	  		$scope.names = response.sites;
+	  });
+});
+	</script>
+	</body>
+</html>

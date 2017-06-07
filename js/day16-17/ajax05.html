@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>JSONP</title>
+		<script>
+			function cbk(data){
+				var obj = eval("("+data+")");
+				alert(obj.city);
+			}
+			function jsonp(){
+				var script = document.createElement("script");
+				script.src = "http://localhost:8080/AjaxPro/weather.js";
+				document.body.appendChild(script);
+			}
+		
+			
+		</script>
+		
+	</head>
+
+	<body>
+	   <button onclick="jsonp()">jsonp加载</button>
+		
+	</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>计算器</title>
+		<style type="text/css">
+		 #box{width: 295px; margin: 0 auto; text-align: justify; border: 1px solid #ddd; padding: 15px;}
+		 .d_num{display: inline-block; margin:  10px; width: 33px; height: 30px; border: 1px solid #ddd; text-align: center; line-height: 30px; cursor: pointer;}
+		 .d_num_new1{display: inline-block; margin:  10px; width: 93px; height: 30px; border: 1px solid #ddd; text-align: center; line-height: 30px; cursor: pointer;}
+		 .d_num_new2{display: inline-block; margin:  10px; width: 33px; height: 30px; border: 1px solid #fff;text-align: center; line-height: 30px; cursor: pointer;}
+		 .d_num_new3{display: inline-block; margin:  10px; width: 33px; height: 30px; border: 1px solid #fff;text-align: center; line-height: 30px; cursor: pointer;}
+		 .sum{margin: 0 10px 10px; line-height: 30px; font-size: 20px;}
+		 #sum{width: 205px; height: 30px; padding: 0 5px; margin-left: 5px; font-size: 20px;}
+		 #process{width: 255px; height: 30px; padding: 0 5px; margin-left: 5px; font-size: 20px;}
+		</style>
+	</head>
+	<body>
+<div id="box">
+  <div class="sum">
+   <input type="text" name="process" id="process" value="0" />
+  </div>
+  <div class="sum">
+   Result:<input type="text" name="sum" id="result" value="0" />
+  </div>
+  <table>
+  	<tr>
+  		<td class="d_num">1</td>
+  		<td class="d_num">2</td>
+  		<td class="d_num">3</td>
+  		<td class="d_num">+</td>
+  		<td class="d_num">-</td>
+  	</tr>
+  	<tr>
+  		<td class="d_num">4</td>
+  		<td class="d_num">5</td>
+  		<td class="d_num">6</td>
+  		<td class="d_num">*</td>
+  		<td class="d_num">/</td>
+  	</tr>
+  	<tr>
+  		<td class="d_num">7</td>
+  		<td class="d_num">8</td>
+  		<td class="d_num">9</td>
+  		<td class="d_num">0</td>
+  		<td class="d_num">=</td>
+  	</tr>
+  </table>
+  <script>
+  	 var $box = document.getElementById('box');
+  	 var $process = document.getElementById('process');
+     var $result = document.getElementById('result');
+      var sum = 0, process = '', num1 = '', num2 = '', temp = '', statu = false; //记录是否按了符号
+     $box.onclick = function(e){
+	  var event = window.event || e;
+	  var ele = event.srcElement || event.target;
+  	   var _className = ele.className;
+		if(_className == 'd_num'){
+		   //var num = ele.getAttribute('data-num');//点击的按钮对应的值
+		  // alert(ele.innerText);
+		   var num = ele.innerText;//获得点击按钮的内容值
+		   var NotNum = isNaN(num);
+            if(!NotNum){ //点击了数字
+            	  alert("111"+statu);
+			    if(!statu){ //还没点击过符号
+			    	 alert("aaa");
+			    	     //初始化第一个值
+				     if(num1 == '0'){
+				        num1 = '';
+				      }
+				     num1 += num;
+				     process = num1;
+				     statu = true;
+				     sum.value = '0';
+			    }else{ //已经点击过符号
+			    	 alert("bbb");
+				     if(num2 == '0'){
+				        num2 = '';
+				     }
+				     //初始化符号的第二个值
+				     num2 += num;
+				     alert("num2="+num2);
+				     process = num1 + temp+"" + num2;
+			    }
+              $process.value = process;
+           }else{ //点击了符号
+           	 alert("222");
+	           	 if(num2 != ''){
+				     if(num == '='){//元操作到此结束
+				      $process.value = process;
+				     }else{
+				      $process.value = process + num;
+				     }
+				     switch(temp){//元操作继续
+				      case '+' : sum = parseFloat(num1) + parseFloat(num2); $result.value = sum; $process.value = process; num1 = sum + ''; num2 = ''; break;
+				      case '-' : sum = parseFloat(num1) - parseFloat(num2); $result.value = sum; $process.value = process; num1 = sum + ''; num2 = ''; break;
+				      case '*' : sum = parseFloat(num1) * parseFloat(num2); $result.value = sum; $process.value = process; num1 = sum + ''; num2 = ''; break;
+				      case '/' : sum = parseFloat(num1) / parseFloat(num2); $result.value = sum; $process.value = process; num1 = sum + ''; num2 = ''; break;
+				      case '%' : sum = parseFloat(num1) % parseFloat(num2); $result.value = sum; $process.value = process; num1 = sum + ''; num2 = ''; break;
+				     }
+				     num1 = '';
+				     num2 = '';
+				     process = '';
+				     temp = '';
+				     sum = '';
+				     $process.value = '0';
+				    // $sum.value = '0';
+				     statu = false;
+				    // alert(sum);
+			  }else{
+			  	  temp = num;
+			      process = num1 + temp;
+			      $process.value = process;
+			     
+			  }
+           	     
+		   }
+           
+		  
+		  
+		  
+	 
+       }
+		}
+  </script>
+		
+	</body>
+</html>

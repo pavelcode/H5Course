@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>选择框架---tag选择器</title>
+		<style>
+		    span{height:100px;width:100px;background:#F00}
+		</style>
+	</head>
+	<body>
+		<div id="mydiv">
+			<span id='span'>点击我变成蓝色</span>
+		    <span id='span2'>点击我变成蓝色</span>
+		    <span id='span3'>点击我变成蓝色</span>
+		    <span id='span4'>点击我变成蓝色</span>
+	    </div>
+	</body>
+</html>
+<script src='../myframe.js'></script>
+<script>
+//原始方式
+//	var spans = document.getElementsByTagName('span');
+//	for(var i=0;spans.length > i;i++) {
+//		 spans[i].onclick = function(){
+//		   this.style.background= 'blue';
+//	   }
+//	 }
+	
+//封装方式
+//  function $tag(tag) {
+//    return document.getElementsByTagName(tag);
+//  }
+//  //获得对象
+//  var spans =  $tag('span');
+//  //添加事件
+// for(var i=0;i<spans.length;i++){
+//     spans[i].onclick = function(){
+//         this.style.background= 'blue';
+//      }
+//  }
+
+
+//缩小搜索范围
+//  function $tag(tag,id){
+//      var dom = $$.$id(id);
+//      return dom.getElementsByTagName(tag);
+//  }
+
+//获得对象，添加事件
+     var spans = $tag('span','mydiv');
+     for(var i=0;i<spans.length;i++) {
+	     spans[i].onclick = function(){
+			 this.style.background= 'blue';
+		 }
+	  }
+
+//完美法则  如果id的对象存在，在id下面获得，否则通过全局的标签获得
+//  function $tag(tag,id) {
+//	  var dom = $$.$id(id);
+      //如果数据类型为null undefined 则为false
+//	  if(dom){
+////	  	console.log("111");
+//    //这里有的同学说tag是不是也要判断，这里没必要，一般编程都会考虑是否未定义情况
+//       return dom.getElementsByTagName(tag);
+//	  }else{
+////	  	console.log("222");
+//       return document.getElementsByTagName(tag);
+//	  }
+//  }
+    
+   /*隔离法则： 所谓的隔离法就是将代码分成两个部分，
+		       将这两个部分看成两个函数，第一部分，专门为第二部分服务
+		       第一步：根据id获得对象 
+		       第二步：获得id下的tag对象
+   */
+//	function $tag(tag,id){
+//		  /*第一步：根据id获得对象*/
+//		 function getdom(id){
+//	         var dom;
+//	         if(typeof id == 'string'){
+//	             dom = $$.$id(id);
+//	         }
+//	         return dom;
+//	      }
+//	      var dom = getdom(id);
+////	      console.log(dom.nodeName); //DIV
+//		  /*第二步：根据tag获得对象*/
+//		 function getElements(tag,dom){
+//	        var elements;
+//	        if(id){
+//	            elements =  dom.getElementsByTagName(tag);
+//	        }else{
+//	            elements =  document.getElementsByTagName(tag);
+//	        }
+//	        return elements;
+//	    }
+//	    var elements = getElements(tag,dom)
+//	    return elements;
+//	}
+
+
+   //简化，放入框架
+	function $tag(tag,context){
+	      if(typeof context == 'string'){
+	          context = $$.$id(context);
+	      }
+	      if(context){
+	          return context.getElementsByTagName(tag);
+	      }else{
+	          return document.getElementsByTagName(tag);
+	      }
+	}
+
+ 
+</script>
+
+

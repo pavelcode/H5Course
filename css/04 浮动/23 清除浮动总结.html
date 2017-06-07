@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+<style>
+			*{margin: 0;padding: 0;}
+			/*原本整体的布局会设定高度，但是一般我们会用里面的布局撑开整个布局。
+			  注销掉height: 300px;*/
+			/*这时候父布局没有高度,里面的两个div浮动起来了,撑不起来整个布局,   这时候底部的div就会按照标准流的方式显示*/
+			/*当父元素没有宽度,子元素出现浮动,造成页面的布局混乱,就需要清除浮动*/
+			/*清除浮动的方式1 外墙法：clear：left|right|both
+              一般使用both，这时候margin就会失效，使用height
+			*/
+		
+		   /*清除浮动的方式2 内墙法
+			*/
+
+            /*清除浮动的方式3：给父元素设置overflow：hidden。如果父元素中有定位的元素，就不推荐使用这种方式*/
+            
+            /*清除浮动的方式4：使用C3的方式伪元素实现*/
+			
+			.container{
+				width: 500px;
+				/*height: 300px;*/
+				background-color: red;
+				/*overflow: hidden;*/ /*第二种方式*/
+			}
+			.left{
+				width: 300px;
+				height: 300px;
+				background-color: blue;
+				float: left;
+			}
+			.right{
+				width:200px;
+				height:300px;
+				background-color: green;
+				float: left;
+			}
+			.footer{
+				width: 520px;
+				height: 50px;
+				background-color: black;
+			}
+			/*第一种方式 外墙法*/
+            /*  .outwindow{
+             	clear: both;
+             	height: 5px;
+             } */
+
+            /*  第二种方式  内墙法 */
+			/* .clearfix{
+				clear:both;
+				height: 5px;
+			} */
+			
+			/*第三种方式*/
+			/*.clearfix:after{
+				content:"";
+				display: block;
+				clear: both;
+				height: 0;
+				line-height: 0;
+				visibility: hidden;
+			}
+			.clearfix{
+				zoom: 1;  /*兼容IE游览器*/
+			/*}*/
+			
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="left"></div>
+			<div class="right"></div>
+			<div class="clearfix"></div>
+		</div>
+		 <div class="outwindow"></div>
+		<div class="footer"></div>
+	</body>
+</html>

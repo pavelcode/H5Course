@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>一个页面管理多个controller</title>
+	</head>
+	<body>
+		<div ng-app="myApp1" ng-controller="myCtrl1">
+			<button ng-click="do1()">按钮1</button>
+		</div>
+		
+		<div ng-app="myApp2" ng-controller="myCtrl2">
+			<button ng-click="do2()">按钮2</button>
+		</div>
+		
+		<script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+		<script>
+		
+		    //angular默认只会找到第一个ng-app,所有后面不能执行
+			var app1 = angular.module("myApp1",[]);
+			app1.controller("myCtrl1",["$scope",function($scope){
+				$scope.do1 = function(){
+					console.log(1111);
+				}
+			}]);
+			
+			var app2 = angular.module("myApp2",[]);
+			app2.controller("myCtrl2",["$scope",function($scope){
+				$scope.do2 = function(){
+					console.log(2222);
+				}
+			}]);
+			
+			//手动管理多个ng-app 参数1 需要管理的dom对象    参数2 处理对象的模块,是数组格式
+			//angular.bootstrap(document.querySelector('[ng-app="myApp2"]'),['myApp2']);
+			
+			
+		</script>
+	</body>
+</html>

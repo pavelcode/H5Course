@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>ng-src指令</title>
+		<script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+	</head>
+	<body>
+		<!--
+         这时候，html开始加载的时候，首先src设置的是{{imgUrl}}，所以就会报出找不到图片的错误。
+         如果用ng-src，当angular启用的时候，ng-src才会起到作用。
+        -->
+		<div ng-app ng-init="imgUrl='baidu.png'">
+			 <img src="{{imgUrl}}" />
+		</div>
+	</body>
+</html>

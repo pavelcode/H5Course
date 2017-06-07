@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>设置请求提示</title>
+		<script src="../jquery-3.1.0.js"></script>
+		<style>
+			div{display: none;}
+		</style>
+		<script>
+			$(function(){
+				
+				 $("#onload").on("click",function(){
+				 	$.ajax({
+						type:"post",
+						url:"http://www.xxx.com",
+						data:{id:1},
+						success:function(response,status,xhr){
+							alert("aaa");
+						},
+						timeout:500,
+						error:function(xhr){
+							alert("error");
+						}
+						
+			       }
+				 );
+			  });
+				
+				
+				//当访问过程中，出现提示，访问之后，提示小时，设置超时为500毫秒
+//					$(document).ajaxStart(function(){
+//						$("#hint").show();
+//					}).ajaxStop(function(){
+//						$("#hint").hide();
+//					});
+				//发送请求的状态函数
+				  $(document).ajaxSend(function(){
+				  	alert("开始发送请求");
+				  }).ajaxSuccess(function(){
+				  	alert("请求成功");
+				  }).ajaxError(function(){
+				  	alert("请求失败");
+				  }).ajaxComplete(function(){
+				  	alert("请求完成，不管是否成功");
+				  });
+				
+				
+			});
+			
+		</script>
+	</head>
+	<body>
+		 <button id="onload">加载内容</button>
+		 <div id="hint">正在加载中。。。</div>
+	</body>
+</html>

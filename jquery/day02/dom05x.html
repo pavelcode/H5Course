@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../jquery-3.1.0.js"></script>
+		<script>
+			$(document).ready(function(){
+	
+	$("#demo04_btn01").click(function(){
+		$("div").remove();
+	});
+	
+	$("#demo04_btn02").click(function(){
+		$(".demo04_p").remove();
+	});
+	
+	$("#demo04_btn03").click(function(){
+		$("div").empty();
+	});
+	
+	
+});
+		</script>
+	</head>
+	<body>
+		<div style="width: 100px; height: 100px;background-color: #00FF00;">
+			<p class="demo04_p">内容1</p>
+			<p class="demo04_p">内容2</p>
+		</div>
+		
+		<button type="button" id="demo04_btn01">移除元素</button>
+		<button type="button" id="demo04_btn02">按class清空</button>
+		<button type="button" id="demo04_btn03">清空内部元素</button>
+		
+	</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<!--
+       http://www.qdfuns.com/notes/29258/8f50d0b885fb982dfe3475a50d70c858:storey-7.html
+        -->
+		<style>
+*{margin:0;padding:0;}
+li{list-style:none; float:left; width:200px; border:1px #000 solid; margin:30px;}
+li img{ height:60px;width:60px;}
+p{ height:20px; border-bottom:1px #333 dashed;}
+.div1{height:150px;border:1px gray solid;margin:50px auto; position:relative;overflow:hidden;}
+.div2{ border:1px #000 solid; height:300px; margin-top:50px;clear:both;}
+.box1{ float:left; width:200px;text-align:center;}
+.box2{ float:left; width:200px;text-align:center;}
+.box3{ float:left; width:200px;text-align:center;}
+.allMoney{ float:right;}
+</style>
+	</head>
+	<body>
+		<div class="div1">
+  <ul>
+        <li  draggable="true">
+        <img src="book1.jpg" />
+        <p>React Native入门与实战</p>
+        <p>26￥</p>
+    </li>
+    <li  draggable="true">
+        <img src="book2.jpg" />
+        <p>Node.js权威指南</p>
+        <p>35￥</p>
+    </li>
+        <li  draggable="true">
+        <img src="book3.jpg" />
+        <p>锋利的jQuery（第2版）</p>
+        <p>120￥</p>
+    </li>
+   
+  </ul>
+</div>
+<div class="div2">
+   <p>
+      <span class="box1">数量</span>
+      <span class="box2">书名</span>
+      <span class="box3">单价</span>
+   </p>
+</div>
+
+	</body>
+</html>
+<script>
+window.onload=function(){
+
+     var aLi = document.getElementsByTagName('li');
+     var oDiv = document.getElementsByClassName('div2')[0];
+	 
+	 var obj = {};
+	 var iNum = 0;
+	 var allMoney =null;
+	
+	 for(var i=0;i<aLi.length;i++){
+		 aLi[i].ondragstart=function(ev){
+			
+			 var aP = this.getElementsByTagName('p');
+			 
+			 ev.dataTransfer.setData('title', aP[0].innerHTML );
+			 ev.dataTransfer.setData('money', aP[1].innerHTML );
+			 
+			 ev.dataTransfer.setDragImage(this,0,0);
+			 };
+		 
+          oDiv.ondragover=function(ev){
+			  
+			 ev.preventDefault();
+			 
+			  }
+			  
+		   oDiv.ondrop=function(ev){
+			   
+			   ev.preventDefault();
+			   
+			   var Ltitle = ev.dataTransfer.getData('title');
+			   var Lmoney = ev.dataTransfer.getData('money');
+			   
+			   if(!obj[Ltitle]){
+				   
+				  var oP=document.createElement('p');
+				  var oSpan=document.createElement('span');
+				  
+				      oSpan.className = 'box1';
+					  oSpan.innerHTML = 1;
+					  
+					  oP.appendChild(oSpan);
+					  
+                   var oSpan = document.createElement('span');
+				        
+					   oSpan.className = 'box2';	    				   
+				       oSpan.innerHTML = Ltitle;
+					   
+					   oP.appendChild(oSpan);
+					   
+					var oSpan = document.createElement('span');
+					    
+					    oSpan.className = 'box3';
+					    oSpan.innerHTML=  Lmoney;
+						
+						oP.appendChild(oSpan);
+						
+						oDiv.appendChild(oP);
+						
+						obj[Ltitle]=1;		  
+					   
+				   }
+				   else{
+					   
+					 var aBox1 = document.getElementsByClassName('box1');
+					 var aBox2 = document.getElementsByClassName('box2');
+					   
+					     for(var i=0;i<aBox2.length;i++){
+							 if(aBox2[i].innerHTML == Ltitle){ 
+					   		    aBox1[i].innerHTML = parseInt(aBox1[i].innerHTML) + 1;
+								 
+								 }
+							 
+							 }
+					   }
+			   
+			        if(!allMoney){
+						 allMoney = document.createElement('div');
+						 allMoney.className = 'allMoney';
+						}
+					 iNum += parseInt(Lmoney);
+					 
+					 allMoney.innerHTML = '合计：' + iNum + '￥';
+					 
+					 oDiv.appendChild(allMoney);	
+			   }	   		 
+		 }
+	 
+}
+</script>

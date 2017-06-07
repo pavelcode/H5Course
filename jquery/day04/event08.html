@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>on off  one方法</title>
+		<script src="../jquery-3.1.0.js"></script>
+		<script>
+		    $(function(){
+			    	//jQuery1.7之后，推出了on off方法
+				//普通的绑定和解绑  bind  unbind
+				//事件委托和解除委托 delegate undelegate
+				//新方法的绑定和解绑  on  off
+				//只调用一次的绑定  one
+				
+				//one的一般绑定
+//				$("button").on("click",function(){
+//					alert("on绑定");
+//				});
+				//使用额外数据
+//				$("button").on("click",{name:"zhangsan"},function(e){
+//					 alert("on绑定"+e.data.name);
+//				});
+		    	   //绑定多个事件
+//		    	   $("button").on("click mouseover",function(){
+//		    	   	   alert("on绑定多事件");
+//		    	   });
+                //以对象形式绑定
+//              $("button").on({
+//              	  click:function(){
+//              	  	alert("on对象形式绑定click");
+//              	  },
+//              	  mouseover:function(){
+//              	  	alert("on对象形式绑定mouseover");
+//              	  }
+//              });
+                //阻止默认行为
+//              $("form").on("submit",function(e){
+//              	    e.preventDefault();
+//              });
+                //阻止冒泡
+//              $("form").on("submit",function(e){
+//              	   e.stopPropagation();
+//              });
+                //阻止默认行为并取消冒泡
+//              $("form").on("submit",function(){
+//              	   return false;
+//              });
+                //或
+//              $("form").on("submit",false);
+                 //取消绑定
+//               $("button").on("click",function(){
+//					alert("on绑定");
+//				});
+//				$("button").off("click");
+                //事件委托
+//              $("#mydiv").on("click","button",function(){
+//              	  $(this).clone(true).appendTo("#mydiv");
+//              });
+                //取消事件委托
+//              $("#mydiv").off("click","button");
+                //只执行一次
+//              $("button").one("click",function(){
+//              	  alert("one");
+//              });
+                //只执行一次事件委托
+//              $("#mydiv").one("click","button",function(){
+//              	$(this).clone().appendTo("#mydiv");
+//              });
+
+
+		    	
+		    });
+			
+			
+			
+			
+		</script>
+	</head>
+	<body>
+		<div id="mydiv">
+		<button>按钮</button>
+		</div>
+		<form>
+			<input type="submit" value="提交" />
+			
+		</form>
+		
+	</body>
+</html>

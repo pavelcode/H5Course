@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+<script type="application/javascript">
+			function Validate(){
+				//alert("aaa");
+				var label = document.getElementById("label1");
+				alert(label);
+				var input_text = label.control;
+				input_text.value="13800138000";
+				
+			}
+			function checkDirect(){
+				var txt = document.getElementById("txt_direct");
+				var direct = txt.selectionDirection;
+				alert(direct);
+			}
+		</script>
+	</head>
+	<body>
+		<!--
+        	描述：输入框的control属性
+        -->
+		<form>
+		<label id="label1">
+			手机号码 <input type="text" maxlength="11" />
+		</label>
+		<input type="button" value="检测" onclick="Validate()" />
+		</form>	
+		<!--
+        	作者：code01@yeah.net
+        	时间：2016-06-08
+        	描述：输入框的提示功能
+        -->
+        <input type="text" placeholder="输入内容"/>
+        
+        
+        <!--
+        	作者：code01@yeah.net
+        	时间：2016-06-08
+        	描述：输入框的下拉列表效果
+        -->
+        
+        <input  type="text" list="fruit" />
+        <datalist id="fruit" style="display: none;">
+        	   <option value="apple">apple</option>
+        	   <option value="banana">banana</option>
+        	   <option value="orange">orange</option>
+        </datalist>
+        
+        
+        <!--
+        	作者：code01@yeah.net
+        	时间：2016-06-08
+        	描述：输入框的自动补全属性
+        	添加这个属性，就能自动补全，好像跟on和off无关
+        -->
+        <input type="text" list="animal" autocomplete="on" />
+        <datalist id="animal" style="display: none;">
+        	  <option value="tiger">tiger</option>
+        	  <option value="cat">cat</option>
+        	  <option value="duck">duck</option>
+        </datalist>
+        
+        
+        <!--
+        	作者：code01@yeah.net
+        	时间：2016-06-08
+        	描述：设置输入框内容的格式 否则会出现提示
+        -->
+        <form action="#">
+        <input type="text" pattern="[A-Z]{3}"/>
+        	<input type="submit" value="匹配" />
+		</form>
+		
+		
+		<!--
+        	作者：code01@yeah.net
+        	时间：2016-06-08
+        	描述：输入框选择文字的方向
+        	只选择一部分，从前往后，forward。从后往前，backforward。
+        -->
+        <form>
+        	  <input type="text" name="mytxt" id="txt_direct"/>
+        	  <input  type="button" value="方向" onclick="checkDirect()"/>
+        </form>
+         
+        <!--
+        	作者：code01@yeah.net
+        	时间：2016-06-08
+        	描述：图片的提交按钮,宽和高
+        -->
+        <form action="http://www.baidu.com">
+        	<input type="text" placeholder="输入提交内容"/>
+        <input type="image" src="../img/baidu.png" width="20" height="20" />
+		</form>
+		
+	</body>
+	</html>

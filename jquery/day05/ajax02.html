@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>get和post</title>
+		<script src="../jquery-3.1.0.js"></script>
+		<script>
+			$(document).ready(function(){
+				//get方式 url？传参
+//				$("#demo02_btn01").click(function(){
+//					$.get("index.jsp?id=1",function(data,status,xhr){
+//						alert("数据是："+data+"\n状态："+status);
+//				     });
+//				});
+				//get方式 以字符串形式传参
+//				$("#demo02_btn01").click(function(){
+//					$.get("index.jsp","id=1&name=zhang",function(data,status,xhr){
+//						alert("数据是："+data+"\n状态："+status);
+//				     });
+//				});
+				//get方式 以对象形式传参
+//				$("#demo02_btn01").click(function(){
+//					$.get("index.jsp",{id:1,name:"zhang"},function(data,status,xhr){
+//						alert("数据是："+data+"\n状态："+status);
+//				     });
+//				});
+				//post方式 以字符串形式传参
+//				$("#demo02_btn01").click(function(){
+//					alert("bbb");
+//					$.post("index.jsp","id=1&name=zhang"function(data,status){
+//					alert("数据是："+data+"\n状态："+status);
+//				});
+				//post方式 以对象形式传参
+//				$("#demo02_btn01").click(function(){
+//					$.post("index.jsp",{id:1,name:"zhang"},function(data,status,xhr){
+//						alert("数据是："+data+"\n状态："+status);
+//				     });
+//				});
+				//post方式的第四个参数 设置返回内容的格式：xml，html，script，jsonp，text
+//				$("#demo02_btn01").click(function(){
+//					$.post("index.jsp",{id:1,name:"zhang"},function(data,status,xhr,"text"){
+//						alert("数据是："+data+"\n状态："+status);
+//				     });
+//				});
+				//如果强制以其他形式返回的话，就不会返回数据
+				
+				//返回xml文件，找到内容(没有测试成功)
+				$("#demo02_btn01").click(function(){
+					$.post("test.xml",function(data,status,xhr){
+						alert("aaa");
+						alert(data);
+						//alert($(date).find("student").find("id").text());
+				     });
+				});
+				
+				//返回json文件，找到内容
+//				$("#demo02_btn01").click(function(){
+//					
+//					$.post("test.json",function(data,status,xhr){
+//						alert("aaa");
+//						alert(data[0]);
+//						//alert($(date).find("student").find("id").text());
+//				     });
+//				});
+				
+         });
+         
+         //总结：load更加适合静态文件的加载
+         //get和post更加适合加载动态文件
+         
+         /*
+            get和post的区别：
+            get提交参数是使用url，post不是
+          * get限制是2kb，post不受限制
+          * get请求的数据会被缓存，存在安全问题，post不会
+          * 
+          */
+
+			
+		</script>
+	</head>
+	<body>
+		<button id="demo02_btn01" type="button">get方式加载页面</button>
+	</body>
+</html>

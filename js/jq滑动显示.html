@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">  
+<html xmlns="http://www.w3.org/1999/xhtml">  
+<head>  
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  
+<title>Jquery左右滑动效果</title>  
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script> 
+<script> 
+/*活动滑动效果- 按钮控制*/  
+  
+ /* div左右滑动效果 */  
+     function showClick(index){  
+        var width = $(".content_border_div").width();  
+        $(".content_data_div").stop(true,false).animate({left : -width*index},1000);  
+     }    
+     function initialize(){  
+         showClick(0);  
+         var num = $(".content_data_count").size();  
+         var width = $(".content_border_div").width();  
+         var height = $(".content_border_div").height();          
+         $(".content_data_div").width(num*width+20);  
+         $(".content_data_count").width(width).height(height);  
+     }  
+                              
+     $(document).ready(function(){  
+        initialize();  
+        var num = $(".content_data_count").size();        
+        var index = 0;                
+        $("#up_opera_a").bind('click',function(){  
+            if(index > 0){  
+               index = index-1;  
+               showClick(index);  
+            }                                
+        });  
+        $("#next_opera_a").bind('click',function(){             
+            if(index < num-1){  
+               index = index+1;  
+               showClick(index);  
+            }  
+        });  
+     }); 
+ </script>
+ </head>   
+
+<style>
+.content_div{width:320px; margin:0 auto 15px auto; border:1px solid #d1d1d1;position:absolute;left:10px;right:10px;}  
+.content_border_div { width:300px; height:257px; overflow:hidden;position:absolute;margin-left:10px;margin-right:10px;}  
+.content_data_div {position:absolute;top:0px; bottom:0px;align:center;}  
+.content_data_count{position:relative;;float:left;}  
+  
+.up_div{  
+          /*  position:absolute;使用绝对定位 */  
+          float:left;  
+          height:257px;  
+          width:10px;   
+          border-left:solid 1px #E0EFFA;  
+          border-right:solid 0px #E0EFFA;  
+          text-align:center;          
+    }  
+  .down_div{  
+          /*position:absolute;  使用绝对定位 */  
+          float:right;  
+          height:257px;  
+          width:10px;   
+          border-left:solid 0px #E0EFFA;  
+          border-right:solid 1px #E0EFFA;  
+          text-align:center;             
+    }      
+      
+    #up_opera_a{  
+        display:block;  
+        width:7px;  
+        height:100%;  
+        background-image:url(images/hide_left.jpg);  
+        background-position:center;  
+        background-repeat:no-repeat;  
+    }  
+             
+     #next_opera_a{  
+        display:block;  
+        width:7px;  
+        height:100%;  
+        background-image:url(images/hide_right.jpg);  
+        background-position:center;  
+        background-repeat:no-repeat;  
+    }    
+--></mce:style><style mce_bogus="1">/* */  
+.content_div{width:320px; margin:0 auto 15px auto; border:1px solid #d1d1d1;position:absolute;left:10px;right:10px;}  
+.content_border_div { width:300px; height:257px; overflow:hidden;position:absolute;margin-left:10px;margin-right:10px;}  
+.content_data_div {position:absolute;top:0px; bottom:0px;align:center;}  
+.content_data_count{position:relative;;float:left;}  
+  
+.up_div{  
+          /*  position:absolute;使用绝对定位 */  
+          float:left;  
+          height:257px;  
+          width:10px;   
+          border-left:solid 1px #E0EFFA;  
+          border-right:solid 0px #E0EFFA;  
+          text-align:center;          
+    }  
+  .down_div{  
+          /*position:absolute;  使用绝对定位 */  
+          float:right;  
+          height:257px;  
+          width:10px;   
+          border-left:solid 0px #E0EFFA;  
+          border-right:solid 1px #E0EFFA;  
+          text-align:center;             
+    }      
+      
+    #up_opera_a{  
+        display:block;  
+        width:7px;  
+        height:100%;  
+        background-image:url(images/hide_left.jpg);  
+        background-position:center;  
+        background-repeat:no-repeat;  
+    }  
+             
+     #next_opera_a{  
+        display:block;  
+        width:7px;  
+        height:100%;  
+        background-image:url(images/hide_right.jpg);  
+        background-position:center;  
+        background-repeat:no-repeat;  
+    }  </style>  
+</head>  
+  
+<body style="text-align:center" mce_style="text-align:center">  
+<div class="content_div">  
+<div class="up_div"><a href="#" mce_href="#" id="up_opera_a"></a></div>  
+    <div class="content_border_div" >   
+    <div class="content_data_div" id="content_data_div">  
+       <div class="content_data_count">我是第一个</div>  
+       <div class="content_data_count">我是第二个</div>  
+       <div class="content_data_count">我是第三个</div>       
+       <div class="content_data_count">我是第四个</div>       
+     </div>   
+          
+    </div>  
+<div class="down_div"><a href="#" mce_href="#" id="next_opera_a"></a></div>  
+</div>  
+</body>  
+</html>  

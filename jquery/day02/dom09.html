@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../jquery-3.1.0.js"></script>
+		<script>
+			$(document).ready(function(){
+	//$("span").parent().css({"color":"red","border":"2px solid red"});
+	//$("span").parents().css({"border":"2px solid blue"});
+	//$("span").parents("ul").css({"border":"2px solid green"});
+	$("span").parentsUntil("div").css({"border":"2px solid yellow"});
+});
+			
+		</script>
+		<style>
+		     #demo01_div01 *
+		     {
+			   display:block;color:lightgray;border: 2px solid lightgray;margin: 15px;padding: 5px;"
+			 }
+		</style>
+	</head>
+	<body>
+		<div id="demo01_div01">
+			<div style="width: 200px;">div 曾祖父类
+				<ul> ul祖父类
+					<li> li直接父类
+					<span>
+						span
+					</span>
+					</li>
+				</ul>
+				
+			</div>
+		</div>
+		
+		
+	</body>
+</html>

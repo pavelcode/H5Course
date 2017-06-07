@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+	<!--
+        	描述：链接样式：  未访问  鼠标移到  点击时
+        	      列表
+        -->
+        <style>
+        /*必须按照顺序来写*/
+        a:link {color:red;}		/* 未被访问的链接  链接*/
+		a:visited {color:orange;}	/* 已被访问的链接  访问后*/
+		a:hover {color:green;}	/* 鼠标指针移动到链接上 */
+		a:active {color:black;}	/* 正在被点击的链接 */
+		:focus{}  /*获得焦点的样式*/
+		
+		ul{list-style-type:circle;}
+		
+		ol{list-style-type: decimal;}
+		
+		table,td{border:1px solid blue;}
+		table{width: 100%;height: 200px;border-collapse:collapse;}
+		td{text-align: center; vertical-align: bottom;}
+        </style>
+	</head>
+	<body>
+		
+		<a href="http://www.baidu.com" target="_blank"> 百度</a>
+		
+		<ul>
+			<li>标题1</li>
+			<li>标题2</li>
+			<li>标题3</li>
+		</ul>
+		
+		
+		<ol>
+			<li>标题1</li>
+			<li>标题2</li>
+			<li>标题3</li>
+		</ol>
+		
+		<table>
+			<tr>
+				<td>第一行第一列</td>
+				<td>第一行第二列</td>
+			</tr>
+			<tr>
+				<td>第二行第一列</td>
+				<td>第二行第二列</td>
+			</tr>
+			
+		</table>
+		
+		
+		
+	</body>
+</html>

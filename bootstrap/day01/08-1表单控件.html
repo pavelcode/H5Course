@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../../bower_components/bootstrap/dist/css/bootstrap.css"/>
+	</head>
+	<body>
+		
+		 <!--
+		 	包括大部分表单控件、文本输入域控件，还支持所有 HTML5 类型的输入控件： 
+		 	text、password、datetime、datetime-local、date、month、time、week、
+		 	number、email、url、search、tel 和 color。
+         	设置了 .form-control 类的 <input>、<textarea> 和 <select> 元素都将被默认设置宽度属性为 width: 100%;
+         		
+         -->
+         
+         <input type="text" class="form-control" placeholder="请输入内容" />
+         <br />
+         <input type="date" class="form-control" />
+         <br />
+         
+         <!--
+         文本域
+            支持多行文本的表单控件。可根据需要改变 rows 属性。
+         -->
+         <textarea class="form-control" row="3"></textarea>
+         <br />
+        
+         <!--
+         	多选框
+         -->
+         <div class="checkbox">
+         	<label for="">
+         		<input name="favorite" type="checkbox" value="eat" checked/>吃饭
+         	</label>
+         </div>
+          <div class="checkbox">
+         	<label for="">
+         		<input name="favorite" type="checkbox" value="sleep"/>睡觉
+         	</label>
+         </div>
+          <div class="checkbox disabled">
+         	<label for="">
+         		<input name="favorite" type="checkbox" value="sleep" disabled/>睡觉
+         	</label>
+         </div>
+         <br />
+         <!--
+         	单选框
+         -->
+         <div class="radio">
+         	<label>
+         		<input type="radio" name="sex" value="man">男
+            </label>
+         </div>
+         <div class="radio">
+         	<label>
+         		<input type="radio" name="sex" value="woman" checked/>女
+         	</label>
+         </div>
+         <div class="radio diabled">
+         	 <label for=""><input type="radio" name="sex" value="no" disabled=""/>未知</label> 
+         </div>
+         <!--
+         	内联单选和多选框
+            通过将 .checkbox-inline 或 .radio-inline可以使这些控件排列在一行。
+         -->
+         
+         <label for="" class="checkbox-inline">
+         	<input name="favorite" type="checkbox" value="eat" checked/>吃饭
+         </label>
+          <label for="" class="checkbox-inline">
+         	<input name="favorite" type="checkbox" value="sleep"/>睡觉
+         </label>
+         <br />
+         
+         <label for="" class="radio-line">
+         	<input type="radio" name="sex" value="man">男
+         	<input type="radio" name="sex" value="woman" checked/>女
+         </label>
+
+         <!--
+         	下拉列表（select）
+         -->
+         <select name="" id="" class="form-control">
+         	<option value="">1</option>
+         	<option value="">2</option>
+         	<option value="">3</option>
+         	<option value="">4</option>
+         	<option value="">5</option>
+         	<option value="">6</option>
+         </select>
+         <!--
+         对于标记了 multiple 属性的 <select> 控件来说，默认显示多选项。
+         -->
+         <select multiple="" class="form-control">
+         	<option value="">1</option>
+         	<option value="">2</option>
+         	<option value="">3</option>
+         	<option value="">4</option>
+         	<option value="">5</option>
+         	<option value="">6</option>
+         </select>
+         
+         <!--
+           静态控件
+           如果需要在表单中将一行纯文本和 label 元素放置于同一行，为 <p> 元素添加 .form-control-static 类即可。
+           首先加入栅格系统，添加control-label
+           会出现排列不一行的情况，加上form-control-static
+         -->
+         <form action="" class="form-horizontal">
+            <div class="form-group">
+            	   <label class="col-sm-2 control-label">你好</label>
+            	   <div class="col-sm-10">
+            	   	 <p class="form-control-static">欢迎你</p>
+            	   </div>
+            </div>
+         </form>
+         
+         <!--
+         	控件状态
+         	  焦点状态？？？
+         	  禁用状态
+         	  只读状态
+         	  禁用状态和只读状态区别就是能够获得焦点
+         	  input.form-control[type="text" placeholder="请输入内容"]
+         -->
+         <input type="text" class="form-control" placeholder="请输入内容" disabled="" />
+         <input type="text" class="form-control" placeholder="请输入内容" readonly="" />
+         
+         <!--
+         	文字帮助，对控件进行解释说明
+         -->
+         <input type="text" class="form-control" placeholder="请输入用户名" />
+         <span class="help-black">用户名不能是中文</span>
+      
+      
+         <!--
+         	校验状态
+             Bootstrap 对表单控件的校验状态，如 error、warning 和 success 状态，都定义了样式。
+             使用时，添加 .has-warning、.has-error 或 .has-success 类到这些控件的父元素即可。
+             任何包含在此元素之内的 .control-label、.form-control 和 .help-block 元素都将接受这些校验状态的样式。
+         -->
+         <div class="form-group has-error">
+         	  <label class="control-label">错误</label>
+         	  <input type="text" class="form-control" />
+         </div>
+         <div class="form-group has-warning">
+         	 <label class="control-label">警告</label>
+         	  <input type="text" class="form-control" />
+         </div>
+          <div class="form-group has-success">
+          	  <label class="control-label">成功</label>
+         	  <input type="text" class="form-control" />
+         </div>
+         
+         <!--
+         	添加额外的图标
+            针对校验状态为输入框添加额外的图标。只需设置相应的 .has-feedback 类并添加正确的图标即可。
+         -->
+         
+         
+      
+         
+         
+	</body>
+</html>

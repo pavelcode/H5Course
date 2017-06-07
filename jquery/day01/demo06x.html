@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>表单选择器</title>
+		<script src="../../jquery-ui/jquery-3.1.0.js"></script>
+		<script>
+			$(function(){
+				/**
+				 * 表单选择器
+				 */
+//				alert($("input").val());//默认返回第一个
+//				alert($("input").length); //2    获得input类型
+//              alert($("input").eq(1).val());//获得第二个位置的input
+                //但是这种方式，我们需要数，多了，就容易错，很不友好
+                
+                //使用属性name来获得，当然使用type也可以
+//				alert($("input[name='name']").val());
+//				alert($("input[name='password']").val());
+
+                 //添加了textarea  select button 
+//               alert($("input").length); //2  只能获得input类型
+                 //如果要获得包括textarea  select button类型
+//               alert($(":input").length);//5 
+//               alert($(":input[name='city']").length); //获得name='city'的select标签
+
+                 //获得文本框，密码框不属于文本框
+//               alert($(":text").length);
+                 //获得密码框
+//               alert($(":password").length);
+                 //如果有多个password
+//               alert($(":password[name='password']").length);
+
+                //获得单选按钮
+//              alert($(":radio").length);
+                //获得第二个单选按钮的值
+//              alert($(":radio").eq(1).val());
+                //或
+//              alert($(":radio").last().val());
+                
+                /*
+                 *:checkbox 获得复选框
+                 *:submit 获得提交按钮
+                 * :reset
+                 *:button
+                 *:file
+                 *:image
+                 *:hidden 隐藏标签
+                 */
+//              alert($(":hidden").length); //5 系统默认的
+				//设定限定符
+//				alert($("form :hidden").length);//1
+
+              
+                /**
+                 * 表单过滤器 
+                 * 根据表单的状态来选定
+                 */
+//              alert($(":enabled").length);//7  //能够使用
+//              alert($(":disabled").length);//1  //不能使用
+//              alert($(":checked").length);
+//              alert($(":selected").length);//1 默认选第一个
+				
+			});
+		</script>
+	</head>
+	<body>
+		<form>
+		<input type="text" name="name" value="123"/>
+		<input type="password" name="password" value="456"/>
+		
+		<input type="radio" name="sex" checked="checked" value="男"/>男
+		<input type="radio" name="sex" value="女"/>女
+		
+		<input type="hidden" disabled="disabled" />
+		
+		<textarea></textarea>
+		<select name="city">
+			<option selected="selected">北京</option>
+			<option >上海</option>
+			<option>广州</option>
+		</select>
+		<button></button>
+		</form>
+	</body>
+</html>

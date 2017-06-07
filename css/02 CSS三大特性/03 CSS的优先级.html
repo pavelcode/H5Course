@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>CSS特性-优先级</title>
+		<style>
+			/*默认样式<标签选择器<类选择器<id选择器<行内样式<!important*/ 
+			/*important英文含义是重要的。语法k：v！important，给属性权重。代表属性权重无穷大*/
+		    /*  div{color:red}
+			#myi{color:blue}
+			.myc{color:green !important} */
+			
+			/*important的错误写法*/
+			/*.myc{color:green;!important}
+			.myc{color:green important;}*/
+			
+			/*!important注意事项*/
+			/*1 只能提供单个属性的权重,而不能提升整个选择器的权重
+			     值提升了color属性,而没有提升font-size属性*/
+			/* div{
+				color:red !important;
+				font-size: 50px;
+			 } */
+			
+			/*2 无法提升继承的权重，因为继承的权重为零，无法提升到无穷大*/
+			/*  div{
+			 	color:red !important; 
+			 }
+			 p{
+			 	color:blue;
+			 } */
+			/*3 当属性都是继承来的,不影响就近原则
+			依然因为继承的权重为零，无法提升到无穷大*/
+			div{
+				color:red !important;
+			} 
+			ul{
+				color:green;
+			}
+			
+			/*但是!important一般在写网页的时候不要使用,因为会让CSS写的很乱*/
+		</style>
+</head>
+<body>
+	 <!--  <div id="myi" class="myc" style="color: pink;">文字</div> -->
+		
+		<!-- <div>
+			<p>文字</p>
+		</div> -->
+		
+		<div>
+			<ul>
+				<li>文字</li>
+			</ul>
+		</div>
+</body>
+</html>

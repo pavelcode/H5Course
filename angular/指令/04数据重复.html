@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>重复数据问题</title>
+		<style type="text/css">
+			.red{
+				color:red;
+			}
+			.blue{
+				color:blue;
+			}
+		</style>
+	</head>
+	<body>
+		<div ng-app="myApp">
+			<ul ng-controller="myCtrl">
+				<!--
+               track by $index 解决内容重复问题
+                ng-class="{red:student.startsWith('zhang') 以zhang开头
+                -->
+				<li ng-repeat="student in students track by $index" ng-class="{red:student.startsWith('zhang')}">{{student}}</li>
+			</ul>	
+		</div>
+		
+		<script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+		<script>
+			angular.module("myApp",[])
+			.controller("myCtrl",["$scope",function($scope){
+				$scope.students=["zhangsan","lisi","wangwu","zhangsan"];
+			}]);
+		</script>
+	</body>
+</html>

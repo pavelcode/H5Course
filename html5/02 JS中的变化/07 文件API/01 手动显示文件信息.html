@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>读取文件信息</title>
+	</head>
+	<body>
+		<form action="">
+			<!--multiple可以选择多个文件-->
+			<input type="file" id="input_file" name="input_file" multiple />
+			<input type="button" id="btn_file" value="查看文件" />
+		     <!--显示文件信息-->
+		     <ul id="listfile"></ul>
+		</form>
+		<hr />
+		<script>
+			(function(){
+//				获得DOM对象
+				var inputfile = document.querySelector("#input_file");
+				var btn_file = document.querySelector("#btn_file");
+				var list_file = document.querySelector("#listfile");
+//				设置点击事件
+                 btn_file.addEventListener("click",function(){
+//               	    读取文件信息,并展示
+                   	     var files = inputfile.files;
+				         for (var i = 0; i < files.length; i++) {
+				           console.log("file"+files[i]);
+				           var li = document.createElement('li');
+//				           li.setAttribute('class', 'list-group-item');
+				           // 创建信息的子节点  chrom中resource设定断点，可以看到对象属性
+				           li.innerHTML = '文件名：'+files[i].name +' 最后修改时间：' + files[i].lastModifiedDate.toLocaleDateString() + ' ' + files[i].lastModifiedDate.toLocaleTimeString() + ' 文件大小：' + (files[i].size / 1024).toFixed(2) + 'KB</p>';
+				           list_file.appendChild(li);
+				         }
+                 });
+			})();
+		</script>
+		
+		
+	</body>
+</html>

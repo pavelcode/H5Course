@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    <script>
+			function checkEmail(){
+				//alert("aaa");
+				var email = document.getElementById("myemail");
+				if(email.value==""){
+					alert("邮箱不能为空");
+					return false;
+				}else if(!email.checkValidity()){
+					alert("邮箱格式不正确");
+					return false;
+				}
+				return true;
+			}
+		</script>
+	</head>
+	
+	<body>
+		<!--
+        	描述：实现表单的验证
+        	     novalidate规定当提交表单时不对其进行验证。
+        -->
+		<form onsubmit="checkEmail()" novalidate="novalidate">
+			<input type="email" id="myemail">
+			<input type="submit" /> 
+		</form>
+	</body>
+    </body>
+</html>

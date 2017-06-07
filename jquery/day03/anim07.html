@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>自定义动画</title>
+		<script src="../jquery-3.1.0.js"></script>
+		<script>
+		$(document).ready(function(){
+		     
+//			$("div").animate({left:'200px'});
+//          $("div").animate({left:'+=200px'});  //需要按钮控制
+
+            //持续时间
+//          $("div").animate({left:'200px'},2000);
+              
+            //运动的方式 swing 摇摆，就是开始慢，中间快，结束慢,默认值
+            //          linear 匀速运动
+//          $("div").animate({left:'200px'},2000,"swing");
+//          $("div").animate({left:'200px'},2000,"linear");
+			
+		   //同步动画：属性同时变化
+//			$("div").animate({
+//	           left:'250px',
+//	           opacity:'0.5', //透明度
+//	           height:'150px',
+//	           width:'150px'});
+
+           //同步动画，添加事件和回调函数
+//            $("div").animate({
+//	           left:'250px',
+//	           opacity:'0.5', //透明度
+//	           height:'150px',
+//	           width:'150px'},1000,function(){
+//	           	 alert("aaa");
+//	           });
+	
+             //列队动画 连缀实现
+//           var div=$("div");
+//			 div.animate({height:'300px',opacity:'0.4'},"slow")
+//			 .animate({width:'300px',opacity:'0.8'},"slow")
+//			 .animate({height:'100px',opacity:'0.4'},"slow")
+//			 .animate({width:'100px',opacity:'0.8'},"slow");
+
+             //如果最后一个不是动画，这时候，就不会出现队列动画
+            // $("div").slideUp("slow").slideDown("slow").css("background","blue");
+             
+             //变成队列动画，解决方式1
+//            $("div").slideUp("slow").slideDown("slow",function(){
+//            	$(this).css("background","blue")；
+//            });
+
+              //解决方式2 queue
+//            $("div").slideUp("slow").slideDown("slow").queue(function(){
+//            	 $(this).css("background","blue");
+//            });
+
+              //但是后面在加一个hidde()的时候，就出现了问题，需要使用next()调用后面的
+//            $("div").slideUp("slow").slideDown("slow").queue(function(){
+//            	 $(this).css("background","blue");
+//            	 $(this).dequeue(); 
+//            }).hide("slow");
+
+              //或采用对象执行的方式
+//             $("div").slideUp("slow")
+//             $("div").slideDown("slow")
+//             $("div").queue(function(){
+//            	 $(this).css("background","blue");
+//            	 $(this).dequeue(); 
+//            })
+//             $("div").hide("slow");
+
+              //queue获得动画的长度，默认的参数是fx，动画执行完之后，长度就减1
+//             $("div").slideUp("slow",function(){
+//             	  //count();
+//             })
+//             $("div").slideDown("slow",function(){
+//             	// count();
+//             })
+//             $("div").queue(function(){
+//            	 $(this).css("background","blue");
+//            	 $(this).dequeue(); 
+//            })
+//             $("div").hide("slow");
+
+                //清除动画队列
+//             $("div").slideUp("slow",function(){
+//             	   $(this).clearQueue();
+//             })
+//             $("div").slideDown("slow")
+//             $("div").queue(function(){
+//            	 $(this).css("background","blue");
+//            	 $(this).dequeue(); 
+//            })
+//             $("div").hide("slow");
+
+	  });
+    
+            function count(){
+               	 alert($("div").queue("fx").length);
+          }
+			
+		</script>
+	</head>
+	<body>
+		
+		
+		<div style="position:relative;width: 50px;height: 50px;background-color: red;"></div>
+	</body>
+</html>

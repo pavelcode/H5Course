@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+.mystyle {
+    width: 500px;
+    height: 50px;
+    padding: 15px;
+    border: 1px solid black;
+}
+.anotherClass {
+    background-color: pink;
+    color: white;
+}
+.thirdClass {
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 25px;
+}
+</style>
+</head>
+<body>
+
+<p>点击按钮为 DIV 元素添加多个类。</p>
+<button onclick="myFunction()">点我</button>
+<p><strong>注意：</strong> Internet Explorer 9 及更早 IE 版本浏览器不支持 classList 属性。</p>
+<div id="myDIV">我是一个 DIV 元素。</div>
+<script>
+function myFunction() {
+    document.getElementById("myDIV").classList.add("mystyle", "anotherClass", "thirdClass");
+    //获得类的个数
+    console.log(document.getElementById("myDIV").classList.length);
+    //获取元素的第一个类名（索引为0）:
+    console.log(document.getElementById("myDIV").classList.item(0));
+   //查看元素是否存在类
+   console.log(document.getElementById("myDIV").classList.contains("mystyle"));
+   //删除类
+    document.getElementById("myDIV").classList.remove("mystyle");
+    console.log(document.getElementById("myDIV").classList.length);
+    console.log(document.getElementById("myDIV").classList.item(0));
+
+}
+</script>
+
+</body>
+</html>

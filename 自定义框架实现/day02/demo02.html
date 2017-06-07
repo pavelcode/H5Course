@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>事件框架--jQuery实现</title>
+		<style>
+        p{font-size:20px}
+        </style>
+	</head>
+	<body>
+	    <button id="btn1">添加新的p元素</button>
+	    <button id="btn2">添加新的H3元素</button>
+	
+	    <p>第一个p元素</p>
+	    <p>第二个p元素</p>
+	    <p>第三个p元素</p>
+	    <p>第四个p元素</p>
+	    <p>第五个p元素</p>
+	
+	    <h3>第二个p元素</h3>
+	    <h3>第三个p元素</h3>
+	    <h3>第四个p元素</h3>
+	    <h3>第五个p元素</h3>
+	    
+	    <a>测试</a>
+	</body>
+</html>
+<script src="../../jquery/jquery-3.1.0.js"></script>
+<script>
+//click bind	事件
+	$("#btn1").click(function(){
+        $("div").append("<p>这是一个新的p元素</p>");
+    });
+    $("#btn2").click(function(){
+        $("div").append("<h3>这是一个新的h3元素</h3>");
+    });
+
+    //给多个元素绑定事件
+    //但是新增的元素不行
+    $("div p").each(function(){
+        $(this).click(function(){
+            $(this).css('color','green')
+        })
+    })
+    //我们可以使用bind来打到同样的目的
+    //新的元素也不行
+    $("div h3").bind("click", function () {
+        $(this).css('color','green')
+    })
+
+    //还可以绑定多个
+    $("div h3").bind("click", function () {
+        $(this).css('background','yellow')
+    })
+
+//delegate事件
+    //    但是新添加的也不行 怎么办呢？？
+	//    实现方式
+	//    这个就是冒泡  下面进入我们的主题 --事件流
+	//    首先看一个例子
+    $("div").delegate('h3',"click", function () {
+        $(this).css('color','green')
+    })
+    $("div").delegate('h3',"click", function () {
+        $(this).css('background','yellow')
+    })
+
+//one事件
+ $('a').one('click',function(){
+        alert('a');
+    });
+ 
+//on事件 
+   //    但是新添加的也不行 怎么办呢？？
+    //    实现方式
+    //    这个就是冒泡  下面进入我们的主题 --事件流
+    //    首先看一个例子
+    $("div").on("click",'h3',function () {
+        $(this).css('color','green')
+    })
+    $("div").on("click",'h3', function () {
+        $(this).css('background','yellow')
+    })
+
+	
+	
+</script>

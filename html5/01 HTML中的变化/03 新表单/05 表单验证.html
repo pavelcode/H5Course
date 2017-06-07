@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+   		<script type="application/javascript">
+			function Validate(){
+				var myButton = document.getElementById("mybtn");
+				var mytxt = document.getElementById("mytxt");
+				var myform = document.getElementById("myform");
+				if(mytxt.value.trim()==""){
+					var newlable = document.createElement("label");
+					newlable.setAttribute("for","mytxt");
+					myform.insertBefore(newlable,myButton);
+					mytxt.labels[1].innerHTML="用户名不能为空";
+					mytxt.labels[1].setAttribute("style","color: red")
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<form id="myform">
+			<label id="mylable" >用户名</label>
+			<input type="text" id="mytxt" />
+			<input  type="button" id="mybtn" value="验证" onclick="Validate()" />
+		</form>
+		
+		
+    </body>
+</html>

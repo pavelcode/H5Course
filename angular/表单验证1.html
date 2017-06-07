@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>表单</title>
+		<script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+	</head>
+	<body>
+		<!--
+        AngularJS中表单是输入控件的集合。
+        输入控件包括：
+        input 元素
+        select 元素
+        button 元素
+        textarea 元素
+        
+        HTML表单一般都需要包含form
+        novalidate 属性是在 HTML5 中新增的。禁用了使用浏览器的默认验证。
+        -->
+        <div ng-app="myApp" ng-controller="myCtrl">
+        	  <form novalidate>
+        	  	<input type="text" ng-model="user.name" /><br />
+        	  	<input type="text" ng-model="user.age" /><br />
+        	  	<button ng-click="setUser()">设置</button>
+        	  </form>
+        </div>
+        <script>
+        	   var app = angular.module("myApp",[]);
+        	   app.controller("myCtrl",function($scope){
+        	   	   $scope.person = {name:"zhangsan",age:20};
+        	   	   $scope.setUser = function(){
+        	   	   	 $scope.user = angular.copy($scope.person);
+        	   	   };
+        	   });
+        </script>
+	</body>
+</html>

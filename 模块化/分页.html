@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+		
+	</head>
+	<body>
+  <ul class="pagination">
+  </ul>
+	</body>
+</html>
+<script>
+	var currentPage = 3; //当前页
+	var totalPages = 10; //总页数
+	var showPages = 5 ;//要显示的页数，默认是奇数
+	//当前页左边或右边显示的页数
+	var avgPages = Math.floor(showPages/2);
+	//计算开始显示的页数
+	var begin = currentPage-avgPages;
+	//计算结束显示的页数
+	var end = currentPage+avgPages;
+	//实现左侧验证 如果开始的页数小于1或当前的页数小于要显示的页数，按照总页数或显示页数的最小计算
+	if(begin<1||currentPage<showPages){
+		begin=1;
+		//如果要显示的页数小于总页数
+		end= showPages>totalPages?totalPages:showPages;
+	}
+	console.log(begin+"---"+end);
+	//实现右侧验证
+	if(currentPage+avgPages>end){
+		end = totalPages;
+		//往前确定开始的位置
+		begin=end- showPages;
+		// 当totalPages小于showPages，重新对左边进行校验
+		if(begin<0){
+			begin = 1;	
+		}
+	}   
+	
+    //进行DOM操作
+	var ul = document.getElementsByClassName("pagination")[0];
+	 //上一页
+	 var preli = document.createElement("li");
+	 preli.innerHTML='<a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>';
+     ul.appendChild(preli);
+     //如果当前页是1，就让上一页禁用
+     if(currentPage==1){
+     	preli.classList.add("disabled");
+     }
+     
+	for(var i=begin;i<=end;i++){
+	  var li = document.createElement("li");
+	  //如果是当前页，加上样式
+	  if(i==currentPage){
+	  	li.classList.add("active");
+	  }
+	  li.innerHTML='<a href="#">'+i+'</a>';
+	  ul.appendChild(li);
+	}
+	
+	//下一页
+	 var nextli = document.createElement("li");
+	 nextli.innerHTML='<a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>';
+     ul.appendChild(nextli);
+     
+     //如果当前页是最后一页，就让下一页禁用
+     if(currentPage==totalPages){
+     	preli.classList.add("disabled");
+     }
+	
+</script>

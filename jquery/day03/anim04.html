@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>淡入，淡出--动画</title>
+		<script src="../jquery-3.1.0.js"></script>
+		<script>	
+		//淡出，淡出效果 fadeIn()   fadeOut()  fadeToggle()  fadeTo()
+	$(document).ready(function(){
+	
+	$("#out").click(function(){
+		$("#demo03_div01").fadeOut();
+		$("#demo03_div02").fadeOut("slow");
+		$("#demo03_div03").fadeOut(3000);
+	});
+	
+	$("#in").click(function(){
+		$("#demo03_div01").fadeIn();
+		$("#demo03_div02").fadeIn("slow");
+		$("#demo03_div03").fadeIn(3000);
+	});
+	
+	$("#out_in").click(function(){
+		$("#demo03_div01").fadeToggle();
+		$("#demo03_div02").fadeToggle("slow");
+		$("#demo03_div03").fadeToggle(3000);
+	});
+	
+	$("#alpha").click(function(){
+		$("#demo03_div01").fadeTo("slow",0.15);
+		$("#demo03_div02").fadeTo("slow",0.4);
+		$("#demo03_div03").fadeTo("slow",0.7);
+	});
+	
+	
+		})
+		</script>
+	</head>
+	<body>
+		<div id="demo03_div01">内容1</div>
+		<div id="demo03_div02">内容2</div>
+		<div id="demo03_div03">内容3</div>
+		<button id="out" type="button">淡出</button>
+		<button id="in" type="button">淡入</button>
+		<button id="out_in" type="button">淡出淡入</button>
+		<button id="alpha" type="button">透明度</button>
+	</body>
+</html>

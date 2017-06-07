@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>$scope的$watch方法</title>
+	</head>
+	<body ng-app="myApp" ng-controller="myCtrl">
+		<!--
+         $scope的$watch方法主要是监视某个内容的变化
+         实现登录，显示提示信息案例
+        -->
+        <input type="text" ng-model="user.name" />	{{message}}<br/>
+        <input type="password" ng-model="user.pass"/>	<br/>
+	    <input type="button" ng-click="login()" value="登录"/>
+	</body>
+</html>
+<script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+		<script type="text/javascript">
+			 var app = angular.module("myApp",[]);
+			 app.controller("myCtrl",function($scope){
+			 	//初始化对象
+			  	$scope.user = {
+			  		name:"",
+			  		pass:""
+			  	};
+			 	//因为数据的双向绑定，所以能获得输入框的值
+			 	$scope.login = function(){
+			 		console.log($scope.user.name);
+			 	}
+			 	 
+			 	//初始化信息值
+			 	$scope.message="请输入内容";
+			 	//使用$scope的$watch方法监视值的变化，第一个参数是字符串
+			 	$scope.$watch("user.name",function(now,old){
+			 		//console.log("now is "+ now+";old is "+old);
+			 		//如果输入内容之后
+			 		if(now){
+			 			if(now.length<7){
+			 				$scope.message="请输入内容的长度不能小于七位";
+			 			}else{
+			 				$scope.message="输入内容正确";
+			 			}
+			 		}
+			 		
+			 	});
+			 
+			 });
+		</script>

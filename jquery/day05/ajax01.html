@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>load加载文件</title>
+		<script src="../jquery-3.1.0.js"></script>
+		<script>
+		/*
+		  load 参数1 访问的地址 必选  String类型
+		       参数2 提交的参数 可选  Object类型
+		       参数3 回调函数   可选  function类型
+		                            function的参数：
+		                               参数1 响应的内容
+		                               参数2 响应的状态 success error
+		                               参数3 XMLHttpRequest对象
+		 * */
+			$(document).ready(function(){
+				$("button").click(function(){
+					//要加载的DOM对象
+			       $("div").load("content1.html",function(responseTxt,statuTxt,xhr){
+			       	  if(statuTxt=="success"){
+			       	  	 alert("加载成功");
+			       	  }else if(statuTxt=="error"){
+			       	  	alert("error:"+xhr.status+";"+xhr.statusText);
+			       	  }
+			       });
+			       //使用get方式提交数据
+			       $("div").load("content1.html?id=1",function(responseTxt,statuTxt,xhr){
+			       	  if(statuTxt=="success"){
+			       	  	 alert("加载成功");
+			       	  }else if(statuTxt=="error"){
+			       	  	alert("error:"+xhr.status+";"+xhr.statusText);
+			       	  }
+			       });
+			       //使用post方式提交数据
+			        $("div").load("content1.html",{id:1},function(responseTxt,statuTxt,xhr){
+			       	  if(statuTxt=="success"){
+			       	  	 alert("加载成功");
+			       	  }else if(statuTxt=="error"){
+			       	  	alert("error:"+xhr.status+";"+xhr.statusText);
+			       	  }
+			       });
+			       
+			       
+				});
+            });
+			
+			
+		</script>
+	</head>
+	<body>
+		<button type="button" id="demo01_btn01">加载页面</button>
+		<div></div>
+	</body>
+</html>

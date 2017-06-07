@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>划入变色-previousSibling-nextSibling</title>
+	</head>
+	<body>
+		<ul><li></li><li></li><li></li><li></li><li></li><li></li></ul>
+	</body>
+</html>
+<script>
+		var oUL = document.getElementsByTagName("ul")[0];
+		var lis = oUL.children;
+		for(var i=0; i<lis.length; i++) {
+			lis[i].onmouseover = function(){
+				this.style.background = "blue";
+				if(this.previousSibling) {//判断上一个节点是否存在
+					this.previousSibling.style.background = "yellow";
+				}
+				if(this.nextSibling) {//判断下一个节点是否存在
+					this.nextSibling.style.background = "red";
+				}
+			}
+			lis[i].onmouseout = function() {
+				this.style.background = "";
+				if(this.previousSibling) {
+					this.previousSibling.style.background = "";
+				}
+				if(this.nextSibling) {
+					this.nextSibling.style.background = "";
+				}
+			}
+		}
+	</script>

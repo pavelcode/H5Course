@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>文本阴影 文本自动换行  文件截断，鼠标放在上面显示</title>
+		<style>
+			h1{
+				text-shadow: 10px 10px 5px #ff0000;
+			}
+			
+			#demo05_p1
+			{
+				border: 1px solid #808080;
+				width: 50px;
+				
+			}
+			#demo05_p2
+			{
+				border: 1px solid #808080;
+				width: 50px;
+				word-break: break-word;	
+			}
+			div
+			{
+				border: 1px solid #008000;
+				width: 100px;
+				height: 20px;
+				float:left;
+				overflow: hidden;
+				text-overflow: ellipsis;  /*超过内容显示省略号*/
+				white-space:nowrap;   /*忽略其中的空格换行，设置内容不换行*/
+			}
+			div:hover
+			{
+				overflow: visible;
+			}
+
+
+
+		</style>
+	</head>
+	<body>
+		<h1>文字</h1>
+		<p id="demo05_p1">This paragraph contains a very long word: thisisaveryveryveryveryveryverylongword. The long word will break and wrap to the next line.</p>
+		
+		<p id="demo05_p2">This paragraph contains a very long word: thisisaveryveryveryveryveryverylongword. The long word will break and wrap to the next line.</p>
+	
+	    <div>his paragraph contains a very long word</div>
+	
+	
+	</body>
+</html>

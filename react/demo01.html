@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../bower_components/react/react.js"></script>
+		<script src="../bower_components/react/react-dom.js"></script>
+	</head>
+	<body>
+		<div id="example"></div>
+	 <script>
+//      var HelloMessage = React.createClass ({
+//          render:function() {
+//              return Hello ;
+//          }
+//      });
+//      ReactDOM.render(<HelloMessage name="AAA"/>,document.getElementById("example"));
+
+
+ var HelloMessage = React.createClass ({
+            displayName: "HelloMessage",
+            render: function render () {
+                return React.createElement("div", null, "Hello ", this.props.name);
+            }
+        });
+        //es6写法
+Class HelloMessage extends React.Component {
+  render() {
+    return <h1>Hello, React</hr>;
+  }
+}
+        ReactDOM.render(React.createElement(HelloMessage, {name: "John"}), document.getElementById("example"));
+    </script>
+	</body>
+</html>

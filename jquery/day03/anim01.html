@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>隐藏和显示--动画</title>
+		<script src="../jquery-3.1.0.js"></script>
+		<script>
+		//点击按钮，隐藏div ，div.id ， div.class ,当前按钮
+		$(document).ready(function(){
+			$("button").click(function(){
+				alert("aaa");
+				/*$("div").hide();*/
+				/*$("#demo01_div01").hide();*/
+				//$(".demo01_div02").hide();
+				//$(this).hide();
+		})});
+		</script>
+	</head>
+	<body>
+		
+		<div>内容1</div>
+		<div id="demo01_div01">内容2</div>
+		<div class="demo01_div02">内容3</div>
+		<button type="button">点击</button>
+	</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>事件</title>
+		<script src="../jquery-3.1.0.js"></script>
+		<script>
+			$(function(){
+				$("button").click(function(){
+					alert("单击事件");
+				});
+				$("button").dblclick(function(){
+					alert("双击事件");
+				});
+				$("button").mousedown(function(){
+					alert("鼠标按下");
+				});
+				$("button").mouseup(function(){
+					 alert("鼠标弹起");
+				});
+				//resize 游览器大小改变
+				//scroll 滚动条改变
+				//select 文本选中
+				//change 文本内容改变
+				//submit 提交表单
+				$("form").submit(function(){
+					
+				});
+				/*
+				 
+				 *  mouseover和mouseout与mouseenter和onmouseleave区别 
+				 * 
+				*/
+//				$("div").mouseover(function(){
+//					$("div").css("background","green");
+//				}).mouseout(function(){
+//					$("div").css("background","red");
+//				});
+//				$("div").mouseenter(function(){
+//					$("div").css("background","green");
+//				}).mouseleave(function(){
+//					$("div").css("background","red");
+//				});
+//              从这种结果看起来都是一样的
+
+                //mouseover和mouseout会触发子事件
+//              $("div").mouseover(function(){
+//              	 $("strong").html(function(index,value){
+//              	 	return value+1;
+//              	 });
+//              });
+                //mouseenter和mouseleave不会触发子事件
+//               $("div").mouseenter(function(){
+//              	 $("strong").html(function(index,value){
+//              	 	return value+1;
+//              	 });
+//              });
+               //hover 鼠标移入和移出
+                $("div").hover(function(){
+                	   alert("鼠标移入");
+                },function(){
+                	   alert("鼠标移出");
+                });
+
+
+
+               //keydown
+//              $(window).keydown(function(e){
+//              	   alert(e.keyCode);  //不区分大小写
+//              });
+                //keypress
+//              $(window).keypress(function(e){
+//              	    alert(e.charCode);//区分大小写
+//              });
+
+              //focus 获得焦点
+              //blur 失去焦点
+
+
+                
+                
+
+
+				
+			})
+			
+			
+			
+			
+		</script>
+	</head>
+	<body>
+		<button>按钮</button>
+		
+		<div style="width:200px;height:200px;background: red;">
+			<p style="width: 100px;height: 100px;background: green;"></p>
+		</div>
+		<strong></strong>
+		
+	</body>
+</html>

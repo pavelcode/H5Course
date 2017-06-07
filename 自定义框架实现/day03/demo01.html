@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>选择框架---ID选择器</title>
+	    <style>
+        div,span{height:200px;width:200px;background:#F00}
+        </style>
+	</head>
+	<body>
+		<div id='div'>点击我变成黄色</div>
+		<br />
+		<span id='span'>点击我变成黄色</span>
+	</body>
+</html>
+<script src='../myframe.js'></script>
+<script>
+//原始方式
+   //封装ID选择器
+// function $id(id) {
+//	 return document.getElementById(id); 
+// }
+// //获得DOM对象
+// var div = $id('div');
+// var span = $id('span');
+// //添加事件
+// div.onclick =function() {
+//	  div.style.background='yellow';
+// }
+// span.onclick =function() {
+//	  span.style.background='yellow';
+// }
+
+//框架方式
+    //获得DOM对象
+    var div = $$.$id('div');
+    var span = $$.$id('span');
+    //添加事件
+    div.onclick =function() {
+        div.style.background='yellow';
+    }
+    span.onclick =function() {
+        span.style.background='yellow';
+    }
+
+</script>

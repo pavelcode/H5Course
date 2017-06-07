@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>CSS框架--设置css</title>
+		<style>
+	        p{
+	            background:red;
+	            font-size:40px;
+	        }
+        </style>
+	</head>
+	<body>
+		<div id="container">
+		    <p>英雄联盟</p>
+		    <p>梦幻西游</p>
+		</div>
+	</body>
+</html>
+<script src='../myframe.js'></script>
+<script>
+//原始方式设置样式
+	 var doms= $$.$all('p')
+//	 doms[0].style.color='yellow'; 
+//	 doms[1].style["color"] ="blue";//设置样式的两种方式，框架一般使用这种方式
+	 
+//简单封装
+//  function setStyle(dom,key,value){
+//      dom.style[key] = value;
+//  }
+//  setStyle(doms[0],'color','green');
+//  setStyle(doms[1],'opacity','0.5');
+    
+//原始方式获取样式值
+//  console.log(doms[0].style.color);//color是通过style方式添加上去的，可以通过style.color获取
+//  console.log(doms[1].style.background);//background是通过class方式添加上去的，获取不到    
+
+//使用兼容方式实现
+    //console.log(window.getComputedStyle(dom[0],null).color);
+    //console.log(dom[0].currentStyle['color']); //IE早期浏览器不支持
+
+//  function getStyle(dom,key){
+//      if(dom.currentStyle){
+//          return dom.currentStyle[key];
+//      }else{
+//          return getComputedStyle(dom,null)[key];
+//      }
+//  }
+    //测试
+//  console.log(getStyle(doms[1],'background'));
+
+
+//框架实现
+   //设置
+//  css('p','color','yellow')
+//  css('p','opacity','0.2')
+    //获取
+//  console.log(css('p','color'));
+//  console.log(css('p','height'));
+//  console.log(css('p','width'));
+//  console.log(css('p','background-color'));
+    
+//  function css(context, key, value){
+//      var dom = $$.isString(context)?$$.$all(context):context;
+//       //如果是数组，且value不为空，则表示设置。否则，表示获取
+//      if(dom.length){ 
+//          if(value){
+//              for(var i = dom.length - 1; i >= 0; i--){
+//                  setStyle(dom[i],key, value);
+//              }
+//          }else{
+//              return getStyle(dom[0]);
+//          }
+//      }else{
+//      	   //如果不是数组,value不为空，则表示设置。否则，表示获取
+//          if(value){
+//              setStyle(dom,key, value);
+//          }else{
+//              return getStyle(dom);
+//          }
+//      }
+//      
+//      function getStyle(dom){
+//          if(dom.currentStyle){
+//              return dom.currentStyle[key];
+//          }else{
+//              return getComputedStyle(dom,null)[key];
+//          }
+//      }
+//      
+//      function setStyle(dom,key,value){
+//          dom.style[key] = value;
+//      }
+//  }
+    
+//使用框架
+    //设置
+//  $$.css('p','color','yellow');
+//  $$.css('p','opacity','0.2');
+    //获取
+//  console.log($$.css('p','color'));
+    
+ 
+//获取的值带有单位，比如px，怎么办
+//  console.log($$.css('p','width'));
+    
+//   function cssNum(context, key){
+//      return parseFloat($$.css(context, key));
+//  }
+//  console.log(cssNum('p','width'));
+
+// 框架使用
+   console.log($$.cssNum('p','width'))
+  
+	
+</script>

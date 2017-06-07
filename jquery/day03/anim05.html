@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>滑动--动画</title>
+		<script src="../jquery-3.1.0.js"></script>
+		<script>
+			$(document).ready(function() {
+	$("#demo04_p1").click(function(){
+		//$("div").slideUp();
+		$("div").slideUp(5000);
+	});
+	
+	$("#demo04_p2").click(function(){
+		$("div").stop();
+	});
+	
+	$("#demo04_p3").click(function(){
+		$("div").slideDown();
+	});
+	$("#demo04_p4").click(function(){
+		$("div").slideToggle();
+	});
+	
+});
+		</script>
+	</head>
+	<body>
+		<div>
+			内容
+		</div>
+		<p id="demo04_p1">滑上</p>
+		<p id="demo04_p2">滑动停止</p>
+		<p id="demo04_p3">滑下</p>
+		<p id="demo04_p4">滑上滑下</p>
+		
+		
+	</body>
+</html>

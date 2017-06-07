@@ -1,0 +1,87 @@
+i<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<script>
+	  /*
+	    1.找出字符串出现最多的字母，并找出该字母出现的次数。
+	      将该字母串中出现次数最多的字母，将该字母和字母出现的次数拼接成一个新字符串，返回新字符串
+          比如：传入:"WelcomeToQianfeng"，返回:”e3”;   
+          （要求大家编写成函数）
+      */
+//function maxChar(str){
+//	//创建一个数组
+//	var arr = new Array();
+//	
+//	//判断字符出现的次数
+//	 for(var i=0;i<str.length;i++){
+//		  var count =0;
+//		  
+//		 for(var j=1;j<=i+1;j++){
+//			 
+//			 if(str[i]==str[j-1]){
+//				 count++;
+//			 }
+//		 }
+//		 //arr.push(str[i]+count); // W1,e1,l1,c1,o1,m1,e2,T1,o2,Q1,i1,a1,n1,f1,e3,n2,a2,a3,g1
+//		arr.push(count);  //1,1,1,1,1,1,2,1,2,1,1,1,1,1,3,2,2,3,1
+//	 }
+//	 //alert(arr);
+
+//	 //找出出现最多次数的字母
+//	 var index=0;//出现最大次数的下标
+//	 var max = arr[0]; //数组的最大值
+//	 for(var k =0;k<arr.length;k++){
+//		 if(max<=arr[k]){
+//			 max = arr[k];
+//			 index = k;
+//		 }
+//	 }
+
+//	 //当最大值重复的时候，保存每个最大值
+//	 var resultArr = new Array();
+//	 for(var m=0;m<arr.length;m++){
+//		 if(max==arr[m]){
+//			 resultArr.push(str[m]+max);
+//		 }
+//	 }
+//	 return resultArr;
+//}
+//
+//alert(maxChar("WelcomeToQianfenaag"));
+          
+          
+	   /*
+		 2.将字符中单词用空格隔开
+         已知传入的字符串中只有字母,每个单词的首字母大写，请将每个单词用空格隔开，只保留一个单词的首字母大写
+         比如： 传入:”HelloMyWorld”，返回:”Hello my world”
+         （要求大家编写成函数）
+		*/
+		function convertWord(str){
+			var arr = str.split("");
+			//alert(arr);//H,e,l,l,o,M,y,W,o,r,l,d
+			for(var i=1;i<arr.length;i++){
+				//把大写转换为小写
+				if(arr[i]>="A"&&arr[i]<="Z"){
+					arr[i]= " "+arr[i].toLowerCase();
+				}
+				
+			}
+			//alert(arr);
+			return arr.join("");
+		}
+		
+		alert(convertWord("ZhangSan"));
+		
+		
+	</script>
+	<body>
+		
+		
+		
+		
+		
+	</body>
+</html>

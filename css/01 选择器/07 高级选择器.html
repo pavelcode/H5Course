@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+		<title>CSS的高级选择器</title>
+		<!--
+        	描述：
+        	     后代选择器
+        	     交集选择器
+        	     并集选择器
+        	     通配符
+        -->
+        <style>
+        /* 只是让p下的strong起作用 */
+        p strong{color:red}
+        /* 不一定是儿子，是所有后代 */
+		ol strong{color: blue;}
+		/* 后代选择器和标签选择器 */
+		#mid span{color: bisque;}
+		
+		p#pid{color:green;}
+		
+		h1,div{color: pink;}
+		
+		/*通配符选择器,*代表所有元素,但是这个效率不高,标签越多,效率越低,所以一般不用这个选择器*/
+		*{
+			font-size: 20px;
+		}
+        </style>
+</head>
+<body>
+	  <!--后代选择器-->
+		<strong>郭德纲说：</strong>
+		<p>中秋节是韩国人发明的</p>
+		<p>韩国人是<strong>中国人</strong>发明的</p>
+		
+		
+		<p>我是中国人</p>
+		<ol>
+			<li>我为<strong>中华崛起</strong>而读书</li>
+			<li>额，编程好难啊</li>
+		</ol>
+		
+		
+		<!--后代选择器和标签选择器-->
+		<p id="mid">你好吗，我的<span>朋友</span></p>
+		
+		
+		<!--交集选择器，一般以标签名开头-->
+		<p>我是河南人我很骄傲</p>
+		<p id="pid">我是河南人我很骄傲</p>
+		
+		
+		<!--并集选择器-->
+		<h1>交集的h1</h1>
+        <div>交集的div</div>
+     
+</body>
+</html>

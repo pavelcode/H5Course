@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>节点的属性操作</title>
+		<script src="../jquery-3.1.0.js"></script>
+		<script>
+		  
+			$(function(){
+				//document.write($("div").attr("id")); //获取属性值
+				//$("div").attr("title","mytitle"); //设置属性
+//				$("div").attr({     //设置多个属性，class不建议用这种方式设置，后面有更好的方法
+//					"title":"mytitle",
+//					"class":"myclass"
+//				});
+				
+//				$("div").attr("id",function(index){  //index是标签的索引值
+//					return "我id是"+index;   
+//				});
+				
+//				$("div").attr("id",function(index,value){ //value是原来的值
+//					return "原来的值是"+value+"，新的id是"+index;
+//				});
+                 //这里不建议添加id
+                
+                $("div").removeAttr("id");
+				
+			});
+			
+			
+		</script>
+	</head>
+	<body>
+		  <div id="mydiv">我是div</div>
+	</body>
+</html>

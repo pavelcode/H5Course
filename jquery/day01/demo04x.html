@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>库的冲突</title>
+		<script src="../utils.js"></script>
+		<script src="../../jquery-ui/jquery-3.1.0.js"></script>
+		
+	
+		<script>
+			onload = function(){
+				//出现库冲突
+//				alert($("mydiv")); //111[object HTMLDivElement] 我的函数返回
+				                   //[object Object]   jQuery返回
+				                   
+				//如果先加载jquery，再加载其他库 
+//				var $$ = jQuery;   //重新定义jquery的前缀
+//				alert($("mydiv")); //加载自己的库的函数
+				
+				//加载其他库，在加载jquery
+//				 jQuery.noConflict();//讲jQuery失效 英文不冲突
+//				 var $$ = jQuery;
+//				 alert($("mydiv"));        
+				                  
+			}
+			
+			
+		</script>
+	</head>
+	<body>
+		<div id="mydiv"></div>
+	</body>
+</html>

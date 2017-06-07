@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>模拟操作</title>
+		<script src="../jquery-3.1.0.js"></script>
+		<script>
+			//模拟操作：当界面上有一个按钮，用户点击按钮，就是真实操作。当界面中的按钮，我们模拟用户的点击，这就是模拟操作
+			$(function(){
+//				$("button").click(function(){
+//				alert("aaa");
+//			    });
+//			    $("button").trigger("click");
+               //两个方法合并
+//             $("button").click(function(){
+//             	alert("aaa");
+//             }).trigger("click");		
+                //简写方案
+//              $("button").click(function(){
+//              	  alert("aaa");
+//              }).click();
+
+
+                //传递数据
+//              $("button").click(function(e,data1,data2){
+//              	   alert(data1+"---"+data2);
+//              }).trigger("click",["aaa","bbb"]);
+                //当要传递一个数据的时候，可以使用中括号。但是，有多条的话，不能省略中括号
+                
+                //执行自定义事件
+//              $("button").bind("myEvent",function(){
+//              	 alert("myEvent");
+//              }).trigger("myEvent");
+                //另一个模拟操作方法：triggerHandler,基本用法与trigger一样
+//              $("button").click(function(){
+//              	  alert("aaa");
+//              }).triggerHandler("click");
+
+                //不同之处1  submit提交数据 
+                //手动取消默认行为
+//              $("form").sumbit(function(e){
+//               	e.preventDefault();
+//              }).trigger("submit");
+                
+                //简写成
+                //$("form").trigger("submit"); trigger触发事件默认行为
+                
+                //$("form").triggerHandler("submit");triggerHandler不会触发默认行为
+                
+                //不同之处2  trigger会所有的对象绑定事件  triggerHandler只会给第一个
+//              $("button").click(function(){
+//              	  alert("111");
+//              }).trigger("click");  //三次
+                
+//               $("button").click(function(){
+//              	  alert("111");
+//              }).triggerHandler("click");  //一次
+
+                //不同之处2 trigger返回值是jQuery对象  triggerHandler当无返回值的时候，是undefined，否则是返回值
+//              alert($("button").click(function(){
+//              	      alert("aaa");
+//              }).trigger("click"));
+                //查看是否是jQuery对象，使用连缀
+//              $("button").click(function(){
+//              	      alert("aaa");
+//              }).trigger("click").css("color","red");
+
+//              alert($("button").click(function(){
+//              	      alert("aaa");
+//              }).triggerHandler("click"));//undefined
+                
+//                alert($("button").click(function(){
+//              	      return 123;
+//              }).triggerHandler("click"));//undefined
+                
+                
+               
+                
+
+
+		});
+		</script>
+	</head>
+	<body>
+		<button>按钮</button>
+		<!--<button>按钮</button>
+		<button>按钮</button>-->
+		<form action="123.html">
+			<input type="submit" value="提交" />
+		</form>
+	</body>
+</html>

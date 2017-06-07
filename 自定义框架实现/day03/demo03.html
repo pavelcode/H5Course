@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>选择框架---class选择器</title>
+		<style type="text/css">
+	span{
+		height:300px;
+		width:300px;
+		background:red;
+		margin: 10px;
+	}
+</style>
+	</head>
+	<body>
+		<div id='mydiv'>
+			<span class='span'>点击我变成蓝色</span>
+			<span class='span'>点击我变成蓝色</span>
+			<span class='span'>点击我变成蓝色</span>
+			<span class='span'>点击我变成蓝色</span>
+		</div>
+	</body>
+</html>
+<script src='../myframe.js'></script>
+<script type="text/javascript">
+//原始方式
+// function $class(className) {
+//	return document.getElementsByClassName(className);
+// }
+		    
+// var spans =$class('span',"mydiv");
+// for(var i=0;i<spans.length;i++) {
+//    spans[i].onclick = function(){
+//		  this.style.background='blue';
+//	   }
+//  }
+						
+//缩小搜索范围
+// function $class(className) {
+//		//首先所得所有节点对象
+//		//遍历集合--依次判断是否等于className
+//		var i=0,len,arr=[];
+//		//获得所有的节点对象
+//		var all = document.getElementsByTagName('*');
+//		for(i;len=all.length,i<len;i++) {
+//			 if(dom[i].className &&all[i].className == className) {
+//				 //把符合的className放入集合
+//				 arr.push(all[i]);
+//			}
+//		}
+//		  return arr;
+//	}
+	    
+
+//兼容实现  解决IE8之类不支持getElementsByClassName
+//  function $class(className) {
+//		if(document.getElementsByClassName){
+//			return document.getElementsByClassName(className);
+//		}else{
+//			var arr=[];
+//			var dom = document.getElementsByTagName('*');
+//			for(var i,len=dom.length;i<len;i++) {
+//				//indexof
+//              if(dom[i].className && dom[i].className ==className ) {
+//					// array放在一个集合里面
+//					arr.push(dom[i]);
+//				}
+//			}
+//			return arr;
+//		}
+//	}
+	
+//兼容+缩小范围
+//	function $class(className,context) {
+//      //如果浏览器支持
+//		context = document.getElementById(context);
+//		if(context.getElementsByClassName){
+//			return context.getElementsByClassName(className);
+//		}else{
+//			var arr=[];
+//			dom = context.getElementsByTagName('*');
+//          for(var i,len=dom.length;i<len;i++) {
+//              if(dom[i].className && dom[i].className ==className ) {
+//                  arr.push(dom[i]);
+//              }
+//          }
+//      }
+//		 return arr;
+//	} 
+
+
+//隔离法则，兼容+缩小范围
+//  function $class(className,context) {
+//      var dom = getDOM(context)
+//      var elements = getElements(className,dom);
+//      return elements;
+//     
+//      function getDOM(context){
+//          var dom;
+//          //如果传递过来的是字符串 ，则转化成元素对象
+//          if(typeof id == 'string'){
+//              dom = document.getElementById(context);
+//          }else{
+//              dom = document;
+//          }
+//          return dom;
+//      }
+//      
+//     function getElements(className,dom) {
+//         var elements;
+//         /*如果兼容getElementsByClassName*/
+//         if(dom.getElementsByClassName) {
+//             elements = dom.getElementsByClassName(className);
+//         }else{
+//             //如果浏览器不支持
+//             dom = dom.getElementsByTagName('*');
+//             for(var i,len=dom.length;i<len;i++) {
+//                 if(dom[i].className) {
+//                     elements.push(dom[i]);
+//                 }
+//             }
+//         }
+//         return elements;
+//     }
+//  }
+
+//最终版
+//  function $class(className,context){
+//      var elements;
+//      var dom;
+//      //如果传递过来的是字符串 ，则转化成元素对象
+//      if(typeof context == 'string'){
+//          context = document.getElementById(context);
+//      }
+//      //如果兼容getElementsByClassName
+//      if(context.getElementsByClassName){
+//          return context.getElementsByClassName(className);
+//      }else{
+//          //如果浏览器不支持
+//          dom = context.getElementsByTagName('*');
+//          for(var i,len=dom.length;i<len;i++) {
+//              if(dom[i].className && dom[i].className == className ) {
+//                  elements.push(dom[i]);
+//              }
+//          }
+//      }
+//      return elements;
+//  }
+    
+    
+//使用框架
+     var spans =$$.$class('span','mydiv');
+    for(var i=0;i<spans.length;i++) {
+        spans[i].onclick = function(){
+            this.style.background='blue';
+        }
+    }
+
+</script>

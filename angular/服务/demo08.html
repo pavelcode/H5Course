@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>服务</title>
+		<script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+	</head>
+	<body>
+		<!--
+		  服务是专门来定义业务逻辑
+          在angular中，服务是函数或对象。angular自定义30多个服务。
+        -->
+        
+        
+        <!--
+         $location 服务，它可以返回当前页面的 URL 地址。
+        -->
+        <!--<div ng-app="myApp" ng-controller="myCtrl">
+        	 {{myurl}}
+        </div>
+      -->
+        
+        <!--
+         为什么要使用angular服务？
+         当我们使用$location服务，其实也可以直接使用window.location对象的window.location.href来获得当前的url地址。
+         最主要的两点，是因为$location服务，可以在Angular生命周期中与Angular整合，可以做到与H5无缝对接整合。
+        -->
+        <!--
+        $http服务
+        -->
+        <!--<div ng-app="myApp" ng-controller="myCtrl">
+        	  {{mydata}}
+        </div>-->
+        
+        <!--
+         $timeout服务
+        -->
+        <!--<div ng-app="myApp" ng-controller="myCtrl">
+        	  {{timeout}}
+        </div>-->
+        
+        <!--
+         $interval服务
+        -->
+        <!--<div ng-app="myApp" ng-controller="myCtrl">
+        	  {{time}}
+        </div>-->
+       
+       <!--
+       自定义服务
+       -->
+        <!--<div ng-app="myApp" ng-controller="myCtrl">
+        	  {{myvalue}}
+        </div>-->
+      
+      <!--
+      	过滤器中使用服务
+      	不要用ng-controller
+      -->
+      <!--<div ng-app="myApp">
+        	  {{10|myfilter}}
+      </div>-->
+      
+      <!--
+      	数组中使用过滤服务
+      -->
+      
+      <!--<div ng-app="myApp" ng-controller="myCtrl">
+        	 <ul>
+        	 	<li ng-repeat="x in arr">{{x|myfilter}}</li>
+        	 </ul>
+      </div>-->
+      
+     <script>
+     	angular.module("myApp",[]).controller("myCtrl",function($scope,$location,$http,$timeout,$interval){ //$location需要自己定义
+	  //$location服务，获得本地地址
+//	   $scope.myurl = $location.absUrl();  
+	  
+	  //$http服务
+//	  $http.get("hello.html").success(function(response){
+//	    if(response.success){
+//	  	  $scope.mydata = response.data;
+//       }
+//	  });
+     //使用post提交参数
+     $scope.name="";
+     $http.post("url",{name:$scope.name});
+      
+
+     //$timeout服务
+//   $timeout(function(){
+//   	 $scope.timeout = "时间到了";
+//   },2000);
+
+     //$interval服务
+//   $interval(function(){
+//   	 $scope.time = new Date().toLocaleTimeString();
+//   },1000);
+
+});
+
+//自定义服务 平方
+var app = angular.module("myApp",[]);
+app.service("myservice",function(){
+     	 this.square = function(num){
+     	 	return num*num;
+     	 }
+});
+//使用自定义服务
+//app.controller("myCtrl",function($scope,myservice){
+//	$scope.myvalue = myservice.square(20);
+//});
+
+//过滤器中使用服务
+app.filter("myfilter",["myservice",function(myservice){
+	return function(x){
+		return myservice.square(x);
+	}
+}]);
+
+//数组中使用过滤服务
+app.controller("myCtrl",function($scope){
+	$scope.arr = [10,20,30]
+});
+     
+     </script>     
+        
+        
+        
+	</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>路由</title>
+	</head>
+	<body ng-app="myApp">
+		<!--
+        路由允许我们通过不同的 URL 访问不同的内容，通过(# + 标记)实现
+        比如
+             http://baidu.com/#/first
+             http://baidu.com/#/second
+             http://baidu.com/#/third
+        -->
+        
+        <!--
+        	载入了实现路由的 js 文件：angular-route.js。
+        	使用 ngView 指令。该指令内的HTML内容会根据路由的变化而变化。
+        	$routeProvider 用来定义路由规则。
+        -->
+        
+        <script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>
+        <script src="http://apps.bdimg.com/libs/angular-route/1.3.13/angular-route.js"></script>
+       
+        <ul>
+            <li><a href="#/">首页</a></li>
+            <li><a href="#/computers">电脑</a></li>
+            <li><a href="#/printers">打印机</a></li>
+            <li><a href="#/blabla">其他</a></li>
+        </ul>
+         <div ng-view></div>
+       
+         <script>
+             
+           var app =  angular.module('myApp',['ngRoute']);
+            app.controller("computersCtrl",["$scope",function($scope){
+           	   $scope.title="电脑页面111";
+           }]);
+           app.controller("otherCtrl",["$scope",function($scope){
+           	   $scope.title="其他页面111";
+           }]);
+           //使用路由提供者，使用id找到
+           app.config(['$routeProvider', function($routeProvider){
+                $routeProvider
+                .when('/computers',{controller:"computersCtrl",templateUrl:"a_tmpl"})
+                .when('/other',{controller:"otherCtrl",templateUrl:"a_tmpl"})
+                .otherwise({redirectTo:'/'});
+            }]);
+        </script>
+        <!--type="text/ng-template" 不会被识别，不会显示 -->
+        <script id="a_tmpl" type="text/ng-template">
+          	{{title}}
+        </script>
+
+         
+	</body>
+</html>

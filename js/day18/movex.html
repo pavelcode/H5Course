@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>缓冲运动</title>
+		<style type="text/css">
+			*{
+				padding: 0; margin: 0;
+			}
+			html,body{
+				width: 100%; height: 100%;
+			}
+		</style>
+		<script type="text/javascript" src="move.js" ></script>
+		<script type="text/javascript">
+			var speedX = 0;
+			window.onload = function() {
+				var ball = document.getElementById("ball");
+				animate(ball, {left:500});
+			}
+		</script>
+	</head>
+	<body>
+		<div id="ball" style="position: absolute; width: 50px; height: 50px; background: red;"></div>
+	</body>
+</html>

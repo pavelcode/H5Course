@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>阻断链接的默认行为</title>
+		<script>
+			window.onload=function(){
+				  var a = document.getElementsByTagName("a")[0];
+				     a.onclick = function(evt){
+				     	var e = evt||window.event;
+				     	//alert(e.preventDefault); //FireFox支持
+				     	//e.preventDefault();
+				     	//e.returnValue=false;//IE支持 需要重启IE
+				     	e.preventDefault?e.preventDefault():e.returnValue= false;
+				     }
+			}
+		</script>
+	</head>
+	<body>
+		<a id="link" href="http://www.baidu.com">百度</a>
+	</body>
+</html>

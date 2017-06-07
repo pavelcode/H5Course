@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    <!--
+        	作者：code01@yeah.net
+        	时间：2016-06-08
+        	描述：input的新增类型
+        url类型、email类型、date类型、time类型、datetime类型和datetime-local类型
+        -->
+        <form action="#">
+        	  <input type="url" value="http://www.baidu.com" />
+        	  <input type="email" value="psd@163.com" />
+        	  <input type="submit" value="url提交" />
+        	  <input type="date" />
+        	  <input type="time" />
+        </form>
+        
+        <!--
+        	作者：code01@yeah.net
+        	时间：2016-06-08
+        	描述：input的新增类型
+        	 month类型、week类型、number类型、range类型、search类型、tel类型和color类型
+        -->
+        <input type="month" />
+        <input type="number" value="10" min="0" max="20" step="2" />
+        
+        <!--
+        	作者：code01@yeah.net
+        	时间：2016-06-08
+        	描述：number完成加法
+        -->
+        <script type="application/javascript">
+        	   function jiafa(){
+        	   	//alert("aaa");
+        	   	var n1 = document.getElementById("num1").valueAsNumber;
+             alert(n1);
+        	   	var n2 = document.getElementById("num2").valueAsNumber;
+        	   	document.getElementById("result").value = n1+n2;
+        	   	
+        	   	
+        	   }
+        </script>
+        <form>
+        	  <input type="number" id="num1" />
+        	  <input type="number" id="num2" />
+        	  <input type="text" id="result"  readonly="readonly"/>
+        	  <input type="button" value="计算" onclick="jiafa()" />
+        </form>
+        
+        
+        <input type="range" value="10" min="0" max="100" step="5" />
+        
+        <input type="search" />
+        <input type="tel" />
+        <!--
+        	作者：code01@yeah.net
+        	时间：2016-06-08
+        	描述：取色器设置当前背景色
+        -->
+        <input type="color" onchange="document.body.style.backgroundColor=document.getElementById('currentcolor').textContent= this.value" />
+        <span id="currentcolor"></span>
+        
+        <!--
+        	作者：code01@yeah.net
+        	时间：2016-06-08
+        	描述：滑动条显示值 output标签
+        -->
+        <script>
+        	 function myChange(){
+        	 	var rangevalue = document.getElementById("myrange").value;
+        	 	document.getElementById("myoutput").value = rangevalue;
+        	 }
+        </script>
+        <input type="range" id="myrange" value="0" min="0" max="100" step="3" onchange="myChange()"/>
+        <output id="myoutput"></output>
+        
+               
+    </body>
+</html>

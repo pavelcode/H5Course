@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>js实现qq列表展开</title>
+		<style>
+			*{
+				margin:0;
+				padding:0;
+			}
+			li{
+				list-style: none;
+			}
+			.ul1{
+				width:240px;
+				border:1px solid #333;
+				margin:0 auto;
+			}
+			.ul1 .listLi{
+				
+			}
+			.ul1 h2{
+				line-height:30px;
+				text-indent: 20px;
+				background:#CCCCCC;
+				border-bottom: 1px solid #0000FF;
+			}
+			.ul1 ul{
+				display: none;
+			}
+			.ul1 ul li{
+				line-height: 24px;
+				border-bottom: 1px solid red;
+				text-indent: 24px;
+			}
+			.ul1 ul li:hover{
+				background:red;
+			}
+		</style>
+	</head>
+	<body>			
+		<ul class="ul1" id="ul1">
+			<li class="listLi">
+				<h2>我的好友</h2>
+				<ul>
+					<li>好友1</li>
+					<li>好友2</li>
+					<li>好友3</li>
+				</ul>
+			</li>
+			<li class="listLi">
+				<h2>企业好友</h2>
+				<ul>
+					<li>企业好友1</li>
+					<li>企业好友2</li>
+					<li>企业好友3</li>
+					<li>企业好友4</li>
+				</ul>
+			</li>
+			<li class="listLi">
+				<h2>黑名单</h2>
+				<ul>
+					<li>黑名单1</li>
+					<li>黑名单2</li>
+					<li>黑名单3</li>
+					<li>黑名单4</li>
+					<li>黑名单5</li>
+				</ul>
+			</li>
+		</ul>		
+		<script>
+			window.onload=function(){
+				var oUl=document.getElementById("ul1");
+				var aH2=oUl.getElementsByTagName("h2");//获取每个分组名称组合
+				var aUl=oUl.getElementsByTagName("ul");//获取每个分组详细内容ul组合
+				var detailLi=null;
+				var arrLi=[];
+				//这个循环实现点击各个分组名称的效果
+				for(var i=0;i<aH2.length;i++){
+					aH2[i].index=i;
+					aH2[i].active=true;					
+					aH2[i].onclick=function(){
+						if(this.active){
+							aUl[this.index].style.display="block";
+							this.active=!this.active;
+						}else{
+							aUl[this.index].style.display="none";
+							this.active=!this.active;
+						}
+						//每次点击分组，好友名称去掉背景色
+						for(var i=0;i<arrLi.length;i++){
+							arrLi[i].style.background="";
+						}
+					}
+				}			
+				for(var i=0;i<aUl.length;i++){
+					//获取每个名称分组下的，具体li的组合 ，此处3个li的组合。
+					detailLi=aUl[i].getElementsByTagName("li");
+					for(var j=0;j<detailLi.length;j++){
+						//把各个分组下的li都塞进数组，便于操作。
+						arrLi.push(detailLi[j]);
+					}
+				}
+				console.log(arrLi);
+				//循环每个具体的li,绑定事件，控制背景色。
+				for(var i=0;i<arrLi.length;i++){
+					arrLi[i].onclick=function(){
+						for(var i=0;i<arrLi.length;i++){
+							arrLi[i].style.background="";
+						}
+						this.style.background="red";
+					}
+				}
+			}
+		</script>
+	</body>
+</html>

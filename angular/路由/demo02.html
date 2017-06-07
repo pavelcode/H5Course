@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>获得路由参数</title>
+	</head>
+	<body ng-app="myApp">    
+        <script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>
+        <script src="http://apps.bdimg.com/libs/angular-route/1.3.13/angular-route.js"></script>
+       
+        <ul>
+            <li><a href="#/">首页</a></li>
+            <li><a href="#/computers/lisi">电脑</a></li>
+        </ul>
+         <div ng-view></div>
+     
+         <script>
+           var app =  angular.module('myApp',['ngRoute']);
+            app.controller("computersCtrl",["$scope","$routeParams",function($scope,$routeParams){
+           	   $scope.title = $routeParams.name+",电脑页面111";
+           }]);
+           app.config(['$routeProvider', function($routeProvider){
+                $routeProvider
+                //获得参数 :代表占位符  ?代表后面可以忽略
+                .when('/computers/:name',{controller:"computersCtrl",templateUrl:"a_tmpl"});
+            }]);
+        </script>
+        <!--type="text/ng-template" 不会被识别，不会显示 -->
+        <script id="a_tmpl" type="text/ng-template">
+          	<h1>{{title}}</h1>
+        </script>
+        
+        
+        
+        
+        
+         
+	</body>
+</html>

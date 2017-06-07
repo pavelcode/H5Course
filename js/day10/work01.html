@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>动态添加列表-previousSibling-createElement-appendChild</title>
+		<style type="text/css">
+		*{font-size: 14px; padding:0; margin:0;}
+		.main{
+			position: relative;
+			margin: 20px auto;
+			border: 1px solid steelblue;
+			width: 430px;
+			height: 400px;
+		}
+		.msgInput{
+			display: block;
+			width: 406px;
+			height: 60px;
+			margin: 10px auto;
+			
+		}
+		.sendbtn{
+			position: absolute;
+			width: 100px;
+			height: 29px;
+			bottom: 5px;
+			right: 10px;
+		}
+		.content{
+			list-style: none;
+			width: 410px;
+			height: 280px;
+			margin: 5px auto;
+			border: 1px dotted #D1D3D6;
+			overflow-y: scroll;
+		}
+		.msgContent{
+			width:auto;
+			max-width: 250px;
+			height: auto;
+			word-break: break-all;
+			margin: 5px;
+			padding: 3px;
+			border-radius: 5px;
+		}
+		
+		.content .left{
+			float: left;
+			text-align: left;
+			background-color: lightgrey;
+		}
+		.content .right{
+			float: right;
+			text-align: right;
+			background-color: yellowgreen;
+		}		
+		</style>
+    <script src="work01.js"></script>
+	</head>
+	<body>
+		<div id="regForm">
+	<p>姓名：<input type="text" /></p>
+	<p>性别： <span>男</span><input type="radio" name="sex" /><span>女</span><input type="radio" name="sex"/><span>不详</span><input type="radio" name="sex"/></p>
+	
+	<p>年龄：<input type="text" /></p>
+	<p>爱好：<input type="text" /></p>
+	<p>学历：<select>
+		<option value="-1">请选择</option>
+		<option value="0">小学</option>
+		<option value="1">初中</option>
+		<option value="2">高中</option>
+		<option value="3">大专</option>
+		<option value="4">本科</option>
+		<option value="5">硕士</option>
+		<option value="6">博士</option>
+		<option value="7">博士后</option>
+		<option value="8">烈士</option>
+	</select></p>
+	<p>专业：<input type="text" /></p>
+	<p>简介：<textarea></textarea></p>
+	<p><button>添加</button></p>
+</div>
+	<table id="data" border="1">
+		<tr>
+			<th>姓名</th>
+			<th>性别</th>
+			<th>年龄</th>
+			<th>爱好</th>
+			<th>学历</th>
+			<th>专业</th>
+			<th>简介</th>
+		</tr>
+	</table>
+		
+	</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	 /* 子类选择器：必须是儿子，不能是孙子 */
+     div>p{
+     	color:red;
+     }
+     /* 后代选择器：可以是儿子，也可以是孙子 */
+     div p{
+     	color:blue;
+     }
+     /* 序选择器 */
+     ul li:first-child{
+     	color:red;
+     }
+     ul li:last-child{
+     	color:green;
+     }
+     ul li:nth-child(3){
+     	color:yellow
+     }
+     ul li:nth-child(2n+2){
+     	color:blue;
+     }
+     /* 因为游览器更新需要时间，所以如果要兼容IE6,7，就需要我们使用类选择器 */
+     ul li.first{
+     	color:pink;
+     }
+     ul li.last{
+     	color:pink;
+     }
+
+	</style>
+</head>
+<body>
+
+  <div>
+  	 <p>我的颜色</p>
+  </div>
+
+
+   <div>
+     <ul>
+     	<li><p>我的颜色</p></li>
+     </ul>
+  </div>
+  
+
+  <ul>
+  	<li class="first">我是内容</li>
+  	<li>我是内容</li>
+  	<li>我是内容</li>
+  	<li>我是内容</li>
+  	<li>我是内容</li>
+  	<li class="last">我是内容</li>
+  </ul>
+
+	
+</body>
+</html>

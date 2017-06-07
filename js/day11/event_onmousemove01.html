@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>事件获得鼠标坐标</title>
+		<script>
+			//onmousemove获得鼠标坐标或屏幕坐标
+			window.onload = function(){
+			    var div = document.getElementById("mydiv");
+				document.onmousemove = function(e){
+					div.innerHTML= "鼠标的x轴的位置："+e.clientX+";鼠标的y轴的位置是"+e.clientY;
+				}
+			
+			}
+		</script>
+		
+	</head>
+	<body>
+		<div id="mydiv"></div>
+	</body>
+</html>

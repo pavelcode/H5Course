@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css">
+           /*文字属性*/
+		#myname{text-indent: 20px;}    /*文字缩进*/
+		#myage{text-align: center;}  /*对齐方式*/
+		#mysex{letter-spacing:30px;}
+		#mylife{text-decoration: overline;}
+		
+		/*字体属性*/
+		/* 并不是所有的字体都能使用，要看用户的电脑里面是否安装文字
+		如果没有华文彩云字体，那么就会变成宋体
+		一般页面中，只使用几种字体。中文字体：微软雅黑，宋体,黑体
+		英文字体："Arial","Times New Roman"
+		设定多个字体，使用逗号隔开，表示备选字体
+		先设定英文字体，后面设定中文字体 
+        每种中文字体都对应的英文名称 
+         微软雅黑 Microsoft YaHei
+         宋体     Simsun
+
+		*/
+
+		#mytext{
+		font-family:"Arial","Times New Roman","微软雅黑","宋体";
+		font-size: 30px;
+		/* 	font-style: italic;
+		font-weight: bold;    */ 
+		}
+
+        </style>
+    </head>
+    <body>
+
+	   <p id="myname">我的名字</p>
+		<p id="myage">我的年龄</p>
+		<p id="mysex">我的性别</p>
+		<p id="mylife">我的生活</p>
+      <p id="mytext">abc我的字体</p>
+    </body>
+</html>

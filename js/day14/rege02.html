@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>表单验证</title>
+		<script>
+		onload = function(){
+			var btn = document.getElementById("sub");
+			btn.onclick = function(){
+				//只能包含数字、字母、下划线,数字不能开头，长度在6-20
+				//ascii
+				var username = document.getElementById("username").value;
+				alert(/^[a-zA-Z_]\w{5,19}$/.test(username))
+			}
+		}
+	</script>
+	</head>
+	<body>
+		<div>
+			<input type="text" name="username" id="username"/>
+			<button id="sub">提交</button>
+		</div>
+	</body>
+</html>

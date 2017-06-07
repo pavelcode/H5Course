@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>绑定数据指令</title>
+		<script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+		<style>
+			input.ng-invalid{
+				background-color: red;
+			}
+		</style>	
+	</head>
+	<body>
+         <!--
+         ng-model 指令把元素值（比如输入域的值）绑定到应用程序。
+         ng-model 指令用于绑定应用程序数据到 HTML (input, select, textarea)的值。
+          
+	    为应用程序数据提供类型验证（number、email、required）。
+	    为应用程序数据提供状态（invalid、dirty、touched、error）。
+	    为 HTML 元素提供 CSS 类，绑定 HTML 元素到 HTML 表单。
+        -->
+        
+        <!--
+        ng-model 实现双向绑定
+        -->
+		<!--<div ng-app="">
+			<input type="text" ng-model="name" /><br/>
+			{{name}}
+		</div>-->
+        
+        <!--<div ng-app="" ng-init="price=5;count=3">
+        	  <input type="text" ng-model="price"/>
+        	  <input type="text" ng-model="count" />
+        	  <div ng-bind="price*count"></div>
+        </div>-->
+        
+        <!--
+        验证用户输入
+         为应用程序数据提供类型验证（number、email、required）。
+          注：ng-model必须写
+        -->
+        <!--<form ng-app="" name="myform">
+        	<input type="email" name="myemail" ng-model="text" required/>
+        	<span ng-show="myform.myemail.$error.email">笨蛋，写错了</span>
+        </form>-->
+        
+        
+        <!--
+        应用状态
+        ng-model 指令可以为应用数据提供状态值(invalid, dirty, touched, error):
+        -->
+        <!--<form ng-app="" name="myform" ng-init="myemail='sdsds@163.com'">
+        	<input type="email" name="myemail" ng-model="myemail" required/>
+        	<p>{{myform.myemail.$valid}}用户输入合法为true</p>
+        	<p>{{myform.myemail.$dirty}} 修改内容为true</p>
+        	<p>{{myform.myemail.$touched}} 触屏点击为true</p>
+        </form>-->
+        
+        <!--
+        ng-model 指令基于它们的状态为 HTML 元素提供了 CSS 类
+        
+	    ng-empty
+	    ng-not-empty
+	    ng-touched
+	    ng-untouched
+	    ng-valid
+	    ng-invalid
+	    ng-dirty
+	    ng-pending
+	    ng-pristine
+	    
+	    需要验证的数据输入框背景为红色
+	    <style>
+			input.ng-invalid{
+				background-color: red;
+			}
+		</style>	
+        -->
+        
+        <form ng-app="" name="myform">
+        	  <input type="text" ng-model="text" required/>
+        </form>
+        
+        
+        
+	</body>
+</html>

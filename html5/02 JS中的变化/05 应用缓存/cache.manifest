@@ -1,0 +1,9 @@
+CACHE MANIFEST
+#version 1.0.0
+
+#缓存能够访问的文件
+CACHE:
+cache.html
+
+#网络能够访问的文件
+NETWORK:

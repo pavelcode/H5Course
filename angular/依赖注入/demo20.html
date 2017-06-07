@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>依赖注入</title>
+		<script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+	</head>
+	<body ng-app="myApp" ng-controller="myCtrl">
+		<!--
+        依赖注入（Dependency Injection，简称DI）是一种软件设计模式。
+        在现实生活中，如果有两个人来完成一件事，而且必须是一个人完成，另外一个人需要等待第一个人完成之后，才能进行。这就是依赖。
+        如果我开个商店，只在一家进货，这也就是依赖。那价格决定于供货方。为了减少这种依赖，我就需要多个供货商。
+        现在我的地位就发生了变化，供货商等着，我叫你供货，你再供货。你不送货，我也不依赖你，我找其他家。
+        这种就成为依赖注入。简而言之，没事你不要来找我，有事我会去找你。
+        
+        在软件开发中，存在一个依赖是个很正常的事。比如，写一个程序，需要一个Date对象，那我们一般需要自己手动来创建。
+        有了依赖注入，当我们需要使用的时候，系统会给我们自动创建，而不需要我们手动创建，我们只需要相关的配置，这就
+        减少了管理对象的成本。
+        -->
+        
+        <!--
+        AngularJS提供5个核心组件用来作为依赖注入
+        value
+		factory
+		service
+		provider
+		constant
+        -->
+        <!--
+        Value 是一个简单的 javascript 对象，用于向控制器传递值（配置阶段）
+        -->
+        <!--<script>
+        	   var app = angular.module("myApp",[]);
+        	   app.value("number",5);
+        	   app.controller("myCtrl",function(number){
+        	   	  alert(number);
+        	   });
+        </script>-->
+        
+        <!--
+        factory 是一个用于返回对象的函数。在 service 和 controller 需要时创建。
+        -->
+        <!--<script>
+        	 var app = angular.module("myApp",[]);
+        	 //提供了一个MathService
+        	 app.factory('MathService', function() {
+		   var factory = {};
+		   factory.multiply = function(a, b) {
+		      return a * b
+		   }
+		   return factory;
+		}); 
+		// 在 service 中注入 factory "MathService"
+		app.service('CalcService', function(MathService){
+		   this.square = function(a) {
+		      return MathService.multiply(a,a);
+		   }
+		});
+		
+		//向控制器传递值
+		 app.value("number",5);
+		// 在控制器调用服务
+		app.controller("myCtrl",function(number,CalcService){
+			alert(CalcService.square(number));
+		});
+        </script>-->
+        
+        <!--
+        AngularJS 中通过 provider 创建一个 service、factory等(配置阶段)。
+        Provider 中提供了一个 factory 方法 get()，它用于返回 value/service/factory。
+        -->
+        <!--<script>
+           var app = angular.module("myApp",[]);
+           //配置一个provide
+           app.config(function($provide) {
+		   $provide.provider('MathService', function() {
+		      this.$get = function() {
+		         var factory = {};  
+		         
+		         factory.multiply = function(a, b) {
+		            return a * b; 
+		         }
+		         return factory;
+		      };
+		   });
+		});
+		//向控制器传递值
+		 app.value("number1",5);
+		 app.value("number2",3);
+		// 在控制器调用provider
+		app.controller("myCtrl",function(number1,number2,MathService){
+			alert(MathService.multiply(number1,number2));
+		});
+        </script>-->
+        
+        <!--
+        	constant(常量)用来在配置阶段传递数值，注意这个常量在配置阶段是不可用的。
+        	value理解为变量，constant理解为常量
+        -->
+        <!--<script>
+        var app = angular.module("myApp",[]);
+        app.constant("configParam", "constant value");
+        app.controller("myCtrl",function(configParam){
+			alert(configParam);
+		});
+        </script>-->
+        
+        
+        
+	</body>
+</html>

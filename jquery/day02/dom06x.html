@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>设置CSS样式</title>
+		<script src="../jquery-3.1.0.js"></script>
+		<script>
+	$(document).ready(function(){
+	     $("#demo05_btn01").click(function(){
+		 // alert($("div").css("width")); //获取CSS样式
+		  //$("div").css("width","2000");  //设置CSS样式
+//------------------------------------------------------------------------------------------	  
+//		  var mycss = $("div").css(["width","height","background-color"]);  // 获取多个CSS样式
+//		  for(var i in mycss){
+//		  	document.write(i+"--"+mycss[i]+"<br/>");
+//		  }
+          //上面是js方式打印对象数组，下面是jQuery循环对象数组方式
+//         $.each(mycss,function(attr,value){  //第一个参数值对象数组，函数的一个参数是属性，第二个参数是属性值
+//         	  alert(attr+"--"+value);
+//         });
+
+          //使用each方法获得多个标签对象
+//         $("div").each(function(index,element){ //index为索引值，element为元素节点
+//         	 alert(index+"--"+element);
+//         });
+//------------------------------------------------------------------------------------------
+        //设置多个样式
+        //$("div").css("width","500").css("background-color","blue");   
+        //更加简便的方式
+//      $("div").css({
+//      	  "width":"500",
+//      	  "background-color":"blue"
+//      });
+       //使用函数设置样式
+//       $("div").css("width",function(index,value){ //索引和原始值
+//       	// alert(value);
+//       	return parseInt(value)-50; //因为里面包含px，所以需要转化成整数
+//       });
+     
+		  
+		 //$("div").addClass("blue");//添加样式类
+		 //$("div").removeClass("blue");
+		 //$("div").toggleClass("blue");  //默认样式与目标样式的切换
+		 
+		 //直接得到元素的宽度和高度
+//		 alert($("div").width());//得到的数字值
+//		 $("div").width(500); //会自动加px
+//		 $("div").width(function(index,value){
+//		 	 return value+200;
+//		 });
+//		 
+//		  alert($("div").height());//得到的数字值
+//		 $("div").height(500); //会自动加px
+//		 $("div").height(function(index,value){
+//		 	 return value+200;
+//		 });
+		 
+		
+		 
+	
+		 
+		 
+	});
+});
+		</script>
+		<style>
+			.blue
+			{
+			  background-color: #0000FF;	
+			}
+			div
+			{
+				width:200px;
+				height: 200px;
+				background-color: red;
+			}
+			
+		</style>
+	</head>
+	<body>
+		
+		<div></div>
+		<div></div>
+		<button type="button" id="demo05_btn01">操作CSS样式</button>
+		
+	</body>
+</html>

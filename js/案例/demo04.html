@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+<!--
+*{padding:0; margin:0}
+img{border:0; display:block;}
+BODY {
+PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-SIZE: 12px; PADDING-BOTTOM: 0px; MARGIN: 0px auto; COLOR: black; LINE-HEIGHT: 150%; PADDING-TOP: 10px; BACKGROUND-COLOR: white; TEXT-ALIGN: center
+}
+.dis_zz_net {
+DISPLAY: block
+}
+.undis_zz_net {
+DISPLAY: none
+}
+#cntr_zz {
+WIDTH: 302px
+}
+#zz {
+CLEAR: both; MARGIN-BOTTOM: 16px
+}
+#zz P {
+FLOAT: left; LINE-HEIGHT: 21px
+}
+#zz P.top_zz {
+FONT-WEIGHT: bold; WIDTH: 117px
+}
+#zz P.topzz {
+BACKGROUND: #dcdcdc; BORDER-LEFT: #f2f2f2 1px solid; WIDTH: 40px; CURSOR: pointer
+}
+#zz P.top_zz_1 {
+BACKGROUND: #c2130e; BORDER-LEFT: #f2f2f2 1px solid; WIDTH: 40px; COLOR: #fff
+}
+#zz #zz_tit {
+BORDER-BOTTOM: #c2130e 3px solid; HEIGHT: 21px
+}
+#zz #zz_cnt {
+PADDING-LEFT: 32px; BACKGROUND:no-repeat 12px 13px; LINE-HEIGHT: 26px; PADDING-TOP: 7px; HEIGHT: 260px; TEXT-ALIGN: left
+}
+#zz #zz_cnt A {
+COLOR: #666; TEXT-DECORATION: none
+}
+#zz #zz_cnt A:hover {
+COLOR: #c2130e; TEXT-DECORATION: underline
+}
+-->
+</style>
+
+	</head>
+	<body>
+		<DIV id="cntr_zz">
+<DIV id="zz">
+<DIV id="zz_tit">
+<P class="top_zz">新闻频道</P>
+<P class="topzz">国内</P>
+<P class="topzz">国际</P>
+<P class="topzz">社会</P>
+<P class="topzz">网评</P>
+</DIV>
+<DIV id="zz_cnt">
+<SPAN></SPAN><!--这行不能删掉-->    
+<SPAN>
+<A href="#" target="_blank">习近平普京向中俄执政党交往活动致贺信</A><BR>
+<A href="#" target="_blank">习近平就伦敦恐怖袭击事件向英国女王致慰问电</A><BR>
+<A href="#" target="_blank">李克强在澳即席演讲8个细节 午宴变思想盛宴 出访</A><BR>
+<A href="#" target="_blank">新华社用"罕见"为里皮点赞:他是国足的不二选择</A><BR>
+<div align="right"><A href="#" target="_blank">...more</A></div>
+</SPAN>
+<SPAN>
+
+<A href="#" target="_blank">习近平就伦敦恐怖袭击事件向英国女王致慰问电</A><BR>
+<A href="#" target="_blank">习近平普京向中俄执政党交往活动致贺信</A><BR>
+<A href="#" target="_blank">李克强在澳即席演讲8个细节 午宴变思想盛宴 出访</A><BR>
+<A href="#" target="_blank">新华社用"罕见"为里皮点赞:他是国足的不二选择</A><BR>
+<div align="right"><A href="#" target="_blank">...more</A></div>
+</SPAN>
+<SPAN>
+<A href="#" target="_blank">李克强在澳即席演讲8个细节 午宴变思想盛宴 出访</A><BR>
+<A href="#" target="_blank">习近平就伦敦恐怖袭击事件向英国女王致慰问电</A><BR>
+<A href="#" target="_blank">习近平普京向中俄执政党交往活动致贺信</A><BR>
+<A href="#" target="_blank">新华社用"罕见"为里皮点赞:他是国足的不二选择</A><BR>
+<div align="right"><A href="#" target="_blank">...more</A></div>
+</SPAN>
+<SPAN>
+<A href="#" target="_blank">新华社用"罕见"为里皮点赞:他是国足的不二选择</A><BR>
+<A href="#" target="_blank">李克强在澳即席演讲8个细节 午宴变思想盛宴 出访</A><BR>
+<A href="#" target="_blank">习近平就伦敦恐怖袭击事件向英国女王致慰问电</A><BR>
+<A href="#" target="_blank">习近平普京向中俄执政党交往活动致贺信</A><BR>
+
+<div align="right"><A href="#" target="_blank">...more</A></div>
+</SPAN>
+</DIV>
+<SCRIPT>
+var Tags = document.getElementById('zz_tit').getElementsByTagName('p');
+var TagsCnt = document.getElementById('zz_cnt').getElementsByTagName('span');
+var len = Tags.length;
+var flag = 1; //修改默认值
+for (i = 1; i < len; i++) {
+    Tags[i].value = i;
+    Tags[i].onmouseover = function() { change_zz(this.value) };
+    TagsCnt[i].className = 'undis_zz_net';
+}
+	Tags[flag].className = 'top_zz_1';
+	TagsCnt[flag].className = 'dis_zz_net';
+	function change_zz(v) {
+	    Tags[flag].className = 'topzz';
+	    TagsCnt[flag].className = 'undis_zz_net';
+	    flag = v;
+	    Tags[v].className = 'top_zz_1';
+	    TagsCnt[v].className = 'dis_zz_net';
+	}
+</SCRIPT>
+</DIV>
+</DIV>
+	</body>
+</html>

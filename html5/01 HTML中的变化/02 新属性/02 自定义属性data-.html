@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+      <ul id="users">
+    <li class="item" data-id="1" data-age="18" data-gender="true">
+      张三
+      <pre></pre>
+    </li>
+    <li class="item" data-id="2" data-age="18" data-gender="false">
+      李四
+      <pre></pre>
+    </li>
+    <li class="item" data-id="3" data-age="18" data-gender="true">
+      王二
+      <pre></pre>
+    </li>
+  </ul>
+  <script>
+    var ul = document.getElementById('users');
+
+    for (var i = 0; i < ul.children.length; i++) {
+      var li = ul.children[i];
+      // JS 添加data属性
+      li.setAttribute('data-name', li.innerText);
+      //这行的作用是？
+      //li.children[0].innerText = '';
+      //dataset能够获得所有data-开头的属性
+      for (var key in li.dataset) {
+        li.children[0].innerText += key + ':' + li.dataset[key] + '\n';
+      }
+    }
+  </script>
+    </body>
+</html>

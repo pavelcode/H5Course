@@ -1,0 +1,75 @@
+//定义变量
+//@blue:#5B83AD;  //结束必须有逗号
+//h1{
+// color:@blue;
+//}
+//#p1{
+// width: 1000px;
+// height: 20px;
+// background-color: @blue;
+//}
+
+//变量的运算
+//@lightblue:@blue+#111;
+//@lightblue:@blue*2;
+//#p2{
+// width: 1000px;
+// height: 20px;
+// background-color: @lightblue;
+//}
+
+//混合（Mixins） 一个CSS的类可以被其他类引用，从而简单实现继承关系。还可以像调用函数一样调用，传递参数
+//.borders{
+// border-top:1px solid #ff0000;
+// border-bottom: 1px dashed #00ff00;
+//}
+//添加参数
+//.border-corner(@radius:5px){
+//  border-radius: @radius;
+//  -moz-border-radius: @radius;
+//  -webkit-border-radius: @radius;
+//}
+//.p1{
+// .borders;
+// .border-corner;
+//  background-color: @blue;
+//}
+//.p2{
+// .borders;
+// .border-corner(10px);
+// background-color: @blue;
+//}
+
+//选择器嵌套
+//#footer{
+//  p{
+//    font-size:30px; 
+//    a{
+//      font-size:15px; 
+//      &:hover{  //使用伪类用&
+//        text-decoration: none;
+//      }
+//    } 
+//  }
+//}
+
+//使用import引入文件，引入文件的文件名前面有下划线，代表部分
+//@import url("_p.less");
+
+//使用LESS内置函数
+//lighten(#000,10%) 让一个颜色变亮10% 
+//#1a1a1a  十六进制的1a等于十进制的26，255的1/10,就是25.5，因为没有小数，四舍五入到26
+#p2{
+   background-color: #ff0000;
+}
+#p1{
+  background-color:lighten(#ff0000,20%);
+}
+//darken(#000,10%) 让一个颜色变暗10%
+#p3{
+   background-color:darken(#ff0000,20%);
+}
+
+.t1{
+    color:#010101+#010101
+}

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>导航条</title>
+	<style type="text/css">
+        *{
+        	margin: 0px;
+        	padding: 0px;
+        }
+        #div1{
+        	position: relative;
+            margin: 0 auto;
+            width: 500px;
+            height: 40px;
+        }
+
+
+        ul li{
+           width: 80px;
+           height: 40px;
+           text-align: center;
+           line-height: 40px;
+           float: left;
+           list-style: none;
+           border: 1px solid;
+        }
+        #slide{
+        	width: 80px;
+        	height: 3px;
+        	position: absolute;
+        	top: 43px;
+        	background-color: purple;
+        }
+	</style>
+</head>
+<body>
+	<div id="div1">
+		
+			<ul>
+				<li>导航栏1</li>
+				<li>导航栏2</li>
+				<li>导航栏3</li>
+				<li>导航栏4</li>
+				<li>导航栏5</li>
+				<li>导航栏6</li>
+			</ul>
+		<div id="slide"></div>
+	</div>
+</body>
+<script src="js/tween.js"></script>
+<script type="text/javascript">
+	var li = document.getElementsByTagName("li");
+
+	for(var i = 0; i < li.length; i++){
+		li[i].index = i;
+        li[i].onmouseover = function(){
+        	var t = 0;
+        	var b = slide.offsetLeft;
+        	var end = this.index*82;
+            var c = end - b;
+            var d = 20;
+        	var timer = setInterval(function(){
+                t++;
+                if(t >= d){
+                	clearInterval(timer);
+                	timer = null;
+                }
+                slide.style.left = Tween.Quad.easeOut(t,b,c,d) + "px";
+        	},30)
+        }
+	}
+</script>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>事件的冒泡行为和默认行为</title>
+		<script src="../jquery-3.1.0.js"></script>
+		<script>
+			   /*
+			     事件冒泡行为
+			     当页面中包含多个重写区域，当这些区域都添加相同的事件。
+			     当这个事件触发的时候，事件会从最小的区域往大的区域执行（冒泡）
+			    
+			    */
+			   $(function(){
+//			   	 $("div").bind("click",function(e){
+//			   	 	alert(e.currentTarget);
+//			   	 });
+//			   	 $("span").bind("click",function(e){
+//			   	 	e.stopPropagation();//事件冒泡的阻止
+//			   	 	alert(e.currentTarget);
+//			   	 });
+			   	
+//			   	$("a").click(function(e){
+//			   		e.preventDefault(); //阻止默认行为
+//			   	});
+			   	
+			   	//阻止默认提交
+//			   	$("button").click(function(e){
+//			   		 e.preventDefault();
+//			   	});
+			   	
+//			   	$("form").submit(function(e){
+//			   		e.preventDefault();
+//			   	});
+			   	//是否阻止阻止了默认行为
+			   	//是否阻止了冒泡行为
+//			   	 $("div").bind("click",function(e){
+//			   	 	alert(e.currentTarget);
+//			   	 });
+//			   	 $("span").bind("click",function(e){
+//			   	 	e.stopPropagation();//阻止事件冒泡行为
+//			   	 	alert(e.isPropagationStopped());//true 是否阻止了冒泡行为
+//			   	 });
+			   	 
+//			   	 $("form").submit(function(e){
+//			   		e.preventDefault();
+//                   alert(e.isDefaultPrevented());//true 是否阻止了默认行为
+//			   	});
+			   	
+			   	//阻止事件冒泡,并且阻止后续行为
+			   	$("div").bind("click",function(e){
+			   	 	alert(e.currentTarget);
+			   	 });
+			   	 $("span").bind("click",function(e){
+			   	 	alert(e.currentTarget);
+			   	 	e.stopImmediatePropagation();//阻止事件冒泡,并且阻止后续行为
+			   	 	alert(e.isImmediatePropagationStopped());
+			
+			   	 });
+			   	
+			   	
+			   });
+			   
+			   
+			   
+			   
+			   
+			
+		</script>
+	</head>
+   <body>
+   <form action="123.html">
+   <div style="width: 200px;height: 200px;background: red;display: block;">
+   	   <span style="width: 100px;height: 100px;background: green;display: block;"></span>  	
+   </div>
+
+  <a href="http://www.baidu.com">百度</a>
+   <button>提交</button>
+</form>
+
+	</body>
+</html>
+

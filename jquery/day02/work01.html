@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>实现增删改查</title>
+    <style>
+        td,th{padding-left: 20px;padding-right: 20px;}
+        .imgl{position: absolute;}
+    </style>
+</head>
+<body>
+姓名：<input type="text" name="user" >
+书籍名称：<input type="text" name="book" >
+<input type="button"  value="添加" name="btn">
+<input type="text"id="ss"/><input type="button"value="搜索"id="dj"/>
+<table border="1" cellspacing="0">
+    <tr>
+        <th><input type="checkbox" name="qx">全选</th>
+        <th>序号</th>
+        <th>读者</th>
+        <th>书籍名称</th>
+        <th>封面</th>
+        <th>购买时间</th>
+        <th>操作</th>
+    </tr>
+    <tr>
+        <td colspan="7"><input type="button" name="delX" value="选中删除"></td>
+    </tr>
+</table>
+<script src="../../bootstrap/project/lib/jquery/jquery.min.js"></script>
+<script>
+    var index=0;
+    var num=0;
+
+   $("input[name=btn]").click(function () {
+       var user=$("input[name=user]").val();
+       var book=$("input[name=book]").val();
+
+       index++;num++;
+       if(num==5){num=1}
+       $("<tr><td><input type='checkbox' name='dx'></td><td class='xuhao'>"+index+"</td><td class='uname'>"+user+"</td><td>"+book+"</td><td><img src='img/"+num+".jpg' width='60' height='80'></td><td>"+new Date().toLocaleDateString()+"</td><td><input type='button' value='删除' name='del'></td></tr>").insertBefore($("tr:last"));
+       xh();
+
+
+       //单独删除
+       $("input[name=del]").click(function () {
+           $(this).parent().parent().remove();
+           xh();
+       })
+
+       //点击单选的时候判断全选的状态
+       $("input[name=dx]").click(function () {
+           if($("input[name=dx]:checked").length==$("input[name=dx]").length){
+               $("input[name=qx]").prop("checked",true);
+           }else{
+               $("input[name=qx]").prop("checked",false);
+           }
+       })
+
+       //图片预览
+       $("img").hover(function(e){
+           var imgo=$("<img src='"+this.src+"' class='imgl'>");
+           $("body").append(imgo);
+           $(".imgl").css({"top":e.pageY+10,"left":e.pageX+10})
+       },function () {
+           $(".imgl").remove();
+       }).mousemove(function (e) {
+           $(".imgl").css({"top":e.pageY+10,"left":e.pageX+10})
+       })
+
+   })
+
+
+    //全选全不选
+    $("input[name=qx]").click(function () {
+       /* if(this.checked){
+//        if($(this).prop("checked")==true){
+            $("input[name=dx]").prop("checked",true)
+        }else{
+            $("input[name=dx]").prop("checked",false)
+        }*/
+        var result=$(this).prop("checked");
+        $("input[name=dx]").prop("checked",result)
+    })
+
+
+    //选中删除
+    $("input[name=delX]").click(function () {
+        $("input[name=dx]").each(function () {
+            if(this.checked){
+                $(this).parents("tr").remove()
+            }
+        })
+        $("input[name=qx]").prop("checked",false);
+       xh();
+    })
+
+
+    function changeXu() {
+        $(".xuhao").each(function (i) {
+            $(this).html(i+1);
+        })
+    }
+    function xh(){
+        $(".xuhao").each(function(i){
+            $(this).html(i+1);
+        })
+    }
+   /* //模糊
+    $("#dj").click(function(){
+        var ss = $("#ss").val();
+        $(".uname:not(:contains("+ss+"))").parent().remove();
+    });*/
+    //精确
+    $("#dj").click(function(){
+        var ss = $("#ss").val();
+        $(".uname").each(function(){
+            if(ss!=$(this).html()){
+                $(this).parent().remove();
+            }
+        })
+    })
+
+
+
+
+</script>
+</body>
+</html>

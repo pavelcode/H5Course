@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>购物车</title>
+	</head>
+	<script type="text/javascript" src="utils.js"></script>
+	<script>
+		onload = function(){
+			var arr = eval(decodeURIComponent(document.cookie));
+			for(var i in arr){
+				var li = document.createElement("li");
+				li.innerHTML="商品名称:"+arr[i].productname + "商品价格："+arr[i].productprice;
+				document.getElementById("plist").appendChild(li);
+			}
+			
+		}
+	</script>
+
+	<body>
+		<ul id="plist">
+			
+		</ul>
+	</body>
+
+</html>

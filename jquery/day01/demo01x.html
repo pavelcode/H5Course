@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>JQuery的第一个程序</title>
+		<script type="text/javascript" src="../jquery-3.1.0.js" ></script>
+		<script>
+		//当页面加载的时候，执行函数。等同于window.onload
+		$(document).ready(function(){
+			//获得button对象，并添加点击事件
+			$("button").click(function(){
+				alert("aaa");
+		     })
+		});
+		</script>
+	</head>
+	<body>
+		
+		<button>按钮</button>
+	</body>
+</html>

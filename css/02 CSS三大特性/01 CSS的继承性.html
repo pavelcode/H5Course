@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>CSS的继承性</title>
+		<style>
+		    /*
+			给一个div下的p设置文字颜色，没有问题。
+			给div设置颜色，下面的p中的文字颜色也变化了。游览器的检查元素，看到inherited from div，说明是继承来的。
+			 */
+			/* div p{
+				red;
+			} */
+			
+			/* border没有继承性 */
+			/*div{
+				color:blue;  
+				border:2px solid red;
+			}*/
+			
+			
+			 /*继承从大元素贯穿到小元素*/
+			/*body{
+				color: red;
+				font-style: italic;
+				text-decoration: underline;
+			}*/
+			
+			
+			/*链接不能继承文字颜色，被浏览器的默认样式层叠掉了，需要重新定义*/
+			/*div{
+				color: red;
+			}
+			a{
+				color:red;
+			}*/
+			
+			​/*标题标签不能继承父元素的文字大小，如果要改变，需要重新设定*/
+			div{
+				font-size: 20px;
+			}
+			h1{
+				font-size:20px;
+			}
+		</style>
+</head>
+<body>
+	  <!--<div>
+			<p>段落1</p>
+			<p>段落2</p>
+			<p>段落3</p>
+		</div>-->
+		
+		 <!--<div>
+			我是文字
+			<div>
+				我是文字
+				<div>
+					<ul>
+						<li>
+							我是文字
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>-->
+		   
+		  <!--<div>
+			我是文字
+			<a href="">我是链接</a>
+		   </div>  -->
+		
+		
+		<div>
+			我是文字
+			<h1>我是标题</h1>
+		</div>   
+</body>
+</html>

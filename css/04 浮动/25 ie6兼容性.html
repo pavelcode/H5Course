@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+	<style>
+		/*规则一：IE6不支持小于12px的盒子
+        解决办法：将盒子的字号设置为font-zise：小于height的值,一般设置为0*/
+			/*div{
+				width: 200px;
+				height: 4px;
+				background-color: red;
+				font-size: 0px;
+			}*/
+			/*游览器hack，IE6支持前面加下划线的属性*/
+			/*div{
+				width: 200px;
+				height: 4px;
+				_background-color: red;
+			}*/
+			/*所以，*/
+			/*div{
+				width: 200px;
+				height: 4px;
+				background-color: red;
+				_font-size: 0px;
+			}*/
+			
+		/* 总结：之前学习的外墙法设置墙的高度必须加上_font-size:0; */
+
+		/*规则二：IE6是不支持overflow：hidden清除浮动
+		添加一个属性_zoom:1
+		zoom代表放大的意思	*/
+		.one{
+		  width: 200px;
+		 /* height: 200px;*/
+		  border: 1px solid red;
+		  overflow: hidden;
+		  _zoom: 1;
+		}
+		.two{
+			float: left;
+			width: 100px;
+			height: 100px;
+			background-color: green;
+		}
+		</style>
+	</head>
+	<body>
+		<!--<div></div>-->
+		<div class="one">
+			<div class="two"></div>
+		</div>
+		
+	</body>
+</html>

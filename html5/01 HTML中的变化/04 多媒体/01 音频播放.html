@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    <script>
+			function controlAudio(){
+			    var audio = document.getElementById("myaudio");
+			    if(audio.paused){
+			    	   audio.play();
+			    }else{
+			    	    audio.pause();
+			    }
+			}
+		</script>
+		<audio id="myaudio" src="beautiful.mp3" controls="controls"></audio>
+		<input type="button" value="开始/暂停" onclick="controlAudio()" />
+		<br />
+    </body>
+</html>

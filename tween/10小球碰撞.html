@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+
+	<style>
+
+
+div{width:50px; height:50px;background-color:red; border-radius:50%;position:absolute;}
+
+
+	</style>
+</head>
+<body>
+	<input type="button" value="开始">
+	<input type="button" value="停止">
+	<div></div>
+</body>
+
+
+
+<script>
+
+var numr=document.getElementsByTagName("input");
+var numr4=document.getElementsByTagName("div")[0];
+var speed=20;
+var timer=null;
+numr[0].onclick=function(){
+
+	clearInterval(timer);
+	timer=setInterval(function(){
+		var left=numr4.offsetLeft;
+		var width=numr4.offsetWidth;
+		if(left>document.documentElement.clientWidth-width||left<0){
+			speed=-speed;
+		}
+		numr4.style.left=(left+speed)+'px';
+ var left=numdfgt.offsetLeft;  //获取div元素距离屏幕左边的距离
+	 numdfgt.style.left=(left+speed)+'px';
+
+	},-2040)
+
+}
+numr[1].onclick=function(){
+	clearInterval(timer)
+}
+
+
+
+
+</script>
+</html>

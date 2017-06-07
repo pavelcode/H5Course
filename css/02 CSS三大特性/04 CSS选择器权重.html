@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>选择器权重</title>
+		<style>
+		   /* 比较权重就是数 id选择器  类选择器  标签选择器的数量*/
+		    div div div div p{color:pink}  /*继承的权重为零*/
+			#box1 .hezi2 p{color:red}   /*1个id选择器  1个类选择器  1个标签选择器  记作：1，1，1*/
+			div div #box3 p{color:blue}  /*1个id选择器  0个类选择器  3个标签选择器 记作:1，0，3*/
+			div .hezi1 div .hezi2 div .hezi3 p{color:green} /*0个id选择器 3个类选择器 4个标签选择器 记做:0，3，4*/
+		</style>
+</head>
+<body>
+	  <div id="box1" class="hezi1">
+			  <div id="box2" class="hezi2">
+			  	  <div id="box3" class="hezi3">
+			  	  	  <p>猜下我是什么颜色的</p>
+			  	  </div>
+			  </div>
+		</div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../jquery-3.1.0.js"></script>
+		<script>
+			$(document).ready(function(){
+	$("div p").first().css({"color":"red"});
+	$("div p").last().css({"color":"blue"});
+	$("div p").filter(".demo04_p").css({"color":"green"});
+	$("div p").not(".demo04_p").css({"color":"yellow"});
+});
+
+		</script>
+	</head>
+	<body>
+		<div>
+			<p>p1</p>
+			<p class="demo04_p">p1</p>
+			<p>p1</p>
+			<p>p1</p>
+			<p>p1</p>
+		</div>
+	</body>
+</html>

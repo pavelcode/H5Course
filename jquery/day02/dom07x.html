@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>获取节点宽度</title>
+		<script src="../jquery-3.1.0.js"></script>
+		<script>
+		
+		 //$("div").width();//什么都不包含
+		// $("div").innerWidth();//包含内边距
+		// $("div").outerWidth();//包含内边距和边框
+		 //$("div").outerWidth(true);//包含内边距和边框和外边距
+			
+			$(document).ready(function(){
+	$("#demo07_btn01").click(function(){
+		var div = $("div");
+		alert("width:"+div.width()+";height:"+div.height());
+	});
+	$("#demo07_btn02").click(function(){
+		var div = $("div");
+		alert("width:"+div.outerWidth(true)+";height:"+div.outerHeight(true));
+	});
+	$("#demo07_btn03").click(function(){
+		var div = $("div");
+		alert("width:"+$(document).width()+";height:"+$(document).height());
+		alert("width:"+$(window).width()+";height:"+$(window).height());
+	});
+	
+	$("#demo07_btn04").click(function(){
+		var div = $("div");
+		div.width(200).height(200);
+	});
+});
+			
+		</script>
+	</head>
+	<body>
+		<div style="width: 100px; height: 100px;border:1px;padding：10px;margin:5px;background-color: red;"></div>
+		<button type="button" id="demo07_btn01">得到宽高</button>
+		<button type="button" id="demo07_btn02">得到全部宽高</button>
+		<button type="button" id="demo07_btn03">得到窗体宽高</button>
+		<button type="button" id="demo07_btn04">设置宽高</button>
+		
+	</body>
+</html>

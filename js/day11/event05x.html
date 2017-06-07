@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>获得点击对象</title>
+		<script type="text/javascript">
+	     window.onload = function(){
+		  	document.onclick = function(evt){
+//		  		var e = evt||window.event;
+//		  		alert(e.target);//火狐支持
+//		  		alert(e.srcElement);//IE支持
+
+                alert(getTarget(evt));
+		  	}
+		  	
+		  	//兼容
+		  	function getTarget(evt){
+		  	   var e = evt||window.event;
+		  	   return e.target||e.srcElement;
+		  	}
+		  }
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

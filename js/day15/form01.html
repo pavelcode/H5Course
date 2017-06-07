@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>表单验证</title>
+		<script src="toast.js"></script>
+		<script>
+		
+		var t = new Toast();
+		
+		function check(){
+			if(checkName() && checkPwd()){
+				//提交表单
+				alert("所有数据校验通过，提交表单!!");
+			}
+		}
+		
+		function checkName(){
+			//数字、字母、下划线，但数字不能开头，长度在6-20之间
+			//var username = username.value;//这种写法有严重的兼容问题
+			var username = document.getElementById("username").value;
+			for(var i in username) { //for....in
+				var asc = username.charCodeAt(i);
+				//48～57为0到9十个阿拉伯数字   小写字符65-90  大写字符97-122  为什么96要
+				if(asc < 48 || (asc > 57 && asc < 65) || (asc > 90 && asc < 95) || asc==96 || asc > 122 ) {
+					t.show("用户名不能输入非法字符!",1000);
+					return false;
+				}
+			}
+			if(username.charCodeAt(0)>= 48 && username.charCodeAt(0)<=57 ) {
+				t.show("用户名不能以数字开头",1000);
+				return false;
+			}
+			if(username.length < 6 || username.length > 20) {
+				t.show("用户名长度必须在6-20之间!",1000);
+				return false;
+			}
+			return true;
+		}
+		
+		function checkPwd(){
+			var pass = document.getElementById("password").value;
+			var passlength = pass.trim().length;
+			if(passlength>=6&&passlength<=20){
+				return true;
+			}
+			t.show("密码长度必须在6-20之间!",1000);
+			return false;
+		}
+		
+		function removeHint() {
+			if(document.getElementById("username").value == "请输入用户名") {
+				document.getElementById("username").value = "";
+			}
+		}
+		function addHint() {
+			if(document.getElementById("username").value == ""){
+				document.getElementById("username").value = "请输入用户名";
+			}
+		}
+	</script>
+	</head>
+	<body>
+		<!--
+          1 姓名输入框默认显示：请输入用户名，当输入的时候，不显示这个文字
+          2 要求输入的用户名不能是特殊字符，开头不能使用数字，用户名长度在6-20位之间
+          3 密码不能为空，且密码长度在6-20位之间
+        -->
+		<form action="http://www.baidu.com" method="get" >
+			姓名： <input id="username" type="text" onblur="addHint()" onfocus="removeHint()"/> <br>
+			密码： <input id="password" type="password" /> <br>
+			<input type="button" onclick="check()" value="提交"/>
+		</form>
+	</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="tween.js"></script>
+    <style>
+        #div0{
+            width: 400px;
+             height:400px;
+            position: relative;
+             background-color: #cccccc;
+        }
+          #div1{
+              width: 50px;
+              height: 50px;
+              position: absolute;
+              background-color: red;
+              border-radius:50%;
+          }
+    </style>
+</head>
+<body>
+<div id="div0">
+    <div id="div1"></div>
+</div>
+<script>
+    var div=document.getElementById("div1")
+      function fun(){
+          var t=0;
+          var b=0;
+          var c=350;
+            var d=50;
+           stop=setInterval(run,50)
+             function run(){
+                 t++;
+                 if(t>=d){
+                     clearInterval(stop)
+                     fun1()
+                 }
+                 div.style.left=Tween.Linear(t,b,c,d)+"px"
+             }
+
+    }
+                function fun1(){
+                     var t=0;
+                    var b=0;
+                     var c=350;
+                     var d=50;
+                     stop1=setInterval(run1,50);
+                      function run1(){
+                          t++;
+                          if(t>=d){
+                              clearInterval(stop1);
+                              fun2()
+                          }
+                          div.style.top=Tween.Linear(t,b,c,d)+"px"
+                      }
+
+                }
+                  function fun2(){
+                      var t=0;
+                      var b=0;
+                      var c=350;
+                       var d=50;
+                      stop2=setInterval(run2,50);
+                        function run2(){
+                            t++;
+                             if(t>=d){
+                                 clearInterval(stop2)
+                                   fun3()
+                             }
+                            div.style.left=c-Tween.Linear(t,b,c,d)+"px";
+                        }
+                  }
+                    function fun3(){
+                        var t=0;
+                        var b=0;
+                           var c=350;
+                         var d=50;
+                        stop3=setInterval(run3,50)
+                           function run3(){
+                               t++;
+                                if(t>=d){
+                                    clearInterval(stop3)
+                                        fun()
+
+
+                                }
+                               div.style.top=c-Tween.Linear(t,b,c,d)+"px"
+                           }
+
+
+                    }
+      fun()
+</script>
+</body>
+</html>

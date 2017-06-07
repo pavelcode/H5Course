@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>定点抛物线--不讲</title>
+	<style>
+		* {
+			padding: 0;
+			margin: 0;
+		}
+		
+		.banner {
+			position: relative;
+			width: 810px;
+			height: 320px;
+			margin: 50px auto;
+			background: grey;
+			overflow: hidden;
+		}
+		
+		.img-list {
+			list-style: none;
+			position: absolute;
+			left: 0px;
+			top: 0;
+			width: 4050px;
+			height: 320px;
+		}
+		
+		.img-list li {
+			float: left;
+			width: 810px;
+			height: 320px;
+			line-height: 320px;
+			text-align: center;
+			font-size: 60px;
+		}
+		
+		.img-nav {
+			list-style: none;
+			position: absolute;
+			right: 30px;
+			bottom: 30px;
+			width: 100px;
+			height: 30px;
+		}
+		.img-nav li {
+			float: left;
+			background: #2B2B2B;
+			width: 15px;
+			margin-right: 10px;
+			color: white;
+			border-radius: 50%;
+			text-align: center;
+		}
+		.img-nav li.active {
+			background: navajowhite;
+			color: black;
+		}
+		.leftBtn{
+			position: absolute;
+			left: 10px; top:120px;
+			width: 60px; height: 60px;
+			background: url(left.png) no-repeat;
+			cursor: pointer;
+		}
+		.rightBtn{
+			position: absolute;
+			right: 10px; top:120px;
+			width: 60px; height: 60px;
+			background: url(right.png) no-repeat;
+			cursor: pointer;
+		}
+	</style>
+	<script type="text/javascript" src="move.js" ></script>
+	<script type="text/javascript" src="move_fix.js" ></script>
+	
+	<body>
+		<div id="ball" style="position: absolute; left: 100px; top: 500px; width: 20px; height: 20px; background: red;"></div>
+		<div id="target" style="position: absolute; left: 700px; top: 300px; width: 20px; height: 20px; background: black;"></div>
+	</body>
+	<script>
+	/*	ax^2 + bx = y
+		var a = 0.01;
+		var b = (y - ax^2)x;*/
+		var ball = document.getElementById("ball");
+		var targetObj = document.getElementById("target");
+		//曲线坐标系的坐标
+		var targetCoord = {
+			x : targetObj.offsetLeft - ball.offsetLeft,
+			y : targetObj.offsetTop - ball.offsetTop
+		}
+		
+		var a = 0.002;
+		var b = (targetCoord.y - a*targetCoord.x*targetCoord.x)/targetCoord.x;
+		
+//		y = ax^2 + bx
+		var centerPonit = {
+			x: ball.offsetLeft,
+			y: ball.offsetTop
+		}
+		
+		//到达目标的直线距离
+		var disX = 0;
+		var timer = setInterval(function(){
+			ball.style.left = centerPonit.x + (disX++) + "px";
+			ball.style.top = centerPonit.y + (a*disX*disX + b*disX) + "px";
+			if(disX == targetCoord.x) {
+				clearInterval(timer);
+			}
+		},10);
+		
+	</script>

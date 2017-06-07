@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>包含</title>
+		<script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+	</head>
+	<body>
+		<!--
+         包含简单页面
+         包含angular代码页面
+         跨域包含（没做）
+         
+         注意：里面包含单引号
+       -->
+
+         <!--<div ng-app="">
+         <div ng-include="'include01.html'"></div>
+         </div>-->
+         
+         
+		<div ng-app="myApp" ng-controller="sitesCtrl"> 
+		  <div ng-include="'include02.html'"></div>
+		</div>
+		 
+		<script>
+		var app = angular.module('myApp', []);
+		app.controller('sitesCtrl', function($scope) {
+		     $scope.names = ['zhangsan','lisi','wangwu'];
+		});
+		</script>
+ 
+	</body>
+</html>

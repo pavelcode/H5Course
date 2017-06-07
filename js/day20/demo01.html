@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>qq延时提示符</title>
+<style type="text/css">
+body,div{margin:0;padding:0;}
+.right{width:306px;height:530px;background:url(img/qq.png) no-repeat;position:absolute;right:15px;top:20px;}
+#head{width:60px;height:60px;float:left;margin:44px 0 0 11px}
+#left{width:279px;height:334px;background:url(img/prompt.png) no-repeat;position:absolute;top:60px;left:-282px;display:none;}
+</style>
+<script>
+    /*
+     * 当鼠标进入头像的时候，左边的提示框显示。当鼠标离开头像的时候，左边的提示框延迟消失。
+     * 但当鼠标进入提示框的时候，提示框不消失，离开之后，提示框延迟消失。
+     * 
+     */
+	onload = function(){
+		 var head = document.getElementById("head");
+		 var left = document.getElementById("left");
+		 var id ;
+		 
+		 head.onmouseover = function(){
+		 	left.style.display="block";
+		 }
+		 
+		 head.onmouseout = function(){
+		 	id = setTimeout(function(){
+		 		left.style.display="none";
+		 	},1000);
+		 }
+		 //当鼠标划入左边的提示框的时候，不要左边消失
+		 left.onmouseover = function(){
+		 	clearTimeout(id);
+		 }
+		 
+		 left.onmouseout = function(){
+		 	 setTimeout(function(){
+		 		left.style.display="none";
+		 	},1000);
+		 }
+		
+	}
+	
+	
+</script>
+</head>
+<body>
+	<div class="page">
+		<div class="right">
+			<a href="###" id="head"></a>
+			<div id="left"></div>
+		</div>
+	</div>
+</body>
+</html>

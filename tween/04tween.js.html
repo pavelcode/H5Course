@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>tween.js</title>
+	<style type="text/css">
+       #div1{
+       	width: 100px;
+       	height: 100px;
+       	background-color: purple;
+       	position: relative;
+       }
+	</style>
+</head>
+<body>
+	<div id="div1"></div>
+</body>
+<script src="js/tween.js"></script>
+<script type="text/javascript">
+	//tween.js 下的四个参数
+	//t: 当前步数 和 另一个参数 d 配合，决定动画效果的时间
+	//b: 动画效果的起始位置（注：不是元素的起始位置）
+	//c: 动画效果的移动距离
+	//d: 总步数（总时间）
+
+	//1.准备四个参数
+	var t = 0;
+	var b = 50;
+	var c = 700;
+	var d = 50;
+
+	var timer = setInterval(function(){
+         t++;
+         if(t >= d){
+         	clearInterval(timer);
+         	timer = null;
+         }
+         div1.style.left = Tween.Quad.easeIn(t,b,c,d) + "px";
+	},30)
+
+</script>
+</html>

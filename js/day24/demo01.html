@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>单例模式</title>
+		<script>
+		//顾名思义单例模式并不难理解，是产生一个类的唯一实例，在我们实际开发中也会使用到这种模式
+		//单例模式的第一种实现方式：
+//		function Wife(){
+//			this.name = "刘亦菲";
+//		}
+//		var Singleton = {
+//			instance:null,
+//			getInstance:function(){
+//				if(!this.instance){
+//					this.instance = new Wife();
+//				}
+//				return this.instance;
+//			}
+//			
+//		};
+//		var wife1 = Singleton.getInstance();
+//		alert(wife1.name);
+//		var wife2 = Singleton.getInstance();
+//		alert(wife2.name);
+//		alert(wife1===wife2);
+
+         //单例模式的第二种实现方式:模块模式实现  减少全局变量的泛滥
+//        var Singleton = (function(){
+//        	var instance = null;
+//        	function Wife(){
+//        		this.name = "刘亦菲";
+//        	}
+//        	return{
+//        		getInstance:function(){
+//        		  if(!instance){
+//        		  	instance = new Wife();
+//        		  }
+//        		  return instance;
+//        		}
+//        	}
+//        })();
+          
+//       var wife1 = Singleton.getInstance();
+//       alert(wife1.name);
+// 		 var wife2 = Singleton.getInstance();
+//		 alert(wife2.name);
+//		 alert(wife1===wife2);
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

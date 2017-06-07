@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>控制器(controller)和作用域(Scope)</title>
+		<script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+	</head>
+	<body>
+		<!--
+         AngularJS中包含两个重要的概念
+         模块(modual) 定义AngularJS的应用
+         控制器(controller) 控制AngularJS的应用
+         
+         使用ng-controller 定义模块的控制器的名字
+         
+         使用js代码定义模块
+         给模块创建控制器
+         
+         AngularJS 应用程序由 ng-app 定义。应用程序在 <div> 内运行
+         ng-controller="myCtrl" 用于定义一个控制器。
+        -->
+        
+        <!--
+        ng-model 指令可以将输入域的值与 AngularJS 创建的变量绑定
+        -->
+        <!--<div ng-app="myApp" ng-controller="myCtrl">
+        	    <input ng-model="name"></span>
+        </div>
+        <script>
+        	 var app = angular.module("myApp",[]);
+        	 app.controller("myCtrl",function($scope){
+        	 	  $scope.name="张三";
+        	 });
+        </script>-->
+        
+        <!--
+			Scope(作用域) 是应用在 HTML (视图) 和 JavaScript (控制器)之间的纽带。
+            Scope 是一个对象，有可用的方法和属性。
+            控制器的 $scope （相当于作用域、控制范围）用来保存AngularJS Model(模型)的对象。
+         -->
+		
+		
+		<!--<div ng-app="myApp" ng-controller="myCtrl">
+		姓: <input type="text" ng-model="lastName"><br>
+		名: <input type="text" ng-model="firstName"><br>
+		<br>
+		姓名: {{ lastName + " " + firstName}}
+
+       </div>
+       <script>
+       	  var app = angular.module("myApp",[]); //定义模块
+       	  app.controller("myCtrl",function($scope){ //创建控制器
+       	  	 $scope.lastName="张";
+       	  	 $scope.firstName="三";
+       	  });
+       </script>-->
+       
+       <!--
+       控制器的方法
+       -->
+       <div ng-app="myApp" ng-controller="myCtrl">
+       	 <input type="text" ng-model="price" /><br />
+       	 <input type="text" ng-model="count" /><br />
+       	 {{totalPrice()}}
+       </div>
+      
+      <!--
+	  <script>
+	  	 var app = angular.module("myApp",[]);
+	  	 //alert(app);
+	  	 app.controller("myCtrl",function($scope){
+	  	 	  $scope.price = 5;
+	  	 	  $scope.count = 3;
+	  	 	  
+	  	 	  $scope.totalPrice = function(){
+	  	 	  	return $scope.price*$scope.count;
+	  	 	  }
+	  	 });
+	  </script>-->
+	  
+	  
+	  <!--
+      	当对代码进行压缩混淆的时候，会替换$scope的名称，这就会造成程序出错。而字符串不会被压缩，所以使用标准方式
+      -->
+      <!--
+      <script type="text/javascript">
+      	  var mymodule = angular.module("myApp",[]);
+      	  mymodule.controller("myCtrl",["$scope",function(a){
+      	  	  return console.log("aaaa");
+      	  }]);
+      </script>
+       -->
+			
+	<!--
+    使用外部控制器文件
+    -->
+    
+    <script src="demo06.js"></script>
+    
+         
+		
+        
+        
+        
+		
+	</body>
+</html>

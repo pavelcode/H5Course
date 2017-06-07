@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+        <script src="../../bootstrap/project/lib/jquery/jquery.js"></script>
+		<style type="text/css">
+			*{margin: 0;padding: 0;}
+			.box{width: 560px;border:5px solid #000000 ;margin: 30px auto;height: 600px;position: relative;overflow: hidden;}
+			ul{clear: both;overflow:hidden;position: absolute;}
+			ul li{list-style: none;height:300px;width:560px;}
+			/*ul li img{float: left;}*/
+			.btn span{width: 100px;height: 50px;background: rgba(0,0,0,.5);color: #fff;line-height: 50px;text-align: center;position: absolute;bottom: 0;left: 50%;margin-left: -50px;cursor: pointer;}
+			.btn .top{top: 0;z-index: 2;}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<ul>
+				<li style="background: blue;"></li>
+				<li style="background: green;"></li>
+				<li style="background: red;"></li>
+				<li style="background: yellow;"></li>
+			</ul>
+			<div class="btn">
+				<span class="top">上一页</span>
+				<span class="bottom">下一页</span>
+			</div>
+		</div>
+	</body>
+	<script>
+		$(function(){
+			var btn = $(".btn");
+			var up = $(".top");
+			var down = $(".bottom");
+			var timer = null;
+			up.click(function(){
+					autoPlay();
+			});
+			down.click(function(){
+				    $("ul").css({top:0})
+					$("ul li").last().prependTo("ul");//点击下按钮把ul里面的最后一个li添加到ul中li的前面
+					$("ul").stop().animate({top:-300});
+			});
+			function autoPlay(){ 
+					$("ul").css({top:"-300px"})
+					$("ul li").first().appendTo("ul");//点击上按钮把ul里面的第一个li添加到ul中li的后面
+					$("ul").stop().animate({top:0}); //再给ul加上animate动画，
+			}
+			timer = setInterval(autoPlay,2000); //定时器
+			btn.hover(function(){              //移入关闭定时器
+				clearInterval(timer);
+			},function(){                     //移出打开定时器
+				timer = setInterval(autoPlay,2000);
+			});
+		})
+	</script>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+<style>
+		   /*规避脱标流的方式，让子元素在父元素的右边。
+		   最简单的方式是使用脱标流float：right。但是，我们尽量使用标准流。
+           使用margin-left：auto *让子元素在父元素的右边。
+           margin-left：auto，margin-right：auto。
+           相当于margin：0 auto。让内容居中。  */
+			.one{
+				width: 500px;
+				height: 300px;
+				border:1px solid red;
+			}
+			.two{
+				width: 100px;
+				height: 100px;
+				background-color: blue;
+				/*float:right;*/  /*让子元素在父元素的右边,脱标方式*/
+				/*margin-left: auto;*/  /*让子元素在父元素的右边,标准方式*/
+				                         /*设置auto,可以将盒子自动冲到另一边*/
+	
+				  /*margin-left: auto;
+				  margin-right: auto;*/  /*相当于margin:0 auto*/
+				
+				
+				
+			}
+		</style>
+	</head>
+	<body>
+		<div class="one">
+			<div class="two"></div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>设置显示，隐藏，隐藏和显示，隐藏的时间--动画</title>
+		<script src="../jquery-3.1.0.js"></script>
+		<script>
+		//设置显示，隐藏，隐藏和显示，隐藏的时间
+			$(document).ready(function(){
+				$("#hide").click(function(){
+					$("div").hide(); //查看firebug中，设置的是display:none
+				});
+				$("#show").click(function(){
+					$("div").show();//查看firebug中，设置的是display:block或inline
+				});
+				$("#hide_time").click(function(){
+					$("div").hide(1000);
+					$("div").hide("fast"); //200毫秒
+					$("div").hide("slow"); //720毫秒
+					$("div").hide("");// 默认的400毫秒
+				});
+				$("#hide_show").click(function(){
+					$("div").toggle();
+				});
+				
+				
+			})
+		</script>
+	</head>
+	<body>
+		<div>内容</div>
+		<button id="hide" type="button">隐藏</button>
+		<button id="show" type="button">显示</button>
+		<button id="hide_show" type="button">显示隐藏</button>
+		<button id="hide_time" type="button">隐藏时间</button>
+		
+	</body>
+</html>

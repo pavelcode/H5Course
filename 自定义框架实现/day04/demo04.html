@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>CSS框架--隐藏和显示元素</title>
+		<style>
+	        div{
+	            height:30px;
+	            width:30px;
+	            padding:30px;
+	            background-color: red;
+	        }
+        </style>
+	</head>
+	<body>
+		<div id='div'>传智播客</div>
+	</body>
+</html>
+<script src="../myframe.js"></script>
+<script>
+//单个元素
+	//显示元素
+    function show(id){
+        var dom =  $$.$id(id)
+        $$.css(dom, 'display', 'block');
+    }
+    //隐藏元素
+    function hide(id){
+        // var ani = animate || ICD.getAnimate();
+        var dom =  $$.$id(id)
+        $$.css(dom, 'display', 'none');
+    }
+    hide('div');
+    
+//多个元素 
+ $$.on('hide','click',function(){
+        hide('.div')
+    });
+
+    $$.on('show','click',function(){
+        show('.div')
+    });
+
+    function show(content){
+        var doms =  $$.$all(content)
+        for(var i= 0,len=doms.length;i<len;i++){
+            $$.css(doms[i], 'display', 'block');
+        }
+    }
+
+    //隐藏和显示元素
+    function hide(content){
+        var doms =  $$.$all(content)
+        for(var i= 0,len=doms.length;i<len;i++){
+            $$.css(doms[i], 'display', 'none');
+        }
+    }   
+    
+//封装到框架
+    $$.on('hide','click',function(){
+        $$.hide('.div')
+    })
+
+    $$.on('show','click',function(){
+        $$.show('.div')
+    })
+    
+</script>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../jquery-3.1.0.js"></script>
+		<script>
+			$(document).ready(function(){
+	//$("div").children().css({"border":"1px solid blue"});
+	//$("div").children("p.demo02_p").css({"border":"1px solid black"});
+	$("div").find("p").css({"border":"1px solid green"});
+	$("div").find("*").css({"color":"green"});
+	
+});
+		</script>
+		<style>
+			div *
+			{
+			  border:1px solid red;
+			  display: block;
+			  margin: 15px;
+			  padding: 5px;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<p class="demo02_p">子
+				<spn>孙</spn>
+			</p>
+		</div>
+	</body>
+</html>

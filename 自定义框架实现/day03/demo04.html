@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>选择框架---分组选择器</title>
+		<style type="text/css">
+		*{height: 50px; padding: 10px; margin: 10px;}
+		body{padding: 0;}
+		</style>
+	</head>
+	<body>
+		<h3>h3</h3>
+		<p id="myp">pTag</p>
+		
+		<div>div</div>
+		<span>span</span>
+		<div class="moshou">魔兽</div>
+		<div class="hero">英雄联盟</div>
+		
+	</body>
+</html>
+<script src='../myframe.js'></script>
+<script>
+//	var dom = $group('.moshou,.hero,#myp,span');
+//	for(var i = 0, len1 = dom.length; i < len1; i++){
+//		dom[i].style.border = '1px solid red';
+//	}
+
+//原始方式
+//思路：根据逗号进行分组，根据每个元素进行标示，分开处理
+//  function $group(content) {
+//		var arr=[],result=[],temp=[];//arr是未处理数组  temp是一个中间变量  result是处理的结果
+//		arr = content.split(',');
+//		//console.log(arr.length);
+//		for(var i=0;i<arr.length;i++) {
+//			var item = $$.trim(arr[i])
+//			var first= arr[i].charAt(0);
+//			 if(first === '.'){
+//			 	//如果是类
+//				var index = arr[i].indexOf('.');
+//				//console.log("----"+arr[i].slice(index+1)); //获得类名，不带点
+//				temp=$$.$class(arr[i].slice(index+1));//陷阱：使用class获得的是数组，
+//				console.log("class=="+temp);
+//				//每次循环将doms保存在reult中
+//				for(var j= 0; j < temp.length; j++){
+//					result.push(temp[j]);
+//				}
+//			}else if(first ==='#'){
+//				//如果是id
+//				index = arr[i].indexOf('#')
+//				temp=[$$.$id(arr[i].slice(index+1))]//陷阱：使用id获取的单个元素
+//				console.log("id=="+temp);
+//				for(var k= 0; k < temp.length; k++){
+//					result.push(temp[k])
+//				}
+//			}else{
+//				//否则是标签
+//				temp = $$.$tag(arr[i]);
+//				for(var m= 0; m < temp.length; m++){
+//					result.push(temp[m]);
+//				}
+//			}
+//		}
+//		console.log("result=="+result);
+//		return result;  
+//		
+//		//封装重复的代码
+//      function pushArray(doms,result){
+//          for(var j= 0, domlen = doms.length; j < domlen; j++){
+//              result.push(doms[j])
+//          }
+//      }
+//  }
+    
+//简化
+//  function $group(content) {
+//		var result=[],temp=[];
+//		var arr = $$.trim(content).split(','); //去掉空格
+//		for(var i=0,len=arr.length;i<len;i++) {
+//          var item = $$.trim(arr[i])
+//			var first= item.charAt(0)
+//          var index = item.indexOf(first)
+//			if(first === '.') {
+//				doms=$$.$class(item.slice(index+1));
+//				pushArray(doms,result)
+//
+//			}else if(first ==='#'){
+//				doms=[$$.$id(item.slice(index+1))]//陷阱：之前我们定义的doms是数组，但是$id获取的不是数组，而是单个元素
+//				//封装重复的代码成函数
+//				pushArray(doms,result)
+//			}else{
+//				doms = $$.$tag(item)
+//				pushArray(doms,result)
+//			}
+//		}
+//		return result;
+//
+//		//封装重复的代码
+//		function pushArray(doms,result){
+//			for(var j= 0, domlen = doms.length; j < domlen; j++){
+//				result.push(doms[j])
+//			}
+//		}
+//	}
+
+//框架实现
+   var dom = $$.$group('.moshou,.hero,#myp,span');
+    for(var i = 0, len1 = dom.length; i < len1; i++){
+        dom[i].style.border = '2px solid red';
+    }
+</script>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+* {
+  padding: 0;
+  margin: 0;
+}
+.accordion {
+  width: 500px;
+  margin: 0 auto;
+}
+.accordion > h3 {
+  background: #5DB0D7;
+  height: 40px;
+  line-height: 40px;
+  cursor: pointer;
+  border-bottom: 1px solid white;
+}
+.accordion > div {
+  height: 100px;
+  width: 100%;
+  display: none;
+}
+.accordion > div > p {
+  height: 20px;
+  line-height: 20px;
+}
+.accordion > h3:hover, .accordion > h3.active {
+  background: #F26621;
+  color: white;
+}
+</style>
+<script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+<script type="text/javascript">
+$(document).ready(function () {
+  var $head = $("#accordion>h3");
+  var $contents = $("#accordion>div");
+  $head.first().addClass('active').next().slideDown('normal');
+  $head.on('click', function (event) {
+    event.preventDefault();
+    if ($(this).attr('class') != 'active') {
+      $contents.slideUp('normal');
+      $(this).next().stop(true, true).slideToggle('normal');
+      $head.removeClass('active');
+      $(this).addClass('active');
+    }
+  });
+})
+</script>
+	</head>
+	<body>
+		<div id="accordion" class="accordion">
+    <h3>蚂蚁部落一</h3>
+    <div>
+      <p>内容一</p>
+    </div>
+    <h3>蚂蚁部落二</h3>
+    <div>
+      <p>内容二</p>
+    </div>
+    <h3>蚂蚁部落三</h3>
+    <div>
+      <p>www.softwhy.com</p>
+    </div>
+    <h3>蚂蚁部落四</h3>
+    <div>
+      <p>jquery教程</p>
+    </div>
+  </div>
+	</body>
+</html>

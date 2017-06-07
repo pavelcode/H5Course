@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>ajax方法</title>
+		<script>
+			$ajax({
+				type:"post",
+				url:"http://www.baidu.com",
+				data:{
+					id:1
+				},
+				success:function(response,status,xhr){
+					
+				}
+				
+			})
+			
+			//提交表单所有数据
+			$ajax({
+				type:"post",
+				url:"http://www.baidu.com",
+				data:$("form").serialize(),
+				success:function(response,status,xhr){
+					
+				}
+				
+			})
+			
+			//加载本地json
+			$ajax({
+				type:"post",
+				url:"xxx.json",
+				dateType:"json",
+				success:function(response,status,xhr){
+					
+				}
+				
+			})
+			
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

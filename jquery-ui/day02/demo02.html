@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>交互--拖放效果</title>
+		<script src="../jquery-3.1.0.js"></script>
+		<script src="../jquery-ui.min.js"></script>
+		<link rel="stylesheet" href="../jquery-ui.min.css" />
+		<script>
+			$(function(){
+				$("#div1").draggable(); //可以拖动
+				$("#div2").droppable(); //可以放置
+				//div2添加一个事件
+				$("#div2").on("drop",function(event,ui){
+					//alert(event); //[object Object]
+					$("#div2").text("aaa"); //添加文字
+				});
+				
+			});
+			
+			
+		</script>
+	</head>
+	<body>
+		<div id="div1" style="width: 100px;height: 100px;border: #FF0000 solid 1px;"></div>
+		
+		<div id="div2" style="width: 200px;height: 200px;border: #FF0000 solid 1px;"></div>
+		
+	</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>repeat指令</title>
+	</head>
+	<body>
+		
+		
+	   <div ng-app="myApp">
+	   	<!--
+          遍历内容
+          开始，结束的时候设置
+         -->
+	   	   <ul ng-controller="listCtrl">
+	   	   	  <li ng-repeat="item in items">
+	   	   	  	{{$first?"开始":""}}
+	   	   	  	{{item.id}}---{{item.name}}
+	   	   	    {{$last?"结束":""}}
+	   	   	    {{$index+"--"+item.name+"--"+$first+"---"+$last}}
+	   	   	  </li>
+	   	   </ul>
+	   </div>
+       <script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+       <script>
+       	  angular.module("myApp",[]).controller("listCtrl",["$scope",function($scope){
+       	  	$scope.items = [];
+       	  	for(var i=1;i<6;i++){
+       	  		$scope.items[$scope.items.length] ={
+       	  			id:i,
+       	  			name:"zhangsan"+i
+       	  		}
+       	  	}
+       	  	
+       	  }]);
+       	
+       </script>
+	</body>
+</html>

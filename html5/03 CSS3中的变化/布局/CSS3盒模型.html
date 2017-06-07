@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>CSS3盒模型</title>
+		<style>
+		    /*在CSS3之前,盒模型分为W3c盒模型和IE下的盒模型
+		    W3c的盒模型:设定的宽和高为内容的大小,不包含border的大小
+		    IE下的盒模型:设定的宽和高为内容的大小+boder的大小*/
+			.one{
+			   width: 200px;
+			   height: 200px;
+			   padding: 50px;
+			   border: 10px solid red;
+			   margin: 50px;
+			   background-color: green;
+			}
+			.two{
+			   width: 200px;
+			   height: 200px;
+			   padding: 50px;
+			   border: 10px solid red;
+			   margin: 50px;
+			   background-color: green;
+			   /*box-sizing: border-box;*/ /*设定为IE模式的盒模型*/
+			   /*box-sizing: content-box; */ /*默认,设定为W3C的盒模型*/
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class="one"></div>
+		<div class="two"></div>
+	</body>
+</html>

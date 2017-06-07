@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>事件委托</title>
+		<script src="../jquery-3.1.0.js"></script>
+		<script>
+			$(function(){
+				$("div").delegate("button","click",function(){
+					$(this).clone().appendTo("div");
+				});
+				
+				$("div").undelegate("button","click");
+			});
+		</script>
+	</head>
+	<body>
+		<div>
+		<button>按钮</button>
+		</div>
+	</body>
+</html>

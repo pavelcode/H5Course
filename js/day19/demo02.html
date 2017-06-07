@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>数码时钟</title>
+		<script>
+			/*
+			 思路：获得当前时间，得到时分秒，给图片设置对应名字的数字
+			 */
+			onload = function(){
+				
+				var imgs = document.getElementById("div").children;
+				setInterval(function(){
+				//第一种方式
+//				//获得当前时间
+				var date = new Date();
+//				//得到时分秒
+				var hour = date.getHours();
+				var hour_1 = parseInt(hour/10);
+				var hour_2 = hour%10;
+				
+				var minute = date.getMinutes();
+				var minute_1 = parseInt(minute/10);
+				var minute_2 = minute%10;
+				
+				var second = date.getSeconds();
+				var second_1 = parseInt(second/10);
+				var second_2 = second%10;
+				
+				
+				
+				imgs[0].src ="img/"+hour_1+".png";
+				imgs[1].src ="img/"+hour_2+".png";
+				imgs[2].src ="img/"+minute_1+".png";
+				imgs[3].src ="img/"+minute_2+".png";
+				imgs[4].src ="img/"+second_1+".png";
+				imgs[5].src ="img/"+second_2+".png";
+				
+				/*
+				   第二种方式：
+				   
+				 */
+//				var arr = [];
+//				var date = new Date();
+//				
+//				var hour = date.getHours();
+//				arr.push(parseInt(hour/10));
+//				arr.push(hour%10);
+//				
+//				var minute = date.getMinutes();
+//				arr.push(parseInt(minute/10));
+//				arr.push(minute%10);
+//				
+//				var second = date.getSeconds();
+//				arr.push(parseInt(second/10));
+//				arr.push(second%10);
+//				
+//				for(var i=0;i<arr.length;i++){
+//					imgs[i].src ="img/"+arr[i]+".png";
+//				}
+				
+				
+				//第三种写法
+				/*
+                var arr = new Array();
+                var timestr = new Date().toLocaleTimeString();
+                //console.log(timestr);
+                for(var i in timestr){
+                var asc =  timestr.charCodeAt(i);
+                	if(asc>=48&&asc<=57){
+                		arr.push(timestr[i]); 
+                 }
+                }
+				//console.log(arr);
+				//当小时数是一位数的时候，就会少一位，前面补零
+				if(arr.length==5) { 
+					arr.unshift("0");
+				}
+				for(var i=0;i<arr.length;i++){
+					imgs[i].src = "img/"+arr[i]+".png";
+				}
+				*/
+				},1000);
+
+			}
+			
+			
+			
+		</script>
+	</head>
+	<body>
+		<div id="div">
+		<img src="img/1.png" />
+		<img src="img/8.png" />
+		时
+		<img src="img/1.png" />
+		<img src="img/5.png" />
+		分
+		<img src="img/0.png" />
+		<img src="img/9.png" />
+		秒	
+	</div>
+	</body>
+</html>

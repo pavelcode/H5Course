@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>两种方式动态创建节点，并显示创建运行的时长</title>
+		
+		
+<script type="text/javascript">
+//第一种：先创建所有节点，再添加到文档
+var left = 0;
+var top = 0;
+function createAdd(count){
+ var start=new Date();
+ var container=document.createElement("div");
+ var obj=document.getElementById("contain");
+ container.height=200+"px";
+ for(var i=0;i<count;i++)
+ {
+  var node=document.createElement("span");
+  node.style.position="absolute";
+  node.innerHTML="span"+i;
+  left+=(10+parseInt(Math.random()*100));
+  node.style.left=left+"px";
+  node.style.top=(10+parseInt(Math.random()*100))+"px";
+  container.appendChild(node);
+ }
+ obj.appendChild(container);
+ var end=new Date();
+ var duration=end-start;
+ alert("创建"+count+"个div对象，使用了"+duration+"ms");
+}
+//第二种：先添加到文档一个空容器，再创建所有接点，并分别添加到容器中
+function addCreate(count)
+{
+ var start=new Date();
+ var container=document.createElement("div");
+
+ var obj=document.getElementById("contain");
+ obj.appendChild(container);
+ for(var i=0;i<count;i++)
+ {
+  var node=document.createElement("div");
+  node.innerHTML=i+"---";
+  node.style.position="absolute";
+  node.style.left=(6+parseInt(Math.random()*100))+"px";
+  node.style.top=(6+parseInt(Math.random()*100))+"px";
+  console.log("node.innerHTML="+node.innerHTML);
+  container.appendChild(node);
+ }
+ 
+ var end=new Date();
+ var duration=end-start;
+ alert("第二种方式："+duration+"ms");
+}
+function checkData()
+{
+ var number=parseInt(document.getElementById("count").value);
+ return number;
+}
+//调用createAdd()函数
+function callCreateAdd()
+{
+  var count=checkData();
+  createAdd(count);
+}
+//调用addCreate()函数
+function callAddCreate()
+{
+  var count=checkData();
+  addCreate(count);
+}
+</script>
+	</head>
+	<body>
+		请输入一个整数：
+		<input type="text" id="count" name="count"  />
+		<br />
+		<input type="button" id="createadd" name="createadd" value="第一种：先创建所有节点，再添加到文档方式的运行时长" onClick="callCreateAdd();" />
+	    <input type="button" id="one" name="one" value="第二种：先向文档添加一个空容器，然后每创建一个节点，再添加到容器中方式的运行时长" onClick="callAddCreate();" />
+	
+	    <div id="contain" style="position:absolute;"></div>
+	</body>
+</html>

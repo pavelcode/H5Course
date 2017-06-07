@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../bootstrap/project/lib/jquery/jquery.js"></script>
+		<script src="https://cdn.bootcss.com/zepto/1.2.0/zepto.min.js"></script>
+	</head>
+	<body>
+		<div class="clList overflow-h mt75">
+                    <select class="pull-left cl-35 select01" id="cityParent">
+                        <option>请选择省</option>
+                    </select>
+                    <select class="pull-left cl-35 select02" id="city">
+                        <option>请选择市</option>
+                    </select>
+         </div>
+	</body>
+</html>
+<script>
+	//测试数据
+var _json = [ {
+            "areas" : [ {
+                "name" : "东城区"
+            }, {
+                "name" : "西城区"
+            }, {
+                "name" : "崇文区"
+            }, {
+                "name" : "宣武区"
+            }, {
+                "name" : "昌平区"
+            }, {
+                "name" : "朝阳区"
+            }, {
+                "name" : "海淀区"
+            }, {
+                "name" : "丰台区"
+            }, {
+                "name" : "石景山区"
+            }, {
+                "name" : "门头沟区"
+            }, {
+                "name" : "房山区"
+            }, {
+                "name" : "通州区"
+            }, {
+                "name" : "顺义区"
+            }, {
+                "name" : "大兴区"
+            }, {
+                "name" : "平谷区"
+            }, {
+                "name" : "怀柔区"
+            }, {
+                "name" : "密云县"
+            }, {
+                "name" : "延庆县"
+            } ],
+            "name" : "北京市"
+        },{
+            "areas" : [ {
+                "name" : "合肥市"
+            }, {
+                "name" : "滁州市"
+            }, {
+                "name" : "蚌埠市"
+            }, {
+                "name" : "芜湖市"
+            }, {
+                "name" : "淮南市"
+            }, {
+                "name" : "淮北市"
+            }, {
+                "name" : "马鞍山市"
+            }, {
+                "name" : "安庆市"
+            }, {
+                "name" : "宿州市"
+            }, {
+                "name" : "阜阳市"
+            }, {
+                "name" : "亳州市"
+            }, {
+                "name" : "黄山市"
+            }, {
+                "name" : "铜陵市"
+            }, {
+                "name" : "宣城市"
+            }, {
+                "name" : "六安市"
+            }, {
+                "name" : "池州市"
+            } ],
+            "name" : "安徽省"
+        }, {
+            "areas" : [ {
+                "name" : "福州市"
+            }, {
+                "name" : "厦门市"
+            }, {
+                "name" : "宁德市"
+            }, {
+                "name" : "莆田市"
+            }, {
+                "name" : "泉州市"
+            }, {
+                "name" : ">"
+            }, {
+                "name" : "漳州市"
+            }, {
+                "name" : "龙岩市"
+            }, {
+                "name" : "三明市"
+            }, {
+                "name" : "南平市"
+            } ],
+            "name" : "福建省"
+        }, {
+            "areas" : [ {
+                "name" : "兰州市"
+            }, {
+                "name" : "临夏州"
+            }, {
+                "name" : "定西市"
+            }, {
+                "name" : "平凉市"
+            }, {
+                "name" : "庆阳市"
+            }, {
+                "name" : "武威市"
+            }, {
+                "name" : "金昌市"
+            }, {
+                "name" : "张掖市"
+            }, {
+                "name" : "酒泉市"
+            }, {
+                "name" : "嘉峪关市"
+            }, {
+                "name" : "天水市"
+            }, {
+                "name" : "陇南市"
+            }, {
+                "name" : "甘南州"
+            }, {
+                "name" : "白银市"
+            } ],
+            "name" : "甘肃省"
+        }];
+        function loadCityPar() {
+            var cityPar = '<option value="0">请选择省</option>';
+            var lenPar = _json.length;   //省市数量
+            for(var i=0; i<lenPar; i++){
+                var n = i + 1;
+                cityPar += '<option value="'+n+'">'+_json[i].name+'</option>';
+
+            }
+            $('#cityParent').html(cityPar);
+        }
+        loadCityPar();
+
+        $(document).on('change','#cityParent',function () {
+            var index = $('#cityParent option').not(function(){ return !this.selected }).index();
+            var i = index - 1;
+            if(i >= 0){
+                var city = '<option value="0">请选择市</option>';
+                var len = _json[i].areas.length;
+                for(var j=0; j<len; j++){
+                    var m = j + 1;
+                    city += '<option value="'+m+'">'+_json[i].areas[j].name+'</option>';
+                }
+                $('#city').html(city);
+            }
+        });
+</script>

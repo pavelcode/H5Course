@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>减速运动</title>
+		<script>
+		
+			onload = function(){
+				var ball = document.getElementById("ball");
+				var btn = document.getElementsByTagName("button")[0];
+				var id ;
+				btn.onclick = function(){
+					
+					toTarget(1000);
+					
+				}
+				//减速到目标
+				function toTarget(target){
+			        clearInterval(id);//取消已经有的间歇调用
+					id = setInterval(function(){	
+				   //最开始初始速度设定为距离的1/8
+					var speed = (target-ball.offsetLeft)/8; 
+					//速度可能是小数，取整  如果速度是负的，也需要取整
+					//1.8  2  -1.8 -2
+					speed = speed>0?Math.ceil(speed):Math.floor(speed);
+					//当球运动到目标的时候，停止
+						if(ball.offsetLeft==target){
+						  clearInterval(id);	
+						}else{
+							//当小球没有达到目标，继续移动
+							ball.style.left = (ball.offsetLeft+speed)+"px";
+						}
+					},50);
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="ball" style="width: 50px;height: 50px; background: red; border-radius: 50%; position: absolute;left:0;top: 0;" ></div>
+		<button style="position: relative;top:50px">减速运动</button>
+	</body>
+</html>

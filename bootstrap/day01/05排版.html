@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>排版</title>
+		<link rel="stylesheet" type="text/css" href="../../bower_components/bootstrap/dist/css/bootstrap.css"/>
+	</head>
+	<body>
+		
+		<!--
+             全局 font-size 设置为 14px，line-height 设置为 1.248。
+             <p> （段落）元素还被设置了等于 1/2 行高（即 10px）的底部外边距（margin）。
+            -->
+		<!--
+			div添加class= container 
+			p添加class = lead 文本变大
+        -->
+		<div class="container">
+			  <!--
+              	标题
+              -->
+			<h1>你好</h1>
+			<h2>你好</h2>
+			<h3>你好</h3>
+			
+			<p class="h1">Hello</p>
+			<p class="h2">Hello</p>
+			<p class="h3">Hello</p>
+		      <!--
+              	副标题
+              -->
+			<h4>你好 <small>欢迎你</small></h4>
+			
+			<p>我在学习bootstrap</p>
+			<!--
+			通过添加 .lead 类可以让段落突出显示。
+			-->
+			<p class="lead">我在学习bootstrap</p>
+			
+			
+			<!--
+              mark高亮显示
+            -->
+			<p>You can use the mark tag to <mark>highlight</mark> text.</p>
+		
+		   <!--
+              del删除文本
+            -->
+		    <del>This line of text is meant to be treated as deleted text.</del>
+			<!--
+              del无用文本
+            -->
+            <s>This line of text is meant to be treated as no longer accurate.</s>
+            <!--
+              ins插入文本
+            -->
+            <ins>This line of text is meant to be treated as an addition to the document.</ins>
+            <!--
+              u下划线文本
+            -->
+            <u>This line of text will render as underlined</u>
+            
+            <!--
+             文本对齐方式
+            -->
+			<p class="text-left">文字</p>
+			<p class="text-right">文字</p>
+			<p class="text-center">文字</p>
+			 <!--
+               text-justify 自动换行
+               text-nowrap 不自动换行
+            -->
+			<p class="text-justify">Justified text.</p>
+            <p class="text-nowrap">No wrap text.</p>
+			
+			<!--
+            单词首字母大写  首字母大写
+            -->
+			<p class="text-lowercase">abC</p>
+			<p class="text-uppercase">abC</p>
+			<p class="text-capitalize">abC</p>
+			
+			<!--
+              缩略语
+            -->
+			An abbreviation of the word attribute is <abbr title="attribute">attr</abbr>.
+			
+			<!--
+            	首字母缩略语
+            	initialism 更小的字体
+            -->
+            HTML is the best thing since sliced bread.
+		   <abbr title="HyperText Markup Language" class="initialism">HTML</abbr>
+		   
+		   <!--
+            地址
+           -->
+           <address>
+			  <strong>我的地址</strong><br>
+			  北京市，中国<br>
+			  海淀区西二旗地铁站<br>
+			  <abbr title="Phone">电话</abbr> (123) 456-7890
+			</address>
+			
+			<!--
+            	引用
+            -->
+			<blockquote>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+            </blockquote>
+			
+			<!--
+            	li无样式
+            -->
+			<ul class="list-unstyled">
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+			</ul>
+			
+			<!--
+            	li内联样式
+            -->
+			<ul class="list-inline">
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+			</ul>
+			
+			
+			
+			
+		</div>
+	</body>
+</html>

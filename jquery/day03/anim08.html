@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>动画的相关方法</title>
+		<script src="../jquery-3.1.0.js"></script>
+		<script>
+			$(function(){
+				//当点停止的时候，就会停止。再次点开始的时候，就会开始
+//				$("#start").click(function(){
+//					//alert("111");
+//					$("div").animate({left:"500px"},2000);
+//				});
+//				
+//				$("#stop").click(function(){
+//					$("div").stop();
+//				});
+				//但当是列队动画的时候，stop只会停止当前动画，继续执行后面列队动画
+//				$("#start").click(function(){
+//					//alert("111");
+//					$("div").animate({left:"300px"},2000)
+//					$("div").animate({top:"300px"},2000);
+//					$("div").animate({left:"100px"},2000);
+//					$("div").animate({top:"100px"},2000);
+//				});
+//				
+//				$("#stop").click(function(){
+//					$("div").stop();
+//				});
+				
+				
+				//但当是列队动画的时候，stop停止后面列队动画
+//				$("#start").click(function(){
+//					//alert("111");
+//					$("div").animate({left:"300px"},2000)
+//					$("div").animate({top:"300px"},2000);
+//					$("div").animate({left:"100px"},2000);
+//					$("div").animate({top:"100px"},2000);
+//				});
+//				
+//				$("#stop").click(function(){
+//					$("div").stop(true,true); //第一个参数 清空后面没执行的动画  第二个参数 会调到动画结束位置
+//				});
+
+                 //查找运动的动画(下面的div不会运动，主要是看是否捕获了在运动的，作为一个参照物)
+                 $("#start").click(function(){
+                 	//让这个动画不断的调用自己，进行自运动
+                 	$("#anim").slideToggle("slow",function(){
+                 		$(this).slideToggle("slow",arguments.callee);
+                 	});
+                 });
+                 //让正在运动的动画，停止运动
+                 $("#find").click(function(){
+                 	$(":animated").stop();
+                 });
+
+
+
+
+			});
+		</script>
+	</head>
+	<body>
+		<button id="start">开始</button>
+		<button id="stop">停止</button>
+		<button id="find">查找正在运动的动画</button>
+		<div id="anim" style="width:100px;height: 100px;background: red;position: absolute;"></div>
+		<div style="width:100px;height: 100px;background: green;position: absolute;top:120px"></div>
+		
+	</body>
+</html>

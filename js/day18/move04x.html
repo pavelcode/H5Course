@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>小球落地运动</title>
+		<style>
+			*{padding: 0;margin: 0;}
+			html,body{width: 100%;height: 100%;}
+		</style>
+		/*
+		  原理：当小球到达底部的时候，小球的速度为负值。反方向向上运动，这时候，速度慢慢变成0，上升运动结束。
+		            速度值继续正向增大，小球向下运动。直到到达底部，整个过程做减速运动。
+		 */
+		<script>
+			//水平速度和垂直速度
+			var speedX = 5;
+			var speedY = 2;
+			onload = function(){
+				var ball = document.getElementById("ball");
+				
+				//开始运动
+				var id = setInterval(function(){
+					ball.style.left = ball.offsetLeft+speedX+"px";
+				    ball.style.top = ball.offsetTop+(speedY++)+"px";//在重力加速度的情况下，Y轴的速度越来越快
+				    //判断是否到底部
+				    if(ball.offsetTop>=document.documentElement.offsetHeight-ball.offsetHeight){
+				    	//小球停留在底部
+				    	ball.style.top = document.documentElement.offsetHeight-ball.offsetHeight+"px";//必须设置，否则会出现不会谈起效果
+				    	//小球做反向减速运动
+				    	console.log("before"+speedY);
+				    	speedY = parseInt(speedY*-0.66); //必须设置为两位小数
+				    	console.log("after"+speedY);
+				    	
+				    	if(Math.abs(speedY)<=1){ //正负两个方向，速度小于1的时候，Y轴速度为0
+				    		speedY = 0;
+				    	}
+				    	//当小球y轴速度为0的时候，停止
+				    	/*if(Math.abs(speedY)<=1){
+				    		speedY = 0;
+				    		speedX *=0.95;
+				    		if(parseInt(speedX)==0){
+				    			clearInterval(id);
+				    		}
+				    	}*/
+				    }
+				},20);
+				
+				var id1  = setInterval(function(){
+					if(--speedX==0){
+						clearInterval(id);
+						clearInterval(id1);
+					}
+				},1200)
+				
+				
+				
+				
+			}
+			
+			
+			
+		</script>
+	</head>
+	<body>
+			
+			<div id="ball" style="width: 50px;height: 50px; background: red; border-radius: 50%; position: absolute;left:0;top:50px;" ></div>
+	
+	</body>
+</html>

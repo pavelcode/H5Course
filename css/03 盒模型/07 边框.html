@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+    <style type="text/css">
+		    /*设置边框宽度,边框样式,边框颜色*/
+		/* 	div{
+				width: 300px;
+				height: 300px;
+				border-width: 1px; 
+				border-style: solid; 
+				border-color: red;
+			} */
+             
+
+			/* 分拆每个边框样式 */
+			/*    div{
+			   	width: 200px;
+				height: 200px;
+				border-top-width: 1px;
+				border-top-style:solid;
+				border-top-color: red;
+			   } */
+            
+            /*属性连写*/
+            /*没有顺序限制,可以不写颜色，宽度*/
+			div{
+				width: 200px;
+				height: 200px;
+			    /* border: 1px solid red; */
+			    border: solid ; /* 默认黑色，宽度3px */
+			}
+
+			/* 线行 solid  dashed  dotted*/
+           /*  div{
+            	width: 200px;
+				height: 200px;
+				border: 1px solid red; 
+            } */
+
+
+			/*设置每个边框样式*/
+			/*div{
+				width: 200px;
+				height: 200px;
+				border-top: 1px solid green;
+				border-left: 1px solid red;
+				border-bottom: 1px solid blue;
+				border-right: 1px solid pink; 
+			}*/
+
+            /* 如果某个方向没有边框 使用border-left:none或border-left-width:0 */
+              /*  div{
+				width: 200px;
+				height: 200px;
+				border: 1px solid green;
+				border-left: none;
+
+			 } */
+
+             /*   css设置一个三角形（网易首页的三角形就是这么设置的） */
+             /*  div{
+              	 width:0px;
+              	 height: 0px;
+              	 border: 30px solid white;
+              	 border-top-color: blue;
+              } */
+
+
+
+
+			
+			/*导航案例*/
+ 			div{
+				height: 50px;
+				background-color: #C0C0C0;
+				border-top: 2px solid orange;
+				border-bottom: 1px solid coral;
+				line-height: 50px;
+			}
+			a{
+				height: 50px;
+				display: inline-block;
+				text-decoration: none;
+			}
+			a:hover{
+				 background-color: deepskyblue;
+			}
+			/*输入框显示案例*/
+
+		</style>
+        
+	</head>
+	<body>
+		
+		<!-- <div></div> -->
+		
+		<div>
+			<a href="">北京欢迎你</a>
+			<a href="">你好</a>
+		</div>
+	</body>
+</html>

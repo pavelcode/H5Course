@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+<style>
+			div p {
+				color:red;
+			}
+			div h1{
+				color:blue;
+			}
+			div span{
+				color:green;
+			}
+			p div{
+				color: red;
+			}
+			p h1{
+				color:blue;
+			}
+			p li{
+				color:green;
+			}
+			h1 div{
+				color:red;
+			}
+			h1 li{
+				color:blue;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<!--首先块级div包含块级p，块级h1，行内元素span，都可以。说明div可以包含任何标准流下的元素。-->
+		<div><p>div的p</p></div>
+		<div>
+			<h1>div的h1</h1>
+		</div>
+		<div><span>div的span</span></div>
+		
+		<!--块级p包含块级div，块级h1都是不行的。行内元素span可以。说明p不可以包含div，h1，li标签。-->
+		<p>
+			<div>p的div</div>
+		</p>
+		<p>
+			<h1>p的h1</h1>
+		</p>
+		<p><ul>
+			<li>p的ul的li</li>
+			<li>p的ul的li</li>
+			<li>p的ul的li</li>
+		</ul></p>
+		
+		<!--h1包含块级div，li标签都可以。说明h1可以包含其他标签。-->
+		<h1>
+			<div>h1的div</div>
+		</h1>
+		<h1>
+			<ul>
+				<li>h1的li</li>
+				<li>h1的li</li>
+				<li>h1的li</li>
+			</ul>
+		</h1>
+	</body>
+</html>

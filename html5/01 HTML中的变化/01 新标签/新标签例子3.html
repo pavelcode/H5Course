@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<!--
+        	作者：code01@yeah.net
+        	时间：2016-06-14
+        	描述：range 得到鼠标选择的内容
+        	   firfox可以选择多个内容
+        -->
+        
+        <script>
+        	function getSelectContent(){
+        		var content = null;
+        		var rangContent = null;
+        		var showSelectDiv = document.getElementById("showSelectContent");
+        		var selection = document.getSelection();
+        		var rangeCount = selection.rangeCount;
+        		if(rangeCount>0){
+        			content="你选择的了"+rangeCount+"块内容<br/>";
+        			for(var i=0;i<rangeCount;i++){
+        				rangContent = selection.getRangeAt(i);
+        				content += "第"+i+"块内容是："+rangContent;
+        			}
+        			showSelectDiv.innerHTML=content;
+        		}
+        	}
+        </script>
+        我是被选择的内容
+        <input type="button" value="得到选中内容" onclick="getSelectContent()" />
+        <div id="showSelectContent"></div>
+        <br />
+        
+        <!--
+        	作者：code01@yeah.net
+        	时间：2016-06-15
+        	描述：range 删除节点内容  
+        	           删除节点
+        -->
+        <script>
+        	 function rangeOpe(flag){
+        	 	var myshow = document.getElementById("myshow");
+        	 	var rangeObj = document.createRange();
+        	 	if(flag){
+        	 		rangeObj.selectNodeContents(myshow);
+        	 		rangeObj.deleteContents();
+        	 	}else{
+        	 		rangeObj.selectNode(myshow);
+        	 		rangeObj.deleteContents();
+        	 	}
+        	 }
+        </script>
+        <div id="myshow" style="background-color: #ff0000;width: 200px;height: 20px;">
+        	  我是内容
+        </div>
+        <input type="button" value="删除内容" onclick="rangeOpe(true)"/>
+        <br />
+        <input type ="button" value="删除元素" onclick="rangeOpe(false)" />
+        <br />
+        
+        <!--
+        	作者：code01@yeah.net
+        	时间：2016-06-15
+        	描述：range 的常用操作方法
+        	点击前两次没用，删除4个字母
+        -->
+        
+        <script>
+        	  function deletePart(){
+        	  	var myshow01 = document.getElementById("myshow01");
+        	  	var divContent = myshow01.firstChild;
+        	  	var rangeObj = document.createRange();
+        	  	rangeObj.setStart(divContent,1);
+        	  	rangeObj.setEnd(divContent,5);
+        	  	rangeObj.deleteContents();
+        	  }
+        </script>
+        <div id="myshow01">
+        	   thisisrangediv
+        </div>
+        <input type="button" value="删除部分内容" onclick="deletePart()" />
+        
+        <br />
+        
+        <!--
+        	作者：code01@yeah.net
+        	时间：2016-06-15
+        	描述：range删除表格的一行
+           setStartBefore	设置范围的开始点位于该节点之前
+           setEndAfter      设置范围的结束点位于该节点之后
+           
+           setEndBefore、setEndAfter
+        -->
+        <script>
+        	  function deleteRow(){
+        	  	var tab = document.getElementById("mytable");
+        	  	if(tab.rows.length>0){
+        	  		var firstrow = tab.rows[0];
+        	  		var rangObj = document.createRange();
+        	  		rangObj.setStartBefore(firstrow);
+        	  		rangObj.setEndAfter(firstrow);
+        	  		rangObj.deleteContents();
+        	  	}
+        	  }
+        </script>
+        <table id="mytable" border="1">
+        	  <tr>
+        	  	<td>内容1</td>
+        	  	<td>内容2</td>
+        	  </tr>
+        	   <tr>
+        	  	<td>内容3</td>
+        	  	<td>内容4</td>
+        	  </tr>
+        	
+        </table>
+        <input type="button" value="删除第一行"  onclick="deleteRow()"/>
+        
+        
+        <!--
+        	作者：code01@yeah.net
+        	时间：2016-06-15
+        	描述：range实现元素赋值累加
+        -->
+        <script>
+        	  function appContent(){
+        	  	var app_div = document.getElementById("append_content");
+        	  	var rangeObj = document.createRange();
+        	  	 rangeObj.selectNodeContents(app_div);
+        	  	 var content = rangeObj.toString();
+        	  	 //var content = rangeObj.cloneContents();
+        	  	 alert(content);
+        	  	 app_div.appendChild(content);
+        	  }
+        </script>
+        <div id="append_content">
+        	  复制内容
+        </div>
+        <input type="button" value="赋值追加内容" onclick="appContent()"/>
+        <br />
+        <!--
+        	作者：code01@yeah.net
+        	时间：2016-06-15
+        	描述：range实现元素内容交换
+        -->
+        <script>
+        	function exchangeContent(){
+        		var ex1 = document.getElementById("exchange01");
+        		var ex2 = document.getElementById("exchange02");
+        		var rangeObj = document.createRange();
+        		rangeObj.selectNodeContents(ex1);
+        		var content = rangeObj.extractContents();
+        		ex2.appendChild(content);
+        		
+        	}
+        </script>
+        <div id="exchange01" style="background-color: #ff0000;width: 200px;height: 30px;">
+          交换内容
+        </div>        
+        <div id="exchange02" style="background-color: #00ff00; width: 200px; height: 30px;"></div>
+        
+        <input type="button" value="交换内容" onclick="exchangeContent()" />
+        <br />
+        <!--
+        	作者：code01@yeah.net
+        	时间：2016-06-15
+        	描述：在选中位置添加控件
+        -->
+        <script>
+        	function addBtn(){
+        		var btn = document.getElementById("mybtn");
+        		var select = document.getSelection();
+        		if(select.rangeCount>0){
+        			var range =  select.getRangeAt(0);
+        			range.insertNode(btn);
+        		}
+        	}
+        </script>
+        <div id="addDiv" onmouseup="addBtn()">
+        	  这是我输入的内容
+        </div>
+        <input type="button" value="我的button" id="mybtn" />
+        <br />
+        <!--
+        	作者：code01@yeah.net
+        	时间：2016-06-15
+        	描述：确定选择内容在标志位置的前或后
+        -->
+        
+        <script>
+        	function checkPosition(){
+        		var mark = document.getElementById("mark");
+        		var rangeObj = document.createRange();
+        		var div = document.getElementById("selectdiv");
+        		//alert(div.firstChild);
+        		rangeObj.selectNodeContents(div.firstChild);
+        		var select = document.getSelection();
+        		//alert("aaa"+select);
+        		if(select.rangeCount>0){
+        			var selectRange = select.getRangeAt(0);
+        			if(selectRange.compareBoundaryPoints(Range.END_TO_START,rangeObj)<=0){
+        				alert("在选择内容之前");
+        			}else{
+        				if(selectRange.compareBoundaryPoints(Range.START_TO_END,rangeObj)>0){
+        					alert("在选择内容之后");
+        				}
+        			}
+        		}
+        	}
+        </script>
+        <div id="selectdiv">
+        	这是我需要选择的<b id="mark">内容</b>，你知道吗?
+        </div>
+        <input type="button" value="选择的位置" onclick="checkPosition()" />
+        <br />
+        <!--
+        	作者：code01@yeah.net
+        	时间：2016-06-15
+        	描述： collapse取消range选择内容
+        	       detach
+        -->
+        <script>
+        	 var rangeObj = document.createRange();
+        	 function rangeSelect(){
+        	 	var div = document.getElementById("my");
+        	 	rangeObj.selectNode(div);
+        	 }
+        	 function unrangeSelect(){
+        	 	rangeObj.collapse(false);
+        	 }
+        	 function showSelect(){
+        	 	alert(rangeObj.toString());
+        	 }
+        </script>
+        <div id="my">选择内容</div>
+        <input type="button" value="range选择内容" onclick="rangeSelect()" />
+        <input type="button" value="取消range选择内容" onclick="unrangeSelect()" />
+        <input type="button" value="显示rang选择内容" onclick="showSelect()"/>
+        
+	</body>
+</html>

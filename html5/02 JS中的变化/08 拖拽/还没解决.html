@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body onload="mydrag()">
+		<!--
+        	描述：图片拖放
+        	drag  drop
+        	ondragover 何处方式方式拖放的数据
+        	ondrop 放置数据
+        	不成功
+        -->
+        <script>
+        	 function mydrag(){
+        	 	//alert("aaa");
+        	 	var darg_div = document.getElementById("drag_div");
+        	 	var show_msg = document.getElementById("show_msg");
+        	 	var img = document.getElementById("myimg");
+
+        	 	//拖拽事件
+        	 	drag_div.ondragenter = function(e){
+        	 		show_msg.innerHTML = showMsg(e);
+        	 	}
+        	 	//阻止默认操作
+        	 	drag_div.ondragover = function(e){
+        	 		e.preventDefault();
+                    e.stopPropagation();
+        	 	}
+        	 	//开始拖动图片
+        	 	img.ondragstart= function(ev){
+        	 		ev.dataTransfer.setData("a","myimg");
+                    console.log(111);
+                   
+        	 	}
+        	 	//开始拖动
+        	 	img.ondrag = function(ev){
+                    //alert("11");
+        	 		//e.preventDefault();
+                   console.log(222);
+                   // alert(e.dataTransfer.getData("a"));
+                   
+        	       //var img = document.getElementById(e.dataTransfer.getData("a"));
+                     //这里获得对象为空，怀疑不是一个事件对象
+                     console.log(ev.dataTransfer.getData("a"));
+        	 		//drag_div.appendChild(img);
+        	 	}
+        	 }
+        	 //展示拖拽信息
+        	 function showMsg(info){
+        	 	var s = "";
+        	 	for(var i in info){
+        	 		s+=i+"---"+info[i]+"<br/>";
+        	 	}
+                return s;
+        	 }
+        </script>
+		<div id="drag_div" style="background-color: #cccccc;width: 800px;height: 300px;"></div>
+        <div>
+		<img id="myimg" src="fly1.png" />
+         <p>我是文字</p>
+        </div>
+		<div id="show_msg"></div>
+		
+	</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title><style>
+		
+		    /*div是并列关系*/
+		    /*在标准流中,外边距会合并，称为外边距塌陷*/
+			/*.one,.two{
+			 width: 100px;
+			 height: 100px;
+			 background-color: red;	
+			}*/
+			/*.one{
+				margin-bottom: 100px;
+			}
+			.two{
+				background-color: green;
+				margin-top: 120px;  /*外边距合并：当同时设置的时候,并不会累加,而取最大值*/
+			/*}*/
+			
+			
+			/*在脱标流中,外边距会累加*/
+			/*#div{
+				width:100px ;
+				border: 1px solid red;
+				overflow: hidden; /*看不到边框*/
+			/*}*/
+			/*.one{
+				margin-bottom: 100px;
+				float: left;
+			}
+			.two{
+				background-color: green;
+				float: left;
+				margin-top: 120px;  /*外边距合并：当同时设置的时候,并不会累加,而取最大值*/
+			/*}*/
+			
+			
+			
+			/*div是包含关系*/
+			/*当子盒子添加一个margin-top的时候,父盒子也会受到margin-top的影响*/
+			/*解决方案一:给父容器设置边框border: 1px solid black;，这种方式修改了div的盒子大小，不推荐*/
+			/*解决方案二:使用父容器的padding,也不要使用子容器margin*/
+			.one{
+				width: 300px;
+				height: 280px;
+				background-color: red;
+				padding-top: 20px;
+			}
+			.two{
+				width: 100px;
+				height: 100px;
+				background-color: green;
+			}
+			/*解决方案三:给父容器设定overflow: hidden; 原因http://www.w3cplus.com/css/understanding-bfc-and-margin-collapse.html*/
+			/*.one{
+				width: 300px;
+				height: 300px;
+				background-color: red;
+				overflow: hidden;
+			}
+			.two{
+				width: 100px;
+				height: 100px;
+				background-color: green;
+				margin-top: 20px;
+			}*/
+			
+			
+			
+		</style>
+	</head>
+	<body>
+		
+		<!--<div class="one"></div>
+		<div class="two"></div>-->
+		
+		<!--<div id="div">
+			<div class="one"></div>
+			<div class="two"></div>
+		</div>-->
+		
+		<div class="one">
+			<div class="two"></div>
+		</div>
+		
+	</body>
+</html>

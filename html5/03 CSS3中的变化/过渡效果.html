@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>过渡效果</title>
+		<style>
+			div{
+				width: 100px;
+				height: 50px;
+				border: 1px solid red;
+				background-color: #0000FF;
+				transitoin:width;
+				-moz-transition:width; /* Firefox 4 */
+			    -webkit-transition:width; /* Safari and Chrome */
+			     -o-transition:width; /* Opera */
+			    
+			    transition-duration: 2s;
+			-moz-transition-duration: 2s; /* Firefox 4 */
+			-webkit-transition-duration: 2s; /* Safari 和 Chrome */
+			-o-transition-duration: 2s; /* Opera */
+			}
+			
+			div:hover{
+				width: 200px;
+			}
+
+		</style>
+	</head>
+	
+	<body>
+		<div></div>
+	</body>
+</html>

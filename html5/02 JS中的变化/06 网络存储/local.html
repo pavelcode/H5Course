@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>LocalStorage</title>
+		
+		<script>
+			function save(){
+				var txt = document.getElementById("mytxt");
+				if(txt.value){
+//					localStorage.TEXT = txt.value;
+//                   localStorage.setItem("key",txt.value);
+                     localStorage['key']= txt.value;
+					
+				}
+			}
+			
+			function show(){
+				var show_txt = document.getElementById("show")
+				if(localStorage.TEXT){
+//					show_txt.innerHTML = localStorage.TEXT;
+//                   show_txt.innerHTML = localStorage.getItem("key");
+                     show_txt.innerHTML = localStorage["key"];
+				}		
+			}
+		</script>
+	</head>
+	<body>
+		
+		<input type="input" id="mytxt" >
+		<br />
+		<input type="button" value="save" id="savebtn"  onclick="save()"/>
+		<br />
+		<input type="button" value="show" onclick="show()" />
+		
+		<div id="show" ></div>
+		
+	</body>
+</html>

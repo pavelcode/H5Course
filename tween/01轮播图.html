@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>轮播图</title>
+ <!-- 学习地址 
+ http://www.qdfuns.com/notes/27225/983a65df303c523ea1ccbb8a4e55c363.html -->
+	<style type="text/css">
+         *{
+         	margin: 0px;
+         	padding: 0px;
+         }
+         img{
+         	width: 500px;
+         	height: 300px;
+         }
+         #div{
+         	width: 500px;
+         	height: 300px;
+         	position: relative;
+         	overflow: hidden;
+         	margin: 40px auto;
+         }
+         ul{
+         	width: 2500px;
+         	height: 300px;
+         	list-style: none;
+         	position: absolute;
+         }
+         ul li{
+         	float: left;
+         }
+	</style>
+</head>
+<body>
+	<div id="div">
+		<ul>
+			<li><img src="img/img0.jpg"></li>
+			<li><img src="img/img1.jpg"></li>
+			<li><img src="img/img2.jpg"></li>
+			<li><img src="img/img3.jpg"></li>
+			<li><img src="img/img0.jpg"></li>
+		</ul>
+	</div>
+</body>
+<script src="tween.js"></script>
+<script type="text/javascript">
+	var ul = document.getElementsByTagName("ul")[0];
+	var t = 0; //开始值
+	var b = 0;  //初始值
+	var c = -500; //结束值
+	var d = 50;  //持续时间
+	var timer = setInterval(function(){
+       t++;
+       if(t == d){
+       	b += c;
+       	t = 0;
+       	if(b == -2000){
+       		b = 0;
+       		ul.style.left = 0;
+       	}
+       }else{
+       	ul.style.left = Tween.Quint.easeIn(t,b,c,d) + "px";
+       }
+	},30)
+</script>
+</html>

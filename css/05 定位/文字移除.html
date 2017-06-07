@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>文字移除</title>
+		<style>
+		    /*方式一:logo链接隐藏*/
+			a{
+				width: 200px;
+				height: 200px;
+				display: inline-block;
+				background-color: red;
+				text-indent: -40px;
+			}
+			/*方式二*/
+			div{
+				height: 0px;
+				background-color: red;
+				padding-top: 200px;
+				width: 200px;
+				overflow: hidden;
+			}
+		</style>
+	</head>
+	<body>
+		<!--<a>搜狐</a>-->
+		
+		<div>文字</div>
+	</body>
+</html>

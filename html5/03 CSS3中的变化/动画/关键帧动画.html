@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Simple CSS3 Animation</title>
+<style>
+#rectBox{
+        width:100px;
+        height:10px;
+        background:#666;
+        position:absolute;
+        top:200px;
+        left:200px;
+        /*Chrome*/
+        -webkit-animation:colorChange 5s linear .5s infinite;
+        -webkit-transform-origin:0% 50%;
+        /*Mozilla*/
+        -moz-animation:colorChange 5s linear .5s infinite;
+        -moz-transform-origin:0% 50%;
+        /*Opera*/
+        -o-animation:colorChange 5s linear .5s infinite;
+        -o-transform-origin:0% 50%;
+}
+#circle{
+        width:200px;
+        height:200px;
+        background:#666;
+        position:absolute;
+        top:105px;
+        left:100px;
+        border-radius:50%;
+}
+/*Chrome*/
+@-webkit-keyframes colorChange
+{
+        0%   {background: red; -webkit-transform: rotate( 0deg );}
+        50%  {background: blue;  -webkit-transform: rotate( 180deg );}
+        100% {background: red; -webkit-transform: rotate( 360deg );}
+}
+/*Mozilla*/
+@-moz-keyframes colorChange
+{
+        0%   {background: red; -moz-transform: rotate( 0deg );}
+        50%  {background: blue;  -moz-transform: rotate( 180deg );}
+        100% {background: red; -moz-transform: rotate( 360deg );}
+}
+/*Opera*/
+@-o-keyframes colorChange
+{
+        0%   {background: red; -o-transform: rotate( 0deg );}
+        50%  {background: blue;  -o-transform: rotate( 180deg );}
+        100% {background: red; -o-transform: rotate( 360deg );}
+}
+</style>
+</head>
+<body>
+<div id="circle"></div>
+<div id="rectBox"></div>
+</body>
+</html>

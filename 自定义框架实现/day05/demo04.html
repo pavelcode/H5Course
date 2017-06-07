@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>JSON框架</title>
+	</head>
+	<body>
+	</body>
+</html>
+<script src="../myframe.js"></script>
+<script>
+
+//将json转换成字符串
+//	function sjson(json) {
+//		return JSON.stringify(json);
+//	}
+//  //将字符串转成json
+//	function json(str) {
+//		return eval(str);
+//	}
+//  var jsonObj = {key:1,value:1};
+//  var sjson = sjson(jsonObj);
+//  console.log(json(jsonObj));
+//  console.log(sjson);
+
+//框架实现
+    var jsonObj = {key:1,value:1};
+    var sjson = $$.sjson(jsonObj);
+    console.log($$.json(jsonObj));
+    console.log(sjson);
+</script>

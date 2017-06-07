@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>标签追加内容</title>
+		<script src="../jquery-3.1.0.js"></script>
+		<script>
+		     /*
+		        append 向节点内部后面插入节点内容
+		        append(function(){})
+		      * appendTo 将指定元素元素移入指定元素content后面
+		      * 
+		      * prepend向节点内部前面插入节点内容
+		      * 
+		      * after 向指定节点的外部，节点之后插入新节点内容
+		      * 
+		      * before
+		      * 
+		      * insertAfter 把指定节点移动到指定节点的后面
+		      * insertBefore 把指定节点移动到指定节点的前面
+		      * 
+		      * wrap 包裹元素
+		      * wrap(function(){})
+		      * unwrap 移除元素节点包裹节点，也就是父节点
+		      * wrapAll 全部节点添加一个包裹节点
+		      * wrapInner 节点里面加一个包裹
+		      * 
+		      * 
+		      * clone 复制节点
+		      * remove 删除节点  删除之后，再添加不会保留事件
+		      * detach 删除节点  删除之后，再添加保留事件
+		      * empty 清空内容
+		      * replaceWith 替换
+		      * replaceAll
+		      * */
+		
+		
+			$(function(){
+//				var div = $("<div id='mydiv'>我的DIV</div>"); //创建节点
+//				$("body").append(div);//插入节点
+
+                 //节点内部插入内容
+                 // $("div").append("<strong>good</strong>"); //<div>Dom<strong>good</strong></div>
+                 //另一种写法
+//               $("div").append(function(index,html){  //<div>DomabcDom</div>
+//               	return "abc"+html;
+//               });
+                //把节点移入到节点内部后面
+//               $("strong").appendTo("div");
+
+
+
+				//节点内部前面插入节点
+				
+				
+				
+				//把strong标签移入到div的后面
+				 //$("strong").insertAfter("div");
+				 
+				 //让strong标签包裹div
+				  //$("div").wrap("<strong></string>")
+				  
+				  //克隆节点
+				  $("div").clone().appendTo("body"); //如果clone(true) 事件也会被复制
+				
+				
+				
+				//替换
+				$("div").replaceWith("<strong>aaa</string>");
+				$("<strong>aaa</string>").replaceAll("div");
+			});
+			
+		
+		
+		
+//			$(document).ready(function(){
+//	$("#demo03_btn01").click(function(){
+//	  $("p").prepend("000");
+//	});
+//	$("#demo03_btn02").click(function(){
+//	   $("p").append("<strong>BBB</strong>");	
+//	});
+//	$("#demo03_btn03").click(function(){
+//		 $("p").before("000");
+//	});
+//	$("#demo03_btn04").click(function(){
+//		$("p").after("111");
+//	});
+//});
+			
+			
+		</script>
+	</head>
+	<body>
+		<strong>我是Strong</strong>
+	   <div>Dom</div>
+		<p>AAA</p>
+		<button id="demo03_btn01" type="button">开头添加内容</button>
+		<button id="demo03_btn02" type="button">结尾添加内容</button>
+		<button id="demo03_btn03" type="button">之前输入内容</button>
+		<button id="demo03_btn04" type="button">之后输入内容</button>
+	</body>
+</html>

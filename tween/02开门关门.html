@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>开门关门</title>
+	<style type="text/css">
+          *{
+          	margin: 0px;
+          	padding: 0px;
+          }
+          img{
+          	width: 400px;
+          	height: 240px;
+          }
+          #div{
+          	width: 400px;
+          	height: 240px;
+          	position: relative;
+          	margin: 20px auto;
+          	overflow: hidden;
+          }
+          #left{
+          	width: 200px;
+          	height: 240px;
+          	position: absolute;
+          	border-right: 2px solid purple;
+          	background-color: aqua;
+          	top: 0px;
+          }
+          #right{
+          	width: 200px;
+          	height: 240px;
+          	position: absolute;
+          	border-left: 2px solid purple;
+          	background-color: aqua;
+          	top: 0px;
+          	right: 0px;
+          }
+
+	</style>
+</head>
+<body>
+    <button id="open">开门</button>
+    <button id="close">关门</button>
+	<div id="div">
+	    <img src="img/img0.jpg">
+		<div id="left"></div>
+		<div id="right"></div>
+	</div>
+</body>
+<script src="tween.js"></script>
+<script type="text/javascript">
+	var open = document.getElementById("open");
+	var close = document.getElementById("close");
+	var left = document.getElementById("left");
+	var right = document.getElementById("right");
+
+	open.onclick = function(){
+         runL();
+	}
+
+	close.onclick = function(){
+		   runR();
+	}
+
+
+		function runL(){
+		    var t = 0,b = 0,c = -200,d = 100;
+		    var timer = setInterval(function(){
+		    t++;
+		    if(t >= d){
+               clearInterval(timer);
+		    }
+		    left.style.left = Tween.Bounce.easeOut(t,b,c,d) + "px";
+		    right.style.right = Tween.Bounce.easeOut(t,b,c,d) + "px";
+	    },30)
+      }
+
+
+      function runR(){
+		    var t = 0,b = -200,c = 200,d = 100;
+		    var timer = setInterval(function(){
+		    t++;
+		    if(t >= d){
+               clearInterval(timer);
+		    }
+		    left.style.left = Tween.Bounce.easeOut(t,b,c,d) + "px";
+		    right.style.right = Tween.Bounce.easeOut(t,b,c,d) + "px";
+	    },30)
+      }
+    
+
+</script>
+</html>

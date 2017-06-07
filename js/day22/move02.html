@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>幻灯片</title>
+	</head>
+	<style>
+		* {
+			padding: 0;
+			margin: 0;
+		}
+		
+		.banner {
+			position: relative;
+			width: 810px;
+			height: 320px;
+			margin: 50px auto;
+			background: grey;
+			overflow: hidden;
+		}
+		
+		.img-list {
+			list-style: none;
+			position: absolute;
+			left: 0px;
+			top: 0;
+			width: 4050px;
+			height: 320px;
+		}
+		
+		.img-list li {
+			float: left;
+			width: 810px;
+			height: 320px;
+			line-height: 320px;
+			text-align: center;
+			font-size: 60px;
+		}
+		
+		.img-nav {
+			list-style: none;
+			position: absolute;
+			right: 30px;
+			bottom: 30px;
+			width: 100px;
+			height: 30px;
+		}
+		
+		.img-nav li {
+			float: left;
+			background: #2B2B2B;
+			width: 15px;
+			margin-right: 10px;
+			color: white;
+			border-radius: 50%;
+			text-align: center;
+		}
+		.img-nav li.active {
+			background: navajowhite;
+			color: black;
+		}
+	</style>
+	<script type="text/javascript" src="move.js" ></script>
+	<script>
+		onload = function(){
+			var timer;
+			var imglist = document.getElementById("imglist");
+			var imglis = imglist.children;
+			var index = 0;//当前显示的位置
+			var img_nav = document.getElementById("img-nav")
+			var img_nav_lis = img_nav.children;
+			
+			
+			timer = setInterval(function(){
+				 move();
+			},1500);
+			
+			
+			function move(){
+				getCurrrentIndex();
+				//移动幻灯片的ul的位置
+				animation(imglist,{left:-810*index});
+				showIndex();
+				
+			}
+			
+			//获得当前的当前的位置
+			function getCurrrentIndex(){
+				index++;
+				//console.log(index);//1 2 3 4 5
+				if(index==5){
+					imglist.style.left = 0;
+					index=1;
+				}
+			}
+			
+			//修改下面的内容
+			function showIndex(){
+				for(var i=0;i<img_nav_lis.length;i++){
+					img_nav_lis[i].className="";
+				}
+				
+				img_nav_lis[index%4].className="active";
+				//console.log(index+"--"+index%4);
+			}
+			
+			imglist.onmouseover = function(){
+				clearInterval(timer);
+			}
+			imglist.onmouseout = function(){
+				timer = setInterval(function(){
+				 move();
+			   },1500);
+			}
+			
+			for(var i=0;i<img_nav_lis.length;i++){
+				img_nav_lis[i].index = i;
+				img_nav_lis[i].onmouseover = function(){
+					clearInterval(timer);
+					console.log(this.index);
+					
+//					imglist.style.left = 0;
+					animation(imglist,{left:-810*(this.index)});
+					for(var i=0;i<img_nav_lis.length;i++){
+					  img_nav_lis[i].className="";
+				    }
+//					alert(imglist.index-1);
+					this.className="active";
+				};
+				img_nav_lis[i].onmouseout = function(){
+					timer = setInterval(function(){
+				       move();
+			       },1500);
+				}
+			}
+			
+			
+		}
+	</script>
+	
+	<body>
+		<div class="banner">
+			<ul id="imglist" class="img-list">
+				<li style="background: red;">01</li>
+				<li style="background: orange;">02</li>
+				<li style="background: yellow;">03</li>
+				<li style="background: green;">04</li>
+				<li style="background: red;">01</li>
+			</ul>
+			<ul id="img-nav" class="img-nav">
+				<li class="active">1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+			</ul>
+		</div>
+	</body>
+</html>

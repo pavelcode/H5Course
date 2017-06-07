@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>五角星评分</title>
+		<style type="text/css">
+		#ul1{padding:0; margin:0; list-style:none;  width:300px; height:28px;}
+		#ul1 li{float:left; background:url(img/star.gif) no-repeat 0 0; width:27px; height:28px; }
+		.active{ }
+		.default{ }
+		</style>
+	</head>
+	<script>
+	/*
+	 background:url(img/star.gif) no-repeat 0 -28px;星星变成黄色
+	 思路： 获得所有的li对象.
+	        给每一个li对象,添加onmouseenter事件.当划入的时候，设置星星的颜色为黄色。
+	        给每一个li对象,添加onmouseout事件.当划入的时候，设置星星的颜色为灰色。 
+	        给每一个li对象,添加onclick事件，当点击的时候，记录点击的状态和点击的位置。
+	        给onmouseenter事件，添加点击状态，如果点击了，重新按照要求设定。
+	        
+	  操作要领：划入，划出，不点击，不保存记录  
+	           当点击第三个，离开，保存记录
+	           向后划入一个，离开，没保存记录。点击，保存记录。
+	           向前划入一个，离开，没保存记录。点击。保存记录。
+	                
+	 */
+		onload = function(){
+			var ul = document.getElementById("ul1");
+			var lis = ul.children;
+			var ischeck = false; //是否被点击过
+			var currentposition = -1;
+			var arr=['差评','不推荐','一般','推荐','强力推荐'];
+			var div = document.getElementById("div");
+			for(var i=0;i<lis.length;i++){
+				lis[i].index = i;
+				//onmouseenter 与 onmouseover 唯一区别就是onmouseenter不支持冒泡
+				lis[i].onmouseenter = function(){
+					if(ischeck){
+						//当点击之后，再次再次进入
+							for(var t=0;t<lis.length;t++){
+					 	      lis[t].style.backgroundPosition="0 0";
+					         }
+							for(var k=0;k<=this.index;k++){
+					 		  lis[k].style.backgroundPosition="0 -28px";
+					          }
+							  div.innerHTML = arr[this.index];
+		
+					}else{
+						 //设置所有的li为灰色背景
+						 for(var j=0;j<lis.length;j++){
+						 	lis[j].style.backgroundPosition="0 0";
+						 }
+						     //设置鼠标滑过的li为黄色背景
+						 for(var k=0;k<=this.index;k++){
+						 		lis[k].style.backgroundPosition="0 -28px";
+						 }
+						 div.innerHTML = arr[this.index];
+					}
+	
+				}
+				
+				lis[i].onmouseleave = function(){
+					
+					 for(var j=0;j<lis.length;j++){
+					 	lis[j].style.backgroundPosition="0 0";
+					 }
+					 //这块注意按照currentposition设定
+					 //当离开的时候，按照点击的保存设定
+					  for(var k=0;k<=currentposition;k++){
+					 	lis[k].style.backgroundPosition="0 -28px";
+					 }
+					  //当点击了，设置内容，否则清空
+					  if(arr[currentPosition]){
+				 			div.innerHTML = arr[currentPosition];
+				 		}else{
+				 			div.innerHTML = "";
+				 		}
+				}
+				
+				lis[i].onclick = function(){
+					ischeck = true;
+					currentposition = this.index;
+				}
+				
+				
+			}
+		}
+		
+	</script>
+	<body>
+	<ul id="ul1" >
+	<li class="default"> </li>
+	<li class="default"> </li>
+	<li class="default"> </li>
+	<li class="default"> </li>
+	<li class="default"> </li>
+	</ul>
+	<div id="div"></div>
+	</body>
+</html>

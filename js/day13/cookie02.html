@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>cookie保存密码，实现7天免登陆</title>
+		<script src="cookie01.js"></script>
+		<script>
+			onload = function(){
+				var username = getCookie("user");
+				var pwd = getCookie("pwd");
+				var savepwd = getCookie("savePwd");
+				var name_input = document.getElementById("username");
+				var pwd_input = document.getElementById("password");
+				var save_pwd_checkbox = document.getElementById("savePwd");
+				if(username != null && pwd != null) {
+					name_input.value = username;
+					pwd_input.value = pwd;
+					if(savepwd){
+					   save_pwd_checkbox.checked = "true";
+					}
+					alert("登录成功！");
+				}
+			}
+			function login(){
+				var savePwd = document.getElementById("savePwd");
+				if(savePwd.checked) {
+					var d = new Date();
+					d.setDate(d.getDate()+7);
+					document.cookie = "user="+document.getElementById("username").value+"; expires="+d;
+					document.cookie = "pwd="+document.getElementById("password").value+"; expires="+d;
+					document.cookie = "savePwd="+savePwd.checked+"; expires="+d;
+				}
+				alert("登录成功！");
+			}
+		</script>
+	</head>
+	<body>
+		用户名：<input id="username" type="text"/><br>
+		密码：<input id="password" type="text"/><br>
+		<input id="savePwd" type="checkbox" />7天内免登陆<br>
+		<button onclick="login()">登录</button>
+	</body>
+</html>

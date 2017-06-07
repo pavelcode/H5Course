@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>广告自动关闭</title>
+		<style>
+			.tip{
+			position: fixed;
+			top: 100px;
+			left: 400px;
+			display: block;
+			width: 400px;
+			height: 200px;
+			border-style: dotted;
+			border-width: thin;
+			border-color: darkgreen;
+			background: #f0c;
+			z-index: 100;
+		}
+		</style>
+		<script>
+		window.onload = function(){
+			var count = document.getElementById("count");
+			var ad = document.getElementById("ad");
+			var timer = window.setInterval(function(){
+				count.innerHTML -= 1;
+				if(count.innerHTML == 0) {
+					//隐藏广告
+					ad.style.display = "none";
+					//停止定时器
+					clearInterval(timer);
+				}
+				console.log("---")
+			},1000);
+		}
+		</script>
+	</head>
+	<body>
+		<div id="ad" class="tip">
+			我是一条广告，谢谢！
+			<span id="count" style="color:yellow; font-weight:bold;">5</span>秒钟后自动关闭
+		</div>
+	</body>
+</html>

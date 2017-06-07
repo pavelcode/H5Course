@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+	<style>
+			
+			/*单独给某个标签设置行高,单位不同,效果不同*/
+			*{margin: 0;padding: 0;}
+			div{
+				font-size: 20px;
+				
+				line-height: 40px;  /*如果单位是px,行高不受文字影响*/
+				
+				line-height: 3em; /*行高是文字的三倍*/
+				
+				/*line-height: 120%;  */ /*行高是文字的120%*/
+				
+				/*line-height: 3; */ /*不带单位,是文字的三倍*/
+				
+			}
+			
+			/*嵌套标签设置行高,单位不同,效果不同*/
+			.one{
+				font-size: 20px;
+				/*line-height: 20px;*/  /*行高继承为20px*/
+				/*line-height: 2em; */ /*行高继承为40px*/
+				/*line-height: 120%;*/   /*行高继承为24px*/
+				line-height: 2;  /*不带单位,是子类的60px*/
+			}
+			.two{
+				font-size: 30px;
+			}
+			/*总结:当父元素设置了行高且带单位时,子类的行高是父类行高的继承.*/
+		</style>	
+	</head>
+	<body>
+		
+		
+		
+		<div class="one">
+			 <div class="two">中文</div>
+		</div> 
+		
+	</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>select选择框</title>
+		<script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+	</head>
+	<body>
+		<!--
+           简单的使用ng-options和ng-repeat实现
+             使用简单数组数据
+           比较ng-options和ng-repeat的优劣
+              使用数组对象数据
+              使用对象数据
+              使用对象包含对象数据
+        -->
+		
+		
+		
+		<div ng-app="myApp" ng-controller="myCtrl">
+			
+			<!--
+            使用ng-options
+            -->
+			<select ng-model="selectCompany" ng-options="company for company in companys"></select>
+			<br/>
+			<br/>
+			
+			<!--
+            使用ng-repeat
+            -->
+			<select>
+			<option ng-repeat="company in companys">{{company}}</option>
+			</select>
+			<br/>
+			
+			<!--
+			 使用ng-repeat和ng-options有什么不同？
+            -->
+            
+			<select ng-model="selectedSite">
+			<option ng-repeat="x in sites" value="{{x.url}}">{{x.site}}</option>
+			</select>
+			<p>你选择的是: {{selectedSite}}</p>
+			
+			
+			<select ng-model="selectedSite" ng-options="x.site for x in sites">
+			</select>
+			<p>你选择的是: {{selectedSite.site}} 网址为: {{selectedSite.url}}</p>
+
+            <!--
+            	 结论：
+            	 ng-repeat是简单的通过循环html代码来实现下拉列表，这里循环的是字符串
+             ng-options的每个选项是对象
+             当选择值是一个对象时，我们就可以获取更多信息，应用也更灵活。
+            -->
+            
+            <!--
+            	使用对象数据
+            使用对象作为数据源, x 为键(key), y 为值(value)
+            -->
+            <select ng-model="selectedSite" ng-options="x for (x, y) in sites2"></select>
+            <p>你选择的值是: {{selectedSite}}</p>
+			<br/>
+			
+			<!--
+            使用对象包含对象数据
+            在下拉菜单也可以不使用 key-value 对中的 key , 而直接使用对象的属性
+            -->
+			<select ng-model="selectedCar" ng-options="y.brand for (x, y) in cars"></select>
+		</div>
+		
+	    <script>
+	    	angular.module("myApp",[]).controller("myCtrl",function($scope){
+	            //简单数组数据
+				$scope.companys = ["baidu","alibaba","tencent"];
+				//数组对象数据
+				$scope.sites = [
+				    {site : "Google", url : "http://www.google.com"},
+				    {site : "Runoob", url : "http://www.runoob.com"},
+				    {site : "Taobao", url : "http://www.taobao.com"}
+                 ];
+                 //对象数据
+                 $scope.sites2 = {
+				    site01 : "Google",
+				    site02 : "Runoob",
+				    site03 : "Taobao"
+				};
+				//对象包含对象数据
+				$scope.cars = {
+				car01 : {brand : "Ford", model : "Mustang", color : "red"},
+				car02 : {brand : "Fiat", model : "500", color : "white"},
+				car03 : {brand : "Volvo", model : "XC90", color : "black"}
+				}
+});
+	    </script>
+		
+		
+		
+	</body>
+</html>

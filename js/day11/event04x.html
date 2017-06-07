@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>事件捕获</title>
+		<script type="text/javascript">
+		 //1 表示事件的类型
+			//2 表示事件触发时你要执行的函数
+			//3 表示事件的传播方向是否为捕获  true为捕获，false为冒泡
+			//都设置为true，实现捕获，都设置为false，实现冒泡
+		   window.onload = function(){
+		   	 document.getElementById("red").addEventListener("click",function(){
+		   	 	   alert("red");
+		   	 },true);
+		   	 document.getElementById("yellow").addEventListener("click",function(){
+		   	 	   alert("yellow");
+		   	 },true);
+		   	 document.getElementById("btn").addEventListener("click",function(){
+		   	 	   alert("btn");
+		   	 },true);
+		   }
+		</script>
+	</head>
+	<body>
+		<div id="red" style="width: 300px;height: 300px; background:red; margin: 0 auto; position:relative;left: 0px;top: 0px;">
+			<div id="yellow" style="width: 100px;height: 100px;background: yellow; position: absolute;left: 100px;top: 100px;">
+				<button id="btn" style="position: absolute;left: 30px;top: 35px;">按钮</button>
+			</div>
+		</div>
+	</body>
+</html>

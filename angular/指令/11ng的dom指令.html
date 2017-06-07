@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>ng的Dom指令</title>
+		<script src="../../bower_components/angular/angular.min.js"></script>
+	</head>
+	<body ng-app>
+		<!--
+          ng-checked
+          ng-disable
+          ng-readonly
+          ng-selected
+        -->
+        <input type="checkbox" ng-checked="true">
+        
+        <!--
+        等同于
+        -->
+        <input type="checkbox" ng-model="true" />
+        
+        
+        <div ng-init="count=5">
+		 <button ng-disabled="true">点我!</button>
+		 
+		 <p ng-show="true"> ng-show我是可见的。</p>
+         <p ng-show="false"> ng-show我是不可见的。</p>
+         
+         <p ng-if="true">ng-if我是可见的</p>
+         <p ng-if="false">ng-if我是不可见的</p>
+         
+         <!--
+         	ng-show ng-if的区别
+         	ng-if不会渲染标签
+         -->
+         
+         <!--
+         	使用表达式
+         -->
+         <p ng-show="count>5">表达式可见。</p>
+         
+         
+         <p ng-hide="true">ng-hide我是不可见的。</p>
+         <p ng-hide="false">ng-hide我是可见的。</p>
+         
+		</div>
+        
+        
+        <!--
+        	 全选
+        	 ul>li*6>input:c+{选项$$}
+        -->
+        <p><input type="checkbox" ng-model="checked" />全选或取消全选</p>
+        <ul>
+        	<li><input type="checkbox"  ng-checked="checked" />选项01</li>
+        	<li><input type="checkbox" ng-checked="checked" />选项02</li>
+        	<li><input type="checkbox"  ng-checked="checked"/>选项03</li>
+        	<li><input type="checkbox"  ng-checked="checked"/>选项04</li>
+        	<li><input type="checkbox"  ng-checked="checked"/>选项05</li>
+        	<li><input type="checkbox" ng-checked="checked" />选项06</li>
+        </ul>
+	</body>
+</html>

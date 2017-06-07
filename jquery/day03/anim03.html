@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>队列动画</title>
+		<script src="../jquery-3.1.0.js"></script>
+		<script>
+			$(function(){
+				//列队动画，在动画隐藏之后，执行函数
+//				$("#callback").click(function(){
+//					 $("#callback_div").hide(1000,function(){
+//					 	alert("aaa");
+//					 });
+//				});
+				
+				//队列动画，一个一个隐藏或显示,匿名函数自调用arguments.callee
+				$("#hide_onebyone").click(function(){
+					$(".hello").last().hide("fast",function(){
+						$(this).prev().hide("fast",arguments.callee);
+					})
+				});
+				$("#show_onebyone").click(function(){
+					$(".hello").first().show("fast",function(){
+						$(this).next().show("fast",arguments.callee);
+					})
+				});
+				
+				
+			});
+			
+			
+		</script>
+	</head>
+	<body>
+		<div id="callback_div">callback_div</div>
+		
+		<button id="callback">回调函数</button>
+		
+		<div class="hello">你</div>
+		<div class="hello">好</div>
+		<div class="hello">吗</div>
+		
+		<button id="hide_onebyone">逐个隐藏</button>
+		<button id="show_onebyone">逐个显示</button>
+		
+	</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>列表的切换效果</title>
+		<style type="text/css">
+/* Reset style */
+* { margin:0; padding:0; word-break:break-all; }
+body { background:#FFF; color:#333; font:12px/1.6em Helvetica, Arial, sans-serif; }
+h1, h2, h3, h4, h5, h6 { font-size:1em; }
+a { color:#039; text-decoration:none; }
+a:hover { text-decoration:underline; }
+ul, li { list-style:none; }
+fieldset, img { border:none; }
+em, strong, cite, th { font-style:normal; font-weight:normal; }
+#change{  position:relative; }
+/* Hot_ranks style */
+#hot_ranks { position:relative; width:190px; overflow:hidden; margin:50px; margin-top:5px; border:1px solid #E0E0E0; background:#F6F8F8;  }
+#hot_ranks h3 { padding:8px 8px 6px 8px; font-size:14px;}
+#hot_ranks .hot_ranks_list { padding-bottom:6px; }
+#hot_ranks .normal { display:none; }
+#hot_ranks .current { display:block; }
+#hot_ranks ul li { width:95%; height:21px; overflow:hidden; margin:0 auto; line-height:20px; }
+#hot_ranks ul li em { padding:0 1px 0 3px; }
+#ranks_change_bar { position:absolute; top:8px; right:2px; }
+#ranks_change_bar a { display:block; float:left; width:27px; height:13px; overflow:hidden; margin:0 2px; background:url(/img/2010fg.gif) no-repeat; text-indent:-9999px; cursor:pointer;}
+#ranks_change_bar #previous { background-position:0 0; }
+#ranks_change_bar #next { background-position:-27px 0; }
+</style>
+</head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+<script language="javascript" >
+    $(function(){
+         /** 下拉框效果选项设置  start **/
+         var changeIndex=1;
+         $('#change').change(function(){
+           changeIndex = $("#change").val();
+         })
+         /** 下拉框效果选项设置  end  **/
+         var $obj = $('#hot_ranks ul');
+         var len  = $obj.length;
+         var i = 0;
+         $("#next").click(function(){
+              i++;
+              if(i==len){
+                i = 0;
+              }
+              if(changeIndex==1){//  这里是根据下拉框的值，来执行相应的效果。
+                $obj.stop(true,true).hide().eq(i).show();
+              }else if(changeIndex==2){
+                $obj.stop(true,true).hide().eq(i).slideDown(400);
+              }else if(changeIndex==3){
+                $obj.stop(true,true).hide().eq(i).fadeIn(600);
+              }
+              return false;
+         });
+         $("#previous").click(function(){
+              i--;
+              if(i==-1){
+                i = len-1;
+              }
+              if(changeIndex==1){
+                $obj.stop(true,true).hide().eq(i).show();
+              }else if(changeIndex==2){
+                $obj.stop(true,true).hide().eq(i).slideDown(400);
+              }else if(changeIndex==3){
+                $obj.stop(true,true).hide().eq(i).fadeIn(600);
+              }
+              return false;
+         });
+         //滑入div 停止动画，滑出开始动画.
+         $('#hot_ranks').hover(function(){
+              if(MyTime){
+                 clearInterval(MyTime);
+              }
+         },function(){
+              MyTime = setInterval(function(){
+                 $("#next").trigger("click");
+              } , 2000);
+         })
+         //每2秒，自动切换。触发".next"的click事件.
+         var MyTime = setInterval(function(){
+            $("#next").trigger("click");
+         } , 2000);
+    })
+/*
+stop(true,true):
+第一个true是清除队列.
+第二个true是说直接跳转到动画结束的状态.
+stop(true,true).hide():
+就是说，停止当前正在进行的动画，以及队列中等待的动画，
+并且直接将属性设置成动画结束时的状态
+*/
+</script>
+	</head>
+	<body>
+<table width="200" border="1" style="border:0 solid #CCC">
+  <tr>
+    <td style=" height:50px; line-height:50px; padding:20px 0 0 50px;">
+    	效果切换：
+    	  <select id="change">
+        <option value="1">普通效果</option>
+        <option value="2">窗帘效果</option>
+        <option value="3">渐变效果</option>
+        </select></td>
+  </tr>
+  <tr>
+    <td>
+    <div id="hot_ranks">
+    <h3>站点价值排行</h3>
+    <ul class="current">
+        <li><em>1</em> <a href="#">css实现段落前面缩进两个字</a></li>
+        <li><em>2</em> <a href="#">css实现定义li图片头</a></li>
+        <li><em>3</em> <a href="#">实现一个div 居中对齐效果 </a></li>
+        <li><em>4</em> <a href="#">新闻字体大中小字号缩放特效代码 </a></li>
+        <li><em>5</em> <a href="#">js 实现打字显示效果的带链接的信息标</a></li>
+        <li><em>6</em> <a href="#">CSS 实现超长字段被省略的简单方法</a></li>
+        <li><em>7</em> <a href="#">js实现关键词加亮显示效果</a></li>
+        <li><em>8</em> <a href="#">去掉超链接的下划线代码</a></li>
+    </ul>
+    <ul class="normal">
+        <li><em>9</em> <a href="#">微软明年发布IE9浏览器，HTML5标准将成核心技术</a></li>
+        <li><em>10</em> <a href="#">程序员经常遇到的十大烦恼总结</a></li>
+        <li><em>11</em> <a href="#">社会网络工具: Wing FTP Server 3.5.0 发布</a></li>
+        <li><em>12</em> <a href="#">PAC 2.3 发布，图形化SSH配置</a></li>
+        <li><em>13</em> <a href="#">百度李彦宏称10:1拆股成功 回应高盛阴谋论</a></li>
+        <li><em>14</em> <a href="#">面临云计算时代LAMP选择何去何从？</a></li>
+        <li><em>15</em> <a href="#">红帽反对甲骨文成为最大开源厂商</a></li>
+        <li><em>16</em> <a href="#">Web3.0 时代:网络对你无所不知</a></li>
+    </ul>
+    <ul class="normal">
+        <li><em>17</em> <a href="#">Nginx详细介绍与应用技术指南</a></li>
+        <li><em>18</em> <a href="#">Nginx+Squid+Apache安...</a></li>
+        <li><em>19</em> <a href="#"> DNS配置备份和恢复的方法</a></li>
+        <li><em>20</em> <a href="#">学习DNS服务器必须掌握的基础知识</a></li>
+        <li><em>21</em> <a href="#">配置DNS服务器讲解</a></li>
+        <li><em>22</em> <a href="#"> 优化Apache几大技巧</a></li>
+        <li><em>23</em> <a href="#">在apache下配置多端口与多域名讲解</a></li>
+        <li><em>24</em> <a href="#">基于nginx下的五种缓存（cache...</a></li>
+    </ul>
+    <ul class="normal">
+        <li><em>25</em> <a href="#">九款免费的Windows远程协助软件介绍</a></li>
+        <li><em>26</em> <a href="#">DNS服务器的作用与配置”</a></li>
+        <li><em>27</em> <a href="#">Apache 伪静态(URL Rewr... </a></li>
+        <li><em>28</em> <a href="#"> Mysql数据库锁表研究总结</a></li>
+        <li><em>29</em> <a href="#">SQL语句中10个SELECT应用技巧</a></li>
+        <li><em>30</em> <a href="#">Mysql出错信息表整理大全</a></li>
+        <li><em>31</em> <a href="#">程序员该如何学好数据库编程<</a></li>
+        <li><em>32</em> <a href="#">站长特效网mysql回滚的理解与实例说明</a></li>
+    </ul>
+    <p id="ranks_change_bar"><a href="#" id="previous">上一页</a><a href="#" id="next" >下一页</a></p></td>
+   </div>
+  </tr>
+</table>
+	</body>
+</html>

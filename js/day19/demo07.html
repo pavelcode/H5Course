@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>五角星评分--代码优化</title>
+		<style type="text/css">
+		#ul1{padding:0; margin:0; list-style:none;  width:300px; height:28px;}
+		#ul1 li{float:left; background:url(img/star.gif) no-repeat 0 0; width:27px; height:28px; }
+		.active{ }
+		.default{ }
+		</style>
+		<script>
+			
+			onload = function(){
+				 var lis = document.getElementById("ul1").children;
+				 var ischecked = false;//判断是否点击
+				 var currentPosition = -1; //保存当前点击的位置
+				 var arr = ["差评","不推荐","一般","还可以","满意"];
+				 var div = document.getElementById("div");
+				 for(var i=0;i<lis.length;i++){
+				 	lis[i].index = i;
+				 	lis[i].onmouseenter = function(){
+				 		
+				 		setColor(this.index);
+				 		div.innerHTML = arr[this.index];
+				 	}
+				 	lis[i].onmouseleave = function(){
+				 		
+				 		if(ischecked){
+				 			setColor(currentPosition);
+				 			div.innerHTML = arr[currentPosition];
+				 		}else{
+				 			for(var l=0;l<lis.length;l++){
+				 				lis[l].style.backgroundPosition="0 0";
+				 				div.innerHTML = "";
+				 	         }
+				 		}
+				 		
+				 	}
+				 	lis[i].onclick = function(){
+				 		 ischecked = true;
+				 		 currentPosition = this.index;
+				 		 console.log(currentPosition);
+				 		
+				 	}
+				 }
+				 
+				 
+				 function setColor(index){
+				 	for(var l=0;l<lis.length;l++){
+				 				lis[l].style.backgroundPosition="0 0";
+				 	}
+				 	for(var n=0;n<=index;n++){
+				 				lis[n].style.backgroundPosition="0 -28px";
+				 	}
+				 }
+				
+				
+			}
+			
+			
+		</script>
+	</head>
+	<body>
+	<ul id="ul1" >
+	<li class="default"> </li>
+	<li class="default"> </li>
+	<li class="default"> </li>
+	<li class="default"> </li>
+	<li class="default"> </li>
+	</ul>
+	<div id="div"></div>
+	</body>
+</html>

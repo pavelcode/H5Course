@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    <!--
+    	作者：code01@yeah.net
+    	时间：2016-06-07
+    	描述：使用form指定从属的form标签，不需要必须在form标签中
+    -->
+    <form id="myform">
+    	   <input type="text" />
+    </form>
+    <input type="button" value="提交" form="myform"/>
+    
+    
+    
+    <!--
+    	作者：code01@yeah.net
+    	时间：2016-06-07
+    	描述：给不同的按钮设置不同的action
+    -->
+    <input type="button" id="btn1" formaction="1.jsp" />
+    <input type="button" id="btn2" formaction="2.jsp" />
+    
+    <!--
+    	作者：code01@yeah.net
+    	时间：2016-06-07
+    	描述：给不同的元素设定不同的提交方式
+    -->
+    
+    <input type="submit" formmethod="get" />
+    <input type="submit" formmethod="post" />
+    
+    
+    <!--
+    	作者：code01@yeah.net
+    	时间：2016-06-07
+    	描述：表单提交数据的编码方式
+    	
+    	不对特殊字符进行编码，只会将空格转为加号
+    	文件上传
+    	在发送到服务器之前，所有字符都会进行编码（空格转换为 "+" 加号，特殊符号转换为 ASCII HEX 值）
+    -->
+    <input type="text" formenctype="text/plain" />  
+    <input type="text" formenctype="multipart/form-data" />
+    <input type="text" formenctype="application/x-www-form-urlencoded" />
+    
+    <!--
+    	作者：code01@yeah.net
+    	时间：2016-06-07
+    	描述：发送数据之后，内容显示的位置
+    -->
+    <input type="submit" formtarget="_blank" />
+    <input type="submit" formtarget="_self" />
+    <input type="submit" formtarget="_parent" />
+    <input type="submit" formtarget="_top" />
+    <input type="submit" formtarget="framename" />
+    
+    <!--
+    	作者：code01@yeah.net
+    	时间：2016-06-07
+    	描述：自动获得焦点
+    -->
+    <input type="text" autofocus="autofocus" />
+    
+    <!--
+    	作者：code01@yeah.net
+    	时间：2016-06-07
+    	描述：设置表单提交内容不为空
+    -->
+    <input type="text" required="required" />
+    </body>
+</html>

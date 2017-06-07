@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    <!--
+        	描述：游览器支持ogg格式为文件，所有首先需要转码
+        	http://www.ffmpeg.org 下载转码工具
+        命令：	ffmpeg -i  xxx.mp4 -f ogg  -acodec libvorbis xxx.ogg
+
+        poster未播放时的默认显示图片
+
+        html5media.js 让浏览器兼容IE7以上
+        -->
+		
+        <video controls="controls" poster="baidu.png">
+        	  <source src="moive.ogg" type="video/ogg"></source>
+        	  <source src="fun.mp4" type="video/mp4"></source>
+        </video>
+    </body>
+</html>

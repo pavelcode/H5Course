@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    <!--实现自动添加显示-->	
+		<form action="">
+			<!--隐藏了file，当点击button的时候，模拟点击file-->
+			<input type="file" id="auto_file" name="input_file" hidden="hidden" multiple />
+			<input type="button" id="auto_btn" value="选择文件"/>
+		     <!--显示文件信息-->
+		     <ul id="auto_listfile"></ul>
+		</form>
+		<script>
+			(function(){
+				var auto_file = document.querySelector("#auto_file");
+				var auto_btn = document.querySelector("#auto_btn");
+				var auto_listfile = document.querySelector("#auto_listfile");
+//				让auto_file隐藏,点击auto_btn,触发auto_file
+                 auto_btn.addEventListener("click",function(){
+                 	auto_file.click();
+                 });
+//               选择完成后
+		         auto_file.addEventListener('change', function() {
+//		                 读取文件信息,并展示
+                   	     var files = auto_file.files;
+				         for (var i = 0; i < files.length; i++) {
+				           console.log("file"+files[i]);
+				           var li = document.createElement('li');
+//				           li.setAttribute('class', 'list-group-item');
+				           // 创建信息的子节点  chrom中resource设定断点，可以看到对象属性
+				           li.innerHTML = '文件名：'+files[i].name +' 最后修改时间：' + files[i].lastModifiedDate.toLocaleDateString() + ' ' + files[i].lastModifiedDate.toLocaleTimeString() + ' 文件大小：' + (files[i].size / 1024).toFixed(2) + 'KB</p>';
+				           auto_listfile.appendChild(li);
+				         }
+			    });
+			})();
+		</script>
+    </body>
+
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+     <h1 class="class1 class2   class3"></h1>
+    <script>
+    //使用js实现
+    // var h1 = document.getElementsByTagName('h1')[0];
+    // var list = h1.className.split(' ');
+    // ['class1','class2','class3']
+    // list.push('class4');
+    // h1.className=list.join(' ');
+
+    //使用classlist
+    var h1 = document.getElementsByTagName('h1')[0];
+    // 通过dom对象的classList
+    var list = h1.classList;
+    // 通过classList封装了一些针对增加删除 切换的方法
+    // add('newclass'); remove('oldclass'); toggle('cl') // 存在则删除，不存在添加
+    // contains()
+  </script>
+    </body>
+</html>

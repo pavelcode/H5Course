@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>循环指令</title>
+		<script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+	</head>
+	<body>
+		<!--
+          ng-repeat 指令会重复一个 HTML 元素
+          ng-repeat 指令对于集合中（数组中）的每个项会 克隆一次 HTML 元素。
+          ng-repeat 指令用在一个数组上
+        -->
+		<!--<div ng-app="" ng-init="names=['zhangsan','lisi','wangwu']">
+			<ul>
+				<li ng-repeat="name in names">
+					{{name}}
+				</li>
+			</ul>
+		</div>-->
+		<!--
+           ng-repeat 指令用在一个对象数组上
+        -->
+		
+		<div ng-app="" ng-init="infos=[{name:'zhangsan',city:'BJ'},{name:'lisi',city:'SH'},{name:'wangwu',city:'GZ'}]">
+		<ul>
+		  <li ng-repeat="info  in infos">
+		    {{ info.name + ', ' + info.city }}
+		  </li>
+		</ul>
+ 
+</div>
+
+	</body>
+</html>

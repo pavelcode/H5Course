@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>命名空间</title>
+		<script src="../jquery-3.1.0.js"></script>
+		<script>
+		$(function(){
+			$("button").bind("click.abc",function(){
+				alert("abc");
+			});
+			$("button").bind("click.xyz",function(){
+				alert("xyz");
+			});
+			$("button").bind("mouseover.abc",function(){
+				alert("mouse");
+			});
+			//$("button").unbind(".abc"); //取消绑定以abc为命名空间事件
+			$("button").trigger("click.abc");//模拟某一个
+			
+		});
+		</script>
+	</head>
+	<body>
+		<button>按钮</button>
+	</body>
+</html>

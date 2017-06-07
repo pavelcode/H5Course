@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>div随着鼠标移动</title>
+		<script>
+			//div随着鼠标移动
+window.onload = function(){
+	var div = document.getElementsByTagName("div")[0];
+	document.onmousemove = function(e){
+		//scrollLeft:窗口不可见的左边界和窗口中目前可见内容最左端之间的距离
+		//scrollTop:窗口不可以见的顶边界和窗口中目标可见内容最顶端之间的距离
+		//google游览器需要使用document
+		//div.style.left = (e.clientX+document.documentElement.scrollLeft)+"px"; //当前的位置是div的左边位置
+		//div.style.top = (e.clientY+document.documentElement.scrollTop)+"px";//当前的位置是div的顶部位置
+		//-parseInt(div.style.width)/2 让鼠标左移到div的中心位置
+		//H5需要后面加上px，内联样式不支持
+		var scrollLeft = document.documentElement.scrollLeft||document.body.scrollLeft;
+		var scrollTop = document.documentElement.scrollTop||document.body.scrollTop;
+		div.style.left = (e.clientX+scrollLeft-parseInt(div.style.width)/2)+"px";
+		div.style.top = (e.clientY+scrollTop-parseInt(div.style.height)/2)+"px";
+	}
+}
+		</script>
+	</head>
+	<body>
+		<div style="position:absolute;left:0px;top:0px;width: 200px;height: 200px;background-color:red;"></div>
+	</body>
+</html>

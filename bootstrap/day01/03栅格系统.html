@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>栅格系统</title>
+		<link rel="stylesheet" type="text/css" href="../../bower_components/bootstrap/dist/css/bootstrap.css"/>
+		<!--
+        	栅格系统,英文为“grid systems”，也称“网格系统”，运用固定的格子设计版面布局。
+        	1行最多12个格子。
+        	根据屏幕大小分为：移动设备，平板 ，小屏幕电脑显示器，大屏幕电脑显示器
+        	                   xs      sm      md                lg     
+         col-md-(占的列数)
+       -->
+       <style>
+         [class*="col-"]{
+         	background: red;
+         	border: 1px solid #000000;
+         }
+       </style>     
+ 	</head>
+	<body>
+		
+		<div class="container">
+			<!-- 在小电脑屏幕中显示col-md-->
+			<!-- 在移动屏幕中显示col-xs-->
+			<!--div.row>(div.col-xs-2.col-md-1{.col-md-1})*12-->
+			<div class="row">
+				<div class="col-xs-2 col-md-1">.col-md-1</div>
+				<div class="col-xs-2 col-md-1">.col-md-2</div>
+				<div class="col-xs-2 col-md-1">.col-md-3</div>
+				<div class="col-xs-2 col-md-1">.col-md-4</div>
+				<div class="col-xs-2 col-md-1">.col-md-5</div>
+				<div class="col-xs-2 col-md-1">.col-md-6</div>
+				<div class="col-xs-2 col-md-1">.col-md-7</div>
+				<div class="col-xs-2 col-md-1">.col-md-8</div>
+				<div class="col-xs-2 col-md-1">.col-md-9</div>
+				<div class="col-xs-2 col-md-1">.col-md-0</div>
+				<div class="col-xs-2 col-md-1">.col-md-1</div>
+				<div class="col-xs-2 col-md-1">.col-md-2</div>
+			</div>
+			
+			<div class="row">
+			  <div class="col-md-8">.col-md-8</div>
+			  <div class="col-md-4">.col-md-4</div>
+			</div>
+			
+			<div class="row">
+			  <div class="col-md-4">.col-md-4</div>
+			  <div class="col-md-4">.col-md-4</div>
+			  <div class="col-md-4">.col-md-4</div>
+			</div>
+			
+			<div class="row">
+			  <div class="col-md-6">.col-md-6</div>
+			  <div class="col-md-6">.col-md-6</div>
+			</div>
+			
+			<!--列偏移量:会影响其他列-->
+			<div class="row">
+				<div class="col-md-3 col-md-offset-3">col-md-3 col-md-offset-3</div>
+				<div class="col-md-3">col-md-3</div>
+			</div>
+			
+			<!--列的嵌套 在第一个div内部有分成了12列，这个占其中的三列-->
+			<div class="row">
+				<div class="col-md-3">
+					<div class="col-md-3">col-md-3</div>
+				</div>
+				<div class="col-md-3">col-md-3</div>
+			</div>
+			<!--列的排序：会影响其他列的定位，列会重叠
+				push从左向右推
+				pull从右向左拉
+			-->
+			<div class="row">
+				<div class="col-md-6 col-md-push-3">col-md-6 col-md-push-3</div>
+			    <div class="col-md-2 col-md-pull-1">col-md-2 col-md-pull-1</div>			
+	
+			</div>
+		
+			
+			
+	  </div>
+	</body>
+</html>

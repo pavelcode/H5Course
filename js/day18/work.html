@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>透明度变化</title>
+		
+		<script>
+			onload = function(){
+				var id ;
+				var alpha = 30; //当前透明度
+				var speed = 0; //透明度变化的速度
+				var ball = document.getElementById("ball");
+				ball.onmouseover = function(){
+					//设置透明度为1
+					setAplpha(100);
+				}
+				ball.onmouseout = function(){
+					//设置透明度为0.3
+					setAplpha(30)
+				}
+				
+				function setAplpha(target){
+				  clearInterval(id);
+				 id = setInterval(function(){
+				  	  if(target>alpha){
+				  	  	 speed=2;
+				  	  }else{
+				  	  	speed = -2;
+				  	  }
+				  	  //当透明度达到目标，停止间歇调用,否则修改透明度
+				  	  if(target==alpha){
+				  	  	clearInterval(id);
+				  	  }else{
+				  	  	alpha+=speed;
+				  	  	ball.style.opacity = alpha/100;
+				  	  	ball.style.filter = "alpha(opacity="+alpha+")";
+				  	  	
+				  	  	
+				  	  }
+				  },20);
+				}
+				
+			}
+			
+		</script>
+	</head>
+	<body>
+		<div id="ball" style="width: 50px;height: 50px; background: red; border-radius: 50%; position: absolute;left:0;top:0px; opacity: 0.3;filter: alpha(opacity=30);" ></div>
+	</body>
+</html>

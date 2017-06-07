@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>弹珠效果</title>
+		<!--必须加上，否则会出现问题-->
+		<style>
+			*{padding: 0;margin: 0;}
+			html,body{width: 100%;height: 100%;}
+		</style>
+		<script>
+		   //先定义水平移动和垂直移动的速度
+		    var speedX = 4;
+		    var speedY = 5;
+			onload = function(){
+				
+				var ball = document.getElementById("ball");
+				
+				setInterval(function(){
+					//做水平运动
+					ball.style.left = ball.offsetLeft+speedX+"px";
+					//做垂直运动
+					ball.style.top = ball.offsetTop+speedY+"px";
+					
+					//处理下边缘
+					if(ball.offsetTop>=document.documentElement.offsetHeight-ball.offsetHeight){
+						ball.style.top = document.documentElement.offsetHeight-ball.offsetHeight+"px";
+						speedY*=-1;
+					}
+					//处理右边缘
+					if(ball.offsetLeft>=document.documentElement.offsetWidth-ball.offsetWidth){
+						ball.style.left = document.documentElement.offsetWidth-ball.offsetWidth+"px";
+						speedX*=-1;
+					}
+					//处理上边缘
+					if(ball.offsetTop<=0){
+						ball.offsetTop =0;
+						speedY*=-1;
+					}
+					//处理左边缘
+					if(ball.offsetLeft<=0){
+						ball.offsetLeft=0;
+						speedX*=-1;
+					}
+					
+				},20);
+				
+				
+				
+			}
+			
+		</script>
+	</head>
+	<body>
+		
+		<div id="ball" style="width: 50px;height: 50px; background: red; border-radius: 50%; position: absolute;left:0;top: 0;" ></div>
+		
+		
+	</body>
+</html>

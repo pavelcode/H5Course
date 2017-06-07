@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>竖排导航</title>
+		<style>
+			li {
+				margin-bottom: 2px;
+				list-style: none;
+				background: url(img/bg.gif) repeat-x 0 1px;
+				float: left;
+				clear: left;
+				cursor: pointer-;
+			}
+			a {
+				display: block;
+				width: 120px;
+				height: 25px;
+				line-height: 25px;
+				position: relative;
+				padding: 0 6px;
+				border: 1px solid #d6d6d6;
+				text-decoration: none;
+				font-size: 12px;
+				color: #555;
+			}
+			a:hover {
+				font-weight: bold;
+				border: 1px solid #b5b5b5;
+			}
+			span {
+				display: block;
+				width: 9px;
+				height: 8px;
+				overflow: hidden;
+				background: url(img/ico.gif) no-repeat;
+				position: absolute;
+				top: 8px;
+				right: 10px;
+			}
+		</style>
+		<script>
+		/*
+		 * 思路：当我触碰到a连接的时候，让链接加长
+		 *     当失去触碰的时候，链接返回原状
+		 * */
+			onload = function(){
+				var as = document.getElementById("menu").getElementsByTagName("a");
+				//给每个a对象添加属性
+				for(var i=0;i<as.length;i++){
+					as[i].timer = null; // 添加定时器属性，后面用
+					as[i].size =6;//添加一个size属性，因为默认padding是6
+					//添加一个滑入事件
+					as[i].onmouseover = function(){
+						setSize(this,30,1);
+					}
+					//添加一个滑出事件
+					as[i].onmouseout = function(){
+						setSize(this,6,-1);
+					}
+				}
+				// 参数1 操作对象    参数2 达到目标值  参数3 方向(1, -1)
+				function setSize(obj,target,direction){
+				  clearInterval(obj.timer);	
+				  obj.timer = setInterval(function(){
+						
+						//尺寸达到目标
+						if(obj.size==target){
+							clearInterval(obj.timer);
+						}else{
+							//变化
+						     obj.size += 2*direction;
+						     obj.style.paddingLeft =obj.size+"px";
+						     obj.style.paddingRight=obj.size+"px"; 
+						}
+					},20);	
+				}	
+			}
+		</script>
+	</head>
+	
+	<body>
+		<ul id="menu">
+			<li><a href="http://www.mobiletrain.org" target="_blank">首页<span></span></a></li>
+			<li><a href="http://www.mobiletrain.org" target="_blank">千锋精品课程<span></span></a></li>
+			<li><a href="http://www.mobiletrain.org" target="_blank">CSS相关知识<span></span></a></li>
+			<li><a href="http://www.mobiletrain.org" target="_blank">关于我们<span></span></a></li>
+			<li><a href="http://www.mobiletrain.org" target="_blank">联系我们<span></span></a></li>
+		</ul>
+	</body>
+</html>

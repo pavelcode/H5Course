@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>选择框架---层次选择器</title>
+		<style type="text/css">
+		*{padding: 10px;}
+		</style>
+	</head>
+	<body>
+		<div id="container">
+			<h3>h3</h3>
+			<div>
+		        <p class='moshou'>魔兽世界</p>
+		        <p class="hero">英雄联盟</p>
+		        <p id="dream">梦幻西游</p>
+			</div>
+	    </div>
+	</body>
+</html>
+<script src='../myframe.js'></script>
+<script>
+//实现
+//	var doms = $cengci('#container div .hero');
+//	for(var i = 0; i < doms.length; i++){
+//		doms[i].style.border = '1px solid red';
+//	}
+//管道思想：上端代码执行的结果，是下段代码执行的参数
+//	function $cengci(select){
+//		var sel = $$.trim(select).split(' ');
+//		var context=[],result=[];  // context 父节点对象 result每次遍历获得节点对象
+//		
+//		for(var i = 0, len = sel.length; i < len; i++){
+//			result=[]; //注意：清空数据  
+//			
+//			var item = $$.trim(sel[i]);//#container
+//			var first = sel[i].charAt(0);//#
+//			var index = item.indexOf(first);
+//			console.log("index="+index);//index=0
+//			
+//			if(first ==='#'){
+//				//如果是#，找到该元素，
+//				var id = item.slice(index + 1); //container
+//				pushArray([$$.$id(id)]);
+//				context = result;
+//			}else if(first ==='.'){
+//				//如果是.
+//				//找到context中所有的class为【s-1】的元素 --context是个集合
+//				if(context.length){
+//					for(var m = 0; m < context.length; m++){
+//						//获得#container div下的节点
+//						pushArray($$.$class(item.slice(index + 1), context[m]));
+//					}
+//				}else{
+//					    pushArray($$.$class(item.slice(index + 1)));
+//				}
+//				context = result;
+//			}else{
+//				//如果是标签
+//				//遍历父亲，找到父亲中的元素==父亲都存在context中
+//				if(context.length){
+//					for(var n = 0; n < context.length; n++){
+//						pushArray($$.$tag(item, context[n]));
+//					}
+//				}else{
+//					    pushArray($$.$tag(item));
+//				}
+//				context = result;
+//			}
+//		}
+//		return result;
+//
+//		//封装重复的代码
+//		function pushArray(doms){
+//			for(var j= 0; j < doms.length; j++){
+//				result.push(doms[j])
+//			}
+//		}
+//	}
+
+
+
+//框架实现
+	var doms = $$.$cengci('#container div .hero');
+	for(var i = 0; i < doms.length; i++){
+		doms[i].style.border = '1px solid red';
+	}
+
+</script>

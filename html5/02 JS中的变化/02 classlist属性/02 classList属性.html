@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css">
+          .active{
+          	background-color: #f00;
+          }
+
+        </style>
+    </head>
+    <body>
+
+       <ul class="nav">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">About</a></li>
+      </ul>
+
+
+
+    </body>
+</html>
+
+<script>
+    var liElements = document.querySelectorAll('.nav > li');
+    // 遍历每一个元素 分别注册点击事件
+    for (var i = 0; i < liElements.length; i++) {
+      liElements[i].addEventListener('mouseover', function(e) {
+        for (var i = 0; i < liElements.length; i++) {
+        	
+          liElements.item(i).classList.remove('active');
+        }
+        this.classList.add('active');
+        e.stopPropagation();
+        e.preventDefault();
+      });
+    }
+    // })();
+  </script>

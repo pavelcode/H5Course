@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<!--
+        	描述：figure 表示图片，表格。只能包含一个figcaption
+        	      figcaption 标题  
+        -->
+        <figure>
+        	  <img src="../img/baidu.png" />
+        	  <figcaption>百度</figcaption>
+        </figure>
+        
+        
+        <!--
+        	作者：code01@yeah.net
+        	时间：2016-06-13
+        	描述：details 表示内容可以展开，收缩
+        	      summary 大段的标题  默认隐藏显示
+        	      mark 被高亮或标记显示
+        -->
+        <script>
+        	 function showDetail(detail){
+        	 	var p = document.getElementById("mydetails_p");
+        	 	if(detail.OPEN){
+        	 		p.style.visibility="hidden";
+        	 	}else{
+        	 		p.style.visibility="visible";
+        	 	}
+        	 }
+        </script>
+        <details id="mydetails" onclick="showDetail(this)">
+        	  <summary>美日同盟危害亚太和平 中俄若合作将是日本噩梦</summary>
+        	  <p id="mydetails_p" style="visibility: hidden;">8日夜间至9日凌晨，俄罗斯和中国军舰从两个方向先后进入日本方面所称的钓鱼岛“毗连区”，日方描述俄舰有3艘，中国军舰为1艘。</p>
+        </details>
+        
+        <p>8日夜间至9日凌晨，俄罗斯和中国军舰从两个方向先后进入日本方面所称的<mark>钓鱼岛</mark>“毗连区”</p>
+        <!--
+        	作者：code01@yeah.net
+        	时间：2016-06-13
+        	描述：进度条 线程问题
+        -->
+        <script>
+        	 
+        	 function change(){
+        	 	var i=0;
+        	 	function thread_one(){
+        	 	if(i<=100){
+        	 		i++;
+        	 		upProgress(i);
+        	 	}
+        	 }
+        	 	  setInterval(thread_one,200);
+        	 }
+        	 function upProgress(newValue){
+        	 	var progress = document.getElementById("myprogress");
+        	 	progress.value = newValue;	
+        	 }
+        </script>
+        <progress id="myprogress" max="100" style="background: #ff0000;"></progress>
+        <input type="button" onclick="change()" value="点击"/>
+        
+        <br />
+        <!--
+        	作者：code01@yeah.net
+        	时间：2016-06-13
+        	描述：meter进度条
+        	low定义度量的值位于哪个点，被界定为低的值。
+        	high定义度量的值位于哪个点，被界定为高的值。
+        	optimum定义什么样的度量值是最佳的值。
+        -->
+        <meter value="20" max="100" min="10"  high="80"  low="10" optimum="80"/>
+        
+      
+		
+	</body>
+</html>

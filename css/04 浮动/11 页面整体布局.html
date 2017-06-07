@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+		    body
+		    {
+		    	padding: 0px;
+		    	margin: 0px;
+		    	height: 100%;
+		    }
+			div#container
+			{
+				width: 100%;
+				background-color: gray;
+			}
+			div#header
+			{
+				width: 100%;
+				height: 50px;
+				background-color: red;
+			}
+			div#header ul#nav{ margin:0 auto} 
+			div#header ul#nav li{display:inline;} 
+			div#header ul#nav li a{padding:0 20px; height:50px; line-height:50px;color:#FFF; font-size:16px;text-decoration: none;} 
+			div#header ul#nav li a:hover{background:#0095BB}  /*设置鼠标滑过或悬停时变化的背景颜色*/
+			div#menu
+			{
+				width: 30%;
+				height: 500px;
+				background-color: green;
+				float:left
+			}
+			ul#menu_nav{ text-decoration: none;}
+			div#content
+			{
+				width: 70%;
+				height: 500px;
+				
+			}
+			div#footer
+			{
+				width: 100%;
+				height: 70px;
+				background-color: blue;
+				text-align: center;
+				line-height: 70px;
+				vertical-align: middle;
+			}
+			div
+		</style>
+	</head>
+	<body>
+		<!--默认一个页面的高度是620px-->
+		<div id="container">
+			<div id="header">
+				<ul id="nav"> 
+                   <li><a href="#">首页</a></li> 
+                    <li><a href="#">HTML教程</a></li> 
+                     <li><a href="#">CSS基础</a></li> 
+                </ul>
+			</div>
+			
+			<div id="menu">
+				<ol id="menu_nav"> 
+                   <li><a href="#">HTML教程</a></li> 
+                   <li><a href="#">HTML简介</a></li> 
+                   <li><a href="#">HTML元素</a></li> 
+                </ol>
+				
+			</div>
+			
+			<div id="content">content</div>
+			
+			<div id="footer">&copy;Android1406班制作</div>
+			
+		</div>
+	</body>
+</html>

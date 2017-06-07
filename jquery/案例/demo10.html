@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>jquery的DOM操作</title>
+		<style type="text/css">
+table td {
+  border: 1px solid #CCCCCC;
+  padding: 5px;
+  text-align:center;
+}
+table td span {
+  margin: 0 5px;
+  cursor:pointer;
+}
+.pop {
+  display: none;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  margin-left: -250px;
+  width: 500px;
+  background-color: #fff;
+  z-index: 3;
+  border: 5px solid #e5e5e5;
+  padding: 10px;
+}
+.pop a {
+  float:right;
+  text-decoration:none;
+}
+</style>
+<script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+<script type="text/javascript">
+$(function(){
+  $(".view").click(function(){
+    $("<div class='mask'></div>").appendTo($("body"));
+    $(".mask").css({
+      "background":"#000",
+      "opacity":"0.4",
+      "position":"absolute",
+      "top":"0",
+      "left":"0",
+      "width":"100%",
+      "height":"100%",
+      "z-index":"2"
+    });
+    var arr=[];
+    //把所有字段放入到集合中
+    $(this).parent().siblings().each(function(){
+      arr.push($(this).text());
+    });
+    //让字段内容添加到弹出的span之中
+    $(".pop").show().children().each(function(index){
+      $(this).children("span").text(arr[index-1]);
+    });
+  })
+  $(".close").click(function(){
+    $(this).parent().hide();
+    $(".mask").remove();
+  })
+  $(".del").click(function(){
+    $(this).parents("tr").remove();
+  })
+})
+</script>
+	</head>
+	<body>
+		<table>
+  <tr>
+    <td>姓名</td>
+    <td>年龄</td>
+    <td>职称</td>
+    <td>工资</td>
+    <td>操作</td>
+  </tr>
+  <tr>
+    <td>张三</td>
+    <td>25</td>
+    <td>前端编程</td>
+    <td>6000</td>
+    <td><span class="view">查看</span><span class="del">删除</span></td>
+  </tr>
+  <tr>
+    <td>李四</td>
+    <td>23</td>
+    <td>c#程序员</td>
+    <td>5000</td>
+    <td><span class="view">查看</span><span class="del">删除</span></td>
+  </tr>
+</table>
+<div class="pop">
+  <a href="#" class="close">关闭</a>
+  <p>姓名：<span></span></p>
+  <p>年龄：<span></span></p>
+  <p>职称：<span></span></p>
+  <p>工资：<span></span></p>
+</div>
+	</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>jqXHR发送多个请求</title>
+		
+		<script>
+			var jqXHR = $.ajax("1.jsp");
+			var jqXHR2 = $.ajax("2.jsp");
+			//使用done always fail 代替 success complete error
+			jqXHR.done(function(response){
+				alert(reponse);
+			});
+			
+			jqXHR2.done(function(response){
+				alert(reponse);
+			});
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

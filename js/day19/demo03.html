@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>播放列表收缩展开</title>
+		<style>
+* { padding: 0; margin: 0; }
+li { list-style: none; }
+body { background: #f6f9fc; }
+.down_list { width: 200px; overflow: hidden; border: 1px solid #aab4bc; background: url(img/down_list_h2_bg.gif) repeat-x; margin: 50px auto 0; }
+.down_list h2 { height: 25px; line-height: 25px; border: 1px solid #dee3e6; border-top: 1px solid #f3f5f7; padding-left: 10px; font-size: 14px; font-weight: normal; color: #57646e; cursor: pointer; }
+.down { background: url(img/down.gif) no-repeat 180px center; }
+.up { background: url(img/up.gif) no-repeat 180px center; }
+.down_list ul { width: 200px; overflow: hidden; background: #e9edf2; font-size: 12px; }
+.down_list li { width: 200px; float: left; }
+.down_list a { display: block; line-height: 25px; padding-left: 10px; color: #6b7980; text-decoration: none; }
+.down_list a:hover { background: #fff; text-decoration: underline; }
+		</style>
+	</head>
+	<script>
+		/*
+		 * 思路，当点击h2的时候，ul隐藏，箭头向下
+		 * 
+		 */
+		onload = function(){
+			//获得div对象
+			var div = document.getElementById("drop");
+			//获得div下的两个元素h2和ul
+			var h2 = div.children[0];
+			//alert(h2.innerHTML);
+			//ul对象
+			var ul = div.children[1];
+			h2.onclick = function(){
+				//写法1
+				//让h2的箭头改变
+//				h2.className=="down"?h2.className="up":h2.className="down";
+				//获得ul的当前状态
+//				var displayValue = getStyleObj(ul).display;
+				//alert(displayValue);
+//				displayValue=="block"?ul.style.display="none":ul.style.display="block";
+                //写法2
+                if(h2.className=="down"){
+						h2.className="up";
+						ul.style.display="block";
+					}else{
+						h2.className="down";
+						ul.style.display="none";
+				}
+				
+			}
+			
+			function getStyleObj(obj){
+				if(obj.currentStyle){
+					return obj.currentStyle;
+				}else{
+					return getComputedStyle(obj,null);
+				}
+			}
+			
+			
+			
+		}
+		
+	</script>
+	<body>
+		<div id="drop" class="down_list">
+    <h2 class="up">播放列表</h2>
+    <ul>
+        <li><a href="#">玩爱之徒 - 蔡依林</a></li>
+        <li><a href="#">原谅我就是这样的女生 - 戴佩妮</a></li>
+        <li><a href="#">猜不透 - 丁当</a></li>
+        <li><a href="#">自导自演 - 周杰伦</a></li>
+        <li><a href="#">浪漫窝 - 弦子</a></li>
+        <li><a href="#">流年 - 王非</a></li>
+    </ul>
+</div>
+	</body>
+</html>
