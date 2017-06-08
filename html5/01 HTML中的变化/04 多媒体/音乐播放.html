@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css">
+    #musicAudio{
+        width:300px;
+        height:50px;
+        font-size: 0px;
+        background-color: #F5F5DC;
+        border-radius: 10px;
+    }
+    #musicAudio *{
+        display: inline-block;
+        vertical-align: middle;
+        font-size: 14px;
+    }
+    #musicAudioPlayAndPause{
+        line-height: 50px;
+        width:40px;
+        height:40px;
+        margin:5px 5px;
+    }
+    #musicAudioTime{
+        margin:5px 5px;
+    }
+    #musicAudioProgress,#musicAudioProgressPar{
+        height:25px;
+        -webkit-border-radius: 10px;
+    }
+    #musicAudioProgressPar{
+        width:140px;
+        background-color: #F0FFFF;
+    }
+    #musicAudioProgress{
+        width:0px;
+        background-color: #7FFFD4;
+    }
+</style>
+    </head>
+    <body>
+    <audio src="beautiful.mp3" id="audio" ></audio>
+    <div id="musicAudio">
+    <img id="musicAudioPlayAndPause"  onclick="playOrPaused(this);" src="img/shutdown.ico"/>
+    <div id="musicAudioProgressPar">
+        <div id="musicAudioProgress"></div>
+    </div>
+    <p id="musicAudioTime"><span id="currentTime">00:00</span><span>&#47;</span><span id="totalTime">12:00</span></p>
+</div>
+    </body>
+</html>
+
+<script type="text/javascript">
+    var audio ;
+    window.onload = function(){
+        initAudio();
+    }
+    var initAudio = function(){
+        //初始化页面
+        document.getElementById("musicAudio").innerHTML=
+        "<img id='musicAudioPlayAndPause'  onclick='playOrPaused(this);' src='button_start.png'/>"+
+        "<div id='musicAudioProgressPar'>"+
+        "<div id='musicAudioProgress'></div>"+
+        "</div>"+
+        "<p id='musicAudioTime'><span id='currentTime'>00:00</span><span>&#47;</span><span id='totalTime'>12:00</span></p>";
+        //初始化对象
+        audio = document.getElementById('audio');
+        //初始化  当前时间
+        getCurrentTime();
+        //初始化  总时间
+        var totalTime=parseInt(audio.duration/60);
+        var seconds=parseInt(audio.duration%60);
+        if(totalTime==0){
+            if(seconds>9){
+                totalTime="00:"+seconds;
+            }else{
+                totalTime="00:0"+seconds;
+            }
+        }else{
+            var totalTimePre,totalTimeNext;
+            if(totalTime>9){
+                totalTimePre=totalTime;
+            }else{
+                totalTimePre="0"+totalTime;
+            }
+            if(seconds>9){
+                totalTimeNext=seconds;
+            }else{
+                totalTimeNext="0"+seconds;
+            }
+            totalTime=totalTimePre+":"+totalTimeNext;
+        }
+        document.getElementById("totalTime").innerText=totalTime;
+    }
+    //更新进度条当前值
+    function updateProgressVal(){
+        var progressVal=audio.currentTime/audio.duration*140;
+        document.getElementById("musicAudioProgress").style.width=progressVal+"px";
+    }
+    //更新当前时间
+    function getCurrentTime(){
+        var currentTime=audio.currentTime;
+        var totalTime=parseInt(currentTime/60);
+        var seconds=parseInt(currentTime%60);
+        if(totalTime==0){
+            if(seconds>9){
+                totalTime="00:"+seconds;
+            }else{
+                totalTime="00:0"+seconds;
+            }
+        }else{
+            var totalTimePre,totalTimeNext;
+            if(totalTime>9){
+                totalTimePre=totalTime;
+            }else{
+                totalTimePre="0"+totalTime;
+            }
+            if(seconds>9){
+                totalTimeNext=seconds;
+            }else{
+                totalTimeNext="0"+seconds;
+            }
+            totalTime=totalTimePre+":"+totalTimeNext;
+        }
+        document.getElementById("currentTime").innerText=totalTime;
+    }
+    //暂停或播放
+    var progressTimer;
+    function playOrPaused(obj){
+        if(audio.paused){
+            audio.play();
+            progressTimer=window.setInterval(audioProgress,100);
+            document.getElementById("musicAudioPlayAndPause").setAttribute("src","button_stop.png");
+            return;
+        }
+        audio.pause();
+     document.getElementById("musicAudioPlayAndPause").setAttribute("src","button_start.png");
+    }
+
+    function audioProgress(){
+        if(audio.currentTime <audio.duration){
+            if(audio.played){
+                //更新当前时间
+                getCurrentTime();
+                //更新进度条
+                updateProgressVal();
+            }
+        }else{
+            clearInterval(progressTimer);
+        }
+    }
+</script>

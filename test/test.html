@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1"/>
+         <style type="text/css">
+
+	   .divcss5{ 
+		  border:1px solid #000; 
+		  width:100%; 
+		  height: 80%; 
+		  overflow-x: visible;
+		  margin-bottom: 20px;
+		  text-align: center
+	     } 
+	    .divcss5 img{
+	    	max-width:100%; 
+	    	max-height: 90%;
+		_width:expression(this.width > 300 ? "300px" : this.width);
+	   } 
+		@media only screen and (max-width:400px) {
+			   .divcss5 img {
+			   	  height: 270px;
+			   }
+		}
+
+		@media only screen and (max-width:10240px) {
+			   .divcss5 img {
+			   	  height: 500px;
+			   }
+		}
+
+	
+     
+
+       </style>
+   
+    </head>
+    <body>
+        <div class="divcss5"> 
+		  <img src="sis.png">
+		</div> 
+     
+    </body>
+</html>

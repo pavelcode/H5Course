@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css">
+          
+
+        </style>
+        <script>
+        var div1=document.getElementById("div1");
+		var iSpeedX=6;
+		var iSpeedY=8;
+		setInterval(function(){
+		  var l=div1.offsetLeft+iSpeedX;
+		  var t=div1.offsetTop+iSpeedY;
+		  if(t>=document.documentElement.clientHeight-div1.offsetHeight){
+		    iSpeedY*=-1; //速度反向
+		    t=document.documentElement.clientHeight-div1.offsetHeight; //超出下边界时，把它拉回到下边界，不然右边滚动条会闪动出现一下
+		  }
+		  else if(t<=0){
+		    iSpeedY*=-1;
+		    t=0;
+		  }
+		  if(l>=document.documentElement.clientWidth-div1.offsetWidth){
+		    iSpeedX*=-1;
+		    l=document.documentElement.clientWidth-div1.offsetWidthl;
+		  }
+		  else if(l<=0){
+		    iSpeedX*=-1;
+		    l=0;
+		  }
+		  div1.style.left=l+'px';
+		  div1.style.top=t+'px';
+		},30);
+        </script>
+    </head>
+    <body>
+    <div class="div1" style="width: 50px; height: 50px; position: absolute; left: 0px; top: 0px; background: #ff0000; border-radius: 50%;"></div>
+    </body>
+</html>
