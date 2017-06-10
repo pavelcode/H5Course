@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>	
+	<style>
+		.show-transition{
+			transition:all 0.4s ease;
+			padding-left: 0; 
+		}
+
+		.show-enter,.show-leave{
+			padding-left: 100px; 
+		}
+
+
+	</style>
+	<script src="../../vue1028.js"></script>
+</head>
+<body>
+	<div id="app">
+	<button @click="toggle">展示和隐藏</button>
+		<div v-show="isshow" transition="show">
+			hello vuejs
+		</div>
+	</div>
+
+	<script>
+		new Vue({
+			el:'#app',
+			data:{
+				isshow:false
+			},
+			methods:{
+				toggle:function(){
+					this.isshow = !this.isshow;
+				}
+			}
+		});
+	</script>
+</body>
+</html>

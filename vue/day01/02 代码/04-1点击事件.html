@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+       <div id="app">
+		<p>{{ msg }} </p>
+	
+		<span v-text="msg"></span>
+
+		<br />
+
+		<div v-html="htmlMsg"></div>
+	<button v-on:click="changeMsg">改变msg的值</button>
+     <!-- 简写 -->
+	 <button @click="changeMsg()">改变msg的值</button>
+
+	</div>
+    </body>
+    <script src="../bower_components/vue/dist/vue.min.js"></script>
+   <script>
+     var vm = new Vue({
+		el:'#app',  
+		data:{
+			msg:'<h1>hello vue</h1>', 
+			htmlMsg:'<h1>带有html标签的数据</h1>'
+		},
+		//定义方法
+		methods:{
+			changeMsg:function(){
+				//这里只需要修改模型数据msg，就会自定刷新指令中使用的这个msg的地方的值
+				//注意点：在方法中写的this其实就是vm这个对象
+				this.msg = '我变了';
+				this.htmlMsg="<p style='color:red'>我变了</p>"
+			}
+		}
+	});
+   </script>
+</html>

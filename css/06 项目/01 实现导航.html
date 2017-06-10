@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css">
+          *{
+          	margin: 0;
+          	padding: 0;
+          }
+          body{
+          	font-family: "微软雅黑";
+          	font-size: 14px;
+          }
+          .header{
+          	height: 58px;
+          	background-color: #191D3A;
+          }
+          .header .inner{
+          	width: 1000px;
+          	margin: 0 auto;
+          	/* background-color: red; */  /* 为了看效果 */
+          	/* height: 58px;  */  /* 为了看效果 */
+          }
+          .header .logo{
+          	float:left;
+          	margin-right: 40px;
+          }
+          .header .nav{
+          	float: left;
+          }
+          .header .nav ul{
+          	list-style: none;
+          }
+          .header .nav ul li{
+          	float: left;
+          	width: 100px;
+          	line-height: 58px;
+           /*  background-color: green; */ /* 为了看效果 */
+            text-align: center;
+            border-left: 1px solid #252947;
+          }
+          .header .nav ul li.last{
+          	border-right: 1px solid #252947;
+          }
+          .header .nav ul li a{
+            font-size: 16px;
+            text-decoration: none;
+            color: #818496;
+            display: block;
+            height: 58px;
+          }
+          .header .nav ul li a.active{
+          	background-color: #818496;
+          	color: white;
+          }
+           .header .nav ul li a:hover{
+            background-color: #818496;
+          	color: white;
+           }
+           .header .inner .jrwm{
+           	float: left;
+           	padding-left: 48px;
+           	padding-top: 12px;
+           }
+        </style>
+    </head>
+    <body>
+          <!-- header开始 -->
+         <div class="header">
+         	<div class="inner">
+         		<h1 class="logo"><img src="images/logo.png" alt=""></h1>
+                <div class="nav">
+                	<!-- ul>(li>a>{我的内容})*6 -->
+                	<ul>
+                		<li><a class="active" href="">我的内容</a></li>
+                		<li><a href="">我的内容</a></li>
+                		<li><a href="">我的内容</a></li>
+                		<li><a href="">我的内容</a></li>
+                		<li><a href="">我的内容</a></li>
+                		<li class="last"><a href="">我的内容</a></li>
+                	</ul>
+                </div>
+                <div class="jrwm"><a href=""><img src="images/jrwm.png" alt=""></a></div>
+         	</div>
+         </div>
+         <!-- header结束-->    
+ </body>
+</html>

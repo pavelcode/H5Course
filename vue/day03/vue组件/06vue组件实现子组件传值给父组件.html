@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../vue1028.js"></script>
+</head>
+<body>
+	<template id="subcom">
+		<button @click="sendData">发送数据给父组件</button>
+	</template>
+
+	<div id="app">
+		<subcom v-on:send="getdata"></subcom>
+		
+	</div>
+	<script>
+
+	new Vue({
+		el:'#app',
+		methods:{
+			getdata:function(input){
+				alert(input);
+			}
+		},
+		components:{
+			'subcom':{
+				template:'#subcom',
+				methods:{
+					sendData:function(){
+						//利用this.$emit()将hello传入给父组件
+						this.$emit('send','hello');
+					}
+				}
+			}
+		}
+		
+	});
+	</script>
+</body>
+</html>

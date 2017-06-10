@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../vue1028.js"></script>
+</head>
+<body>
+	<div id="app">
+		<input type="text" v-model="firstName">
+		<input type="text" v-model="lastName">
+
+		{{ fullName }}
+
+	</div>
+	
+	<script>
+	new Vue({
+		el:'#app',
+		data:{
+			firstName:'ivan',
+			lastName:'.zhang'
+		},
+		computed:{
+			// 将fullname变成一个计算属性
+			/*
+			特点：1、计算属性会依赖于他使用的data中的属性
+			只要是依赖的属性值有改变，则自定重新调用一下计算属性
+
+				2、如果它所依赖的这些属性值没有发生改变，那么计算属性的值
+				是从缓存中来的，而不是重新编译，那么性能要高一些，所以vue中尽可能使用computed替代 watch
+			 */
+			
+			fullName:function(){
+				return this.firstName + this.lastName;
+			}
+		}
+	});
+	</script>
+
+</body>
+</html>

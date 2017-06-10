@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../vue1028.js"></script>
+</head>
+<body>	
+	<div id="app">
+		{{ time | datefmt }}
+
+	</div>
+
+	<div id="app1">
+		{{ time | datefmt }}
+
+	</div>
+
+<script>
+// 私有过滤器的弊端是：在多个VM中不能共享，会造成代码的冗余，将来维护成本高
+// 像这种需求必须使用全局过滤器
+//1.0 定义全局过滤器
+Vue.filter('datefmt',function(input){
+	var date = new Date(input); 
+	var year = date.getFullYear();
+	var m = date.getMonth() + 1;
+	var d = date.getDate();
+	//输出： yyyy-mm-dd
+	var fmtStr = year+'-'+m +'-'+d;
+	return fmtStr; //输出结果
+});
+
+new Vue({
+	el:'#app',
+	data:{
+		time:new Date()
+	}	
+});
+
+
+new Vue({
+	el:'#app1',
+	data:{
+		time:new Date()
+	}
+})
+
+</script>
+</body>
+</html>

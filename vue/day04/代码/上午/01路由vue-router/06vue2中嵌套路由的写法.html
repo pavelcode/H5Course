@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="../vue2.js"></script>
+    <script src="../vue-router211.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <router-link to="/account/login">登录</router-link>
+        <router-link to="/account/register">注册</router-link>
+        <!-- 组件的显示占位区域 -->
+        <router-view></router-view>
+    </div>
+    <script>
+    // 定义根组件
+    var App = Vue.extend({});
+
+    // 定义account组件
+    var account = {
+        template: '<div><h1>账号组件</h1> <router-view></router-view></div>'
+    };
+
+    // 1.0 定义注册组件
+    var register = Vue.extend({
+        template: '<h2>注册</h2>'
+    });
+
+    // 2.0 定义登录组件
+    var login = Vue.extend({
+        template: '<div><h2>登录</h2><h3>其他内容</h3></div>'
+    });
+
+    // 3.0 定义路由对象并且注册路由规则
+    var vueRouter = new VueRouter({
+        routes: [{
+            // 在vue2.0中一级组件必须有 /
+            path: '/account',
+            component: account,
+            children: [
+                //在vue2.0中子组件的path之前不能有 /
+                {
+                    path: 'login',
+                    component: login
+                }, {
+                    path: 'register',
+                    component: register
+                }
+            ]
+        }]
+    });
+
+    // 4.0 使vueRouter生效
+    new Vue({
+        el: '#app',
+        router: vueRouter
+            // render:function(cfn){cfn(App)}  实在webpack中才会使用
+    });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../vue1028.js"></script>
+	<script src="../vue-router073.js"></script>
+</head>
+<body>
+	<div id="app">
+		<a v-link="{path:'/account/login'}">登录</a>
+		<a v-link="{path:'/account/register'}">注册</a>
+
+	<!-- 组件的显示位置 -->
+	<router-view></router-view>
+
+	</div>
+	
+	<script>
+		// 定义根组件
+	var App = Vue.extend({});
+
+	// 定义account组件
+	var account =  {
+		template:'<h1>账号组件</h1> <router-view></router-view>'
+	};
+
+	// 1.0 定义注册组件
+	var register =  Vue.extend({
+		template:'<h2>注册</h2>'
+	});
+
+	// 2.0 定义登录组件
+	var login = Vue.extend({
+		template:'<h2>登录</h2>'
+	});
+
+	// 3.0 实例化vueRouter的对象
+	var vueRouter = new VueRouter();
+
+	// 4.0 定义路由规则
+	// map是一个对象
+	vueRouter.map({
+		'account': {component: account,
+			subRoutes:{
+				'login': {component: login},
+	    		'register': { component: register }
+			}
+		}	    
+	});
+
+	// 5.0 是的vueRouter生效
+	vueRouter.start(App,'#app');
+	
+	// 6.0 默认跳转到登录组件来显示
+	vueRouter.redirect({'/':'/account/login'});
+	
+	</script>
+
+</body>
+</html>

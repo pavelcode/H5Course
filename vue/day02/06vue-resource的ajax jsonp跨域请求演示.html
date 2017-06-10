@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../vue1028.js"></script>
+	<script src="../vue-resource.js"></script>
+
+</head>
+<body>
+	<div id="app">
+	<button @click="getdata">jsonp的ajax请求</button>
+		
+		<div>{{ res }}</div>
+	</div>
+
+	<script>
+	new Vue({
+		el:'#app',		
+		data:{
+			res:''
+		},methods:{
+			getdata:function(){
+				//发出jsonp的请求
+				//定义一个url：这个url所对应的处理是支持jsonp格式的响应的
+				var url = 'http://vuecms.ittun.com/api/jsonp' ;
+				this.$http.jsonp(url).then(function(response){
+					var body = response.body;
+					var obj = JSON.parse(body);
+					this.res = obj.message;
+
+				});
+			}
+		}
+	});
+	</script>
+</body>
+</html>

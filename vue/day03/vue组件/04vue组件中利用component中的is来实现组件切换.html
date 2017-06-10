@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../vue1028.js"></script>
+</head>
+<body>
+	<template id="account">
+		<h3>账户组件内容：</h3>
+		<a href="#" @click="componentName='login'">登录</a>  
+		<a href="#" @click="componentName='register'">注册</a>
+		 
+		 <!-- 利用 component 结合其中的is属性来进行动态显示子组件
+		 其实是通过组件的名字来进行控制这个组件内容的显示的 -->
+		 <component :is="componentName"></component>
+	</template>
+
+	<div id="app">
+		<account></account>
+		<!-- <register1></register1> -->
+	</div>
+
+	<script>
+	
+	//3.0 写法3：
+	Vue.component('account',{
+		template:'#account'	,
+		data:function(){
+			return {
+				componentName:'login'  //代表默认显示的是登录组件
+			}
+		},
+		components:{
+			//在account组件中定义和注册一个login的子组件
+			'login':{
+				template:'<h2>登录组件内容</h2>'
+			},
+			'register':{
+				template:'<h2>注册组件内容</h2>'
+			}
+		}
+	});
+
+	new Vue({
+		el:'#app'
+		// components:{
+		// 	'register1':{
+		// 		template:'<h2>注册1组件内容</h2>'
+		// 	}
+		// }
+	});
+	</script>
+</body>
+</html>

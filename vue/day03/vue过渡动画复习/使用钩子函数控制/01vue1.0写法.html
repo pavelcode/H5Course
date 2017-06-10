@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>	
+	<style>
+		.show{
+			transition:all 0.4s ease;
+		}
+	</style>
+	<script src="../../vue1028.js"></script>
+</head>
+<body>
+	<div id="app">
+	<button @click="toggle">展示和隐藏</button>
+		<div v-show="isshow" transition="show" class="show">
+			hello vuejs
+		</div>
+	</div>
+
+	<script>
+	//定义一个全局的动画对象，名字叫做show
+	Vue.transition('show',{
+		beforeEnter:function(el){
+			//定义初始位置
+			el.style.transform = "translate(100px,0)";
+		},
+		enter:function(el){
+			//1.0 设定dom元素的刷新
+			var rf = el.offsetHeight;
+			//2.0 将translate设置回0 ，并且这个代码必须放到 this.$nextTick(function(){})
+			this.$nextTick(function(){
+				el.style.transform = "translate(0,0)";
+			});
+		},
+		afterEnter:function(el){
+			//Vue1.0 没法办修改 isshow的变量
+		}
+	});
+
+		new Vue({
+			el:'#app',
+			data:{
+				isshow:false
+			},
+			methods:{
+				toggle:function(){
+					this.isshow = !this.isshow;
+				}
+			}
+		});
+	</script>
+</body>
+</html>

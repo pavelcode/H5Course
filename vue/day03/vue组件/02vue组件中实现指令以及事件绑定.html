@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../vue1028.js"></script>
+</head>
+<body>
+
+	<template id="account">
+		<h3>账户组件内容：{{msg}}</h3>
+		<a href="#" @click="login">登录</a>  
+		 <a href="#">注册</a>
+	</template>
+
+	<div id="app">
+		<account></account>
+	</div>
+
+	<script>
+	
+	//3.0 写法3：
+	Vue.component('account',{
+		template:'#account',
+		//重点注意：原来在new Vue()中定义的data是一个对象
+		//但是在组件中定义的data是一个方法,并且在这个方法中一定是要return一个对象
+		data:function(){
+			return {
+				msg:'我是account组件中的msg'
+			}
+		},
+		methods:{
+			login:function(){
+				alert(this.msg);
+			}
+		}
+	});
+
+	new Vue({
+		el:'#app',
+		data:{
+			msg:'hello'
+		}
+	});
+	</script>
+</body>
+</html>

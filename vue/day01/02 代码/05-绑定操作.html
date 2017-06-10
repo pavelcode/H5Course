@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+      <!-- v-bind作用：可以给一个dom元素绑定任何的属性:
+		将来v-bind绑定class和style这两个属性
+	v-bind的完整写法：
+	<input type="text" v-bind:title="titleVal" >
+
+	v-bind的简单写法：
+	<input type="text" :title="titleVal" >
+	
+	v-bind的特殊写法：
+	原因是在绑定某些属性的时候，这个属性值由固定的字符串加上一个变量来组成的
+	那么这个时候如果使用 :href=“getnews”+id 那么id是找不到的
+	所以应该使用:
+	v-bind="{href:'getnews/'+id}" 写我们的id才会获取到
+
+	 -->
+	 <div id="app">
+	   <img v-bind:src="src">
+       <a v-bind:href="url">百度一下</a>
+       <a :href="url">百度一下</a>
+       <a href="{{url}}">百度一下</a>
+    </div>
+    </body>
+    <script src="../bower_components/vue/dist/vue.min.js"></script>
+    	<script>
+		new Vue({
+			el:'#app',
+			data:{
+				src: "img/spring.jpg",
+				url: "https://www.baidu.com"
+			}
+		});
+	</script>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../vue1028.js"></script>
+</head>
+<body>
+	<div id="app">
+		<button @click="getdata">获取dom对象</button>
+		<subcom v-ref:mycomp></subcom>
+	</div>
+	<script>
+
+	//1.0 定义组件
+	Vue.component('subcom',{
+		template:'<h1>这是subcom子组件内容</h1>',
+		data:function(){
+			return {
+				msg:'hello'
+			}
+		}
+	});	
+
+	new Vue({
+		el:'#app',
+		methods:{
+			getdata:function(){
+				// 获取到subcom这个组件对象
+			console.log(this.$refs.mycomp);
+
+			console.log(this.$refs.mycomp.$data.msg);
+			}
+		}
+	});
+	</script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	#app{
+		width: 600px;
+			margin: 30px auto;
+	}
+		.list{
+			border-collapse: collapse;
+			margin-top: 10px;			
+		}
+
+		.list th{
+			padding: 5px;
+			background-color: #0094ff;
+			color:#fff;
+			font-size: 16px;
+			border:1px solid #000;
+		}
+		.list td{
+			padding: 5px;
+			border:1px solid #000;
+		}
+	</style>
+	<script src="../vue1028.js"></script>
+</head>
+<body>
+	<div id="app">
+	<div>
+		<input type="text" v-model="productid" >
+		<input type="text" v-model="productname"  @keydown.f2="addProduct" >
+		<button @click="addProduct">添加品牌</button>
+	</div>
+
+	<div>
+		<input type="text" v-model="searchValue" >
+		
+	</div>
+	
+	<!-- 品牌列表区域 -->
+	<table class="list">
+	<tr>
+		<th>编号</th>
+		<th>品牌名称</th>
+		<th>创建时间</th>
+		<th>操作</th>
+	</tr>
+	<tr v-for="item in list | filterBy searchValue in 'name'" track-by="$index">
+		<td>{{item.id}}</td>
+		<td>{{item.name}}</td>
+		<td>{{item.ctime}}</td>
+		<td>
+			<a href="javascript:void(0)" @click="del2($index)">删除</a>
+		</td>
+	</tr>
+	</table>
+	</div>
+
+	<script>
+	Vue.directive('on').keyCodes.f2 = 113;
+
+	new Vue({
+		el:'#app',
+		data:{
+			list:[
+				{id:1,name:'宝马',ctime:new Date()},
+				{id:2,name:'奥迪',ctime:new Date()}
+			],
+			productid:0,
+			productname:'',
+			searchValue:'' //代表搜索文本框中的内容,通过v-model就能够自动同步到视图中的数据
+		},
+		methods:{
+			//1.0 删除
+			del:function(id){
+				//将list数组中的对应的元素删除即可
+				var index = this.list.findIndex(function(obj){
+					return obj.id ==  id;
+				});	
+
+				//根据索引将list数组的数据删除了，这个时候会自动调用v-for进行重新生成数据
+				this.list.splice(index,1);	
+			},
+			del2:function(index){
+				this.list.splice(index,1);	
+			},
+
+			// 2.0 添加
+			addProduct:function(e){
+				// if(e.keyCode != 13){
+				// 	return;
+				// }
+				// alert(this.productid + " ,"+this.productname);
+				// 1.0 获取到页面上的数据
+				var pobj = {id:this.productid,name:this.productname,ctime:new Date()};
+				// 2.0 添加数据
+				this.list.push(pobj);
+
+				// 3.0 清空模型productid和productname的值
+				this.productname ='';
+				this.productid = 0;
+			}
+		}
+	});
+	</script>
+</body>
+</html>

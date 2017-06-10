@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../vue1028.js"></script>
+</head>
+<body>
+	<div id="app">
+		<button @click="getdata">获取dom对象</button>
+		<div v-el:mydiv>这是一个div</div>
+	</div>
+	<script>
+
+	new Vue({
+		el:'#app',
+		methods:{
+			getdata:function(){
+				//在这个方法中通过vue形式获取到div的对象
+				console.log(this.$els.mydiv);
+				this.$els.mydiv.innerText="修改以后的值";
+			}
+		}
+	});
+	</script>
+</body>
+</html>

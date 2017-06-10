@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>	
+	<link rel="stylesheet" href="../../animate.css">
+	<script src="../../vue2.js"></script>
+</head>
+<body>
+	<div id="app">
+	<button @click="toggle">展示和隐藏</button>
+		<transition 
+			enter-active-class="fadeInRight"
+    		leave-active-class="fadeOutRight"
+			>
+			<div v-show="isshow" class="animated">
+				hello vuejs
+			</div>
+		<transition>
+	</div>
+
+	<script>
+		new Vue({
+			el:'#app',
+			data:{
+				isshow:false
+			},
+			methods:{
+				toggle:function(){
+					this.isshow = !this.isshow;
+				}
+			}
+		});
+	</script>
+</body>
+</html>

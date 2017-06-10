@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+     <div id="app">
+       <!-- 对于输入框而言不能使用v-text或者v-html，而使用v-model 
+		当通过v-model来绑定视图和模型的时候，当视图中的数据有改变会自动同步到
+		模型中的数据，反之亦然 （专业术语就是双向数据绑定）-->
+		<input type="text" v-model="v1" > + <input type="text" v-model="v2" > 
+		<button v-on:click="add">=</button> 
+		{{res}}
+		</div>
+    </body>
+     <script src="../bower_components/vue/dist/vue.min.js"></script>
+      <script>
+		new Vue({
+			el:'#app',
+			data:{
+				v1:1,
+				v2:2,
+				res:0
+			},
+			methods:{
+				add:function(){
+					this.res = this.v1 + this.v2;
+				}
+			}
+		});
+	</script>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <script src="../vue1028.js"></script>
+    </head>
+    <body>
+       <div id="app">
+		<!-- 1.0 系统过滤器
+1.0.1: 转大写  uppercase
+1.0.2 ：转小写 lowercase
+1.0.3 ：将对象数组格式化成一个json字符串输出   json
+1.0.4: filterBy
+		 -->
+	uppercase过滤器： {{ msg | uppercase }} <br>
+	lowercase过滤器 {{ msg | lowercase }}<br>
+
+	json过滤器将users数组中的数据格式化json字符串输出：{{ users | json }}
+
+	</div>
+
+    </body>
+
+</html>
+
+<script>
+new Vue({
+	el:'#app',
+	data:{
+		msg:'hello VUE',
+		users:[
+			{name:'ivan',age:31},
+			{name:'rose',age:1}
+		]
+	}
+});
+</script>
+</body>
+

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../vue1028.js"></script>
+	<script src="../vue-resource.js"></script>
+
+</head>
+<body>
+	<div id="app">
+	<button @click="getdata">get的ajax请求</button>
+		<ul>
+			<li v-for="item in list">{{ item.name }}</li>
+		</ul>
+	</div>
+
+	<script>
+	new Vue({
+		el:'#app',		
+		data:{
+			list:[]
+		},methods:{
+			getdata:function(){
+				//1.0 利用vue-resource发出get的ajax请求http://vuecms.ittun.com/api/getprodlist 获取到服务器返回的json数据
+				/*
+				格式：
+				{
+					status: 0,
+					message: [
+					{
+					id: 1,
+					name: "奥迪",
+					ctime: "2017-02-07T10:32:07.000Z"
+					},
+					{
+					id: 2,
+					name: "宝马",
+					ctime: "2017-02-07T10:32:17.000Z"
+					}
+					]
+					}
+				 */
+				var url = 'http://vuecms.ittun.com/api/getprodlist';
+				this.$http.get(url).then(function(response){
+					//1.0 获取到响应报文体对象
+					var body = response.body;
+					//2.0 判断响应报文返回的数据状态，如果非0则表示服务器异常，不能获取正常数据
+					if(body.status !==0){
+						console.log(body.message);
+						// alert(body.message);
+						return;
+					}
+					//3.0 获取到响应报文体中的正常数据
+					var pDataList = response.body.message;
+
+					//4.0 将数据赋值给模型对象list
+					this.list = pDataList;
+				});
+			}
+		}
+	});
+	</script>
+</body>
+</html>

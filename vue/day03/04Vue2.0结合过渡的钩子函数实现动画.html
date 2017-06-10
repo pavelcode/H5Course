@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.show-transition{
+			transition:all 0.4s ease;
+		}
+	</style>
+	<script src="vue2.js"></script>
+</head>
+<body>
+	<div id="app">
+	<button @click="toggle">展示和隐藏</button>
+	<transition
+					v-on:before-enter="beforeEnter"
+                    v-on:enter="enter"
+                    v-on:after-enter="afterEnter">
+		<div v-show="isshow" class="show-transition">
+			hello vuejs
+		</div>
+	</transition>
+	</div>
+
+	<script>
+	
+	new Vue({
+		el:'#app',
+		data:{
+			isshow:false
+		},
+		methods:{
+			toggle:function(){
+				this.isshow = !this.isshow;
+			},
+			beforeEnter:function(el){
+			//控制动画的准备进入
+			//只要保证应用了这个动画的元素的padding-left的值是100px
+			// el.style.padding="0 0 0 100px";
+			el.style.transform = 'translate(100px,0)';
+
+			console.log('1.0 padding-left:100px');
+		},
+		enter:function(el){
+
+			//1.0 保证dom实时刷新
+			var oh = el.offsetHeight;
+						
+			//2.0 保证样式的控制代码放到dom刷新以后的执行方法中去 this.$nextTick(function(){})
+			
+			//控制动画的最终状态
+			//只要保证应用了这个动画的元素的padding-left的值是0px
+			this.$nextTick(function(){
+				el.style.transform = 'translate(0,0)';
+			});		
+
+			console.log('2.0 padding-left:0px');
+		},
+		afterEnter:function(){
+			//动画完以后的一些逻辑处理
+			this.isshow = !this.isshow;
+		}
+		}	
+	});
+	</script>
+</body>
+</html>

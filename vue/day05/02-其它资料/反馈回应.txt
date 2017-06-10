@@ -1,0 +1,29 @@
+1、vuex的运用场景多吗，看到几个vue项目都是和vuex配合一起使用的
+	- vuex 能够实现项目中状态管理
+	- 大中型项目使用
+	
+2、webpack打包属于vue的内容吗 webpack没有学好影响后面的vue项目吗 工作中打包的工作是前端人员来做吗 公司不是有专门打包的人吗
+	- vue开发通常是基于webpack这个打包工具实现一整套的完整的脚手架工具（自动化）
+	- vue cli 这个是vue官方基于webpack实现的脚手架工具
+	
+
+3、工作中如果做vue2.0开发是用axios多还是用vue-resource多？这两个哪个好一点
+	- vue-resource 实现ajax请求
+	- axios 也是一个vue中的实现ajax请求的一个组件，使用方式和vue-resource一样 get,post,jsonp....
+	
+
+4、路由这块还不是特别明白
+	- 代码去记忆（敲一遍）
+	- 一个动态网站是由一个个页面组成的，那么在用户使用的过程中，从一个页面跳转到另外一个页面去
+	当url发生改变的时候，这个url对应的页面是谁呢？
+	在vue中靠路由这个模块（vue-router）去解决这个功能的
+	
+	vue-router官网: http://router.vuejs.org/zh-cn/index.html
+	
+
+5、我就说为什么看不懂，原来这东西要背
+	
+
+
+6、不清楚老师写的那个案例后面为什么图片显示不出了
+	

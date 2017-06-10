@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../vue2.js"></script>
+	<script src="../vue-router211.js"></script>
+</head>
+<body>
+	
+	<div id="app">
+		<router-link to="/login">登录</router-link>
+		<router-link to="/register/rose" >注册</router-link>
+
+		<!-- 组件的显示占位区域 -->
+		<router-view></router-view>
+	</div>
+
+	<script>
+	// 定义根组件
+	var App = Vue.extend({});
+
+	// 1.0 定义注册组件
+	var register =  Vue.extend({
+		template:'<h2>注册-->{{ uname }}</h2>',
+		data:function(){
+			return {
+				uname:''
+			}
+		},
+		created:function(){
+			// 获取到url传入过来的和 /register/:uname路由规则匹配的参数值
+			// /register/ivan
+			var uname = this.$route.params.uname;
+			this.uname = uname;
+		}
+	});
+
+	// 2.0 定义登录组件
+	var login = Vue.extend({
+		template:'<h2>登录</h2>'
+	});
+
+	// 3.0 定义路由对象并且注册路由规则
+	var vueRouter = new VueRouter({
+		routes:[
+			{path:'/',redirect:'/login'},
+			{path:'/login',component:login},
+			{path:'/register/:uname',component:register}
+		]
+	});
+
+	// 4.0 使vueRouter生效
+	new Vue({
+		el:'#app',
+		router:vueRouter
+		// render:function(cfn){cfn(App)}  实在webpack中才会使用
+	});
+
+	</script>
+
+</body>
+</html>

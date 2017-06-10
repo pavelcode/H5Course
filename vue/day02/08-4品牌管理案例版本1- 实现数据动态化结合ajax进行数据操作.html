@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	#app{
+		width: 600px;
+			margin: 30px auto;
+	}
+		.list{
+			width: 500px;
+			border-collapse: collapse;
+			margin-top: 10px;			
+		}
+
+		.list th{
+			padding: 5px;
+			background-color: #0094ff;
+			color:#fff;
+			font-size: 16px;
+			border:1px solid #000;
+		}
+		.list td{
+			padding: 5px;
+			border:1px solid #000;
+		}
+	</style>
+	<script src="../vue1028.js"></script>
+	<script src="../vue-resource.js"></script>
+</head>
+<body>
+	<div id="app">
+	<div>
+		<input type="text" v-model="productid"  v-color color-name="red" >
+		<input type="text" v-model="productname"  @keydown.enter="addProduct" >
+		<button @click="addProduct">添加品牌</button>
+	</div>
+
+	<div>
+		<input type="text" v-model="searchValue" v-focus >
+	</div>
+	
+	<!-- 品牌列表区域 -->
+	<table class="list">
+	<tr>
+		<th>编号</th>
+		<th>品牌名称</th>
+		<th>创建时间</th>
+		<th>操作</th>
+	</tr>
+	<tr v-for="item in list | filterBy searchValue in 'name'" track-by="$index">
+		<td>{{item.id}}</td>
+		<td>{{item.name}}</td>
+		<td>{{item.ctime | datefmt 'yyyy-mm-dd' 'hello' }}</td>
+		<td>
+			<a href="javascript:void(0)" @click="del(item.id)">删除</a>
+		</td>
+	</tr>
+	</table>
+	</div>
+
+	<script>	
+
+	//定义一个 v-focus的属性自定义指令
+	Vue.directive('focus',function(){
+		this.el.focus(); //实现文本框的自动获取焦点
+	});
+
+	//定义一个带有参数的自定义指令
+	Vue.directive('color',{
+		params:['colorName'],
+		bind:function(){
+			//1.0 获取到colorname的值
+			var cname = this.params.colorName;
+
+			//2.0 获取到el以后给其赋予一个样式
+			this.el.style.color = cname;
+		}
+	});
+
+	new Vue({
+		el:'#app',
+		//在当前data和methods创建完成以后的钩子函数中触发ajax请求即可
+		created:function(){
+			this.getlist();
+		},
+		filters:{
+			datefmt:function(input,fmtstr,str){
+				var date = new Date(input); 
+				var year = date.getFullYear();
+				var m = date.getMonth() + 1;
+				var d = date.getDate();
+				var h = date.getHours();
+				var mi = date.getMinutes();
+				var se = date.getSeconds();
+
+				if(fmtstr =='yyyy-mm-dd')
+				{
+					//输出： yyyy-mm-dd
+					return year+'-'+m +'-'+d;
+				}else if(fmtstr =='hh:mm:ss'){
+					return h+':'+mi +':'+se;
+				}
+
+				}
+		},
+		data:{
+			list:[
+				
+			],
+			productid:0,
+			productname:'',
+			searchValue:'' //代表搜索文本框中的内容,通过v-model就能够自动同步到视图中的数据
+		},
+		methods:{
+			//1.0 删除
+			del:function(id){
+				//向http://vuecms.ittun.com/api/delproduct/:id发送ajax 的get请求
+				//1.0 定义url
+				var url = 'http://vuecms.ittun.com/api/delproduct/'+id;
+
+				//2.0 发出请求
+				this.$http.get(url).then(function(res){					
+					alert(res.body.message);				
+				});
+
+				//3.0 刷新页面
+				this.getlist();
+
+			},
+			del2:function(index){
+				this.list.splice(index,1);	
+			},
+
+			// 2.0 添加
+			addProduct:function(e){
+				//通过ajax的post请求来增加数据
+				//1.0 确定url
+				var url = 'http://vuecms.ittun.com/api/addproduct'
+				//2.0 post(url,请求报文体的数据,{emulateJSON:true}).then()
+				
+				this.$http.post(url,{name:this.productname},{emulateJSON:true}).then(function(res){
+						// alert(res.body.message);
+				});
+
+				//3.0 重新获取列表数据
+				this.getlist();
+			},
+			//3.0 从服务器获取到品牌数据
+			getlist:function(){
+				this.$http.get('http://vuecms.ittun.com/api/getprodlist')
+				.then(function(res){
+					if(res.body.status!==0){
+						alert(res.body.message);
+						return;
+					}
+
+					//正常处理
+					this.list = res.body.message;
+				});
+			}
+		}
+	});
+	</script>
+</body>
+</html>

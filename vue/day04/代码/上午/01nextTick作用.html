@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<script src="vue1028.js"></script>
+</head>
+<body>
+	<div id="app">
+		{{ msg }}
+	</div>
+
+	<script>
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				msg:'hello'
+			}
+		});
+
+		vm.msg = 'ivan';
+		// 获取到当前的$el中的textContent的值，但其实这个时候
+		// ivan这个字符串是还没有更新到$el
+		console.log(vm.$el.textContent);
+
+		//当ivan的值已经更新到了$el中了，就会自动触发 nextTick()
+		vm.$nextTick(function(){
+			console.log(vm.$el.textContent);
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../vue1028.js"></script>
+</head>
+<body>
+	<div id="app">
+		<ul>
+			<li v-for="(key,value) in obj">{{key}}--{{value}}</li>
+		</ul>
+	</div>
+	
+	<script>
+	new Vue({
+		el:'#app',
+		data:{
+			obj:{
+				name:'ivan',
+				age:31
+			}
+		}
+	});
+	</script>
+
+</body>
+</html>

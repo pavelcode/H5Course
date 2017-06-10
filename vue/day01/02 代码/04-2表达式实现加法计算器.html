@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+      <div id="app">
+		<!-- 实现一个加法计算 -->
+		{{v1}} + {{v2}} 
+		<button v-on:click="add">=</button> 
+		{{res}}
+	</div>
+    </body>
+    <script src="../bower_components/vue/dist/vue.min.js"></script>
+    <script>
+	new Vue({
+		el:'#app',
+		data:{
+			v1:1,
+			v2:2,
+			res:0
+		},
+		methods:{
+			add:function(){
+				this.res = this.v1 + this.v2;
+			}
+		}
+	});
+	</script>
+</html>

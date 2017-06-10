@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../vue1028.js"></script>
+</head>
+<body>
+	// <script type="x-template" id="account1">
+	// 	<h3>账户组件内容11111：</h3>
+	// 	<a href="#">登录</a>  
+	// 	 <a href="#">注册</a>
+	// </script>
+
+	<template id="account">
+		<h3>账户组件内容：</h3>
+		<a href="#">登录</a>  
+		 <a href="#">注册</a>
+	</template>
+
+	<div id="app">
+		<account></account>
+	</div>
+
+	<script>
+
+	// //写法1:1.0 定义组件
+	// var account =  Vue.extend({
+	// 	template:'<a href="#">登录</a><a href="#">注册</a>'
+	// });
+	// // 2.0 全局注册组件
+	// Vue.component('account',account);
+	// 
+	// 2.0 写法2(定义和注册组件一步到位)
+	// Vue.component('account',{
+	// 	template:'<h3>账户组件内容：</h3><a href="#">登录</a>    <a href="#">注册</a>'
+	// });
+
+	//3.0 写法3：
+	Vue.component('account',{
+		template:'#account'
+	});
+
+	new Vue({
+		el:'#app'
+	});
+	</script>
+</body>
+</html>

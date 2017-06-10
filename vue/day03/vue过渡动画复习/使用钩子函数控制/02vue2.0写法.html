@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>	
+	<script src="../../vue2.js"></script>
+	<style>
+		.show{
+			transition:all 0.4s ease;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+	<button @click="toggle">展示和隐藏</button>
+		<transition
+					@before-enter="beforeEnter"
+					@enter="enter"
+					@after-enter="afterEnter">
+			<div v-show="isshow" class="show">
+				hello vuejs
+			</div>
+		<transition>
+	</div>
+
+	<script>
+		new Vue({
+			el:'#app',
+			data:{
+				isshow:false
+			},
+			methods:{
+				toggle:function(){
+					this.isshow = !this.isshow;
+				},
+				beforeEnter:function(el){
+					//定义初始位置
+					el.style.transform = "translate(100px,0)";
+				},
+				enter:function(el){
+					//1.0 设定dom元素的刷新
+					var rf = el.offsetHeight;
+					//2.0 将translate设置回0 ，并且这个代码必须放到 this.$nextTick(function(){})
+					this.$nextTick(function(){
+						el.style.transform = "translate(0,0)";
+					});
+				},
+				afterEnter:function(el){
+					//Vue1.0 没法办修改 isshow的变量
+					this.isshow = !this.isshow;
+				}
+			}
+		});
+	</script>
+</body>
+</html>
