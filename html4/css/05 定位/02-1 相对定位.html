@@ -5,19 +5,25 @@
 	<title>Document</title>
 	<style>
 		    /*只设定position: relative;,元素不进行偏移*/
-		    /*设定了position: relative;left：10px；相对于自己的位置,左移动10px*/
+		    /*设定了position: relative;left：10px；
+		      相对于自己原来的位置,左移动10px*/
+		   /* 没有脱标，如果脱标，下面的就会覆盖到这个位置。     移动的只是身，魂还在原地。添加margin-bottom，发现原来的位置向下移动了 */ 
+		    div{
+		    	width: 100px;
+		    	height: 100px;
+		    }
 			.one{
-				width: 100px;
-				height: 100px;
 				background-color: red;
 			}
 			.two{
-				width: 100px;
-				height: 100px;
 				background-color: blue;
 				position: relative;
 				left: 10px;
 				top:20px;
+				margin-bottom: 10px;
+			}
+			.three{
+				background-color: green;
 			}
 
 			/*相对定位不能让行内元素转化为行内块元素，不能实现模块转换*/
@@ -28,32 +34,16 @@
 				position: relative;
 			}
 
-			/*子绝父相*/
-			.aaa{
-				width: 200px;
-				height: 200px;
-				background-color: red;
-				position: absolute;
-			}
-			.bbb{
-				width: 100px;
-				height: 100px;
-				background-color: blue;
-				position: relative;
-				left: 50px;
-				top: 50px;
-			}
+			
 		</style>
 	</head>
 	<body>
 		<div class="one"></div>
 		<div class="two"></div>
+		<div class="three"></div>
 		
 		<span>中国</span>
-		<!-- 
-		<div class="aaa">
-			<div class="bbb"></div>
-		</div> -->
+		
 		
 		
 	</body>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+
+<input type="file" name="file" onchange="showPreview(this)" />  
+ <img id="portrait" src="" width="70" height="75">  
+    </body>
+</html>
+<script type="text/javascript">  
+        function showPreview(source) {  
+            var file = source.files[0];  
+            if(window.FileReader) {  
+                var fr = new FileReader();  
+                fr.onloadend = function(e) {  
+                    document.getElementById("portrait").src = e.target.result;  
+                };  
+                //最后一行必须加，否则显示不了图片
+                //从检查中看到的是图片的data路径
+                fr.readAsDataURL(file);  
+            }  
+        }  
+    </script>  

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    </body>
+</html>
+<script>
+    //变量提升，变成全局变量
+    {
+      var a = 10;
+    }
+    console.log(a);
+
+    //定义局部变量
+	// {
+	// 	let b = 20;
+	// }
+ //    console.log(b);
+
+    //let来声明一个值会被改变的变量，而使用const来声明一个值不会被改变的变量，也可以称之为常量。
+      const c = 30;
+      console.log(c);
+      c=40;    //Assignment to constant variable.  赋值给静态变量
+
+</script>

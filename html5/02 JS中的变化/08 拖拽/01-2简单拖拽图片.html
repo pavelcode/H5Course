@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+</head>
+<script type="text/javascript">
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function drag(ev) {
+    ev.dataTransfer.setData("Text", ev.target.id);
+}
+
+function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("Text");
+    ev.target.appendChild(document.getElementById(data));
+}
+</script>
+
+<body>
+   <!--HTML5允许对页面元素进行拖动，只要在元素的属性中加上draggable="true"，就可以拖动了。 -->
+   <!--在拖动的同时，必须记录被拖动的元素，通过在元素上注册事件ondragstart即可实现 -->
+   <!--在拖动img的时候，drag函数就会把img的id属性记录在事件中，记录值的类型是Text。 -->
+   <!-- 放置被拖动的img，定义一个事件:ondragover.在这个事件中，需要阻止对事件的默认处理方式，其实就是硬性的加上一句:event.preventDefault() -->
+  <!--  div中把这个img放到里面，当放置的时候，会触发ondrop事件通过event.dataTransfer.getData("Text")获得传递过来的img的id -->
+   <!-- 通过event.target.appendChild(document.getElementById(data))来把img放到div中 -->
+
+
+    <img id="drag1" src="book1.jpg" draggable="true" ondragstart="drag(event)" width="60" height="60" />
+
+    <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)" style="width:300px;height:300px;background-color:red;"></div>
+
+   
+</body>
+
+</html>
