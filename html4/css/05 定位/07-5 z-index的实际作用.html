@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css">
+        /* 当顶部使用了固定定位，后面使用了相对定位，这时候会出现穿帮
+        这时候，使用z-index */
+          *{
+          	margin:0;
+          	padding: 0;
+          }
+          /* 因为nav脱离了标准流，就会盖住第一行的内容 */
+          body{
+          	padding-top: 60px; 
+          }
+          .nav{
+             position: fixed;
+             top: 0;
+             left: 0;
+             width: 100%; /* fixed已经脱离标准流了，必须添加宽度 */
+             height: 60px;
+             background-color: gray;
+          }
+          .nav .inner{
+            width: 1000px; */
+          	height: 60px;
+          	margin: 0 auto;
+          	/* background-color: yellow; */
+          }
+          .nav .inner ul{
+          	list-style: none;
+          	margin: 0 auto;
+          }
+
+          .nav .inner ul li{
+          	 float:left;
+          	 width: 100px;
+          	 height: 60px;
+          	 line-height: 60px;
+          	 text-align: center;
+          	 background-color: red;
+          	 border-left: 1px solid black; 
+          }
+          
+          .nav .inner ul li a{
+          	 display: block;
+          	 text-decoration: none;
+          }
+          .nav .inner ul li a:hover{
+          	 background-color:orange;
+          }
+          
+         p a{
+          	display: block;
+          	width: 100px;
+          	height: 30px;
+          	background-color:blue;
+          	position: relative;
+          	left: 10px;
+          	top:10px;
+          }
+
+
+        </style>
+    </head>
+    <body>
+    <div class="nav">
+     	<div class="inner">
+     		<ul>
+     			<li><a href="">频道1</a></li>
+     			<li><a href="">频道2</a></li>
+     			<li><a href="">频道3</a></li>
+     			<li><a href="">频道4</a></li>
+     			<li><a href="">频道5</a></li>
+     			<li><a href="">频道6</a></li>
+     			<li><a href="">频道7</a></li>
+     			<li><a href="">频道8</a></li>
+     		</ul>
+     	</div>
+     </div>
+
+      	<p>222</p>
+		<p>111</p>
+		<p>111</p>
+		<p>111</p>
+		<p>111</p>
+		<p>111</p>
+		<p>111</p>
+		<p>111</p>
+		<p>
+		  <a href="">链接</a>
+		</p>
+		<p>111</p>
+		<p>111</p>
+		<p>111</p>
+		<p>111</p>
+		<p>111</p>
+		<p>111</p>
+		<p>111</p>
+		<p>111</p>
+		<p>111</p>
+		<p>111</p>
+		<p>111</p>
+		<p>111</p>
+		<p>111</p>
+		<p>111</p>
+		<p>111</p>
+		<p>111</p>
+		<p>111</p>
+		<p>111</p>
+		<p>111</p>
+		<p>111</p>
+		
+		<p>111</p>
+		<p>111</p>
+		<p>111</p>
+		<p>111</p>
+		<p>111</p>
+		<p>111</p>
+		<p>111</p>
+		<p>111</p>
+		<p>111</p>
+		<p>111</p>
+		<p>111</p>
+		<p>111</p>
+		<p>111</p>
+		<p>111</p>
+		<p>111</p>
+    </body>
+    </body>
+</html>
