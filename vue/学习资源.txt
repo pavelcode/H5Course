@@ -9,9 +9,17 @@ http://www.cnblogs.com/rik28/p/6024425.html
 学习案例https://github.com/keepfool/vue-tutorials
 ​
 
-
 第三天
 http://www.ittun.com/
 
 
 项目 https://github.com/SYSUMonkeyEye/MonkeyEye-FE
+
+
+基于vue2.0+vuex+localStorage开发的本地记事本
+https://github.com/lin-xin/notepad
+
+实现一个计算器  http://git.oschina.net/jjtHappy/js_caculator
+
+
+Vue实现小案例  https://segmentfault.com/a/1190000006165434

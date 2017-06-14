@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+         <script src="../bower_components/raphael/raphael.min.js"></script>
+    </head>
+    <body>
+    </body>
+</html>
+<script>
+//求多维数组的最大值
+function getMax(arr){
+	if(arr[0] instanceof Array){
+		//多维
+		var aTemp = [];
+		for(var i=0; i<arr.length; i++){
+			aTemp.push(getMax(arr[i]));
+		}
+		return getMax(aTemp);
+	}else{
+		//一维
+		if(arr.length == 1){
+			return arr[0];
+		}
+		var nmax = arr[0];
+		for(var i=0; i<arr.length; i++){
+			arr[i] > nmax && (nmax = arr[i]);
+		}
+		return nmax;
+	}
+
+};
+
+window.onload = function(){
+	var paper = Raphael(300, 100, 500, 400);
+	var W = paper.width;
+	var H = paper.height;
+
+	//柱状图使用颜色
+	var aColor = ['#40699C', '#9E413E', '#7F9A48', '#695185', '#3C8DA3', '#CC7B38', '#4F81BD'];
+	//图表数据
+	var data = {
+		"labels": ["一月", "二月", "三月", "四月","五月", "六月"],
+		"datas":[
+					[12,45,50,68,70,100],
+					[35,57,77,96,87,144]
+				]
+				
+		};
+	var nType = data.datas.length, nCount = data.labels.length;
+
+	//最大值
+	var nmax = getMax(data.datas);
+	
+	//小于1，取1；小于10,取10
+	if(nmax < 1){
+		nmax = 1;
+		var divider = 0.1;
+	}else if(nmax < 10){
+		nmax = 10;
+		var divider = 1;
+	}else if(nmax < 100){
+		nmax = (Math.ceil(nmax/10) + 1)*10;
+		if(nmax > 50){
+			var divider = 10;
+		}else{
+			var divider = 5;
+		}
+	}else{
+		var str = '' + nmax;
+		var start_2 = parseInt(str.substring(0, 2)) + 2;
+		nmax = start_2 * Math.pow(10, str.length-2);
+		
+		var divider = Math.ceil(start_2/10)*Math.pow(10, str.length-2);
+		nmax = Math.ceil(nmax/divider)*divider;
+	}
+	
+	//刻度数量
+	var count_d = nmax/divider;
+	//图标距离画布顶端的top, 左侧的坐标区域宽度，底部月份的高度
+	var ly_t = 10, ly_w = 60, bx_h = 40;
+
+	//坐标
+	paper.path("M" + ly_w + " " + ly_t + " L" + ly_w + " " + (H-bx_h + 5));
+
+	for(var i=0; i<=count_d; i++){
+		var _y = (H-bx_h-ly_t)/count_d*i+ly_t;
+		//坐标值
+		var val = divider*(count_d-i);
+		if(val < 1 && val != 0){
+			val = val.toFixed(1);
+		}
+		var txt = paper.text(ly_w/2, _y, val);
+		//坐标辅助线
+		paper.path("M" + (ly_w-5) + " " + _y + " L" + W + " "+_y);
+	}
+
+	//月份
+	for(i=0; i<nCount; i++){
+		var _x = (W - ly_w)/nCount;
+		var j = i + 1;
+		//月份
+		paper.text(ly_w + _x*(i + 0.5), H - 0.5*bx_h, data.labels[i]);
+		//坐标辅助线
+		paper.path("M" + (ly_w + _x*j) + " " + (H-bx_h) + " L" + (ly_w + _x*j) + " " + (H-bx_h+5));
+	}
+
+	//柱状,假设柱状与空白间隔等宽
+	(function(){
+		var nEveryM_w = (W - ly_w)/nCount;
+		var nGap_w = nEveryM_w/(nType + 2);
+		var nCon_h = H - bx_h;
+		var lines = [];
+
+		for(i=0; i<nType; i++){
+			var aLine = [];
+			for(j=0; j<nCount; j++){
+				var _h = data.datas[i][j]/nmax*(nCon_h - ly_t);
+				var _x = ly_w + nEveryM_w*j + nGap_w*(i + 1);
+				var _y = nCon_h - _h;
+				var color = aColor[i%aColor.length];
+
+				paper.rect(_x, _y, nGap_w, _h).attr({"fill":color, "stroke":"none"});
+				paper.circle(_x + nGap_w/2, _y - 10, 4).attr({"fill":color, "stroke":"none"});
+				
+				aLine.push("" + (_x + nGap_w/2) + " " + (_y - 10));
+			}
+			lines.push(aLine);
+		}
+		//走势图线段重新循环绘制，以免被柱状图盖住
+		for(i=0; i<nType; i++){
+			color = aColor[i%aColor.length];
+			paper.path("M" + lines[i].join(" L ")).attr({"stroke":color, "stroke-width":"2"});
+		}
+	})();
+	
+};
+</script>

@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+        <style>
+        /* 表示谁压住，大值压小值。
+        只有定位的元素才有z-index值。而浮动不能用。
+        没有单位，默认值是0
+        当z-index值相同的时候，下面压住上面的。 */
+             div{
+             	width: 200px;
+             	height: 200px;
+             }
+             .box1{
+             	background-color: red;
+             	position: absolute;
+             	left: 100px;
+             	top: 100px;
+             	z-index: 1;
+
+             }
+             .box2{
+             	background-color: blue;
+             	position: absolute;
+             	left: 180px;
+             	top: 180px;
+             }
+        </style>
+	</head>
+	<body>
+		<div class="box1"></div>
+		<div class="box2"></div>
+		
+	</body>
+</html>

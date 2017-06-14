@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css">
+       /*  只有定位的元素才有z-index值。而浮动不能用。 */
+           div{
+             	width: 200px;
+             	height: 200px;
+             }
+             .box1{
+             	background-color: red;
+             	width: 100px;
+             	height: 100px;
+             	float: left;
+             	z-index: -1;
+              
+             
+
+             }
+             .box2{
+             	background-color: blue;
+             
+             }
+
+
+        </style>
+    </head>
+    <body>
+
+      <div class="box1"></div>
+		<div class="box2"></div>
+    </body>
+</html>

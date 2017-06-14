@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css">
+        /* 从父现象：父元素的z-index值大，儿元素的z-index就大。
+        首先：使用相对定位之后，默认情况下s2压住s1
+              添加z-index让s1压住s2
+              给父盒子添加相对定位，f2大于f1，说明父大子就大
+               */
+           *{
+           	padding: 0;
+           	margin: 0;
+           }
+           .f1{
+           	width: 200px;
+           	height: 200px;
+           	background-color: red;
+           	position: relative;
+           	z-index: 200;
+           }
+           .s1{
+           	width: 100px;
+           	height: 100px;
+           	background-color: orange;
+           	position: relative;
+           	left:300px;
+           	top:300px;
+           	z-index: 20;
+           }
+           .f2{
+           	width: 200px;
+           	height: 200px;
+           	background-color: blue;
+           	position: relative;
+           	z-index: 500;
+           }
+           .s2{
+           	width: 100px;
+           	height: 100px;
+           	background-color: pink;
+           	position: relative;
+           	left: 230px;
+           	top: 170px;
+           	z-index: 15px;
+           }
+        </style>
+    </head>
+    <body>
+      <!--  (.f1>.s1)+.f2>.s2 -->
+       <div class="f1">
+       	<div class="s1"></div>
+       </div>
+       <div class="f2">
+       	<div class="s2"></div>
+       </div>
+
+
+    </body>
+</html>

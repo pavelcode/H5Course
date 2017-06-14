@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    </body>
+</html>
+<script>
+	// ES6引入了rest参数（形式为“…变量名”）。
+	// 其中rest参数搭配的变量是一个数组可以使用数组的一切操作。
+    function rest(...values){
+    let sum=0;
+    for(var val of values){
+        sum+=val;
+    }
+    return sum;
+}
+   console.log(add(1,2,3));//6
+</script>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    </body>
+</html>
+<script>
+//ES6允许按照一定的模式，从数组和对象中提取值，对变量进行赋值，这被称之为解构(Destructuring)
+
+// http://blog.csdn.net/github_26672553/article/details/53535980
+
+// 以前为变量赋值，只能直接指定值
+// var a = 1;
+// var b = 2;
+// var c = 3;
+
+// ES6允许写成这样
+// var [a,b,c] = [1,2,3];
+// console.log(a);
+// 
+
+
+//嵌套数组解构
+let [foo,[[bar],baz]] = [1,[[2],3]];
+console.log(bar);
+
+let [,,third] = ["foo","bar","baz"];
+console.log(third);
+
+let [head,...tail] = [1,2,3,4];
+console.log(head); // 1
+console.log(tail); // [2,3,4]
+
+let [x,y,...z] = ['a'];
+console.log(x); // "a"
+console.log(y); // undefined
+console.log(z); // []  ????
+
+//默认值
+
+
+
+
+</script>

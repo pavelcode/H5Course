@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+   <div id="box"></div>
+</body>
+
+</html>
+<script>
+// 就是用反引号编写一个模板字符串，用echo将模板转为javascrip表达式字符串，
+// 用正则将基础字符串转为想要字符串将代码封装在函数中返回；
+
+var template = `
+
+    <ul>
+
+    <%for(var i=0;i<data.supplies.length;i++){%>
+
+        <li><%=data.supplies[i]%> </li>
+
+    <%}%>
+
+</ul>`;
+
+function compile(template) {
+
+    var reg1 = /<%=(.+?)%>/g;
+
+    var reg2 = /<%([\s\S]+?)%>/g;
+
+    template = template
+
+        .replace(reg1, '`);\n echo($1); \n echo(`')
+
+    .replace(reg2, '`);\n  $1 \n echo(`');
+
+    template = 'echo(`' + template + '`)';
+
+    var script = `
+
+           (function parse(data){
+
+               var outpput='';
+
+               function echo(html){
+
+                     output+=html
+
+               }
+
+            ${template}
+
+            return output;
+
+          )}`
+
+    return script
+
+}
+
+var parse = compile(template);
+alert(eval(parse));
+var box = document.getElementById("box")
+box.innerHTML = parse({
+    supplies: ['1', , '2', '3']
+});
+</script>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+      <script src="../bower_components/raphael/raphael.min.js"></script>
+    </head>
+    <body>
+      <div id="paper">  
+  
+    </div>  
+    <script>  
+        var g_masterPathArray;  
+        var g_masterDrawingBox;  
+        //创建一个画布  
+        var paper = new Raphael("paper", 600, 600);  
+        //设置一个画图区域  
+        var rect = paper.rect(50, 50, 400, 400);  
+        rect.attr("fill", "#eee");  
+        //绑定区域的鼠标移动事件  
+        rect.mousemove(function (event) {  
+            var evt = event;  
+            var IE = document.all ? true : false;  
+            var x, y;  
+            if (IE) {  
+                x = evt.clientX + document.body.scrollLeft +  
+                document.documentElement.scrollLeft;  
+                y = evt.clientY + document.body.scrollTop +  
+                document.documentElement.scrollTop;  
+            }  
+            else {  
+                x = evt.pageX;  
+                y = evt.pageY;  
+            }  
+            // 给区域添加两个属性ox,和oy  
+            this.ox = x - 5;  
+            this.oy = y - 5;  
+        });  
+        //区域（即鼠标）开始拖动  
+        var start = function () {  
+            g_masterPathArray = new Array();  
+        };  
+        //移动  
+        var move = function (dx, dy) {  
+            if (g_masterPathArray.length == 0) {  
+                g_masterPathArray[0] = ["M", this.ox, this.oy];  
+                //绘制线条  
+                g_masterDrawingBox = paper.path(g_masterPathArray);  
+                //设置线条宽度  
+                g_masterDrawingBox.attr({ stroke: "#000000", "stroke-width": 3 });  
+            } else  
+                g_masterPathArray[g_masterPathArray.length] = ["L", this.ox, this.oy];  
+            //设置线条的path属性值  
+            g_masterDrawingBox.attr({ path: g_masterPathArray });  
+        };  
+        //松下鼠标  
+        var up = function () {  
+        };  
+        rect.drag(move, start, up);  
+    </script>  
+    </body>
+</html>

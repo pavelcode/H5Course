@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <script src="../bower_components/raphael/raphael.min.js"></script>
+    </head>
+    <body>
+     <div id="canvas"></div>
+    </body>
+</html>
+<script>
+	var paper = new Raphael(document.getElementById('canvas'), 1000, 2000);  
+	var circle = paper.circle(100, 100, 80);  
+    circle.attr("fill", "#f00");
+    circle.attr("stroke", "#000");
+
+
+
+</script>

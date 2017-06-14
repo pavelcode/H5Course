@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css">
+        /*元素嵌套的绝对定位，当父元素没有定位，子元素按照游览器左上角定位*/
+		/*元素嵌套的绝对定位，如果父元素有定位,是以父元素进行定位*/
+			.one{
+				width: 300px;
+				height: 300px;
+				background-color: red;
+				margin-left:300px;
+				margin-top: 100px;
+				position: absolute;
+				
+			}
+			.two{
+				width: 100px;
+				height: 100px;
+				background-color: blue;
+				position: absolute;
+				left: 100px;
+				top:10px;
+			}
+        </style>
+    </head>
+    <body>
+        <div class="one">
+			<div class="two"></div>
+		</div>
+    </body>
+</html>

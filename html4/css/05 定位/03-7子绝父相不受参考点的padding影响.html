@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css">
+        /* 不是从参考点的padding开始定位的，而是从内边框开始定位的 */
+           *{
+           	margin: 0;
+           	padding: 0;
+           }
+           div{
+           	 width: 200px;
+           	 height: 200px;
+           	 border:10px solid red;
+           	 padding: 100px;
+           	 position: relative;
+           }
+           p{
+           	width: 100px;
+           	height: 100px;
+           	background-color: black;
+           	position: absolute;
+           	top: 10px;
+           	left: 10px;
+           }
+
+        </style>
+    </head>
+    <body>
+        <div>
+
+          文字文字文字文字文字文字文字文字文字文字
+          文字文字文字文字文字文字文字文字文字文字
+          文字文字文字文字文字文字文字文字文字文字
+        <p></p>
+
+
+        </div>
+    </body>
+</html>

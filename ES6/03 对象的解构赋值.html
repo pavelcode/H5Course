@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    </body>
+</html>
+<script>
+	
+	var stu1 = {name:"zhangsan"};
+	var stu2 = {name:"lisi"};
+
+    // 解构赋值的左侧部分类似一个对象字面量，对象中是一个名值对的列表
+    // 属性名称位于名值对内冒号左侧，变量名称位于名值对内冒号右侧，
+    //每一个属性都会去右侧对象中查找相应的赋值，每一个值都会赋值给它对应的变量
+	var {name:stu1Name} = stu1;
+	var {name:stu2Name} = stu2;
+
+
+    //当属性名称和变量名称相同时，可如下简写
+    var { name, age } = { name: "zhangsan", age: 10};  
+    console.log(name);
+    console.log(age);  
+
+</script>

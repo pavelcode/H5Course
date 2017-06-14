@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css">
+        /*  首先给box3添加绝对定位
+         然后给box1添加绝对定位，这时候，box3是以box1位参考点定位
+         最后给box2添加绝对定位，这时候，以最近的父元素作为参考定位
+          */
+          *{
+          	margin: 0;
+          	padding: 0;
+          }
+          .box1{
+          	width: 400px;
+          	height: 400px;
+          	background-color:red;
+          	margin: 100px;  
+          	padding: 100px;
+            position: relative; 
+          }
+          .box2{
+          	width: 300px;
+          	height: 300px;
+          	background-color:blue;
+          	position: relative;
+          }
+          .box3{
+          	width: 100px;
+          	height: 100px;
+          	background-color: green;
+            position: absolute;
+            left:50px;
+            top: 50px;
+          }
+
+        </style>
+    </head>
+    <body>
+        <div class="box1">
+        	<div class="box2">
+        		<div class="box3"></div>
+        	</div>
+        </div>
+    </body>
+</html>

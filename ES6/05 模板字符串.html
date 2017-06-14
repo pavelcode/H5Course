@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    </body>
+</html>
+<script>
+	
+var name = '张三';
+var desc = '是个好孩子';
+var html = function(name, desc){
+    var tpl =  name +'，'+ desc;
+    return tpl;
+}
+console.log(html(name,desc));
+
+var result = `${name},${desc}`;
+console.log(result);
+
+var x = 1;
+var y = 2;
+console.log(`${x} + ${y} = ${x+y}`);
+
+</script>
