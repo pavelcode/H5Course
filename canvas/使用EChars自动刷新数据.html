@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Echarts</title>
+    <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+</head>
+<body>
+<div id="main" style="height:400px;" ></div>
+<!--模块化单文件引入-->
+
+<script type="text/javascript">
+    //为模块加载器配置echarts和所需的图标路径
+    require.config({
+        paths:{
+            echarts:'http://echarts.baidu.com/build/dist'
+        }
+    });
+    //使用
+    require(
+            [
+                'echarts',
+                'echarts/chart/line'//使用柱状图加载bar模块，按需加载。
+            ],function(ec){
+                //基于准备好的dom，初始化echarts图表
+                var myChart=ec.init(document.getElementById("main"));
+                var data = [20,40,30,60,70];
+                var aboutX =  [1,2,3,4,5];
+                var option={
+                    tooltip:{
+                        show:true
+                    },
+                    legend:{data:['销量']},
+                    xAxis:[{type:"category",data: aboutX}],
+                    yAxis:[{type:"value"}],
+                    series:[{"name":"销量","type":"line","data": data}]
+                };
+
+                myChart.setOption(option);
+
+                var timer = setInterval(function(){
+                    var lastData = data[data.length-1];
+                    var nowData = parseInt(Math.random()*30);
+
+                    data.push(nowData);
+                    aboutX.push(data.length);
+                    myChart.setOption(option);
+
+                },1000);
+                //为echarts对象加载数据
+            }
+    );
+</script>
+</body>
+</html>

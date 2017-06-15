@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<style>
+		   *{
+		   	margin: 0px;
+		   	padding: 0px;
+		   }
+		    div{
+		    	 margin:0 auto;
+		    	/*  height: 200px; */
+		    	 width: 1060px;
+		    	 /* background-color: red; */
+		    }
+		    ul{
+		    	  width: 1060px;
+		    	  list-style: none;
+		    	  border: 1px solid red;
+		    	  float: left;
+		    }
+		    li{
+		    	width: 200px;
+				height: 200px;
+				background-color: pink;
+				text-align: center;
+				line-height: 200px;
+				float:left;
+				margin-right: 230px;
+		    }
+		    /*传统的方式,需要进行计算*/
+			.tradition li:last-child{
+				margin-right: 0px;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<!--传统的两端对齐方式-->
+		<div>
+			<ul class="tradition">
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+			</ul>
+		</div>
+		
+	</body>
+</html>

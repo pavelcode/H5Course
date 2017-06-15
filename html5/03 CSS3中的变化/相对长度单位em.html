@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <style>
+      body{
+      	font-size: 20px;
+      }
+      .box1{
+      	font-size:1.5em;   /* 1.5 * 20 = 30px */
+      }
+      .box2{
+      	font-size: 0.5em;    /* 0.5 * 30 = 15px */
+      }
+      .box3{
+      	font-size: 2em;     /* 2 * 15 = 30px  */ 
+      }
+    </style>
+    <body>
+     <!--   
+     em（font size of the element）是指相对于父元素的字体大小的单位 
+     http://www.mamicode.com/info-detail-1652279.html
+     -->
+
+     <div class="box1">
+     	<span>第一层</span>
+     	<div class="box2">
+     	   <span>第二层</span>
+           <div class="box3">
+               <span>第三层</span>
+           </div>
+     	</div>
+     </div>
+    </body>
+</html>

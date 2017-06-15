@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<title>传统布局与伸缩布局对比的优势</title>
-		<style>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style>
 		   *{
 		   	margin: 0px;
 		   	padding: 0px;
@@ -16,20 +15,12 @@
 		    	  display: flex;
 		    }
 		    li{
-		    		width: 200px;
+		    	width: 200px;
 				height: 200px;
 				background-color: pink;
 				text-align: center;
-		    }
-		    /*传统的方式,需要进行计算*/
-			.tradition li{
-				float:left;
 				line-height: 200px;
-				margin-right: 230px;
-			}
-			.tradition li:last-child{
-				margin-right: 0px;
-			}
+		    }
 			/*伸缩布局就比较简单*/
 			.flex{
 				justify-content: space-between;
@@ -37,19 +28,15 @@
 			
 			
 		</style>
-	</head>
-	<body>
-		<!--传统的两端对齐方式-->
-		<ul class="tradition">
-			<li>1</li>
-			<li>2</li>
-			<li>3</li>
-		</ul>
-		<!--伸缩布局的对齐方式-->
+    </head>
+    <body>
+
+       <!--伸缩布局的对齐方式-->
 		<ul class="flex">
 			<li>1</li>
 			<li>2</li>
 			<li>3</li>
 		</ul>
-	</body>
+
+    </body>
 </html>

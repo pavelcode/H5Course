@@ -22,4 +22,5 @@ https://github.com/lin-xin/notepad
 实现一个计算器  http://git.oschina.net/jjtHappy/js_caculator
 
 
-Vue实现小案例  https://segmentfault.com/a/1190000006165434
+Vue实现小案例 
+Vue2.0移动版网易云音乐 https://github.com/xinghaiyang1994/vue-music
